@@ -1,0 +1,13 @@
+body {
+  margin-top: 20px;
+  min-height: 500px;
+  min-width: 350px;
+  padding: 20px;
+  font-family: Verdana, Geneva, sans-serif;
+  overflow: auto
+  ;
+}
+
+h1 {
+  text-align: center;
+}
