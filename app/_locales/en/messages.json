@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "hn-select",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Follow your friends on HN",
+    "description": "The description of the application"
+  }
+}
