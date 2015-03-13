@@ -41,18 +41,16 @@ function highlightNews() {
       storyIdsOnPage.push(storyId);
     }
   });
-  // $.post(getCommentersRoute, storyIdsOnPage)
-  //   .then(function(response) {
-  /// TESTING backend functionality 
-  // ******************************
-  var returnedObject = {};
-  for (var s = 0; s < storiesOnPage.length; s++) {
-    var storyId = storiesOnPage[s].storyId;
-    returnedObject[storyId] = ['jseliger','annbabe','mathouc']; 
-  }
-  var response = {};
-  response.data = returnedObject;
-      /// ******************************
+  $.post(getCommentersRoute, storyIdsOnPage)
+    .then(function(response) {
+  // TESTING backend functionality
+  // var returnedObject = {};
+  // for (var s = 0; s < storiesOnPage.length; s++) {
+  //   var storyId = storiesOnPage[s].storyId;
+  //   returnedObject[storyId] = ['jseliger','annbabe','mathouc'];
+  // }
+  // var response = {};
+  // response.data = returnedObject;
       var commentersFollowing = response.data // needs to be an object with key:value pairs storyId:[following by]
       for (var i = 0; i < storiesOnPage.length; i++) {
         // Check whether commentersFollowing includes storyId, i.e. whether people I am following commented
@@ -71,7 +69,7 @@ function highlightNews() {
       var story = storiesOnPage[s];
       story.$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
       story.$user.css({color: authorColor, 'font-weight': 'bold'});
-      // Add commenters 
+      // Add commenters
       if (story.commenters) {
         var commenters = story.commenters;
         for (var c = 0; c < commenters.length; c++) {
@@ -79,7 +77,7 @@ function highlightNews() {
           var $commentersElement = $(commentersElement).css({color: commentersTextColor, 'font-weight': 'bold', 'background-color': commentersBgColor})
           var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($commentersElement);
           story.$user.nextAll().eq(1).after($toInsert);
-        } 
+        }
       }
     }
   }
