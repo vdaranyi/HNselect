@@ -1,136 +1,99 @@
 'use strict';
 
-// Executed when matching page gets loaded
+// Constants
+var hnOrange = '#ff6600',
+    commentsBgColor = hnOrange,
+    commentsTitleColor = hnOrange,
+    authorColor = hnOrange,
+    commentersTextColor = "#ffffff",
+    commentersBgColor = hnOrange,
+    bgGrey = "#f7f7f1",
+    following = ['rickdale','colechristensen','jseliger','annbabe','mathouc','j2kun','concise','taejo','cpursley','mavdi', 'nkozyra', 'kazinator','comex','robin_reala','revscat','jakke','aestetix', 'ymmt2005', 'epetre', 'Graham24', 'datascientist', 'danso', 'gsans', 'adventured', 'epetre'],
+    getCommentersRoute = '';
 
 
-// Respond to request from extension
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
- if (request.action == "getUser") {
-   var user = $('a[href^="user?id="]').attr('href').replace('user?id=','');
-   sendResponse({user: user});
-   console.log('sending', user);
- } else
-   sendResponse({}); // Send nothing..
-});
-
-// Add newSelect tab
-function manipulateNavbar() {
-	// var newSelect = "<a href='XXXX' style='background-color:white'>new Select</a><span> | </span>"
-	// $(newSelect).insertBefore('a[href="newest"]')
+// Selecting highlighting method depending on view
+var tabUrl = window.location.href;
+var tabQuery = window.location.search;
+if (tabQuery || tabUrl.indexOf('newcomments') > -1 ) {
+  console.log(' > Highlighting comments');
+  highlightComments();
+} else {
+  console.log(' > Highlighting stories');
+  highlightNews();
 }
 
-// Receive message from extension
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-    parsePageForFollowing();
-    if (request.greeting == "hello") {
-      sendResponse({farewell: "goodbye"});
-      manipulateNavbar();
+
+function highlightNews() {
+  var storiesOnPage = [],
+      storyIdsOnPage = [];
+  $('a[href^="user?id"').each(function(index){
+    var $user = $(this);
+    var user = $user.text();
+    if (following.indexOf(user) > -1) {
+      var $storyTitle = $user.parents('tr:first').prev('tr').find('a[href^="http"]');
+      var storyId = $user.next('a[href^="item?id"]').attr('href').replace('item?id=','');
+      storiesOnPage.push({
+        storyId: storyId,
+        $storyTitle: $storyTitle,
+        $user: $user
+      })
+      storyIdsOnPage.push(storyId);
     }
   });
-
-// ---------------
-// Look for user names in page
-
-var following = ['kazinator','comex','robin_reala','revscat','jakke','aestetix', 'ymmt2005', 'epetre', 'Graham24', 'datascientist', 'danso', 'gsans', 'adventured', 'epetre'];
-
-// REFACTOR INTO 2 SEVERAL FUNCTIONS: SEARCH & MANIPULATION
-function parsePageForFollowing() {  
-  var commentsArr = [];
-  var articleIndex = 1;
-  $('tbody').eq(2).children('tr').each(function(index){
-    if ((index-1) % 3 === 0 && index <= 88) { // 2 FOR TESTING. Reset to 88.
-      var $postUserElement = $(this).find('a[href^="user?id"]:first');
-      if($postUserElement.length) {
-        var postUsername = $postUserElement.text();
-        if (following.indexOf(postUsername) > -1) {
-          $(this).prev().find('a[href^="http"]').css({color: "#ff6600", "font-weight": "bold"});
-          $($postUserElement).css({color: "#ff6600", "font-weight": "bold"});
+  // $.post(getCommentersRoute, storyIdsOnPage)
+  //   .then(function(response) {
+  /// TESTING backend functionality 
+  // ******************************
+  var returnedObject = {};
+  for (var s = 0; s < storiesOnPage.length; s++) {
+    var storyId = storiesOnPage[s].storyId;
+    returnedObject[storyId] = ['jseliger','annbabe','mathouc']; 
+  }
+  var response = {};
+  response.data = returnedObject;
+      /// ******************************
+      var commentersFollowing = response.data // needs to be an object with key:value pairs storyId:[following by]
+      for (var i = 0; i < storiesOnPage.length; i++) {
+        // Check whether commentersFollowing includes storyId, i.e. whether people I am following commented
+        if (commentersFollowing[storiesOnPage[i].storyId]) {
+          var storyCommenters = commentersFollowing[storiesOnPage[i].storyId]
+          // Add commenters
+          storiesOnPage[i].commenters = storyCommenters;
         }
       }
-      var $commentsElement = $postUserElement.nextAll().eq(1);
-      if ($commentsElement.length) {
-        var commentsHref = $commentsElement[0].href
-        commentsArr.push({articleIndex: articleIndex, href: commentsHref, author: postUsername, element: $commentsElement});
+      // Manipulate DOM with highlights
+      highlightFollowing(storiesOnPage);
+    // });
+
+  function highlightFollowing(storiesOnPage) {
+    for (var s = 0; s < storiesOnPage.length; s++) {
+      var story = storiesOnPage[s];
+      story.$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
+      story.$user.css({color: authorColor, 'font-weight': 'bold'});
+      // Add commenters 
+      if (story.commenters) {
+        var commenters = story.commenters;
+        for (var c = 0; c < commenters.length; c++) {
+          var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
+          var $commentersElement = $(commentersElement).css({color: commentersTextColor, 'font-weight': 'bold', 'background-color': commentersBgColor})
+          var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($commentersElement);
+          story.$user.nextAll().eq(1).after($toInsert);
+        } 
       }
     }
-    articleIndex++
-  });
-  parseComments(commentsArr);
-}
-
-function addHighlightsToPage() {
-  // TO MOVE CODE TO HERE
-}
-
-
-function parseComments(commentsArr) {
-  // var parser = new DOMParser(),
-  var commentsCount = commentsArr.length,
-      cIndex = 0,
-      commentsFollowers = {};
-  getComments();
-  function getComments() {
-      var articleIndex = commentsArr[cIndex].articleIndex,
-          commentsHref = commentsArr[cIndex].href,
-          author = commentsArr[cIndex].author,
-          $commentsOriginElement = commentsArr[cIndex].element;
-      setTimeout(function(){
-        $.get(commentsHref, function(commentsXmlString) {
-          // var commentsHtml = parser.parseFromString(commentsXmlString, "text/xml");
-          // var commentsHtml = $.parseHTML(commentsXmlString);
-          var commentsUser = parseCommentsForFollowing(author, commentsXmlString);
-          if (commentsUser.length) {
-            // var usersCommentsToAppend = ""
-            // Prepare DOM element of users in comments
-            for (var i = 0; i < commentsUser.length; i++) {
-              var userElement = "<a href='https://news.ycombinator.com/user?id='" + commentsUser[i] + "> " + commentsUser[i] + " </a>";
-              console.log(userElement);
-              var $userElement = $(userElement).css({color: "#ffffff", "font-weight": "bold", "background-color": "#ff6600"})
-              var $toInsert = $("<span>&nbsp</span>").css("background-color", "#f7f7f1").append($userElement);
-              $($commentsOriginElement).append($toInsert);
-            } 
-            // Apend commenters to DOM
-          }
-          cIndex++;
-          if (cIndex < commentsCount) 
-            getComments();
-        });
-      }, 0);
   }
+
 }
 
-// Join with parsePageForFollowing, creating general function
-function parseCommentsForFollowing(author, commentsXmlString) {
-  var commentsUser = [];
-  following.forEach(function(username){
-    // console.log(username, commentsXmlString.substring(0,20));
-    // console.log(commentsXmlString);
-    if (commentsXmlString.indexOf("user?id=" + username) > -1 && username != author) {
-      commentsUser.push(username);
+
+function highlightComments() {
+  $('a[href^="user?id"').each(function(index){
+    var user = $(this).text();
+    if (following.indexOf(user) > -1) {
+      $(this).parents('td:first').css({'background-color': commentsBgColor});
+      $(this).css({'color': commentersTextColor, 'font-weight': 'bold'});
+      $(this).nextAll().css({'color': commentersTextColor});
     }
   });
-  return commentsUser;
 }
-
-// function addCommentsUsersToDOM(commentsFollowers) {
-//   console.log(commentsFollowers);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
