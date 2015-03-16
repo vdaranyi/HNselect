@@ -9,8 +9,8 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnOrange,
     bgGrey = "#f7f7f1",
     following = ['nkurz','rickdale','colechristensen','jseliger','annbabe','mathouc','j2kun','concise','taejo','cpursley','mavdi', 'nkozyra', 'kazinator','comex','robin_reala','revscat','jakke','aestetix', 'ymmt2005', 'epetre', 'Graham24', 'datascientist', 'danso', 'gsans', 'adventured', 'epetre'],
-    getCommentersRoute = 'https://localhost:3000/getCommenters';
-    // getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
+    // getCommentersRoute = 'https://localhost:3000/getCommenters';
+    getCommentersRoute = 'https://hnselect.herokuapp.com/getCommenters';
 
 
 // Selecting highlighting method depending on view
