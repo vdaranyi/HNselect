@@ -8,27 +8,29 @@ var app = angular.module('app', [])
   .controller('Main', function($scope, UserFactory) {
     chrome.tabs.getSelected(null, function(tab) {
     // Send a request to the content script.
-      chrome.tabs.sendRequest(tab.id, {action: "getUser"}, function(response) {
-
-        console.log('received:',response.user);
-
+     chrome.tabs.sendRequest(tab.id, {action: "getUser"}, function(response) {
+        console.log('These are the arguments: ', arguments);
+        console.log('received:', response.user);
         // set the user from the response on the scope
         $scope.user = response.user;
         // $scope.$digest();
 
         UserFactory.getFollowingOrCreateUser($scope.user).then(function(data) {
           $scope.following = data;
-          // $scope.$digest();
+          chrome.tabs.sendMessage(tab.id, {request: data});
+          console.log('this is the following array: ', data);
         });
 
       });
 
+
       $scope.addOrRemoveToFollowing = function(userToFollow) {
-        UserFactory.updateFollowing($scope.user, userToFollow).then(function(data) {
-          console.log('this is data: ', data);
-          $scope.following = data;
-          $scope.$digest();
-        });
+          UserFactory.updateFollowing($scope.user, userToFollow).then(function(data) {
+            console.log('this is data: ', data);
+            $scope.following = data;
+            $scope.$digest();
+            document.getElementById('hnUsername').value='';
+          });
       };
     });
   })
@@ -53,8 +55,8 @@ var app = angular.module('app', [])
   });
 
 // Send message to contentscript
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
-    console.log(response.farewell);
-  });
-});
+// chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+//   chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
+//     console.log(response.farewell);
+//   });
+// });

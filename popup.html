@@ -17,6 +17,12 @@
 
 <body ng-controller='Main'>
     <h1>Welcome <b>{{ user }}</b>!</h1>
+    <form class="form-inline">
+        <div class="form-group">
+            <input class="form-control" name="username" id="hnUsername" ng-model="username" placeholder="Enter Hacker News Username">
+            <input class="btn btn-default" type="submit" value="submit" ng-click="addOrRemoveToFollowing(username)">
+        </div>
+    </form>
     <div class="panel panel-default">
         <ul class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#">Following</a>
@@ -33,8 +39,8 @@
                         <input class="checkboxes" type="checkbox" checked ng-click="addOrRemoveToFollowing(person)"> {{ person }}
                     </label>
                 </div>
-                <!-- <div ng-hide="checked" class="btn-group">
-                    <button type="button" class="btn btn-danger">Unfollow</button>
+<!--                 <div ng-hide="checked" class="btn-group">
+                    <button type="button" class="btn btn-danger" >Unfollow</button>
                 </div> -->
             </div>
         </div>
