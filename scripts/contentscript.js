@@ -14,42 +14,112 @@ var hnOrange = '#ff6600',
 
 
 // Selecting highlighting method depending on view
-var tabUrl = window.location.href;
-var tabQuery = window.location.search;
-if (tabQuery.indexOf('item?id') > -1 || tabUrl.indexOf('newcomments') > -1 ) {
-  console.log(' > Highlighting comments');
-  highlightComments();
-} else {
-  console.log(' > Highlighting stories');
-  highlightNews();
-}
+  var tabUrl = window.location.href;
+  var tabQuery = window.location.search;
+  if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1 ) {
+    console.log(' > Highlighting comments');
+    highlightComments();
+  } else {
+    console.log(' > Highlighting stories');
+    highlightNews();
+  }
 
+var user, following;
 
 function highlightNews() {
   var storiesOnPage = [],
-      storyIdsOnPage = [],
-      user;
+      storyIdsOnPage = [];
+      // user;
   $('a[href^="user?id"]').each(function(index){
     if (index === 0) {
       user = $(this).text();
     } else {
+      var story = {};
+      // console.log('index', index);
       var $author = $(this);
       var author = $author.text();
       var $storyTitle = $author.parents('tr:first').prev('tr').find('a[href^="http"]');
       var storyId = $author.next('a[href^="item?id"]').attr('href').replace('item?id=','');
 
       // Put all stories on page into array for subsequent comment following analysis
-      storiesOnPage.push({
+      // storiesOnPage.push({
+      //   storyId: storyId,
+      //   $storyTitle: $storyTitle,
+      //   $author: $author,
+      //   author: author,
+      //   commenters: []
+      // });
+      // storyIdsOnPage.push(storyId); // ONLY NEEDED FOR SERVER REQUEST
+      story = {
         storyId: storyId,
         $storyTitle: $storyTitle,
         $author: $author,
         author: author,
         commenters: []
-      })
-      storyIdsOnPage.push(storyId);n // ONLY NEEDED FOR SERVER REQUEST
-      
+      };
+
+      // Fetch story and commenters
+      // storiesOnPage[storiesOnPage.length-1].commenters = fetchItems(storyId, [])
+      var counter = 1,
+      totalcount = 1;
+      fetchItems(storyId, []);
+
+
+      function fetchItems(itemId, commenters) {
+        var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
+            // console.log(commenters);
+          
+        
+        // console.log(counter);  
+        $.get(itemUrl)
+          .then(function(response) {
+            counter--;  
+            // Iterating over the comments recursively
+            if (typeof response === 'object') {
+              // Add commenter
+              var commenter = response.by;
+              // console.log(commenter);
+              if (commenters.indexOf(commenter) === -1 ) { // && following.indexOf(commenter) > -1
+                commenters.push(commenter);
+                // NEED TO INCLUDE CHECK WHETHER TO REMOVE STORY AUTHOR
+              }
+              if (response.kids) {
+                // console.log(response.kids);
+                var children = response.kids;
+                counter += children.length;
+                totalcount += children.length;
+                children.forEach(function(childId, index) {
+                  // console.log(childId, index);
+                  // console.log();
+                  fetchItems(childId, commenters);
+                  // return commenters;
+                });
+              } 
+            }
+
+            if (counter === 0){
+
+              // Remove author
+              var authorIndex = commenters.indexOf(author)
+              if ( authorIndex > -1) {
+                commenters.splice(authorIndex, 1);
+                // console.log('*** AUTHOR REMOVED');
+              }
+              // console.log('DONE', totalcount, counter, commenters);
+              // Adding commenters to story object
+              story.commenters = commenters;
+              // Highlight 
+              highlightFollowing(story);
+            } 
+          })
+          // .then(function(response){
+          //   console.log('FINAL',commenters);
+          //   highlightFollowing(storiesOnPage);
+          // });
+        }
     }
   });
+/*
   // console.log(storiesOnPage);
   var requestObject = {
     user: user,
@@ -86,10 +156,10 @@ function highlightNews() {
       // Manipulate DOM with highlights
       highlightFollowing(storiesOnPage);
     // });
-
-  function highlightFollowing(storiesOnPage) {
-    for (var s = 0; s < storiesOnPage.length; s++) {
-      var story = storiesOnPage[s];
+*/
+  function highlightFollowing(story) {
+    // for (var s = 0; s < storiesOnPage.length; s++) {
+    //   var story = storiesOnPage[s];
       // Highlight authors
       if (following.indexOf(story.author) > -1) {
         story.$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
@@ -106,7 +176,7 @@ function highlightNews() {
         }
       }
     }
-  }
+  // }
 
 }
 
@@ -122,9 +192,39 @@ function highlightComments() {
   });
 }
 
-// Ajax requests to HN Firebase API
+//remove duplication of getting user
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+ if (request.action == "getUser") {
+   var user = $('a[href^="user?id="]').attr('href').replace('user?id=','');
+   sendResponse({user: user});
+   console.log('sending', user);
+ } else
+   sendResponse({}); // Send nothing..
+});
+
+/* Inform the backgrund page that 
+ * this tab should have a page-action */
+chrome.runtime.sendMessage({
+    from:    'content',
+    subject: 'showPageAction'
+});
+
+/* Listen for message from the popup */
+// chrome.runtime.onMessage.addListener(
+//   function(request, sender, sendResponse) {
+//     if(request.request) {
+//       following = request.request
+//     }
+//     else {
+//       console.log('error')
+//     }
+// });
+
+chrome.runtime.sendMessage({type: "getFollowing", user: user}, function(response) {
+  console.log(response);
+  following = response;
 
 
-
+});
 
 
