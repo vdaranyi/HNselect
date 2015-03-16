@@ -18,7 +18,8 @@ var app = angular.module('app', [])
         UserFactory.getFollowingOrCreateUser($scope.user).then(function(data) {
           $scope.following = data;
           chrome.tabs.sendMessage(tab.id, {request: data});
-          console.log('this is the following array: ', data);
+          console.log(data)
+          // $scope.$digest();
         });
 
       });
@@ -52,11 +53,5 @@ var app = angular.module('app', [])
         });
       }
     };
-  });
 
-// Send message to contentscript
-// chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//   chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
-//     console.log(response.farewell);
-//   });
-// });
+  });

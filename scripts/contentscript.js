@@ -172,19 +172,19 @@ if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1 ) {
   console.log(' > Highlighting stories');
   highlightNews();
 }
-
+var user, following;
 
 
 function highlightNews() {
   var storiesOnPage = [],
-      storyIdsOnPage = [],
-      user;
+      storyIdsOnPage = [];
+      // user;
   $('a[href^="user?id"]').each(function(index){
     if (index === 0) {
       user = $(this).text();
     } else {
       var story = {};
-      console.log('index', index);
+      // console.log('index', index);
       var $author = $(this);
       var author = $author.text();
       var $storyTitle = $author.parents('tr:first').prev('tr').find('a[href^="http"]');
@@ -243,6 +243,7 @@ function highlightNews() {
                   fetchItems(childId, commenters);
                   // return commenters;
                 });
+
               }
             }
 
@@ -254,7 +255,7 @@ function highlightNews() {
                 commenters.splice(authorIndex, 1);
                 // console.log('*** AUTHOR REMOVED');
               }
-              console.log('DONE', totalcount, counter, commenters);
+              // console.log('DONE', totalcount, counter, commenters);
               // Adding commenters to story object
               story.commenters = commenters;
               // Highlight
@@ -351,22 +352,28 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
    sendResponse({}); // Send nothing..
 });
 
-// /* Inform the backgrund page that
-//  * this tab should have a page-action */
-// chrome.runtime.sendMessage({
-//     from:    'content',
-//     subject: 'showPageAction'
-// });
+/* Inform the backgrund page that
+ * this tab should have a page-action */
+chrome.runtime.sendMessage({
+    from:    'content',
+    subject: 'showPageAction'
+});
 
 /* Listen for message from the popup */
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if(request.request) {
-      following = request.request;
+      following = request.request
     }
     else {
       console.log('error')
     }
 });
+
+// chrome.runtime.sendMessage({type: "getFollowing", user: user}, function(response) {
+//   console.log(response);
+//   following = response;
+
+// });
 
 

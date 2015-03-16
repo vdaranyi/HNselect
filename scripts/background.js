@@ -22,3 +22,23 @@ console.log('\'Allo \'Allo! Event Page for Page Action');
 //   //    }, function() { console.log('done'); });
 
 // });
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.type == "getFollowing"){
+      var username = request.user;
+      getUrls(username, request, sender, sendResponse)
+    }
+});
+
+function getUrls(username, request, sender, sendResponse){
+  var resp = sendResponse;
+  $.ajax({
+    url: "http://localhost:3000/user/:username",
+    method: 'GET',
+    success: function(following){
+      resp(following);
+    }
+  });
+
+}
