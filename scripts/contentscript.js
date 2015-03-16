@@ -47,7 +47,7 @@ function highlightNews() {
         commenters: []
       })
       storyIdsOnPage.push(storyId);n // ONLY NEEDED FOR SERVER REQUEST
-      
+
     }
   });
   // console.log(storiesOnPage);
@@ -55,25 +55,24 @@ function highlightNews() {
     user: user,
     storyIdsOnPage: storyIdsOnPage
   };
-  // $.post(getCommentersRoute, requestObject)
-  //   .then(function(response) {
-  // TESTING backend functionality
-  // vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  var returnedObject = {};
-  for (var s = 0; s < storiesOnPage.length; s++) {
-    var storyId = storiesOnPage[s].storyId;
-    returnedObject[storyId] = ['jseliger','annbabe','mathouc'];
-  }
-  var response = {};
-  response.data = returnedObject;
-  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      var commentersFollowing = response.data // needs to be an object with key:value pairs storyId:[following by]
+  $.post(getCommentersRoute, requestObject, function(data) {
+  // // TESTING backend functionality
+  // // vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+  // var returnedObject = {};
+  // for (var s = 0; s < storiesOnPage.length; s++) {
+  //   var storyId = storiesOnPage[s].storyId;
+  //   returnedObject[storyId] = ['jseliger','annbabe','mathouc'];
+  // }
+  // var response = {};
+  // response.data = returnedObject;
+  // // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      var commentersFollowing = data // needs to be an object with key:value pairs storyId:[following by]
       for (var i = 0; i < storiesOnPage.length; i++) {
         // Check whether commentersFollowing includes storyId, i.e. whether people I am following commented
         if (commentersFollowing[storiesOnPage[i].storyId]) {
           var storyCommenters = commentersFollowing[storiesOnPage[i].storyId]
           // Select commenters I am following
-          
+
           for (var c = 0; c < storyCommenters.length; c++) {
             if (storyCommenters[c].indexOf(following) > -1) {
               storiesOnPage[i].commenters.push(storyCommenters[c]);
