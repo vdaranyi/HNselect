@@ -35,7 +35,7 @@ chrome.runtime.onMessage.addListener(
 // ---------------
 // Look for user names in page
 
-var following = ['kazinator','comex','robin_reala','revscat','jakke','aestetix', 'ymmt2005', 'epetre', 'Graham24', 'datascientist', 'danso', 'gsans', 'adventured', 'epetre'];
+var following = ['fcambus','kazinator','comex','robin_reala','revscat','jakke','aestetix', 'ymmt2005', 'epetre', 'Graham24', 'datascientist', 'danso', 'gsans', 'adventured', 'epetre'];
 
 // REFACTOR INTO 2 SEVERAL FUNCTIONS: SEARCH & MANIPULATION
 function parsePageForFollowing() {  
