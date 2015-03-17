@@ -221,10 +221,10 @@ function highlightNews() {
 
         // console.log(counter);
         $.get(itemUrl)
-          .then(function(response) {
+          .success(function(response) {
             counter--;
             // Iterating over the comments recursively
-            if (typeof response === 'object') {
+            if (response) {
               // Add commenter
               var commenter = response.by;
               // console.log(commenter);
@@ -261,6 +261,9 @@ function highlightNews() {
               // Highlight
               highlightFollowing(story);
             }
+          })
+          .error(function(data, status){
+            console.log(status);
           })
           // .then(function(response){
           //   console.log('FINAL',commenters);
