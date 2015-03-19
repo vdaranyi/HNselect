@@ -8,18 +8,45 @@
   /*;*/
 /*}*/
 
+html, body, #sidebar-anchor {
+    height: 100%;
+}
+
+
 h1 {
   text-align: center;
 }
 
 .sidebarbox {
-    position: absolute;
+    position: fixed;
     top: 0px;
-    right: -500px;
+    right: -476px;
     width: 500px;
     height: 100%;
-    background: #ffffff;
-    box-shadow: -2px 0px 3px #C0C0C0;
     transition: right 0.5s ease-out;
     /*border: solid 1px gray;*/
+}
+
+.sidebarbutton {
+    z-index: 2;
+    display: inline;
+    position: relative;
+    width: 30px;
+    top: 100px;
+}
+
+#sidebarcontentarea {
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    display: inline;
+    width: 470px !important;
+    height: 100% !important;
+    background: #ffffff;
+    box-shadow: -2px 0px 3px #C0C0C0;
+    transition: box-shadow 0.5s ease-out;
+}
+
+#sidebutton:hover {
+    cursor: pointer;
 }

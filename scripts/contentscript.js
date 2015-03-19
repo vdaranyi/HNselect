@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 //==========================================================
@@ -7,10 +5,14 @@
 
 //var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-$( document ).ready(function() {
+$(document).ready(function () {
     $("body").append("<div id='sidebar-anchor'></div>");
     React.render(<SidebarBox />, $("#sidebar-anchor").get(0));
 });
+
+//var SidebarContentArea = React.createClass({
+//    componentDidMount: function ()
+//})
 
 
 var SidebarBox = React.createClass({
@@ -20,10 +22,11 @@ var SidebarBox = React.createClass({
     // Set the initial state to cause the div to slide in.
 
     componentDidMount: function () {
-        setTimeout(function() {
+        setTimeout(function () {
             $(".sidebarbox").css({
                 right: 0
             });
+            $("#sidebarcontentarea")
         }, 500)
 
     },
@@ -31,32 +34,59 @@ var SidebarBox = React.createClass({
 
     render: function () {
         return <div className="sidebarbox">
-            <CloseButton />
+            <div className="sidebarbutton">
+                <CloseButton />
+            </div>
+            <div id="sidebarcontentarea">
+                <topnav />
+                <tabnav />
+            </div>
         </div>;
     }
 
-
 });
 
+var drawerIsClosed = false;
+
 var CloseButton = React.createClass({
-    closeBox: function (){
-        setTimeout(function() {
-            $(".sidebarbox").css({
-                right: -500
-            });
-        }, 0)
+
+    // Button causes box to slide out.
+
+    closeBox: function () {
+        if (!drawerIsClosed) {
+            drawerIsClosed = true;
+            setTimeout(function () {
+                $(".sidebarbox").css({
+                    "right": "-470"
+                });
+                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectlogotab.png");
+                $("#sidebarcontentarea").css("box-shadow", "none");
+            }, 0);
+        }
+        else {
+            setTimeout(function () {
+                drawerIsClosed = false;
+                $(".sidebarbox").css({
+                    right: 0
+                });
+                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png");
+                $("#sidebarcontentarea").css("box-shadow", "-2px 0px 3px #C0C0C0");
+            }, 0);
+        }
     },
 
     render: function () {
-        return <button className="close-button" onClick={this.closeBox}>Close Window</button>;
+        return <img src="https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png" id="sidebutton" width="30px" onClick={this.closeBox} />;
     }
 })
 
-// Make the button cause the div to slide out.
+//var topNav = React.createClass({
+//
+//})
+
+
 
 //==========================================================
-
-
 
 
 // Constants
@@ -77,7 +107,7 @@ var hnOrange = '#ff6600',
 // Selecting highlighting method depending on view
 var tabUrl = window.location.href;
 var tabQuery = window.location.search;
-if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1 ) {
+if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1) {
     console.log(' > Highlighting comments');
     highlightComments();
 } else {
@@ -91,7 +121,7 @@ function highlightNews() {
     var storiesOnPage = [],
         storyIdsOnPage = [];
     // user;
-    $('a[href^="user?id"]').each(function(index){
+    $('a[href^="user?id"]').each(function (index) {
         if (index === 0) {
             user = $(this).text();
         } else {
@@ -100,7 +130,7 @@ function highlightNews() {
             var $author = $(this);
             var author = $author.text();
             var $storyTitle = $author.parents('tr:first').prev('tr').find('a[href^="http"]');
-            var storyId = $author.next('a[href^="item?id"]').attr('href').replace('item?id=','');
+            var storyId = $author.next('a[href^="item?id"]').attr('href').replace('item?id=', '');
 
             // Put all stories on page into array for subsequent comment following analysis
             // storiesOnPage.push({
@@ -133,7 +163,7 @@ function highlightNews() {
 
                 // console.log(counter);
                 $.get(itemUrl)
-                    .then(function(response) {
+                    .then(function (response) {
                         counter--;
                         // Iterating over the comments recursively
                         if (typeof response === 'object') {
@@ -149,7 +179,7 @@ function highlightNews() {
                                 var children = response.kids;
                                 counter += children.length;
                                 totalcount += children.length;
-                                children.forEach(function(childId, index) {
+                                children.forEach(function (childId, index) {
                                     // console.log(childId, index);
                                     // console.log();
                                     fetchItems(childId, commenters);
@@ -159,11 +189,11 @@ function highlightNews() {
                             }
                         }
 
-                        if (counter === 0){
+                        if (counter === 0) {
 
                             // Remove author
                             var authorIndex = commenters.indexOf(author)
-                            if ( authorIndex > -1) {
+                            if (authorIndex > -1) {
                                 commenters.splice(authorIndex, 1);
                                 // console.log('*** AUTHOR REMOVED');
                             }
@@ -232,19 +262,24 @@ function highlightNews() {
             var commenters = story.commenters;
             for (var c = 0; c < commenters.length; c++) {
                 var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
-                var $commentersElement = $(commentersElement).css({color: commentersTextColor, 'font-weight': 'bold', 'background-color': commentersBgColor})
+                var $commentersElement = $(commentersElement).css({
+                    color: commentersTextColor,
+                    'font-weight': 'bold',
+                    'background-color': commentersBgColor
+                })
                 var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($commentersElement);
                 story.$author.nextAll().eq(1).after($toInsert);
             }
         }
     }
+
     // }
 
 }
 
 
 function highlightComments() {
-    $('a[href^="user?id"]').each(function(index){
+    $('a[href^="user?id"]').each(function (index) {
         var author = $(this).text();
         if (following.indexOf(author) > -1) {
             $(this).parents('td:first').css({'background-color': commentsBgColor});
@@ -255,9 +290,9 @@ function highlightComments() {
 }
 
 //remove duplication of getting user
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
     if (request.action == "getUser") {
-        var user = $('a[href^="user?id="]').attr('href').replace('user?id=','');
+        var user = $('a[href^="user?id="]').attr('href').replace('user?id=', '');
         sendResponse({user: user});
         console.log('sending', user);
     } else
@@ -267,14 +302,14 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 /* Inform the backgrund page that
  * this tab should have a page-action */
 chrome.runtime.sendMessage({
-    from:    'content',
+    from: 'content',
     subject: 'showPageAction'
 });
 
 /* Listen for message from the popup */
 chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if(request.request) {
+    function (request, sender, sendResponse) {
+        if (request.request) {
             following = request.request
         }
         else {
