@@ -27,9 +27,13 @@
       "matches": [
         "https://news.ycombinator.com/*"
       ],
+      "css": ["styles/main.css"],
       "js": [
+        "components/react.js",
+//        "components/addons.js",
         "components/jquery.min.js",
-        "scripts/contentscript.js"
+        "components/jquery.easing.1.3.js",
+        "scripts/compiled/bundle.js"
       ],
       "run_at": "document_end",
       "all_frames": false

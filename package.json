@@ -1,0 +1,29 @@
+{
+  "name": "hn-select",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crsmnd/hn-select.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crsmnd/hn-select/issues"
+  },
+  "homepage": "https://github.com/crsmnd/hn-select",
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "gulp-livereload": "^3.8.0",
+    "reactify": "^1.1.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery.easing": "^1.3.1"
+  }
+}
