@@ -2,8 +2,182 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beb72949-9476-4a30-8b90-edea14d85c68" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/AutoFocusMixin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/BeforeInputEventPlugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/CSSCore.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/CSSProperty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/CSSPropertyOperations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/CallbackQueue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ChangeEventPlugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ClientReactRootIndex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/DOMChildrenOperations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/DOMProperty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/DOMPropertyOperations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/Danger.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/DefaultEventPluginOrder.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/EnterLeaveEventPlugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/EventConstants.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/EventListener.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/EventPluginHub.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/EventPluginRegistry.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/EventPluginUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/EventPropagators.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ExecutionEnvironment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/FallbackCompositionState.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/HTMLDOMPropertyConfig.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/LinkedStateMixin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/LinkedValueUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/LocalEventTrapMixin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/MobileSafariClickEventPlugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/Object.assign.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/PooledClass.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/React.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactBrowserComponentMixin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactBrowserEventEmitter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactCSSTransitionGroup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactCSSTransitionGroupChild.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactChildReconciler.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactChildren.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactClass.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactComponentBrowserEnvironment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactComponentEnvironment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactComponentWithPureRenderMixin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactCompositeComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactContext.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactCurrentOwner.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOM.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMButton.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMForm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMIDOperations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMIframe.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMImg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMInput.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMOption.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMSelect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMSelection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMTextComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDOMTextarea.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDefaultBatchingStrategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDefaultInjection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDefaultPerf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactDefaultPerfAnalysis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactElement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactElementValidator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactEmptyComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactErrorUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactEventEmitterMixin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactEventListener.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactFragment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactInjection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactInputSelection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactInstanceHandles.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactInstanceMap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactLifeCycle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactLink.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactMarkupChecksum.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactMount.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactMultiChild.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactMultiChildUpdateTypes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactNativeComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactOwner.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactPerf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactPropTransferer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactPropTypeLocationNames.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactPropTypeLocations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactPropTypes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactPutListenerQueue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactReconcileTransaction.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactReconciler.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactRef.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactRootIndex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactServerRendering.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactServerRenderingTransaction.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactStateSetters.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactTestUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactTransitionChildMapping.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactTransitionEvents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactTransitionGroup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactUpdateQueue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactUpdates.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ReactWithAddons.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SVGDOMPropertyConfig.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SelectEventPlugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ServerReactRootIndex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SimpleEventPlugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticClipboardEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticCompositionEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticDragEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticFocusEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticInputEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticKeyboardEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticMouseEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticTouchEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticUIEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/SyntheticWheelEvent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/Transaction.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/ViewportMetrics.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/accumulateInto.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/addons.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/adler32.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/camelize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/camelizeStyleName.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/cloneWithProps.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/containsNode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/createArrayFromMixed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/createFullPageComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/createNodesFromMarkup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/cx.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/dangerousStyleValue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/emptyFunction.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/emptyObject.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/escapeTextContentForBrowser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/findDOMNode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/flattenChildren.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/focusNode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/forEachAccumulated.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getActiveElement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getEventCharCode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getEventKey.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getEventModifierState.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getEventTarget.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getIteratorFn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getMarkupWrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getNodeForCharacterOffset.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getReactRootElementInContainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getTextContentAccessor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/getUnboundedScrollPosition.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/hyphenate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/hyphenateStyleName.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/instantiateReactComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/invariant.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/isEventSupported.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/isNode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/isTextInputElement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/isTextNode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/joinClasses.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/jquery.easing.1.3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/keyMirror.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/keyOf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/mapObject.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/memoizeStringOnly.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/onlyChild.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/performance.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/performanceNow.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/quoteAttributeValueForBrowser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/setInnerHTML.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/setTextContent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/shallowEqual.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/shouldUpdateReactComponent.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/toArray.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/traverseAllChildren.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/lib/warning.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/contentscript.js" afterPath="$PROJECT_DIR$/scripts/contentscript.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/main.css" afterPath="$PROJECT_DIR$/styles/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manifest.json" afterPath="$PROJECT_DIR$/manifest.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -30,90 +204,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="background.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/background.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
-              <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-              <folding>
-                <marker date="1426624711000" expanded="true" signature="15:81" placeholder="//..." />
-                <marker date="1426624711000" expanded="true" signature="140:202" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="257:293" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="357:423" placeholder="//..." />
-                <marker date="1426624711000" expanded="true" signature="425:697" placeholder="//..." />
-                <marker date="1426624711000" expanded="true" signature="787:927" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="828:925" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="988:1167" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="1026:1162" placeholder="{&quot;url&quot;: &quot;http://localhost:3000/user/:username&quot;...}" />
-                <marker date="1426624711000" expanded="true" signature="1128:1158" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.444445" vertical-offset="0" max-vertical-offset="3870">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6268657" vertical-offset="0" max-vertical-offset="6495">
+              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bundle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="6555">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5588235" vertical-offset="134" max-vertical-offset="780">
-              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+            <state vertical-scroll-proportion="-13.166667" vertical-offset="164" max-vertical-offset="810">
+              <caret line="32" column="20" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <file leaf-file-name="addons.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/addons.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-              <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+              <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/compiled/contentscript.js">
+      <file leaf-file-name="ReactWithAddons.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/lib/ReactWithAddons.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3930">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chromereload.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/chromereload.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1426624711000" expanded="true" signature="15:161" placeholder="//..." />
-                <marker date="1426624711000" expanded="true" signature="360:417" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="456:596" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="472:594" placeholder="{...}" />
-                <marker date="1426624711000" expanded="true" signature="552:590" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="435">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <marker date="1426777889000" expanded="true" signature="87:181" placeholder="{...}" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,11 +259,21 @@
       <file leaf-file-name="scratch" pinned="false" current-in-tab="false">
         <entry file="scratchpad://c1289c28/scratch">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-              <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="930">
+              <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/styles/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -140,12 +287,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/sidebar.html" />
-        <option value="$PROJECT_DIR$/styles/main.css" />
         <option value="$PROJECT_DIR$/scripts/sidebar.js" />
-        <option value="c1289c28/scratch" />
+        <option value="$PROJECT_DIR$/scripts/compiled/contentscript.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
-        <option value="$PROJECT_DIR$/scripts/contentscript.js" />
+        <option value="c1289c28/scratch" />
+        <option value="$PROJECT_DIR$/components/addons.js" />
         <option value="$PROJECT_DIR$/manifest.json" />
+        <option value="$PROJECT_DIR$/scripts/compiled/bundle.js" />
+        <option value="$PROJECT_DIR$/scripts/contentscript.js" />
+        <option value="$PROJECT_DIR$/styles/main.css" />
       </list>
     </option>
   </component>
@@ -217,6 +367,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -253,6 +417,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery.easing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -270,6 +466,9 @@
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components" />
     </key>
@@ -326,24 +525,24 @@
     <frame x="-245" y="-1057" width="1880" height="1029" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25506938" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18074234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25506938" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18074234" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
@@ -373,30 +572,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="614">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1426624711000" expanded="true" signature="15:161" placeholder="//..." />
-            <marker date="1426624711000" expanded="true" signature="360:417" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="456:596" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="472:594" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="552:590" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/background.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
-          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding>
-            <marker date="1426624711000" expanded="true" signature="15:81" placeholder="//..." />
-            <marker date="1426624711000" expanded="true" signature="140:202" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="257:293" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="357:423" placeholder="//..." />
-            <marker date="1426624711000" expanded="true" signature="425:697" placeholder="//..." />
-            <marker date="1426624711000" expanded="true" signature="787:927" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="828:925" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="988:1167" placeholder="{...}" />
-            <marker date="1426624711000" expanded="true" signature="1026:1162" placeholder="{&quot;url&quot;: &quot;http://localhost:3000/user/:username&quot;...}" />
-            <marker date="1426624711000" expanded="true" signature="1128:1158" placeholder="{...}" />
+            <marker date="1426624711000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1426624711000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426624711000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426624711000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426624711000" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -430,54 +610,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/main.css">
+    <entry file="file://$PROJECT_DIR$/scripts/background.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <marker date="1426777889000" expanded="true" signature="87:181" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="scratchpad://c1289c28/scratch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.444445" vertical-offset="0" max-vertical-offset="3870">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7835821" vertical-offset="0" max-vertical-offset="735">
+          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/compiled/contentscript.js">
+    <entry file="scratchpad://c1289c28/scratch">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3930">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="930">
+          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5588235" vertical-offset="134" max-vertical-offset="780">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        <state vertical-scroll-proportion="-13.166667" vertical-offset="164" max-vertical-offset="810">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/lib/ReactWithAddons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/addons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="670">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="6540">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6268657" vertical-offset="0" max-vertical-offset="6495">
+          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
           <folding />
         </state>
       </provider>

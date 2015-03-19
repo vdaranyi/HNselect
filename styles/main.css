@@ -1,23 +1,25 @@
-body {
-  margin-top: 20px;
-  min-height: 500px;
-  min-width: 350px;
-  padding: 20px;
-  font-family: Verdana, Geneva, sans-serif;
-  overflow: auto
-  ;
-}
+/*body {*/
+  /*margin-top: 20px;*/
+  /*min-height: 500px;*/
+  /*min-width: 350px;*/
+  /*padding: 20px;*/
+  /*font-family: Verdana, Geneva, sans-serif;*/
+  /*overflow: auto*/
+  /*;*/
+/*}*/
 
 h1 {
   text-align: center;
 }
 
-.sidebar-container {
+.sidebarbox {
     position: absolute;
     top: 0px;
-    right: 0px;
-    width: 300px;
+    right: -500px;
+    width: 500px;
     height: 100%;
     background: #ffffff;
-    border: solid 1px gray;
+    box-shadow: -2px 0px 3px #C0C0C0;
+    transition: right 0.5s ease-out;
+    /*border: solid 1px gray;*/
 }
