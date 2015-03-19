@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/crsmnd/hn-select",
   "devDependencies": {
+    "browserify": "^9.0.3",
     "gulp": "^3.8.11",
     "gulp-livereload": "^3.8.0",
     "reactify": "^1.1.0",

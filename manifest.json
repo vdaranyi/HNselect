@@ -29,10 +29,9 @@
       ],
       "css": ["styles/main.css"],
       "js": [
-        "components/JSXTransformer.js",
         "components/react.min.js",
         "components/jquery.min.js",
-        "scripts/contentscript.js"
+        "scripts/compiled/contentscript.js"
       ],
       "run_at": "document_end",
       "all_frames": false

@@ -14,9 +14,9 @@ gulp.task('buildJS', function () {
     var bundler = browserify();
 
     bundler.transform(reactify);
-    bundler.add('./browser/js/app.js');
+    bundler.add('./scripts/compiled/contentscript.js');
 
-    return bundler.bundle().pipe(source('bundle.js')).pipe(gulp.dest('./public'));
+    return bundler.bundle().pipe(source('bundle.js')).pipe(gulp.dest('./scripts/compiled'));
 
 });
 
