@@ -17,9 +17,7 @@ var SidebarBox = React.createClass({
 
     displayName: 'SidebarBox',
 
-    //getInitialState: {
-    //    this.
-    //}
+    // Set the initial state to cause the div to slide in.
 
     componentDidMount: function () {
         setTimeout(function() {
@@ -40,153 +38,20 @@ var SidebarBox = React.createClass({
 
 });
 
-//var SidebarBox = {
-//    getInitialState: function () {
-//        return {
-//            history: [],
-//            pages: [],
-//            animating: true
-//        }
-//    },
-//    componentDidUpdate: function() {
-//        var skippedCurrentFrame = false,
-//            pageEl = this.getDOMNode().lastChild,
-//            pages = this.state.pages,
-//            l = pages.length,
-//            transitionEndHandler = function() {
-//                pageEl.removeEventListener('webkitTransitionEnd', transitionEndHandler);
-//                pages.shift();
-//                this.setState({pages: pages});
-//            }.bind(this),
-//            animate = function() {
-//                if (!skippedCurrentFrame) {
-//                    skippedCurrentFrame = true;
-//                    requestAnimationFrame(animate.bind(this));
-//                } else if (l > 0) {
-//                    pages[l - 1].props.position = "center transition";
-//                    this.setState({pages: pages, animating: false});
-//                    pageEl.addEventListener('webkitTransitionEnd', transitionEndHandler);
-//                }
-//            };
-//
-//        if (this.state.animating) {
-//            requestAnimationFrame(animate.bind(this));
-//        }
-//    },
-//    slidePage: function (page) {
-//        var history = this.state.history,
-//            pages = this.state.pages,
-//            l = history.length,
-//            hash = window.location.hash,
-//            position = "center";
-//
-//        if (l === 0) {
-//            history.push(hash);
-//        } else if (hash === history[l - 2]) {
-//            history.pop();
-//            position = "left";
-//        } else {
-//            history.push(hash);
-//            position = "right";
-//        }
-//
-//        page.props.position = position;
-//        pages.push(page);
-//
-//        this.setState({history: history, pages: pages, animating: position!=="center"});
-//
-//    },
-//    render: function () {
-//        return <div className="sidebarbox">
-//            <CloseButton />
-//        </div>;
-//    }
-//}
-
-
 var CloseButton = React.createClass({
+    closeBox: function (){
+        setTimeout(function() {
+            $(".sidebarbox").css({
+                right: -500
+            });
+        }, 0)
+    },
+
     render: function () {
-        return <button className="close-button">Close Window</button>;
+        return <button className="close-button" onClick={this.closeBox}>Close Window</button>;
     }
 })
 
-// PageSlider
-
-//var PageSlider = {
-//    getInitialState: function () {
-//        return {
-//            history: [],
-//            pages: [],
-//            animating: false
-//        }
-//    },
-//    componentDidUpdate: function() {
-//        var skippedCurrentFrame = false,
-//            pageEl = this.getDOMNode().lastChild,
-//            pages = this.state.pages,
-//            l = pages.length,
-//            transitionEndHandler = function() {
-//                pageEl.removeEventListener('webkitTransitionEnd', transitionEndHandler);
-//                pages.shift();
-//                this.setState({pages: pages});
-//            }.bind(this),
-//            animate = function() {
-//                if (!skippedCurrentFrame) {
-//                    skippedCurrentFrame = true;
-//                    requestAnimationFrame(animate.bind(this));
-//                } else if (l > 0) {
-//                    pages[l - 1].props.position = "center transition";
-//                    this.setState({pages: pages, animating: false});
-//                    pageEl.addEventListener('webkitTransitionEnd', transitionEndHandler);
-//                }
-//            };
-//
-//        if (this.state.animating) {
-//            requestAnimationFrame(animate.bind(this));
-//        }
-//    },
-//    slidePage: function (page) {
-//        var history = this.state.history,
-//            pages = this.state.pages,
-//            l = history.length,
-//            hash = window.location.hash,
-//            position = "center";
-//
-//        if (l === 0) {
-//            history.push(hash);
-//        } else if (hash === history[l - 2]) {
-//            history.pop();
-//            position = "left";
-//        } else {
-//            history.push(hash);
-//            position = "right";
-//        }
-//
-//        page.props.position = position;
-//        pages.push(page);
-//
-//        this.setState({history: history, pages: pages, animating: position!=="center"});
-//
-//    },
-//    render: function () {
-//        return (
-//            <div className="pageslider-container">
-//                {this.state.pages}
-//            </div>
-//        );
-//    }
-//};
-
-//document.addEventListener("DOMContentLoaded", function () {
-//    $(".sidebarbox").animate({
-//            left: "-=500",
-//            easing: 'swing'
-//        })
-//});
-
-// Slider functionality
-
-// Set the initial state to cause the div to slide in.
 // Make the button cause the div to slide out.
 
 //==========================================================
