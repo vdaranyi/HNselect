@@ -11,3 +11,13 @@ body {
 h1 {
   text-align: center;
 }
+
+.sidebar-container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 300px;
+    height: 100%;
+    background: #ffffff;
+    border: solid 1px gray;
+}
