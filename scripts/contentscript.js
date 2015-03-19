@@ -163,19 +163,12 @@ var hnOrange = '#ff6600',
 
 
 // Selecting highlighting method depending on view
-var tabUrl = window.location.href;
-var tabQuery = window.location.search;
-if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1 ) {
-  console.log(' > Highlighting comments');
-  highlightComments();
-} else {
-  console.log(' > Highlighting stories');
-  highlightNews();
-}
+
 var user, following;
 
 
 function highlightNews() {
+  console.log(following);
   var storiesOnPage = [],
       storyIdsOnPage = [];
       // user;
@@ -367,6 +360,15 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if(request.request) {
       following = request.request
+      var tabUrl = window.location.href;
+      var tabQuery = window.location.search;
+      if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1 ) {
+        console.log(' > Highlighting comments');
+        highlightComments();
+      } else {
+        console.log(' > Highlighting stories');
+        highlightNews();
+      }
     }
     else {
       console.log('error')
