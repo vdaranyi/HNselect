@@ -85,9 +85,8 @@ var CloseButton = React.createClass({
 //})
 
 
-
+//End Sidebar
 //==========================================================
-
 
 // Constants
 var hnOrange = '#ff6600',
@@ -114,6 +113,7 @@ if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1) {
     console.log(' > Highlighting stories');
     highlightNews();
 }
+
 var user, following;
 
 
@@ -209,6 +209,7 @@ function highlightNews() {
                 //   highlightFollowing(storiesOnPage);
                 // });
             }
+
         }
     });
     /*
@@ -316,6 +317,7 @@ chrome.runtime.onMessage.addListener(
             console.log('error')
         }
     });
+
 
 // chrome.runtime.sendMessage({type: "getFollowing", user: user}, function(response) {
 //   console.log(response);

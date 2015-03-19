@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beb72949-9476-4a30-8b90-edea14d85c68" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/compiled/bundle.js" afterPath="$PROJECT_DIR$/scripts/compiled/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/contentscript.js" afterPath="$PROJECT_DIR$/scripts/contentscript.js" />
     </list>
     <ignored path="hn-select.iws" />
@@ -27,23 +28,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="bundle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
+        <entry file="file://$USER_HOME$/Desktop/bundle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="5055">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="5910">
+              <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
               <folding>
-                <marker date="1426804437000" expanded="true" signature="1035:1688" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
-                <marker date="1426804437000" expanded="true" signature="1006:1115" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="1365:1692" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="2669:2989" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
-                <marker date="1426804437000" expanded="true" signature="2668:2879" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="4061:7929" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="5659:7720" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="6639:6924" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="7027:7698" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="9383:10496" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="10585:10918" placeholder="{...}" />
-                <marker date="1426804437000" expanded="true" signature="11040:11294" placeholder="{...}" />
+                <marker date="1426804915000" expanded="true" signature="13098:13177" placeholder="/*...*/" />
+                <marker date="1426804915000" expanded="true" signature="13270:13309" placeholder="/*...*/" />
               </folding>
             </state>
           </provider>
@@ -53,30 +44,8 @@
         <entry file="file://$PROJECT_DIR$/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="810">
-              <caret line="32" column="20" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addons.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/addons.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-              <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactWithAddons.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/lib/ReactWithAddons.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -84,7 +53,7 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="870">
+            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="870">
               <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding />
             </state>
@@ -94,11 +63,9 @@
       <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33582088" vertical-offset="390" max-vertical-offset="4995">
-              <caret line="41" column="28" selection-start-line="40" selection-start-column="18" selection-end-line="41" selection-end-column="28" />
-              <folding>
-                <marker date="1426804654000" expanded="true" signature="313:399" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.42537314" vertical-offset="1050" max-vertical-offset="5025">
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -221,24 +188,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="compiled" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hn-select" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hn-select" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -248,7 +197,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrome-fast-tab-switcher" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="com.intellij.ide.scratch.ScratchpadManager" value="JavaScript 1.5" />
@@ -264,6 +213,7 @@
       <recent name="$PROJECT_DIR$/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$USER_HOME$/Desktop" />
       <recent name="$PROJECT_DIR$/components" />
     </key>
   </component>
@@ -327,7 +277,7 @@
     <layout>
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18181819" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18181819" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -371,29 +321,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4515">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1426804654000" expanded="true" signature="313:399" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
+    <entry file="file://$USER_HOME$/Desktop/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="4530">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <marker date="1426804437000" expanded="true" signature="1035:1688" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
-            <marker date="1426804437000" expanded="true" signature="1006:1115" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="1365:1692" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="2669:2989" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
-            <marker date="1426804437000" expanded="true" signature="2668:2879" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="4061:7929" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="5659:7720" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="6639:6924" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="7027:7698" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="9383:10496" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="10585:10918" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="11040:11294" placeholder="{...}" />
+            <marker date="1426804915000" expanded="true" signature="13098:13177" placeholder="/*...*/" />
+            <marker date="1426804915000" expanded="true" signature="13270:13309" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -403,24 +341,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="810">
           <caret line="32" column="20" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/addons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/lib/ReactWithAddons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,56 +380,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="810">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/addons.js">
+    <entry file="file://$USER_HOME$/Desktop/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="670">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="5055">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="5910">
+          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
           <folding>
-            <marker date="1426804437000" expanded="true" signature="1035:1688" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
-            <marker date="1426804437000" expanded="true" signature="1006:1115" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="1365:1692" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="2669:2989" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
-            <marker date="1426804437000" expanded="true" signature="2668:2879" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="4061:7929" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="5659:7720" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="6639:6924" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="7027:7698" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="9383:10496" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="10585:10918" placeholder="{...}" />
-            <marker date="1426804437000" expanded="true" signature="11040:11294" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/lib/ReactWithAddons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1426804915000" expanded="true" signature="13098:13177" placeholder="/*...*/" />
+            <marker date="1426804915000" expanded="true" signature="13270:13309" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -524,11 +409,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33582088" vertical-offset="390" max-vertical-offset="4995">
-          <caret line="41" column="28" selection-start-line="40" selection-start-column="18" selection-end-line="41" selection-end-column="28" />
-          <folding>
-            <marker date="1426804654000" expanded="true" signature="313:399" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.42537314" vertical-offset="1050" max-vertical-offset="5025">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
