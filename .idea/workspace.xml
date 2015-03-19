@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beb72949-9476-4a30-8b90-edea14d85c68" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hn_select_node_modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/contentscript.js" afterPath="$PROJECT_DIR$/scripts/contentscript.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/hn-select.iml" afterPath="$PROJECT_DIR$/.idea/hn-select.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/main.css" afterPath="$PROJECT_DIR$/styles/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hn-select.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,21 +29,21 @@
       <file leaf-file-name="bundle.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="5010">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="5055">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
-                <marker date="1426803470000" expanded="true" signature="976:1635" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
-                <marker date="1426803470000" expanded="true" signature="1006:1115" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="1295:1639" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="2612:2970" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
-                <marker date="1426803470000" expanded="true" signature="2611:2826" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="4041:7909" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="5639:7700" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="6619:6904" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="7007:7678" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="9363:10476" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="10565:10898" placeholder="{...}" />
-                <marker date="1426803470000" expanded="true" signature="11020:11274" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="1035:1688" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
+                <marker date="1426804437000" expanded="true" signature="1006:1115" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="1365:1692" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="2669:2989" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
+                <marker date="1426804437000" expanded="true" signature="2668:2879" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="4061:7929" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="5659:7720" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="6639:6924" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="7027:7698" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="9383:10496" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="10585:10918" placeholder="{...}" />
+                <marker date="1426804437000" expanded="true" signature="11040:11294" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -99,10 +94,10 @@
       <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.69402987" vertical-offset="765" max-vertical-offset="4995">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="2" selection-end-line="84" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.33582088" vertical-offset="390" max-vertical-offset="4995">
+              <caret line="41" column="28" selection-start-line="40" selection-start-column="18" selection-end-line="41" selection-end-column="28" />
               <folding>
-                <marker date="1426804437000" expanded="true" signature="313:399" placeholder="..." />
+                <marker date="1426804654000" expanded="true" signature="313:399" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -332,7 +327,7 @@
     <layout>
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18181819" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18181819" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -377,7 +372,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4515">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1426804437000" expanded="true" signature="313:399" placeholder="..." />
+            <marker date="1426804654000" expanded="true" signature="313:399" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -387,18 +382,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="4530">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <marker date="1426803470000" expanded="true" signature="976:1635" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
-            <marker date="1426803470000" expanded="true" signature="1006:1115" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="1295:1639" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="2612:2970" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
-            <marker date="1426803470000" expanded="true" signature="2611:2826" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="4041:7909" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="5639:7700" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="6619:6904" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="7007:7678" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="9363:10476" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="10565:10898" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="11020:11274" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="1035:1688" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
+            <marker date="1426804437000" expanded="true" signature="1006:1115" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="1365:1692" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="2669:2989" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
+            <marker date="1426804437000" expanded="true" signature="2668:2879" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="4061:7929" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="5659:7720" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="6639:6924" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="7027:7698" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="9383:10496" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="10585:10918" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="11040:11294" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -490,21 +485,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="5010">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="5055">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
-            <marker date="1426803470000" expanded="true" signature="976:1635" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
-            <marker date="1426803470000" expanded="true" signature="1006:1115" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="1295:1639" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="2612:2970" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
-            <marker date="1426803470000" expanded="true" signature="2611:2826" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="4041:7909" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="5639:7700" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="6619:6904" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="7007:7678" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="9363:10476" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="10565:10898" placeholder="{...}" />
-            <marker date="1426803470000" expanded="true" signature="11020:11274" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="1035:1688" placeholder="{&quot;displayName&quot;: 'SidebarBox'...}" />
+            <marker date="1426804437000" expanded="true" signature="1006:1115" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="1365:1692" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="2669:2989" placeholder="{&quot;displayName&quot;: &quot;CloseButton&quot;...}" />
+            <marker date="1426804437000" expanded="true" signature="2668:2879" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="4061:7929" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="5659:7720" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="6639:6924" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="7027:7698" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="9383:10496" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="10585:10918" placeholder="{...}" />
+            <marker date="1426804437000" expanded="true" signature="11040:11294" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -529,10 +524,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69402987" vertical-offset="765" max-vertical-offset="4995">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="2" selection-end-line="84" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.33582088" vertical-offset="390" max-vertical-offset="4995">
+          <caret line="41" column="28" selection-start-line="40" selection-start-column="18" selection-end-line="41" selection-end-column="28" />
           <folding>
-            <marker date="1426804437000" expanded="true" signature="313:399" placeholder="..." />
+            <marker date="1426804654000" expanded="true" signature="313:399" placeholder="..." />
           </folding>
         </state>
       </provider>

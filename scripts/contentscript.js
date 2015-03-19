@@ -38,8 +38,8 @@ var SidebarBox = React.createClass({
                 <CloseButton />
             </div>
             <div id="sidebarcontentarea">
-                <topnav />
-                <tabnav />
+                //<topnav />
+                //<tabnav />
             </div>
         </div>;
     }
