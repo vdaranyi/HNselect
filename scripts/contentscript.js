@@ -13,17 +13,17 @@
 
 // New react code added by Glenn to create raw sidebar div
 
-var SidebarContainer = React.createClass({
-    render: function () {
-        return <div className="sidebar-container">
-            <h1>Hey!</h1>
-        </div>;
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    React.render(<SidebarContainer />, document.body);
-});
+//var SidebarContainer = React.createClass({
+//    render: function () {
+//        return <div className="sidebar-container">
+//            <h1>Hey!</h1>
+//        </div>;
+//    }
+//});
+//
+//document.addEventListener("DOMContentLoaded", function () {
+//    React.render(<SidebarContainer />, document.body);
+//});
 
 
 // // Selecting highlighting method depending on view
