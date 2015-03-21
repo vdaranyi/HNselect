@@ -29,15 +29,16 @@
       ],
       "css": ["styles/main.css"],
       "js": [
-        "components/react.js",
-//        "components/addons.js",
-        "components/jquery.min.js",
-        "components/jquery.easing.1.3.js",
+        "bower_components/react/react.js",
+        "bower_components/jquery/dist/jquery.min.js",
         "scripts/compiled/bundle.js"
       ],
       "run_at": "document_end",
       "all_frames": false
     }
+  ],
+  "web_accessible_resources": [
+    "bower_components/jquery/dist/jquery.min.map"
   ],
   "permissions": [
     "tabs",

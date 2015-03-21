@@ -14,7 +14,6 @@ $(document).ready(function () {
 //    componentDidMount: function ()
 //})
 
-
 var SidebarBox = React.createClass({
 
     displayName: 'SidebarBox',
@@ -83,7 +82,6 @@ var CloseButton = React.createClass({
 //var topNav = React.createClass({
 //
 //})
-
 
 //End Sidebar
 //==========================================================

@@ -2,8 +2,317 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beb72949-9476-4a30-8b90-edea14d85c68" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/JSXTransformer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/addons.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/angular.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/jquery.easing.1.3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/AutoFocusMixin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/BeforeInputEventPlugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/CSSCore.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/CSSProperty.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/CSSPropertyOperations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/CallbackQueue.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ChangeEventPlugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ClientReactRootIndex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/DOMChildrenOperations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/DOMProperty.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/DOMPropertyOperations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/Danger.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/DefaultEventPluginOrder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/EnterLeaveEventPlugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/EventConstants.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/EventListener.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/EventPluginHub.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/EventPluginRegistry.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/EventPluginUtils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/EventPropagators.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ExecutionEnvironment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/FallbackCompositionState.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/HTMLDOMPropertyConfig.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/LinkedStateMixin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/LinkedValueUtils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/LocalEventTrapMixin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/MobileSafariClickEventPlugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/Object.assign.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/PooledClass.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/React.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactBrowserComponentMixin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactBrowserEventEmitter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactCSSTransitionGroup.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactCSSTransitionGroupChild.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactChildReconciler.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactChildren.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactClass.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactComponentBrowserEnvironment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactComponentEnvironment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactComponentWithPureRenderMixin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactCompositeComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactContext.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactCurrentOwner.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOM.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMButton.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMForm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMIDOperations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMIframe.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMImg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMInput.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMOption.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMSelect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMSelection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMTextComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDOMTextarea.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDefaultBatchingStrategy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDefaultInjection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDefaultPerf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactDefaultPerfAnalysis.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactElement.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactElementValidator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactEmptyComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactErrorUtils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactEventEmitterMixin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactEventListener.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactFragment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactInjection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactInputSelection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactInstanceHandles.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactInstanceMap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactLifeCycle.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactLink.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactMarkupChecksum.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactMount.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactMultiChild.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactMultiChildUpdateTypes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactNativeComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactOwner.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactPerf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactPropTransferer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactPropTypeLocationNames.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactPropTypeLocations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactPropTypes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactPutListenerQueue.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactReconcileTransaction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactReconciler.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactRef.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactRootIndex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactServerRendering.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactServerRenderingTransaction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactStateSetters.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactTestUtils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactTransitionChildMapping.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactTransitionEvents.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactTransitionGroup.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactUpdateQueue.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactUpdates.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ReactWithAddons.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SVGDOMPropertyConfig.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SelectEventPlugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ServerReactRootIndex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SimpleEventPlugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticClipboardEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticCompositionEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticDragEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticFocusEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticInputEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticKeyboardEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticMouseEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticTouchEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticUIEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/SyntheticWheelEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/Transaction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/ViewportMetrics.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/accumulateInto.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/adler32.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/camelize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/camelizeStyleName.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/cloneWithProps.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/containsNode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/createArrayFromMixed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/createFullPageComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/createNodesFromMarkup.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/cx.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/dangerousStyleValue.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/emptyFunction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/emptyObject.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/escapeTextContentForBrowser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/findDOMNode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/flattenChildren.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/focusNode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/forEachAccumulated.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getActiveElement.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getEventCharCode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getEventKey.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getEventModifierState.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getEventTarget.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getIteratorFn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getMarkupWrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getNodeForCharacterOffset.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getReactRootElementInContainer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getTextContentAccessor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/getUnboundedScrollPosition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/hyphenate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/hyphenateStyleName.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/instantiateReactComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/invariant.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/isEventSupported.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/isNode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/isTextInputElement.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/isTextNode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/joinClasses.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/keyMirror.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/keyOf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/mapObject.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/memoizeStringOnly.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/onlyChild.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/performance.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/performanceNow.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/quoteAttributeValueForBrowser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/setInnerHTML.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/setTextContent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/shallowEqual.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/shouldUpdateReactComponent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/toArray.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/traverseAllChildren.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/lib/warning.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/react.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/react.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/swig.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/jquery.easing.1.1.1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/jquery.easing.1.1.2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/jquery.easing.1.2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/jquery.easing.1.3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/jquery.easing.1.3.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/jquery.easing.compatibility.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/jquery.easing.jquery.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/.bowerrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/.jscsrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/AUTHORS.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/MIT-LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/dist/cdn/jquery-2.1.3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/dist/cdn/jquery-2.1.3.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/dist/cdn/jquery-2.1.3.min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/dist/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/dist/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/dist/jquery.min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/jsonp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/load.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/parseJSON.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/parseXML.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/script.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/var/nonce.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/var/rquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/ajax/xhr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/attributes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/attributes/attr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/attributes/classes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/attributes/prop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/attributes/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/attributes/val.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/callbacks.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/core.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/core/access.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/core/init.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/core/parseHTML.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/core/ready.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/core/var/rsingleTag.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/addGetHookIf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/curCSS.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/defaultDisplay.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/hiddenVisibleSelectors.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/swap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/var/cssExpand.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/var/getStyles.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/var/isHidden.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/var/rmargin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/css/var/rnumnonpx.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/data.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/data/Data.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/data/accepts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/data/var/data_priv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/data/var/data_user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/deferred.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/deprecated.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/dimensions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/effects.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/effects/Tween.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/effects/animatedSelector.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/event.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/event/ajax.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/event/alias.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/event/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/exports/amd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/exports/global.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/intro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/manipulation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/manipulation/_evalUrl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/manipulation/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/manipulation/var/rcheckableType.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/offset.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/outro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/queue.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/queue/delay.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/selector-native.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/selector-sizzle.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/selector.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/serialize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/dist/sizzle.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/dist/sizzle.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/dist/sizzle.min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/data/empty.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/data/mixed_sort.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/data/testinit.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/unit/extending.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/unit/selector.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/sizzle/test/unit/utilities.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/traversing.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/traversing/findFilter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/traversing/var/rneedsContext.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/arr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/class2type.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/concat.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/hasOwn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/indexOf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/pnum.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/push.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/rnotwhite.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/slice.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/strundefined.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/var/toString.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/node_modules/jquery/src/wrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery.easing/package.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/compiled/bundle.js" afterPath="$PROJECT_DIR$/scripts/compiled/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/contentscript.js" afterPath="$PROJECT_DIR$/scripts/contentscript.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/url/node_modules/querystring/decode.js" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/url/node_modules/querystring/decode.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/url/node_modules/querystring/encode.js" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/url/node_modules/querystring/encode.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/module-deps/index.js" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/module-deps/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manifest.json" afterPath="$PROJECT_DIR$/manifest.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/browser-resolve/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/browser-resolve/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/crypto-browserify/node_modules/browserify-sign/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/crypto-browserify/node_modules/browserify-sign/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/parse-asn1/node_modules/pemstrip/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/parse-asn1/node_modules/pemstrip/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/crypto-browserify/node_modules/create-hash/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/crypto-browserify/node_modules/create-hash/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/module-deps/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/module-deps/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/url/node_modules/querystring/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/url/node_modules/querystring/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify/node_modules/vm-browserify/node_modules/indexof/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify/node_modules/vm-browserify/node_modules/indexof/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/popup.html" afterPath="$PROJECT_DIR$/popup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hn-select.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,19 +341,36 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="5910">
               <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-              <folding>
-                <marker date="1426804915000" expanded="true" signature="13098:13177" placeholder="/*...*/" />
-                <marker date="1426804915000" expanded="true" signature="13270:13309" placeholder="/*...*/" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="810">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.7394366" vertical-offset="285" max-vertical-offset="825">
+              <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popup.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/popup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="945">
+              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popup.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/popup.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.375" vertical-offset="84" max-vertical-offset="960">
+              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -60,11 +386,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42537314" vertical-offset="1050" max-vertical-offset="5025">
-              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="4995">
+              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bundle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="5055">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,10 +420,11 @@
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="c1289c28/scratch" />
         <option value="$PROJECT_DIR$/components/addons.js" />
-        <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/scripts/compiled/bundle.js" />
         <option value="$PROJECT_DIR$/styles/main.css" />
         <option value="$PROJECT_DIR$/scripts/contentscript.js" />
+        <option value="$PROJECT_DIR$/popup.html" />
+        <option value="$PROJECT_DIR$/manifest.json" />
       </list>
     </option>
   </component>
@@ -103,10 +440,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="204" />
-    <option name="y" value="-1025" />
-    <option name="width" value="1364" />
-    <option name="height" value="961" />
+    <option name="x" value="2" />
+    <option name="y" value="23" />
+    <option name="width" value="1247" />
+    <option name="height" value="686" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -131,7 +468,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -188,12 +524,89 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="compiled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hn-select" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -218,14 +631,10 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -233,6 +642,10 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -272,18 +685,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="204" y="-1025" width="1364" height="961" extended-state="0" />
+    <frame x="2" y="23" width="1247" height="686" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18181819" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19798657" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25018615" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27406198" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -291,7 +702,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -317,6 +730,38 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Desktop/bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="5910">
+          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="810">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="870">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5025">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4515">
@@ -329,10 +774,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="4530">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <marker date="1426804915000" expanded="true" signature="13098:13177" placeholder="/*...*/" />
-            <marker date="1426804915000" expanded="true" signature="13270:13309" placeholder="/*...*/" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -359,20 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/popup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="945">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/popup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="960">
-          <caret line="14" column="50" selection-start-line="11" selection-start-column="4" selection-end-line="14" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/background.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7835821" vertical-offset="0" max-vertical-offset="735">
@@ -380,22 +808,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="810">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="5910">
           <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <marker date="1426804915000" expanded="true" signature="13098:13177" placeholder="/*...*/" />
-            <marker date="1426804915000" expanded="true" signature="13270:13309" placeholder="/*...*/" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -407,10 +824,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/popup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="945">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/popup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.375" vertical-offset="84" max-vertical-offset="960">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42537314" vertical-offset="1050" max-vertical-offset="5025">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="4995">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="5055">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7394366" vertical-offset="285" max-vertical-offset="825">
+          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
           <folding />
         </state>
       </provider>
