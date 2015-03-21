@@ -23,8 +23,8 @@ h1 {
     right: -476px;
     width: 500px;
     height: 100%;
+    /* This is the line that causes the primary sidebar animation */
     transition: right 0.5s ease-out;
-    /*border: solid 1px gray;*/
 }
 
 .sidebarbutton {
@@ -44,6 +44,7 @@ h1 {
     height: 100% !important;
     background: #ffffff;
     box-shadow: -2px 0px 3px #C0C0C0;
+    /* Get rid of the shadow when the sidebar is collapsed */
     transition: box-shadow 0.5s ease-out;
 }
 
