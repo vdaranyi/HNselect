@@ -32,9 +32,11 @@ var SidebarBox = React.createClass({
             <div className="sidebarbutton">
                 <CloseButton />
             </div>
-            <div id="sidebarcontentarea">
-                //<topnav />
-                //<tabnav />
+            <div id="sidebarcontentbox">
+                <ownerinfo />
+                <suggestionarea />
+                <navbar />
+                <contentarea />
             </div>
         </div>;
     }
@@ -85,8 +87,36 @@ var CloseButton = React.createClass({
 //==========================================================
 
 //Sidebar content
-// Content needed:
-// Article
-    // Title
-    // URL
-    // Score
+//components needed:
+
+// Owner (ownerinfo)
+    // username
+    // karma
+    // # of people following you
+    // # of people you follow
+
+var OwnerInfo = React.createClass({})
+
+// Suggestions (suggestionarea)
+    // username
+
+var SuggestionArea = React.createClass({})
+
+// Search form
+    // input
+    // submit
+
+var SearchForm = React.createClass({})
+
+// Item (contentarea)
+    // type
+    // title
+    // url
+    // score
+    // by
+    // text
+
+var ContentArea = React.createClass({})
+
+
+

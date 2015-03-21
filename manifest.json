@@ -27,10 +27,14 @@
       "matches": [
         "https://news.ycombinator.com/*"
       ],
-      "css": ["styles/main.css"],
+      "css": [
+        "styles/main.css",
+        "bower_components/bootstrap/dist/css/bootstrap.min.css"
+      ],
       "js": [
         "bower_components/react/react.js",
         "bower_components/jquery/dist/jquery.min.js",
+        "bower_components/bootstrap/dist/js/bootstrap.min.js",
         "scripts/compiled/bundle.js"
       ],
       "run_at": "document_end",
