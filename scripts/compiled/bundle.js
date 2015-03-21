@@ -1,10 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 var sidebar = require('./sidebar.js')
+
 // NOTE TO VINCENT: Browserify allows us to modularize files the same way we do with
 // Node, by writing "require" lines like the one above. From here on out I will be
 // following that practice. Eventually this document will probably have no content
-// except those require lines.
+// except require lines because everything will be in modules.
 // ALSO NOTE: You must run gulp while making changes to front-end files, and make sure
 // 'buildJS' runs by making and saving a change. Otherwise you might think your
 // changes have been made, but they will not.

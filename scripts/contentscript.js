@@ -1,9 +1,10 @@
 'use strict';
-var sidebar = require('./sidebar.js')
+var sidebar = require('./sidebar.jsx')
+
 // NOTE TO VINCENT: Browserify allows us to modularize files the same way we do with
 // Node, by writing "require" lines like the one above. From here on out I will be
 // following that practice. Eventually this document will probably have no content
-// except those require lines.
+// except require lines because everything will be in modules.
 // ALSO NOTE: You must run gulp while making changes to front-end files, and make sure
 // 'buildJS' runs by making and saving a change. Otherwise you might think your
 // changes have been made, but they will not.

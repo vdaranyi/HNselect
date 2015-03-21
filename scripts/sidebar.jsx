@@ -90,33 +90,76 @@ var CloseButton = React.createClass({
 //components needed:
 
 // Owner (ownerinfo)
-    // username
-    // karma
-    // # of people following you
-    // # of people you follow
+// username
+// karma
+// # of people following you
+// # of people you follow
 
-var OwnerInfo = React.createClass({})
+var OwnerInfo = React.createClass({
+    render: function () {
+        return <div id="owner-box">
+            <div id="owner-name">glennonymous</div>
+            <div id="owner-stats">
+                <div className="owner-stat">
+                    <div className="owner-stattitle">Karma</div>
+                    <div className="owner-statscore">1</div>
+                </div>
+                <div className="owner-stat">
+                    <div className="owner-stattitle">Following</div>
+                    <div className="owner-statscore">15</div>
+                </div>
+                <div className="owner-stat">
+                    <div className="owner-stattitle">Followers</div>
+                    <div className="owner-statscore">1</div>
+                </div>
+            </div>
+        </div>;
+    }
+});
 
 // Suggestions (suggestionarea)
-    // username
+// username
 
-var SuggestionArea = React.createClass({})
+var SuggestionArea = React.createClass({
+    render: function () {
+        return <div id="suggest-box">
+            <div id="suggest-tabs">
+            </div>
+            <span id=""></span>
+        </div>;
+    }
+});
 
 // Search form
-    // input
-    // submit
+// input
+// submit
 
-var SearchForm = React.createClass({})
+var SearchForm = React.createClass({
+    render: function () {
+        return <div id="">
+            <div id=""></div>
+            <span id=""></span>
+        </div>;
+    }
+});
 
 // Item (contentarea)
-    // type
-    // title
-    // url
-    // score
-    // by
-    // text
+// type
+// title
+// url
+// score
+// by
+// text
 
-var ContentArea = React.createClass({})
+var ContentArea = React.createClass({
+    render: function () {
+        return <div id="">
+            <div id=""></div>
+            <span id=""></span>
+        </div>;
+    }
+});
+
 
 
 
