@@ -37,6 +37,7 @@ h1 {
 
 #sidebarcontentarea {
     position: absolute;
+    padding: 0px 18px;
     top: 0px;
     z-index: 1;
     display: inline;

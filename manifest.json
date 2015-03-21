@@ -42,7 +42,13 @@
     }
   ],
   "web_accessible_resources": [
-    "bower_components/jquery/dist/jquery.min.map"
+    "bower_components/jquery/dist/jquery.min.map",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"
+
   ],
   "permissions": [
     "tabs",
