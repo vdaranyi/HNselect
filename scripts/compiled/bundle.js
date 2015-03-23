@@ -261,7 +261,7 @@ chrome.runtime.onMessage.addListener(
 // Attaches an empty div to the DOM to which we can attach our React code
 $(document).ready(function () {
     $("body").append("<div id='sidebar-anchor'></div>");
-    React.render(React.createElement(SidebarBox, null), $("#sidebar-anchor").get(0));
+    React.render(React.createElement(SidebarBox, {data: newsFeedPlaceholder}), $("#sidebar-anchor").get(0));
 });
 
 // Sidebar component
@@ -289,11 +289,15 @@ var SidebarBox = React.createClass({
             React.createElement("div", {className: "sidebarbutton"}, 
                 React.createElement(CloseButton, null)
             ), 
-            React.createElement("div", {id: "sidebarcontentarea"}, 
-                React.createElement(OwnerInfo, null), 
-                React.createElement(SuggestionArea, null), 
-                React.createElement(NavBar, null), 
-                React.createElement(ContentArea, null)
+            React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
+                React.createElement("div", {id: "nav-area"}, 
+                    React.createElement("div", {className: "row"}, 
+                        React.createElement(OwnerInfo, null), 
+                        React.createElement(SuggestionArea, null)
+                    ), 
+                    React.createElement(NavBar, null)
+                ), 
+                React.createElement(ContentArea, {data: this.props.data})
             )
         );
     }
@@ -354,20 +358,20 @@ var CloseButton = React.createClass({displayName: "CloseButton",
 
 var OwnerInfo = React.createClass({displayName: "OwnerInfo",
     render: function () {
-        return React.createElement("div", {id: "owner-box"}, 
+        return React.createElement("div", {id: "owner-box", className: "testborder col-md-6 col-sm-6 col-xs-6"}, 
             React.createElement("div", {id: "owner-name"}, 
-                React.createElement("h2", null, "glennonymous")
+                React.createElement("h2", {className: "nav-title"}, "glennonymous")
             ), 
             React.createElement("div", {id: "owner-stats"}, 
-                React.createElement("div", {className: "owner-stat"}, 
+                React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
                     React.createElement("div", {className: "owner-stattitle"}, "Karma"), 
                     React.createElement("div", {className: "owner-statscore"}, "1")
                 ), 
-                React.createElement("div", {className: "owner-stat"}, 
+                React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
                     React.createElement("div", {className: "owner-stattitle"}, "Following"), 
                     React.createElement("div", {className: "owner-statscore"}, "15")
                 ), 
-                React.createElement("div", {className: "owner-stat"}, 
+                React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
                     React.createElement("div", {className: "owner-stattitle"}, "Followers"), 
                     React.createElement("div", {className: "owner-statscore"}, "1")
                 )
@@ -380,18 +384,24 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
 
 var SuggestionArea = React.createClass({displayName: "SuggestionArea",
     render: function () {
-        return React.createElement("div", {id: "suggest-box"}, 
+        return React.createElement("div", {id: "suggest-box", className: "col-md-6 col-sm-6 col-xs-6"}, 
             React.createElement("div", {id: "suggest-title"}, 
-                React.createElement("h2", null, "Who to follow")
+                React.createElement("h2", {className: "nav-title"}, "Who to follow")
             ), 
             React.createElement("div", {id: "suggest-tags"}, 
                 React.createElement("ul", null, 
                     React.createElement("li", null, "joefred"), 
+                " ", 
                     React.createElement("li", null, "fredbob"), 
+                " ", 
                     React.createElement("li", null, "aprilmay"), 
+                " ", 
                     React.createElement("li", null, "june1972"), 
+                " ", 
                     React.createElement("li", null, "aLincoln"), 
-                    React.createElement("li", null, "aynRandy")
+                " ", 
+                    React.createElement("li", null, "aynRandy"), 
+                " "
                 )
             ), 
             React.createElement(SearchForm, null)
@@ -406,10 +416,10 @@ var SuggestionArea = React.createClass({displayName: "SuggestionArea",
 var SearchForm = React.createClass({displayName: "SearchForm",
     render: function () {
         return React.createElement("div", {id: "search-box"}, 
-            React.createElement("div", {class: "input-group"}, 
-                React.createElement("input", {type: "text", class: "form-control", placeholder: "Search for people to follow"}), 
-                React.createElement("span", {class: "input-group-btn"}, 
-                    React.createElement("button", {class: "btn btn-default", type: "button"}, "Submit")
+            React.createElement("div", {className: "input-group"}, 
+                React.createElement("input", {type: "text", className: "form-control", placeholder: "Search"}), 
+                React.createElement("span", {className: "input-group-btn"}, 
+                    React.createElement("button", {className: "btn btn-default", type: "button"}, "Submit")
                 )
             )
         );
@@ -428,17 +438,31 @@ var NavBar = React.createClass({displayName: "NavBar",
         return React.createElement("div", {id: "navbar-bar"}, 
             React.createElement("div", {id: "navbar-buttons"}, 
                 React.createElement("ul", null, 
-                    React.createElement("li", null, React.createElement("span", {id: "navbar-feed"}, "Feed")), 
-                    React.createElement("li", null, React.createElement("span", {id: "navbar-updates"}, "Updates")), 
-                    React.createElement("li", null, React.createElement("span", {id: "navbar-connections"}, "Connections")), 
-                    React.createElement("li", null, React.createElement("span", {class: "glyphicon glyphicon-star", id: "navbar-favorites", "aria-hidden": "true"})), 
-                    React.createElement("li", null, React.createElement(Gear, {id: "navbar-settings"}))
+                    React.createElement("li", null, 
+                        React.createElement("span", {className: "navbar-button-left", id: "feed"}, "Feed")
+                    ), 
+                    React.createElement("li", null, 
+                        React.createElement("span", {className: "navbar-button-left", id: "updates"}, "Updates")
+                    ), 
+                    React.createElement("li", null, 
+                        React.createElement("span", {className: "navbar-button-left", id: "connections"}, "Connections")
+                    ), 
+                    React.createElement("li", null, 
+                        React.createElement("span", {className: "navbar-button-right", id: "favorites"}, 
+                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/star_64_black.png", width: "14px"})
+                        )
+                    ), 
+                    React.createElement("li", null, 
+                        React.createElement("span", {className: "navbar--button-right", id: "settings"}, 
+                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/gear_64_black.png", width: "14px"})
+                        )
+                    )
                 )
-            ), 
-            React.createElement(SearchForm, null)
+            )
         );
     }
 });
+
 
 // Item (contentarea)
 // - type
@@ -449,22 +473,123 @@ var NavBar = React.createClass({displayName: "NavBar",
 // - by
 // - text
 
+var timeToNow = function(timestamp) {
+    var now = Date()
+    var since = now-timestamp
+    if (since < 3600000) return Math.floor(since/60000) + " minutes ago";
+    else return Math.floor(since/360000) + "hours ago";
+}
+
 var ContentArea = React.createClass({displayName: "ContentArea",
     render: function () {
-        return React.createElement("div", {id: "content-box"}, 
-            React.createElement("div", {id: "content-title"}, React.createElement("span", {id: ""})), 
-            React.createElement("div", {id: "content-content"}, React.createElement("span", {id: ""}))
-        );
+        // Determine whether data object is a comment or a news article and render accordingly
+        var newsOrComment = this.props.data.map(function (obj) {
+            if (obj.type == "news") {
+                return React.createElement("div", {className: "content-box"}, 
+                    React.createElement("div", {className: "content-title"}, 
+                        React.createElement("h3", {className: "content-maintitle"}, obj.title), React.createElement("h4", {className: "content-secondarytitle"}, "(", obj.url, ")")
+                    ), 
+                    React.createElement("div", {className: "content-content"}, 
+                        React.createElement("p", {className: "content-text"}, obj.text)
+                    ), 
+                    React.createElement("div", {className: "content-footer"}, React.createElement("p", {className: "content-footertext"}, "by ", this.by, " ", timeToNow(this.timestamp)))
+                );
+            }
+        })
     }
 });
 
-// Gear icon
+var newsFeedPlaceholder = [
+    {
+        type: "comment",
+        title: null,
+        url: null,
+        score: null,
+        by: "erbdex",
+        timestamp: "1427125337000",
+        text: "You win the internet sir. Bravo",
+        commenton: "Cake made of pure awesomeness",
+        parent_poster: "You"
+    },
+    {
+        type: "news",
+        title: "Images that fool computer vision raise security concerns",
+        url: "cornell.edu",
+        score: null,
+        by: "lm60",
+        timestamp: "1427124617000",
+        text: "Computers are learning to recognize objects with near-human ability. But Cornell researchers have found that computers, like humans, can be fooled by optical illusions, which raises security concerns and opens new avenues for research in computer vision.\nCornell graduate student Jason Yosinski and colleagues at the University of Wyoming Evolving Artificial Intelligence Laboratory have created images that look to humans like white noise or random geometric patterns but which computers identify with great confidence as common objects. They will report their work at the IEEE Computer Vision and Pattern Recognition conference in Boston June 7-12.",
+        commenton: null,
+        parent_poster: null
+    },
+    {
+        type: "comment",
+        title: null,
+        url: null,
+        score: null,
+        by: "lm60",
+        timestamp: "1427123297000",
+        text: "While I largely agree with you, it strikes me that you've missed an option -- It might be that there's something inefficient in the trial process that holds no weight on \"fairness\". I'm not a legal expert by any means, so it may not be the case, but it seems as though it's a possibility.",
+        commenton: "Amtrak police use of passenger data",
+        parent_poster: "CapitalistCartr"
+    },
+    {
+        type: "comment",
+        title: null,
+        url: null,
+        score: null,
+        by: "lm60",
+        timestamp: "1427122517000",
+        text: "This always frustrates me when discussions of plea bargaining and the right to trial come up, and the argument is given that plea bargaining is a necessity because the courts would be horribly overloaded if every case went to trial. If the system doesn't have the resources to give every accused criminal a fair trial, then either you're making too many criminals, the system doesn't have enough resources, or both. Bypassing trials is just a way to cover your ears and shout \"la la la\" to ignore the problem.",
+        commenton: "Amtrak police use of passenger data",
+        parent_poster: "msandford"
+    },
+    {
+        type: "news",
+        title: "Early posts from Larry Page, Linus Torvalds, Jan Koum, and more",
+        url: "carlcheo.com",
+        score: null,
+        by: "carlcheo",
+        timestamp: "1427121797000",
+        text: "Here’s a list of early posts from tech founders who used to ask questions, self-promote, and interact on forums and discussion groups. Just like us. Fascinating? Yes. I see passion too.\n#1. Google (1996) – When developing Google, Larry Page posted a Java question about setting User-Agent header for his web crawler. Even the smartest people have questions too. Let me Google the answer for you, Larry.",
+        commenton: null,
+        parent_poster: null
+    },
+    {
+        type: "comment",
+        title: null,
+        url: null,
+        score: null,
+        by: "lm60",
+        timestamp: "1427121497000",
+        text: "If everyone is breaking so many laws that the police and courts can't keep up it doesn't mean that humanity is broken. It means that the law has gotten so far out of sync with humanity that the law is broken. People make the laws, not the other way around. The world would be a much better place if more people realized this.",
+        commenton: "Amtrak police use of passenger data",
+        parent_poster: "msandford"
+    },
+    {
+        type: "news",
+        title: "How to save datetimes for future events",
+        url: "creativedeletion.com",
+        score: null,
+        by: "laut",
+        timestamp: "1427120717000",
+        text: "Imagine that it’s January 2015 and you’re making an appointment in a calendar application for a meeting that will take place in Santiago, Chile on the April 30th at 10:00 in the morning.\nYour calendar software saves the appointment and you can see that it’s there with the description that you made. 2015-04-30 10:00 in Chile. You even checked the box to get a reminder and think to yourself: “What a time to be alive”. Software can remind us of meetings and keep track of timezones and we no longer have to carry around big bulky paper calendars.",
+        commenton: null,
+        parent_poster: null
+    },
+    {
+        type: "news",
+        title: "Canada's CSE cyberwarfare toolbox revealed",
+        url: "cbc.ca",
+        score: null,
+        by: "colinprince",
+        timestamp: "1427119937000",
+        text: "Online gambling, to a cash-hungry province, must look like a ripe piece of fruit just waiting to be plucked.\nThe logic is easy to see. Gambling on the internet is already happening, so why shouldn't a province get a piece of the action rather than watch the money go elsewhere? What's more, government oversight can keep players safe from shady offshore operators, and protect problem gamblers from themselves by promoting responsible gaming practices.\nOntario used those arguments before jumping into internet gambling in January. Quebec, B.C., and Manitoba are equally well versed in the rationale and Atlantic Canada's gambling overseer is using it right now in a bid to expand the menu of online gaming options available on the East Coast.",
+        commenton: null,
+        parent_poster: null
+    },
+]
 
-var Gear = React.createClass({displayName: "Gear",
-    render: function () {
-        return React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg"}, React.createElement("path", {d: "M12.793,10.327c0.048-0.099,0.097-0.196,0.138-0.298c0.012-0.023,0.018-0.049,0.028-0.072 c0.03-0.079,0.06-0.158,0.086-0.238c0.005-0.013,0.01-0.023,0.014-0.038c0.008-0.021,0.016-0.041,0.023-0.063L16,8.889V7.111 l-2.918-0.73c-0.009-0.024-0.019-0.047-0.027-0.071c0-0.003-0.001-0.008-0.003-0.012c-0.028-0.085-0.06-0.17-0.093-0.253 c-0.011-0.025-0.018-0.05-0.028-0.075c-0.044-0.107-0.095-0.208-0.144-0.312c-0.011-0.02-0.02-0.04-0.029-0.06 c-0.008-0.015-0.015-0.03-0.021-0.044l1.55-2.582l-1.258-1.258l-2.583,1.549c-0.011-0.005-0.021-0.01-0.031-0.016 c-0.03-0.014-0.059-0.027-0.086-0.041c-0.1-0.047-0.195-0.096-0.298-0.138c-0.025-0.011-0.053-0.019-0.077-0.028 C9.879,3.012,9.804,2.984,9.727,2.958C9.711,2.952,9.694,2.946,9.678,2.94c-0.021-0.007-0.04-0.015-0.061-0.022L8.889,0H7.111 L6.38,2.919C6.361,2.926,6.343,2.934,6.323,2.94C6.308,2.945,6.292,2.952,6.275,2.957C6.199,2.983,6.124,3.011,6.05,3.04 C6.031,3.047,6.011,3.05,5.992,3.058C5.983,3.061,5.977,3.066,5.968,3.07c-0.102,0.042-0.2,0.09-0.299,0.139 C5.644,3.222,5.617,3.233,5.592,3.246C5.58,3.253,5.566,3.258,5.555,3.264L2.973,1.715L1.715,2.972l1.55,2.581 C3.259,5.564,3.254,5.574,3.249,5.585c-0.015,0.03-0.028,0.06-0.043,0.09C3.159,5.771,3.111,5.867,3.07,5.966 c-0.012,0.029-0.02,0.058-0.031,0.086c-0.028,0.072-0.055,0.146-0.08,0.218c-0.006,0.018-0.014,0.035-0.02,0.053 C2.934,6.343,2.925,6.362,2.918,6.381L0,7.111v1.777l2.918,0.729C2.925,9.639,2.934,9.659,2.941,9.68 C2.945,9.693,2.95,9.707,2.956,9.72C2.981,9.798,3.01,9.875,3.04,9.95c0.007,0.019,0.01,0.039,0.017,0.058 c0.003,0.008,0.01,0.016,0.013,0.025c0.044,0.104,0.094,0.205,0.144,0.306c0.01,0.022,0.02,0.044,0.031,0.063 c0.007,0.014,0.013,0.028,0.02,0.043l-1.549,2.582l1.257,1.258l2.581-1.549c0.012,0.006,0.023,0.01,0.036,0.018 c0.025,0.013,0.053,0.024,0.079,0.037c0.101,0.049,0.2,0.099,0.304,0.141c0.022,0.01,0.046,0.016,0.069,0.026 c0.082,0.033,0.166,0.063,0.252,0.093c0.007,0.002,0.014,0.004,0.021,0.006c0.023,0.009,0.045,0.018,0.068,0.026L7.111,16h1.777 l0.729-2.917c0.021-0.008,0.042-0.016,0.062-0.023c0.014-0.005,0.026-0.009,0.04-0.015c0.082-0.027,0.163-0.057,0.241-0.088 c0.022-0.01,0.045-0.016,0.065-0.025c0.109-0.045,0.216-0.096,0.321-0.147c0.017-0.009,0.033-0.016,0.05-0.025 c0.017-0.007,0.032-0.015,0.048-0.022l2.582,1.55l1.258-1.259l-1.549-2.581c0.006-0.011,0.009-0.021,0.015-0.032 C12.766,10.385,12.779,10.355,12.793,10.327z M11.482,8.696c-0.019,0.092-0.054,0.179-0.08,0.269 c-0.037,0.135-0.069,0.271-0.123,0.398c-0.037,0.09-0.092,0.174-0.137,0.26c-0.062,0.119-0.118,0.244-0.192,0.354 c-0.087,0.131-0.196,0.251-0.303,0.373c-0.083,0.093-0.168,0.181-0.259,0.265c-0.133,0.122-0.271,0.241-0.417,0.341 c-0.089,0.059-0.186,0.1-0.278,0.151c-0.112,0.06-0.22,0.129-0.337,0.177c-0.094,0.038-0.195,0.061-0.293,0.092 c-0.125,0.039-0.248,0.086-0.376,0.11c-0.103,0.021-0.211,0.021-0.316,0.032c-0.25,0.025-0.499,0.025-0.748-0.001 c-0.104-0.011-0.21-0.011-0.311-0.031c-0.131-0.024-0.258-0.073-0.387-0.114c-0.094-0.03-0.192-0.051-0.282-0.088 c-0.112-0.046-0.217-0.112-0.324-0.17c-0.075-0.042-0.153-0.076-0.226-0.122c-0.021-0.015-0.047-0.024-0.068-0.038 c-0.122-0.082-0.232-0.184-0.345-0.281c-0.137-0.117-0.262-0.246-0.379-0.383c-0.087-0.104-0.181-0.203-0.254-0.312 c-0.07-0.105-0.122-0.221-0.181-0.333C4.817,9.549,4.759,9.459,4.718,9.36c-0.042-0.103-0.065-0.213-0.1-0.321 c-0.035-0.116-0.08-0.23-0.104-0.35C4.492,8.572,4.489,8.448,4.479,8.326C4.457,8.099,4.458,7.874,4.48,7.647 C4.492,7.535,4.493,7.42,4.515,7.312C4.541,7.177,4.59,7.048,4.632,6.917c0.005-0.016,0.01-0.032,0.015-0.048 c0.025-0.075,0.04-0.154,0.07-0.225c0.05-0.122,0.121-0.236,0.186-0.352C4.95,6.204,4.989,6.111,5.045,6.027 c0.103-0.153,0.227-0.296,0.356-0.436c0.064-0.07,0.132-0.136,0.203-0.201c0.135-0.125,0.273-0.246,0.423-0.345 C6.12,4.983,6.224,4.938,6.324,4.885c0.104-0.057,0.207-0.122,0.316-0.167c0.112-0.046,0.232-0.073,0.35-0.108 c0.061-0.019,0.121-0.04,0.183-0.054c0.045-0.011,0.089-0.03,0.134-0.039c0.189-0.038,0.386-0.053,0.586-0.059 c0.07-0.002,0.14-0.002,0.211,0c0.2,0.006,0.4,0.021,0.591,0.06c0.102,0.02,0.199,0.059,0.298,0.088 c0.125,0.036,0.25,0.065,0.37,0.115C9.46,4.76,9.55,4.818,9.645,4.868c0.111,0.058,0.227,0.11,0.332,0.18 c0.133,0.089,0.256,0.201,0.379,0.311c0.103,0.091,0.199,0.188,0.289,0.29c0.109,0.122,0.219,0.244,0.308,0.376 c0.071,0.104,0.121,0.221,0.181,0.333c0.049,0.094,0.107,0.184,0.147,0.279c0.053,0.126,0.085,0.262,0.122,0.395 c0.021,0.074,0.05,0.147,0.066,0.222c0.004,0.017,0.01,0.032,0.014,0.049c0.041,0.206,0.061,0.419,0.064,0.636 c0,0.026,0.005,0.053,0.005,0.08C11.55,8.25,11.525,8.477,11.482,8.696z"}));
-    }
-});
 
 
 

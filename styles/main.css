@@ -1,20 +1,11 @@
-/*body {*/
-  /*margin-top: 20px;*/
-  /*min-height: 500px;*/
-  /*min-width: 350px;*/
-  /*padding: 20px;*/
-  /*font-family: Verdana, Geneva, sans-serif;*/
-  /*overflow: auto*/
-  /*;*/
-/*}*/
-
 html, body, #sidebar-anchor {
     height: 100%;
 }
 
-
-h1 {
-  text-align: center;
+.nav-title {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #000000;
 }
 
 .sidebarbox {
@@ -37,7 +28,7 @@ h1 {
 
 #sidebarcontentarea {
     position: absolute;
-    padding: 0px 18px;
+    padding: 0%;
     top: 0px;
     z-index: 1;
     display: inline;
@@ -51,4 +42,46 @@ h1 {
 
 #sidebutton:hover {
     cursor: pointer;
+}
+
+#nav-area {
+    padding: 0px 18px;
+    background: rgba(207,207,207,0.3);
+}
+
+.owner-stat, #suggest-tags {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+}
+
+.owner-stattitle, .owner-statscore {
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#suggest-tags>ul, #navbar-buttons>ul {
+    -webkit-margin-before: 0em;
+    -webkit-padding-start: 0px;
+}
+
+#suggest-tags>ul>li {
+    list-style: none;
+    display: inline-block;
+    color: #ffffff;
+    background: #F86900;
+    padding: 0em 0.5em;
+    font-size: 0.75em;
+    line-height: 1.5em;
+}
+
+#navbar-bar {
+    padding: 5px 0px 1px 0px;
+}
+
+#navbar-buttons>ul>li {
+    list-style: none;
+    display: inline-block;
+    padding: 0em 1.5em;
+
 }
