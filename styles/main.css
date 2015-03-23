@@ -86,6 +86,10 @@ html, body, #sidebar-anchor {
 
 }
 
+.content-top {
+    padding: 18px;
+}
+
 .content-maintitle {
     display: inline;
     color: #000000;
@@ -99,4 +103,14 @@ html, body, #sidebar-anchor {
 
 .content-text {
     font-size: 0.9em;
+    margin: 0px !important;
+    color: #000000;
+}
+
+.content-footertext {
+    font-size: 0.9em;
+}
+
+.content-box, .content-content {
+    margin-bottom: 4px;
 }

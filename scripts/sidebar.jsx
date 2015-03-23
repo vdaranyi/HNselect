@@ -319,6 +319,7 @@ var NavBar = React.createClass({
 
 var timeToNow = function (timestamp) {
     var now = Date()
+    console.log(now)
     var since = now - timestamp
     if (since < 3600000) return Math.floor(since / 60000) + " minutes ago";
     else return Math.floor(since / 360000) + "hours ago";
