@@ -1,20 +1,11 @@
-/*body {*/
-  /*margin-top: 20px;*/
-  /*min-height: 500px;*/
-  /*min-width: 350px;*/
-  /*padding: 20px;*/
-  /*font-family: Verdana, Geneva, sans-serif;*/
-  /*overflow: auto*/
-  /*;*/
-/*}*/
-
 html, body, #sidebar-anchor {
     height: 100%;
 }
 
-
-h1 {
-  text-align: center;
+.nav-title {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #000000;
 }
 
 .sidebarbox {
@@ -23,8 +14,8 @@ h1 {
     right: -476px;
     width: 500px;
     height: 100%;
+    /* This is the line that causes the primary sidebar animation */
     transition: right 0.5s ease-out;
-    /*border: solid 1px gray;*/
 }
 
 .sidebarbutton {
@@ -37,6 +28,7 @@ h1 {
 
 #sidebarcontentarea {
     position: absolute;
+    padding: 0%;
     top: 0px;
     z-index: 1;
     display: inline;
@@ -44,9 +36,81 @@ h1 {
     height: 100% !important;
     background: #ffffff;
     box-shadow: -2px 0px 3px #C0C0C0;
+    /* Get rid of the shadow when the sidebar is collapsed */
     transition: box-shadow 0.5s ease-out;
 }
 
 #sidebutton:hover {
     cursor: pointer;
+}
+
+#nav-area {
+    padding: 0px 18px;
+    background: rgba(207,207,207,0.3);
+}
+
+.owner-stat, #suggest-tags {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+}
+
+.owner-stattitle, .owner-statscore {
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#suggest-tags>ul, #navbar-buttons>ul {
+    -webkit-margin-before: 0em;
+    -webkit-padding-start: 0px;
+}
+
+#suggest-tags>ul>li {
+    list-style: none;
+    display: inline-block;
+    color: #ffffff;
+    background: #F86900;
+    padding: 0em 0.5em;
+    font-size: 0.75em;
+    line-height: 1.5em;
+}
+
+#navbar-bar {
+    padding: 5px 0px 1px 0px;
+}
+
+#navbar-buttons>ul>li {
+    list-style: none;
+    display: inline-block;
+    padding: 0em 1.5em;
+
+}
+
+.content-top {
+    padding: 18px;
+}
+
+.content-maintitle {
+    display: inline;
+    color: #000000;
+    font-size: 1em;
+}
+
+.content-secondarytitle {
+    display: inline;
+    font-size: 0.9em;
+}
+
+.content-text {
+    font-size: 0.9em;
+    margin: 0px !important;
+    color: #000000;
+}
+
+.content-footertext {
+    font-size: 0.9em;
+}
+
+.content-box, .content-content {
+    margin-bottom: 4px;
 }

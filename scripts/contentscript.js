@@ -1,92 +1,16 @@
 'use strict';
+var sidebar = require('./sidebar.jsx')
 
-//==========================================================
-// Sidebar
+// NOTE TO VINCENT: Browserify allows us to modularize files the same way we do with
+// Node, by writing "require" lines like the one above. From here on out I will be
+// following that practice. Eventually this document will probably have no content
+// except require lines because everything will be in modules.
+// ALSO NOTE: You must run gulp while making changes to front-end files, and make sure
+// 'buildJS' runs by making and saving a change. Otherwise you might think your
+// changes have been made, but they will not.
 
-//var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
-$(document).ready(function () {
-    $("body").append("<div id='sidebar-anchor'></div>");
-    React.render(<SidebarBox />, $("#sidebar-anchor").get(0));
-});
-
-//var SidebarContentArea = React.createClass({
-//    componentDidMount: function ()
-//})
-
-
-var SidebarBox = React.createClass({
-
-    displayName: 'SidebarBox',
-
-    // Set the initial state to cause the div to slide in.
-
-    componentDidMount: function () {
-        setTimeout(function () {
-            $(".sidebarbox").css({
-                right: 0
-            });
-            $("#sidebarcontentarea")
-        }, 500)
-
-    },
-
-
-    render: function () {
-        return <div className="sidebarbox">
-            <div className="sidebarbutton">
-                <CloseButton />
-            </div>
-            <div id="sidebarcontentarea">
-                //<topnav />
-                //<tabnav />
-            </div>
-        </div>;
-    }
-
-});
-
-var drawerIsClosed = false;
-
-var CloseButton = React.createClass({
-
-    // Button causes box to slide out.
-
-    closeBox: function () {
-        if (!drawerIsClosed) {
-            drawerIsClosed = true;
-            setTimeout(function () {
-                $(".sidebarbox").css({
-                    "right": "-470"
-                });
-                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectlogotab.png");
-                $("#sidebarcontentarea").css("box-shadow", "none");
-            }, 0);
-        }
-        else {
-            setTimeout(function () {
-                drawerIsClosed = false;
-                $(".sidebarbox").css({
-                    right: 0
-                });
-                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png");
-                $("#sidebarcontentarea").css("box-shadow", "-2px 0px 3px #C0C0C0");
-            }, 0);
-        }
-    },
-
-    render: function () {
-        return <img src="https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png" id="sidebutton" width="30px" onClick={this.closeBox} />;
-    }
-})
-
-//var topNav = React.createClass({
-//
-//})
-
-
-//End Sidebar
-//==========================================================
+// -->ISSUE: After several seconds we get an uncaught typeError on line 93, "Cannot read property 'by' of null".
+// After we get this error, highlighting stops.
 
 // Constants
 var hnOrange = '#ff6600',

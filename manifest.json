@@ -27,17 +27,28 @@
       "matches": [
         "https://news.ycombinator.com/*"
       ],
-      "css": ["styles/main.css"],
+      "css": [
+        "styles/main.css",
+        "bower_components/bootstrap/dist/css/bootstrap-mod.css"
+      ],
       "js": [
-        "components/react.js",
-//        "components/addons.js",
-        "components/jquery.min.js",
-        "components/jquery.easing.1.3.js",
+        "bower_components/react/react.js",
+        "bower_components/jquery/dist/jquery.min.js",
+        "bower_components/bootstrap/dist/js/bootstrap.min.js",
         "scripts/compiled/bundle.js"
       ],
       "run_at": "document_end",
       "all_frames": false
     }
+  ],
+  "web_accessible_resources": [
+    "bower_components/jquery/dist/jquery.min.map",
+    "bower_components/bootstrap/dist/css/bootstrap.css.map",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"
   ],
   "permissions": [
     "tabs",
