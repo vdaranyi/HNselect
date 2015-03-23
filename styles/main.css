@@ -85,3 +85,18 @@ html, body, #sidebar-anchor {
     padding: 0em 1.5em;
 
 }
+
+.content-maintitle {
+    display: inline;
+    color: #000000;
+    font-size: 1em;
+}
+
+.content-secondarytitle {
+    display: inline;
+    font-size: 0.9em;
+}
+
+.content-text {
+    font-size: 0.9em;
+}
