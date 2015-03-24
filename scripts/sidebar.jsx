@@ -1,5 +1,8 @@
 // Fake data
 
+var server = 'http://localhost:3000';
+
+
 var newsFeedPlaceholder = [
     {
         type: "comment",
@@ -9,7 +12,7 @@ var newsFeedPlaceholder = [
         by: "erbdex",
         timestamp: "1427125337000",
         text: "You win the internet sir. Bravo.",
-        commenton: "Cake made of pure awesomeness",
+        commenton: "Two Cake made of pure awesomeness",
         parent_poster: "You",
         no_of_comments: 43
     },
@@ -129,21 +132,23 @@ var SidebarBox = React.createClass({
     // HTML content to be rendered
 
     render: function () {
-        return <div className="sidebarbox">
-            <div className="sidebarbutton">
-                <CloseButton />
-            </div>
-            <div id="sidebarcontentarea"  className="container-fluid">
-                <div id="nav-area">
-                    <div className="row">
-                        <OwnerInfo />
-                        <SuggestionArea />
-                    </div>
-                    <NavBar />
+        return (
+            <div className="sidebarbox">
+                <div className="sidebarbutton">
+                    <CloseButton />
                 </div>
-                <ContentList data={this.props.data} />
+                <div id="sidebarcontentarea"  className="container-fluid">
+                    <div id="nav-area">
+                        <div className="row">
+                            <OwnerInfo />
+                            <SuggestionArea />
+                        </div>
+                        <NavBar />
+                    </div>
+                    <ContentList data={this.props.data} />
+                </div>
             </div>
-        </div>;
+        )
     }
 
 });
@@ -325,64 +330,77 @@ var timeToNow = function (timestamp) {
     else return Math.floor(since / 360000) + "hours ago";
 }
 
+
 var ContentList = React.createClass({
+
+    getInitialState: function(){
+        return {
+            data: []
+        }
+    },
+
+    componentDidMount: function() {
+        var self = this;
+        chrome.runtime.sendMessage({
+                method: 'GET',
+                action: 'xhttp',
+                url: server + '/vdaranyi/newsfeed',
+                data: ''
+            }, function(response) {
+                var newsfeed = JSON.parse(response);
+                console.log(newsfeed);
+                self.setState({data: newsfeed});
+        })  
+    },
+
     render: function () {
         // Determine whether data object is a comment or a news article and render accordingly
-        var newsOrComment = this.props.data.map(function (obj) {
-            if (obj.type == "news") {
-                return (<div className="content-box">
-                    <div className="content-title">
-                        <h3 className="content-maintitle">{obj.title}</h3>
-                        <h4 className="content-secondarytitle"> ({obj.url})</h4>
-                    </div>
-                    <div className="content-content">
-                        <p className="content-text">{obj.text}</p>
-                    </div>
-                    <div className="content-footer">
-                        <p className="content-footertext">by {obj.by} {timeToNow(obj.timestamp)} | {obj.no_of_comments} comments</p>
-                    </div>
-                </div>);
-            }
-            else {
-                return (<div className="content-box">
-                    <div className="content-title">
-                        <h4 className="content-secondarytitle">Comment on </h4>
-                        <h3 className="content-maintitle">{obj.commenton}</h3>
-                        <h4 className="content-secondarytitle"> by {obj.by}</h4>
-                    </div>
-                    <div className="content-content">
-                        <p className="content-text">{obj.text}</p>
-                    </div>
-                    <div className="content-footer">
-                        <p className="content-footertext">original post by {obj.parent_poster} {timeToNow(obj.timestamp)} | {obj.no_of_comments} comments</p>
-                    </div>
-                </div>);
-            }
-        })
-
-        return (<div className="content-top">
-        {newsOrComment}
-        </div>);
+        return (
+            <div>
+                {this.state.data.map(function (item) {
+                    return <ContentItem data={item} />
+                })}
+            </div>
+        ) 
     }
 });
 
-//var ContentItem = React.createClass({
-//    render: function () {
-//        return
-//        return <div className="content-box">
-//            <div className="content-title">
-//                <h3 className="content-maintitle">{obj.title}</h3>
-//                <h4 className="content-secondarytitle">({obj.url})</h4>
-//            </div>
-//            <div className="content-content">
-//                <p className="content-text">{obj.text}</p>
-//            </div>
-//            <div className="content-footer">
-//                <p className="content-footertext">by {obj.by} {timeToNow(obj.timestamp)} | {obj.no_of_comments} comments</p>
-//            </div>
-//        </div>;
-//    }
-//});
+var ContentItem = React.createClass({
+    render: function(){
+        if (this.props.data.type === "story") {
+            return (
+                <div className="content-box">
+                    <div className="content-title">
+                        <h3 className="content-maintitle">{this.props.data.title}</h3>
+                        <h4 className="content-secondarytitle">{this.props.data.url})</h4>
+                    </div>
+                    <div className="content-content">
+                        <p className="content-text">{this.props.data.text}</p>
+                    </div>
+                    <div className="content-footer">
+                        <p className="content-footertext">by {this.props.data.by} {timeToNow(this.props.data.timestamp)} | {this.props.data.no_of_comments} comments</p>
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="content-box">
+                    <div className="content-title">
+                        <h4 className="content-secondarytitle">Comment on </h4>
+                        <h3 className="content-maintitle">{this.props.data.commenton}</h3>
+                        <h4 className="content-secondarytitle"> by {this.props.data.by}</h4>
+                    </div>
+                    <div className="content-content">
+                        <p className="content-text">{this.props.data.text}</p>
+                    </div>
+                    <div className="content-footer">
+                        <p className="content-footertext">original post by {this.props.data.parent_poster} {timeToNow(this.props.data.timestamp)} | {this.props.data.no_of_comments} comments</p>
+                    </div>
+                </div>
+            );
+        }
+    }
+});
 
 
 

@@ -73,13 +73,15 @@ function highlightNews() {
                 author: author,
                 commenters: []
             };
-
+/* 
             // Fetch story and commenters
             // storiesOnPage[storiesOnPage.length-1].commenters = fetchItems(storyId, [])
             var counter = 1,
                 totalcount = 1;
             fetchItems(storyId, []);
 
+
+// Old Ajax frontend fetching function
 
             function fetchItems(itemId, commenters) {
                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
@@ -134,9 +136,11 @@ function highlightNews() {
                 //   highlightFollowing(storiesOnPage);
                 // });
             }
-
+*/
         }
     });
+
+
     /*
      // console.log(storiesOnPage);
      var requestObject = {
@@ -257,6 +261,9 @@ chrome.runtime.onMessage.addListener(
 },{"./sidebar.jsx":2}],2:[function(require,module,exports){
 // Fake data
 
+var server = 'http://localhost:3000';
+
+
 var newsFeedPlaceholder = [
     {
         type: "comment",
@@ -266,7 +273,7 @@ var newsFeedPlaceholder = [
         by: "erbdex",
         timestamp: "1427125337000",
         text: "You win the internet sir. Bravo.",
-        commenton: "Cake made of pure awesomeness",
+        commenton: "Two Cake made of pure awesomeness",
         parent_poster: "You",
         no_of_comments: 43
     },
@@ -386,21 +393,23 @@ var SidebarBox = React.createClass({
     // HTML content to be rendered
 
     render: function () {
-        return React.createElement("div", {className: "sidebarbox"}, 
-            React.createElement("div", {className: "sidebarbutton"}, 
-                React.createElement(CloseButton, null)
-            ), 
-            React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
-                React.createElement("div", {id: "nav-area"}, 
-                    React.createElement("div", {className: "row"}, 
-                        React.createElement(OwnerInfo, null), 
-                        React.createElement(SuggestionArea, null)
-                    ), 
-                    React.createElement(NavBar, null)
+        return (
+            React.createElement("div", {className: "sidebarbox"}, 
+                React.createElement("div", {className: "sidebarbutton"}, 
+                    React.createElement(CloseButton, null)
                 ), 
-                React.createElement(ContentList, {data: this.props.data})
+                React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
+                    React.createElement("div", {id: "nav-area"}, 
+                        React.createElement("div", {className: "row"}, 
+                            React.createElement(OwnerInfo, null), 
+                            React.createElement(SuggestionArea, null)
+                        ), 
+                        React.createElement(NavBar, null)
+                    ), 
+                    React.createElement(ContentList, {data: this.props.data})
+                )
             )
-        );
+        )
     }
 
 });
@@ -582,64 +591,77 @@ var timeToNow = function (timestamp) {
     else return Math.floor(since / 360000) + "hours ago";
 }
 
+
 var ContentList = React.createClass({displayName: "ContentList",
+
+    getInitialState: function(){
+        return {
+            data: []
+        }
+    },
+
+    componentDidMount: function() {
+        var self = this;
+        chrome.runtime.sendMessage({
+                method: 'GET',
+                action: 'xhttp',
+                url: server + '/vdaranyi/newsfeed',
+                data: ''
+            }, function(response) {
+                var newsfeed = JSON.parse(response);
+                console.log(newsfeed);
+                self.setState({data: newsfeed});
+        })  
+    },
+
     render: function () {
         // Determine whether data object is a comment or a news article and render accordingly
-        var newsOrComment = this.props.data.map(function (obj) {
-            if (obj.type == "news") {
-                return (React.createElement("div", {className: "content-box"}, 
-                    React.createElement("div", {className: "content-title"}, 
-                        React.createElement("h3", {className: "content-maintitle"}, obj.title), 
-                        React.createElement("h4", {className: "content-secondarytitle"}, " (", obj.url, ")")
-                    ), 
-                    React.createElement("div", {className: "content-content"}, 
-                        React.createElement("p", {className: "content-text"}, obj.text)
-                    ), 
-                    React.createElement("div", {className: "content-footer"}, 
-                        React.createElement("p", {className: "content-footertext"}, "by ", obj.by, " ", timeToNow(obj.timestamp), " | ", obj.no_of_comments, " comments")
-                    )
-                ));
-            }
-            else {
-                return (React.createElement("div", {className: "content-box"}, 
-                    React.createElement("div", {className: "content-title"}, 
-                        React.createElement("h4", {className: "content-secondarytitle"}, "Comment on "), 
-                        React.createElement("h3", {className: "content-maintitle"}, obj.commenton), 
-                        React.createElement("h4", {className: "content-secondarytitle"}, " by ", obj.by)
-                    ), 
-                    React.createElement("div", {className: "content-content"}, 
-                        React.createElement("p", {className: "content-text"}, obj.text)
-                    ), 
-                    React.createElement("div", {className: "content-footer"}, 
-                        React.createElement("p", {className: "content-footertext"}, "original post by ", obj.parent_poster, " ", timeToNow(obj.timestamp), " | ", obj.no_of_comments, " comments")
-                    )
-                ));
-            }
-        })
-
-        return (React.createElement("div", {className: "content-top"}, 
-        newsOrComment
-        ));
+        return (
+            React.createElement("div", null, 
+                this.state.data.map(function (item) {
+                    return React.createElement(ContentItem, {data: item})
+                })
+            )
+        ) 
     }
 });
 
-//var ContentItem = React.createClass({
-//    render: function () {
-//        return
-//        return <div className="content-box">
-//            <div className="content-title">
-//                <h3 className="content-maintitle">{obj.title}</h3>
-//                <h4 className="content-secondarytitle">({obj.url})</h4>
-//            </div>
-//            <div className="content-content">
-//                <p className="content-text">{obj.text}</p>
-//            </div>
-//            <div className="content-footer">
-//                <p className="content-footertext">by {obj.by} {timeToNow(obj.timestamp)} | {obj.no_of_comments} comments</p>
-//            </div>
-//        </div>;
-//    }
-//});
+var ContentItem = React.createClass({displayName: "ContentItem",
+    render: function(){
+        if (this.props.data.type === "story") {
+            return (
+                React.createElement("div", {className: "content-box"}, 
+                    React.createElement("div", {className: "content-title"}, 
+                        React.createElement("h3", {className: "content-maintitle"}, this.props.data.title), 
+                        React.createElement("h4", {className: "content-secondarytitle"}, this.props.data.url, ")")
+                    ), 
+                    React.createElement("div", {className: "content-content"}, 
+                        React.createElement("p", {className: "content-text"}, this.props.data.text)
+                    ), 
+                    React.createElement("div", {className: "content-footer"}, 
+                        React.createElement("p", {className: "content-footertext"}, "by ", this.props.data.by, " ", timeToNow(this.props.data.timestamp), " | ", this.props.data.no_of_comments, " comments")
+                    )
+                )
+            );
+        } else {
+            return (
+                React.createElement("div", {className: "content-box"}, 
+                    React.createElement("div", {className: "content-title"}, 
+                        React.createElement("h4", {className: "content-secondarytitle"}, "Comment on "), 
+                        React.createElement("h3", {className: "content-maintitle"}, this.props.data.commenton), 
+                        React.createElement("h4", {className: "content-secondarytitle"}, " by ", this.props.data.by)
+                    ), 
+                    React.createElement("div", {className: "content-content"}, 
+                        React.createElement("p", {className: "content-text"}, this.props.data.text)
+                    ), 
+                    React.createElement("div", {className: "content-footer"}, 
+                        React.createElement("p", {className: "content-footertext"}, "original post by ", this.props.data.parent_poster, " ", timeToNow(this.props.data.timestamp), " | ", this.props.data.no_of_comments, " comments")
+                    )
+                )
+            );
+        }
+    }
+});
 
 
 
