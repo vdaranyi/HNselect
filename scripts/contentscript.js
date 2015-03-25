@@ -72,13 +72,15 @@ function highlightNews() {
                 author: author,
                 commenters: []
             };
-
+/* 
             // Fetch story and commenters
             // storiesOnPage[storiesOnPage.length-1].commenters = fetchItems(storyId, [])
             var counter = 1,
                 totalcount = 1;
             fetchItems(storyId, []);
 
+
+// Old Ajax frontend fetching function
 
             function fetchItems(itemId, commenters) {
                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
@@ -133,9 +135,11 @@ function highlightNews() {
                 //   highlightFollowing(storiesOnPage);
                 // });
             }
-
+*/
         }
     });
+
+
     /*
      // console.log(storiesOnPage);
      var requestObject = {
