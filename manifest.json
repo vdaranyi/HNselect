@@ -29,8 +29,7 @@
       ],
       "css": [
         "styles/main.css",
-        "styles/bootstrap-mod.css",
-        "bower_components/bootstrap/dist/css/bootstrap.css",
+        "styles/bootstrap-mod.css"
       ],
       "js": [
         "bower_components/react/react.js",

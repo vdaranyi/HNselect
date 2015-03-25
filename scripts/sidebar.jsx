@@ -46,7 +46,9 @@ var SidebarBox = React.createClass({
                             <div id="horiz-rule"></div>
                             <NavBar />
                         </div>
+                        <div id="content-holder">
                         <ContentList data={this.props.data} />
+                            </div>
                     </div>
                 </div>
             );
