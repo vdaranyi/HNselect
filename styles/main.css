@@ -54,9 +54,8 @@ html, body, #sidebar-anchor {
 }
 
 #navbar-bar {
-    position: relative;
-    top: -6px;
-    margin: 0px;
+
+    margin: 3px;
 }
 
 #navbar-buttons>ul>li {
@@ -64,12 +63,12 @@ html, body, #sidebar-anchor {
 }
 
 .navbar-button {
-    padding: 0 !important;
     font-size: 0.8em;
     color: #bdbdbd;
 }
 
 .navbar-button-right {
+    padding-right: 4px;
     text-align: right;
 }
 
@@ -83,12 +82,14 @@ html, body, #sidebar-anchor {
 }
 
 #newsfeed {
+    position: relative;
+    left: -3px;
     color: #ff6600;
 }
 
 #notifications {
     position: relative;
-    left: -35px;
+    left: -37px;
 }
 
 #connections {
@@ -166,4 +167,8 @@ html, body, #sidebar-anchor {
 .content-box, .content-content {
     margin-bottom: 4px;
     /*color: #fafafa;*/
+}
+
+#content-holder {
+    padding: 18px;
 }
