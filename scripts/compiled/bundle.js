@@ -263,7 +263,6 @@ chrome.runtime.onMessage.addListener(
 
 var server = 'http://localhost:3000';
 
-
 //==========================================================
 // Sidebar container and slider functionality
 
@@ -294,24 +293,24 @@ var SidebarBox = React.createClass({
     // HTML content to be rendered
 
     render: function () {
-        return (
-            React.createElement("div", {className: "sidebarbox"}, 
-                React.createElement("div", {className: "sidebarbutton"}, 
-                    React.createElement(CloseButton, null)
-                ), 
-                React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
-                    React.createElement("div", {id: "nav-area"}, 
-                        React.createElement("div", {className: "row"}, 
-                            React.createElement(OwnerInfo, null), 
-                            React.createElement(SuggestionArea, null)
-                        ), 
-                        React.createElement(NavBar, null)
+            return ( 
+                React.createElement("div", {className: "sidebarbox"}, 
+                    React.createElement("div", {className: "sidebarbutton"}, 
+                        React.createElement(CloseButton, null)
                     ), 
-                    React.createElement(ContentList, {data: this.props.data})
+                    React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
+                        React.createElement("div", {id: "nav-area"}, 
+                            React.createElement("div", {className: "row"}, 
+                                React.createElement(OwnerInfo, null)
+                            ), 
+                            React.createElement("div", {id: "horiz-rule"}), 
+                            React.createElement(NavBar, null)
+                        ), 
+                        React.createElement(ContentList, {data: this.props.data})
+                    )
                 )
-            )
-        )
-    }
+            );
+        }
 
 });
 
@@ -367,27 +366,32 @@ var CloseButton = React.createClass({displayName: "CloseButton",
 // - # of people following you
 // - # of people you follow
 
+
 var OwnerInfo = React.createClass({displayName: "OwnerInfo",
     render: function () {
-        return React.createElement("div", {id: "owner-box", className: "testborder col-md-6 col-sm-6 col-xs-6"}, 
-            React.createElement("div", {id: "owner-name"}, 
-                React.createElement("h2", {className: "nav-title"}, "glennonymous")
-            ), 
-            React.createElement("div", {id: "owner-stats"}, 
-                React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
-                    React.createElement("div", {className: "owner-stattitle"}, "Karma"), 
-                    React.createElement("div", {className: "owner-statscore"}, "1")
+        return (
+            React.createElement("div", null, 
+                React.createElement("div", {id: "owner-box", className: "col-md-6 col-sm-6 col-xs-6"}, 
+                    React.createElement("div", {id: "owner-name"}, 
+                        React.createElement("h2", {className: "nav-title"}, "glennonymous")
+                    )
                 ), 
-                React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
-                    React.createElement("div", {className: "owner-stattitle"}, "Following"), 
-                    React.createElement("div", {className: "owner-statscore"}, "15")
-                ), 
-                React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
-                    React.createElement("div", {className: "owner-stattitle"}, "Followers"), 
-                    React.createElement("div", {className: "owner-statscore"}, "1")
+                React.createElement("div", {id: "owner-stats", className: "col-md-6 col-sm-6 col-xs-6"}, 
+                    React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
+                        React.createElement("div", {className: "owner-stattitle"}, "karma"), 
+                        React.createElement("div", {className: "owner-statscore"}, "1")
+                    ), 
+                    React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
+                        React.createElement("div", {className: "owner-stattitle"}, "following"), 
+                        React.createElement("div", {className: "owner-statscore"}, "15")
+                    ), 
+                    React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
+                        React.createElement("div", {className: "owner-stattitle"}, "followers"), 
+                        React.createElement("div", {className: "owner-statscore"}, "1")
+                    )
                 )
             )
-        );
+        )
     }
 });
 
@@ -396,24 +400,24 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
 var SuggestionArea = React.createClass({displayName: "SuggestionArea",
     render: function () {
         return React.createElement("div", {id: "suggest-box", className: "col-md-6 col-sm-6 col-xs-6"}, 
-            React.createElement("div", {id: "suggest-title"}, 
-                React.createElement("h2", {className: "nav-title"}, "Who to follow")
+            React.createElement("div", {id: "suggest-title"}
+            /*<h2 className="nav-title">Who to follow</h2>*/
             ), 
-            React.createElement("div", {id: "suggest-tags"}, 
-                React.createElement("ul", null, 
-                    React.createElement("li", null, "joefred"), 
-                " ", 
-                    React.createElement("li", null, "fredbob"), 
-                " ", 
-                    React.createElement("li", null, "aprilmay"), 
-                " ", 
-                    React.createElement("li", null, "june1972"), 
-                " ", 
-                    React.createElement("li", null, "aLincoln"), 
-                " ", 
-                    React.createElement("li", null, "aynRandy"), 
-                " "
-                )
+            React.createElement("div", {id: "suggest-tags"}
+            /*<ul>
+             <li>joefred</li>
+             &nbsp;
+             <li>fredbob</li>
+             &nbsp;
+             <li>aprilmay</li>
+             &nbsp;
+             <li>june1972</li>
+             &nbsp;
+             <li>aLincoln</li>
+             &nbsp;
+             <li>aynRandy</li>
+             &nbsp;
+             </ul>*/
             ), 
             React.createElement(SearchForm, null)
         );
@@ -426,13 +430,13 @@ var SuggestionArea = React.createClass({displayName: "SuggestionArea",
 
 var SearchForm = React.createClass({displayName: "SearchForm",
     render: function () {
-        return React.createElement("div", {id: "search-box"}, 
-            React.createElement("div", {className: "input-group"}, 
-                React.createElement("input", {type: "text", className: "form-control", placeholder: "Search"}), 
-                React.createElement("span", {className: "input-group-btn"}, 
-                    React.createElement("button", {className: "btn btn-default", type: "button"}, "Submit")
-                )
-            )
+        return React.createElement("div", {id: "search-box"}
+        /*<div className="input-group">
+         <input type="text" className="form-control" placeholder="Search" />
+         <span className="input-group-btn">
+         <button className="btn btn-default" type="button">Submit</button>
+         </span>
+         </div>*/
         );
     }
 });
@@ -444,28 +448,34 @@ var SearchForm = React.createClass({displayName: "SearchForm",
 // - Favorites
 // - Settings
 
+// Make tabs fixed-width divs with inactive tab background.
+// Make Newsfeed tab active when sidebar loads.
+
 var NavBar = React.createClass({displayName: "NavBar",
     render: function () {
         return React.createElement("div", {id: "navbar-bar"}, 
-            React.createElement("div", {id: "navbar-buttons"}, 
+            React.createElement("div", {id: "navbar-buttons", className: "row"}, 
                 React.createElement("ul", null, 
                     React.createElement("li", null, 
-                        React.createElement("span", {className: "navbar-button-left", id: "feed"}, "Feed")
+                        React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "newsfeed", active: "true"}, "newsfeed")
                     ), 
                     React.createElement("li", null, 
-                        React.createElement("span", {className: "navbar-button-left", id: "updates"}, "Updates")
+                        React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "notifications"}, "notifications")
                     ), 
                     React.createElement("li", null, 
-                        React.createElement("span", {className: "navbar-button-left", id: "connections"}, "Connections")
+                        React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "connections"}, "connections")
                     ), 
                     React.createElement("li", null, 
-                        React.createElement("span", {className: "navbar-button-right", id: "favorites"}, 
-                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/star_64_black.png", width: "14px"})
+                        React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button"})
+                    ), 
+                    React.createElement("li", null, 
+                        React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "favorites"}, 
+                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/star_64_gray.png", width: "13px"})
                         )
                     ), 
                     React.createElement("li", null, 
-                        React.createElement("span", {className: "navbar--button-right", id: "settings"}, 
-                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/gear_64_black.png", width: "14px"})
+                        React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "settings"}, 
+                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png", width: "13px"})
                         )
                     )
                 )
