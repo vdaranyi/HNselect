@@ -1,6 +1,7 @@
 // Constants
 
-var server = 'http://localhost:3000';
+var server = 'http://hn-select.herokuapp.com';
+var username = 'glennonymous';
 
 //==========================================================
 // Sidebar container and slider functionality
@@ -255,10 +256,10 @@ var ContentList = React.createClass({
         chrome.runtime.sendMessage({
                 method: 'GET',
                 action: 'xhttp',
-                url: server + '/vdaranyi/newsfeed',
+                url: server + '/' + username + '/newsfeed',
                 data: ''
             }, function(response) {
-                if (response) {
+                if (response && response !== 'Not Found') {
                     var newsfeed = JSON.parse(response);
                     self.setState({data: newsfeed});   
                 } else {
