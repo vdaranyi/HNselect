@@ -1,5 +1,4 @@
 // Fake data
-
 var newsFeedPlaceholder = [
     {
         type: "comment",
@@ -137,8 +136,8 @@ var SidebarBox = React.createClass({
                 <div id="nav-area">
                     <div className="row">
                         <OwnerInfo />
-                        <SuggestionArea />
                     </div>
+                    <div id="horiz-rule"></div>
                     <NavBar />
                 </div>
                 <ContentList data={this.props.data} />
@@ -200,27 +199,32 @@ var CloseButton = React.createClass({
 // - # of people following you
 // - # of people you follow
 
+
 var OwnerInfo = React.createClass({
     render: function () {
-        return <div id="owner-box" className="testborder col-md-6 col-sm-6 col-xs-6">
-            <div id="owner-name">
-                <h2 className="nav-title">glennonymous</h2>
+        return (
+            <div>
+                <div id="owner-box" className="col-md-6 col-sm-6 col-xs-6">
+                    <div id="owner-name">
+                        <h2 className="nav-title">glennonymous</h2>
+                    </div>
+                </div>
+                <div id="owner-stats" className="col-md-6 col-sm-6 col-xs-6">
+                    <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
+                        <div className="owner-stattitle">karma</div>
+                        <div className="owner-statscore">1</div>
+                    </div>
+                    <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
+                        <div className="owner-stattitle">following</div>
+                        <div className="owner-statscore">15</div>
+                    </div>
+                    <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
+                        <div className="owner-stattitle">followers</div>
+                        <div className="owner-statscore">1</div>
+                    </div>
+                </div>
             </div>
-            <div id="owner-stats">
-                <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
-                    <div className="owner-stattitle">Karma</div>
-                    <div className="owner-statscore">1</div>
-                </div>
-                <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
-                    <div className="owner-stattitle">Following</div>
-                    <div className="owner-statscore">15</div>
-                </div>
-                <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
-                    <div className="owner-stattitle">Followers</div>
-                    <div className="owner-statscore">1</div>
-                </div>
-            </div>
-        </div>;
+        )
     }
 });
 
@@ -230,23 +234,23 @@ var SuggestionArea = React.createClass({
     render: function () {
         return <div id="suggest-box" className="col-md-6 col-sm-6 col-xs-6">
             <div id="suggest-title">
-                <h2 className="nav-title">Who to follow</h2>
+            {/*<h2 className="nav-title">Who to follow</h2>*/}
             </div>
             <div id="suggest-tags">
-                <ul>
-                    <li>joefred</li>
-                &nbsp;
-                    <li>fredbob</li>
-                &nbsp;
-                    <li>aprilmay</li>
-                &nbsp;
-                    <li>june1972</li>
-                &nbsp;
-                    <li>aLincoln</li>
-                &nbsp;
-                    <li>aynRandy</li>
-                &nbsp;
-                </ul>
+            {/*<ul>
+             <li>joefred</li>
+             &nbsp;
+             <li>fredbob</li>
+             &nbsp;
+             <li>aprilmay</li>
+             &nbsp;
+             <li>june1972</li>
+             &nbsp;
+             <li>aLincoln</li>
+             &nbsp;
+             <li>aynRandy</li>
+             &nbsp;
+             </ul>*/}
             </div>
             <SearchForm />
         </div>;
@@ -260,12 +264,12 @@ var SuggestionArea = React.createClass({
 var SearchForm = React.createClass({
     render: function () {
         return <div id="search-box">
-            <div className="input-group">
-                <input type="text" className="form-control" placeholder="Search" />
-                <span className="input-group-btn">
-                    <button className="btn btn-default" type="button">Submit</button>
-                </span>
-            </div>
+        {/*<div className="input-group">
+         <input type="text" className="form-control" placeholder="Search" />
+         <span className="input-group-btn">
+         <button className="btn btn-default" type="button">Submit</button>
+         </span>
+         </div>*/}
         </div>;
     }
 });
@@ -277,29 +281,35 @@ var SearchForm = React.createClass({
 // - Favorites
 // - Settings
 
+// Make tabs fixed-width divs with inactive tab background.
+// Make Newsfeed tab active when sidebar loads.
+
 var NavBar = React.createClass({
     render: function () {
         return <div id="navbar-bar">
-            <div id="navbar-buttons">
+            <div id="navbar-buttons" class="row">
                 <ul>
                     <li>
-                        <span className="navbar-button-left" id="feed">Feed</span>
+                        <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="newsfeed" active="true">newsfeed</div>
                     </li>
                     <li>
-                        <span className="navbar-button-left" id="updates">Updates</span>
+                        <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="notifications">notifications</div>
                     </li>
                     <li>
-                        <span className="navbar-button-left" id="connections">Connections</span>
+                        <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="connections">connections</div>
                     </li>
                     <li>
-                        <span className="navbar-button-right" id="favorites">
-                            <img src="https://s3.amazonaws.com/gdcreative-general/star_64_black.png" width="14px" />
-                        </span>
+                        <div className="col-md-1 col-sm-1 col-xs-1 navbar-button" />
                     </li>
                     <li>
-                        <span className="navbar--button-right" id="settings">
-                            <img src="https://s3.amazonaws.com/gdcreative-general/gear_64_black.png" width="14px" />
-                        </span>
+                        <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="favorites">
+                            <img src="https://s3.amazonaws.com/gdcreative-general/star_64_gray.png" width="13px" />
+                        </div>
+                    </li>
+                    <li>
+                        <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="settings">
+                            <img src="https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png" width="13px" />
+                        </div>
                     </li>
                 </ul>
             </div>

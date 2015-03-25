@@ -2,12 +2,6 @@ html, body, #sidebar-anchor {
     height: 100%;
 }
 
-.nav-title {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #000000;
-}
-
 .sidebarbox {
     position: fixed;
     top: 0px;
@@ -31,11 +25,12 @@ html, body, #sidebar-anchor {
     padding: 0%;
     top: 0px;
     z-index: 1;
+    /*opacity: 0.8;*/
     display: inline;
     width: 470px !important;
     height: 100% !important;
-    background: #ffffff;
-    box-shadow: -2px 0px 3px #C0C0C0;
+    background: #fafafa;
+    box-shadow: -4px 0px 4px rgba(70,40,10,0.5);
     /* Get rid of the shadow when the sidebar is collapsed */
     transition: box-shadow 0.5s ease-out;
 }
@@ -44,9 +39,61 @@ html, body, #sidebar-anchor {
     cursor: pointer;
 }
 
+/* Nav */
 #nav-area {
-    padding: 0px 18px;
-    background: rgba(207,207,207,0.3);
+    padding: 6px 18px;
+    height: 90px;
+    /*color: #ffffff;*/
+}
+
+.nav-title {
+    margin-top: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+#navbar-bar {
+    position: relative;
+    top: -6px;
+    margin: 0px;
+}
+
+#navbar-buttons>ul>li {
+    list-style: none;;
+}
+
+.navbar-button {
+    padding: 0 !important;
+    font-size: 0.8em;
+    color: #bdbdbd;
+}
+
+.navbar-button-right {
+    text-align: right;
+}
+
+.navbar-button:hover {
+    color: #000000;
+    cursor: pointer;
+}
+
+.navbar-button:active {
+    color: #ff6600;
+}
+
+#newsfeed {
+    color: #ff6600;
+}
+
+#notifications {
+    position: relative;
+    left: -35px;
+}
+
+#connections {
+    position: relative;
+    left: -54px;
 }
 
 .owner-stat, #suggest-tags {
@@ -58,6 +105,20 @@ html, body, #sidebar-anchor {
     text-align: center;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+.owner-stattitle {
+    font-size: 0.8em;
+}
+
+.owner-statscore {
+    font-weight: bold;
+    color: #000000;
+}
+
+#horiz-rule {
+    margin-top: 6px;
+    border-bottom: solid 1px rgba(0,0,0,0.2);
 }
 
 #suggest-tags>ul, #navbar-buttons>ul {
@@ -75,16 +136,7 @@ html, body, #sidebar-anchor {
     line-height: 1.5em;
 }
 
-#navbar-bar {
-    padding: 5px 0px 1px 0px;
-}
-
-#navbar-buttons>ul>li {
-    list-style: none;
-    display: inline-block;
-    padding: 0em 1.5em;
-
-}
+/* End nav */
 
 .content-top {
     padding: 18px;
@@ -92,8 +144,8 @@ html, body, #sidebar-anchor {
 
 .content-maintitle {
     display: inline;
-    color: #000000;
-    font-size: 1em;
+    /*color: #fafafa;*/
+    font-size: 0.9em;
 }
 
 .content-secondarytitle {
@@ -104,7 +156,7 @@ html, body, #sidebar-anchor {
 .content-text {
     font-size: 0.9em;
     margin: 0px !important;
-    color: #000000;
+    /*color: #fafafa;*/
 }
 
 .content-footertext {
@@ -113,4 +165,5 @@ html, body, #sidebar-anchor {
 
 .content-box, .content-content {
     margin-bottom: 4px;
+    /*color: #fafafa;*/
 }
