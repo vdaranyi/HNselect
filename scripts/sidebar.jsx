@@ -1,6 +1,6 @@
 // Constants
 
-var server = 'http://hn-select.herokuapp.com';
+var server = 'http://localhost:3000';
 var username = 'glennonymous';
 
 //==========================================================
@@ -238,12 +238,64 @@ var NavBar = React.createClass({
 
 var timeToNow = function (timestamp) {
     var now = Date()
-    console.log(now)
+    //console.log(now)
     var since = now - timestamp
     if (since < 3600000) return Math.floor(since / 60000) + " minutes ago";
     else return Math.floor(since / 360000) + "hours ago";
 }
 
+var newsfeed,
+    initialLoadHasTakenPlace = false,
+    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem'),
+    fakeNewsFeed = {
+        by: "whybroke",
+        id: 9272626,
+        kids: [
+            9272895
+        ],
+        parent: 9272193,
+        text: "&gt;Edit: On why skepticism is important, its because propaganda is everywhere. kooks.",
+            time: 1427399926,
+    type: "comment"
+}
+
+var followingList = ["peterhunt","espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
+
+function iterateOverItems(start, end, following) {
+    console.log("iterating:", start, end, following)
+    var newsArray = [];
+    for (var i=end; i>start; i--) {
+        for (var j in following) {
+            //console.log("doing something")
+            newsArray.push(fetchItems(i, following[j]));
+        }
+    }
+    //if (newsArray.length !== 0 && followingList.indexOf(newsArray[0].by) !== -1) followingList.push(newsArray[0].by);
+    //console.log("newsArray:" newsArray);
+    return newsArray;
+}
+
+//var counter = 0;
+
+function fetchItems(itemId) {
+    var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
+    var filteredArticles = [];
+    //console.log(commenters);
+
+    $.get(itemUrl)
+        .then(function (response) {
+            return response;
+
+            console.log("This is the response: ", response)
+        //    if (typeof response === 'object') {
+        //        //var commenter = response.by;
+        //        //
+        //        //if (commenters.indexOf(commenter) !== -1) {
+        //        //}
+        //    }
+        })
+
+}
 
 var ContentList = React.createClass({
 
@@ -253,21 +305,67 @@ var ContentList = React.createClass({
         }
     },
 
-    componentDidMount: function() {
+    initialArticleLoad: function() {
         var self = this;
-        chrome.runtime.sendMessage({
+
+        if (!initialLoadHasTakenPlace) {
+            chrome.runtime.sendMessage({
                 method: 'GET',
-                action: 'xhttp',
-                url: server + '/' + username + '/newsfeed',
+                action: 'ajax',
+                url: server + '/user/' + username + '/newsfeed',
                 data: ''
-            }, function(response) {
+            }, function (response) {
                 if (response && response !== 'Not Found') {
-                    var newsfeed = JSON.parse(response);
-                    self.setState({data: newsfeed});   
+                    //console.log(response);
+                    newsfeed = response;
+                    //console.log(newsfeed)
+                    self.setState({data: newsfeed});
                 } else {
-                    self.setState({ data: null });
+                    self.setState({data: null});
                 }
-        })  
+            })
+            initialLoadHasTakenPlace = true;
+        }
+    },
+
+    articleUpdate: function() {
+        var self = this;
+        maxItemFb.on('value', function(snapshot) {
+            setTimeout(function() {
+
+
+                var newNewsfeed = [];
+                var snap = snapshot.val();
+                var maxItem = snap;
+                var lastItemFetched = snap - 5;
+                var currentItemNo = lastItemFetched + 1;
+                console.log('max item: ', snap);
+                //lastItemFetched = maxItem;
+                //newNewsfeed = iterateOverItems(currentItemNo,maxItem,followingList);
+                var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + snap + '.json?print=pretty';
+                $.get(itemUrl)
+                    .then(function (response) {
+                        console.log("This is the response: ", response)
+                        newNewsfeed.push(response);
+                        newsfeed = newNewsfeed.concat(newsfeed)
+                        self.setState({data: newsfeed});
+                        //    if (typeof response === 'object') {
+                        //        //var commenter = response.by;
+                        //        //
+                        //        //if (commenters.indexOf(commenter) !== -1) {
+                        //        //}
+                        //    }
+                    })
+                //console.log(maxItem);
+
+                //console.log("news", newsfeed);
+            }, 10000);
+        })
+    },
+
+    componentDidMount: function() {
+        this.initialArticleLoad();
+        this.articleUpdate();
     },
 
     render: function () {
