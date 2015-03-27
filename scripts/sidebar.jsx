@@ -31,31 +31,54 @@ var SidebarBox = React.createClass({
 
     },
 
+    getInitialState: function(){
+        return {content: 'ContentItem'};
+    },
+
+    changePage: function(component){
+        return this.setState({content: component})
+    },
+
     // HTML content to be rendered
 
     render: function () {
-            return ( 
-                <div className="sidebarbox">
-                    <div className="sidebarbutton">
-                        <CloseButton />
-                    </div>
-                    <div id="sidebarcontentarea"  className="container-fluid">
-                        <div id="nav-area">
-                            <div className="row">
-                                <OwnerInfo />
-                            </div>
-                            <div id="horiz-rule" />
-                            <NavBar />
-                        </div>
-                        <div id="feed-holder">
-                            <ContentList data={this.props.data} />
-                        </div>
-                    </div>
+        return (
+            <div className="sidebarbox">
+                <div className="sidebarbutton">
+                    <CloseButton />
                 </div>
-            );
-        }
+                <div id="sidebarcontentarea"  className="container-fluid">
+                    <div id="nav-area">
+                        <div className="row">
+                            <OwnerInfo />
+                        </div>
+                        <div id="horiz-rule"></div>
+                        <NavBar />
+                    </div>
+                    <div id="content-holder">
+                    <ContentList data={this.props.data} />
+                        </div>
+                </div>
+            </div>
+        );
+    }
 
 });
+
+//<ContentHolder content={this.props.content} />
+
+
+
+//var ContentHolder = React.createClass ({
+//
+//    render: function(){
+//        <div id="content-holder">
+//            React.createComponent({this.props.content});
+//        </div>
+//    }
+//})
+
+
 
 var drawerIsClosed = false;
 
@@ -200,13 +223,13 @@ var NavBar = React.createClass({
             <div id="navbar-buttons" className="row">
                 <ul>
                     <li>
-                        <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="newsfeed" active="true">newsfeed</div>
+                        <NavButton buttonName="newsfeed" buttonTarget="ContentItem" active="true" />
                     </li>
                     <li>
-                        <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="notifications">notifications</div>
+                        <NavButton buttonName="notifications" buttonTarget="Notifications" />
                     </li>
                     <li>
-                        <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="connections">connections</div>
+                        <NavButton buttonName="connections" buttonTarget="Connections" />
                     </li>
                     <li>
                         <div className="col-md-1 col-sm-1 col-xs-1 navbar-button" />
@@ -226,6 +249,19 @@ var NavBar = React.createClass({
         </div>;
     }
 });
+
+var NavButton = React.createClass ({
+
+    switchContent: function () {
+        return this.props.changePage(this.props.buttonTarget);
+    },
+
+    render: function (){
+        return (
+            <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="{this.props.buttonName}" active="true" onClick={this.switchContent}>{this.props.buttonName}</div>
+        )
+    }
+})
 
 
 // Item (contentarea)
@@ -415,6 +451,18 @@ var ContentItem = React.createClass({
         }
     }
 });
+
+var Notifications = React.createClass({
+    render: function () {
+        return <div>Notifications</div>;
+    }
+})
+
+var Connections = React.createClass({
+    render: function () {
+        return <div>Connections</div>
+    }
+})
 
 
 

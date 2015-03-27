@@ -220,31 +220,54 @@ var SidebarBox = React.createClass({
 
     },
 
+    getInitialState: function(){
+        return {content: 'ContentItem'};
+    },
+
+    changePage: function(component){
+        return this.setState({content: component})
+    },
+
     // HTML content to be rendered
 
     render: function () {
-            return ( 
-                React.createElement("div", {className: "sidebarbox"}, 
-                    React.createElement("div", {className: "sidebarbutton"}, 
-                        React.createElement(CloseButton, null)
-                    ), 
-                    React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
-                        React.createElement("div", {id: "nav-area"}, 
-                            React.createElement("div", {className: "row"}, 
-                                React.createElement(OwnerInfo, null)
-                            ), 
-                            React.createElement("div", {id: "horiz-rule"}), 
-                            React.createElement(NavBar, null)
+        return (
+            React.createElement("div", {className: "sidebarbox"}, 
+                React.createElement("div", {className: "sidebarbutton"}, 
+                    React.createElement(CloseButton, null)
+                ), 
+                React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
+                    React.createElement("div", {id: "nav-area"}, 
+                        React.createElement("div", {className: "row"}, 
+                            React.createElement(OwnerInfo, null)
                         ), 
-                        React.createElement("div", {id: "feed-holder"}, 
-                            React.createElement(ContentList, {data: this.props.data})
+                        React.createElement("div", {id: "horiz-rule"}), 
+                        React.createElement(NavBar, null)
+                    ), 
+                    React.createElement("div", {id: "content-holder"}, 
+                    React.createElement(ContentList, {data: this.props.data})
                         )
-                    )
                 )
-            );
-        }
+            )
+        );
+    }
 
 });
+
+//<ContentHolder content={this.props.content} />
+
+
+
+//var ContentHolder = React.createClass ({
+//
+//    render: function(){
+//        <div id="content-holder">
+//            React.createComponent({this.props.content});
+//        </div>
+//    }
+//})
+
+
 
 var drawerIsClosed = false;
 
@@ -389,13 +412,13 @@ var NavBar = React.createClass({displayName: "NavBar",
             React.createElement("div", {id: "navbar-buttons", className: "row"}, 
                 React.createElement("ul", null, 
                     React.createElement("li", null, 
-                        React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "newsfeed", active: "true"}, "newsfeed")
+                        React.createElement(NavButton, {buttonName: "newsfeed", buttonTarget: "ContentItem", active: "true"})
                     ), 
                     React.createElement("li", null, 
-                        React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "notifications"}, "notifications")
+                        React.createElement(NavButton, {buttonName: "notifications", buttonTarget: "Notifications"})
                     ), 
                     React.createElement("li", null, 
-                        React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "connections"}, "connections")
+                        React.createElement(NavButton, {buttonName: "connections", buttonTarget: "Connections"})
                     ), 
                     React.createElement("li", null, 
                         React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button"})
@@ -415,6 +438,19 @@ var NavBar = React.createClass({displayName: "NavBar",
         );
     }
 });
+
+var NavButton = React.createClass ({displayName: "NavButton",
+
+    switchContent: function () {
+        return this.props.changePage(this.props.buttonTarget);
+    },
+
+    render: function (){
+        return (
+            React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "{this.props.buttonName}", active: "true", onClick: this.switchContent}, this.props.buttonName)
+        )
+    }
+})
 
 
 // Item (contentarea)
@@ -604,6 +640,18 @@ var ContentItem = React.createClass({displayName: "ContentItem",
         }
     }
 });
+
+var Notifications = React.createClass({displayName: "Notifications",
+    render: function () {
+        return React.createElement("div", null, "Notifications");
+    }
+})
+
+var Connections = React.createClass({displayName: "Connections",
+    render: function () {
+        return React.createElement("div", null, "Connections")
+    }
+})
 
 
 
