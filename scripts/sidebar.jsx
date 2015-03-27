@@ -1,6 +1,6 @@
 // Constants
 
-var server = 'http://hn-select.herokuapp.com';
+var server = 'http://localhost:3000';
 var username = 'glennonymous';
 
 //==========================================================
@@ -311,12 +311,13 @@ var ContentList = React.createClass({
         if (!initialLoadHasTakenPlace) {
             chrome.runtime.sendMessage({
                 method: 'GET',
-                action: 'xhttp',
-                url: server + '/' + username + '/newsfeed',
+                action: 'ajax',
+                url: server + '/user/' + username + '/newsfeed',
                 data: ''
             }, function (response) {
                 if (response && response !== 'Not Found') {
-                    newsfeed = JSON.parse(response);
+                    //console.log(response);
+                    newsfeed = response;
                     //console.log(newsfeed)
                     self.setState({data: newsfeed});
                 } else {
