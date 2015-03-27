@@ -1,7 +1,8 @@
 // Constants
 
-var server = 'http://localhost:3000';
+var server = 'http://hn-select.herokuapp.com';
 var username = 'glennonymous';
+var hnUrl = "https://news.ycombinator.com";
 
 //==========================================================
 // Sidebar container and slider functionality
@@ -43,12 +44,12 @@ var SidebarBox = React.createClass({
                             <div className="row">
                                 <OwnerInfo />
                             </div>
-                            <div id="horiz-rule"></div>
+                            <div id="horiz-rule" />
                             <NavBar />
                         </div>
-                        <div id="content-holder">
-                        <ContentList data={this.props.data} />
-                            </div>
+                        <div id="feed-holder">
+                            <ContentList data={this.props.data} />
+                        </div>
                     </div>
                 </div>
             );
@@ -378,7 +379,7 @@ var ContentList = React.createClass({
                 </div>
             ) 
         } else {
-            return <h6 className="content-maintitle">Could not retrieve data from server</h6>;
+            return <h6 className="feed-title">Could not retrieve data from server</h6>;
         } 
     }
 });
@@ -388,38 +389,33 @@ var ContentItem = React.createClass({
     render: function(){
         if (this.props.data.type === "story") {
             return (
-                <div className="content-box">
-                    <div className="content-title">
-                        <h3 className="content-maintitle">{this.props.data.title}</h3>
-                        <h4 className="content-secondarytitle">{this.props.data.url})</h4>
+                <div className="feed-box">
+                    <div className="feed-titlebox">
+                        <a href={this.props.data.storyurl} target="_blank"><h4 className="feed-title">{this.props.data.storytitle}</h4></a>
+                        <p className="feed-context"><a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} | <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a></p>
                     </div>
-                    <div className="content-content">
-                        <p className="content-text">{this.props.data.text}</p>
-                    </div>
-                    <div className="content-footer">
-                        <p className="content-footertext">by {this.props.data.by} {timeToNow(this.props.data.timestamp)} | {this.props.data.no_of_comments} comments</p>
+                    <div className="feed-content">
+                        <p className="feed-text">ARTICLE CONTENT</p>
                     </div>
                 </div>
-            );
-        } else {
+            )
+        } else if (this.props.data.type === "comment") {
             return (
-                <div className="content-box">
-                    <div className="content-title">
-                        <h4 className="content-secondarytitle">Comment on </h4>
-                        <h3 className="content-maintitle">{this.props.data.commenton}</h3>
-                        <h4 className="content-secondarytitle"> by {this.props.data.by}</h4>
+                <div className="feed-box">
+                    <div className="feed-titlebox">
+                        <a href={this.props.data.storyurl} target="_blank"><h4 className="feed-title">{this.props.data.storytitle}</h4></a>
+                        <p className="feed-context"><a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} | <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a></p>
                     </div>
-                    <div className="content-content">
-                        <p className="content-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
-                    </div>
-                    <div className="content-footer">
-                        <p className="content-footertext">original post by {this.props.data.parent_poster} {timeToNow(this.props.data.timestamp)} | {this.props.data.no_of_comments} comments</p>
+                    <div className="feed-content">
+                        <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> 
+                        <p className="feed-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
                     </div>
                 </div>
-            );
+            )
         }
     }
 });
+
 
 
 

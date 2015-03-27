@@ -68,13 +68,14 @@ chrome.runtime.onMessage.addListener(
 
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
 console.log('pageHighlighting');
-var server = 'http://localhost:3000';
+var server = 'http://hn-select.herokuapp.com';
 var hnOrange = '#ff6600',
+    hnGrey = '#828282',
     commentsBgColor = hnOrange,
     commentsTitleColor = hnOrange,
     authorColor = hnOrange,
     commentersTextColor = "#ffffff",
-    commentersBgColor = hnOrange,
+    commentersBgColor = hnGrey,
     bgGrey = "#f7f7f1";
 
 
@@ -137,23 +138,31 @@ function highlightStories(stories, highlightData) {
             console.log(s);
             if (highlightData[s].author.length) {
                 stories[s].$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
-                stories[s].$author.css({color: authorColor, 'font-weight': 'bold'});
-            }
+                commenterStyling(stories[s].$author, 'story');
+            }   
             if (highlightData[s].commenters.length) {
                 var commenters = highlightData[s].commenters;
                 for (var c = 0; c < commenters.length; c++) {
                     var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
-                    console.log(commentersElement);
-                    var $commentersElement = $(commentersElement).css({
-                        color: commentersTextColor,
-                        'font-weight': 'bold',
-                        'background-color': commentersBgColor
-                    })
-                    var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($commentersElement);
-                    console.log(stories);
-                    stories[s].$author.nextAll().eq(1).after($toInsert);
+                    console.log(commentersElement, 'comment');
+                    var $commentersElement = commenterStyling($(commentersElement));
+                    stories[s].$author.nextAll().eq(1).after($commentersElement);
                 }
             }   
+        }
+    }
+
+    function commenterStyling($authorDomElem, type) {
+        $authorDomElem.css({
+            color: commentersTextColor,
+            'font-weight': 'bold',
+            'background-color': commentersBgColor
+        });
+        if (type === 'story') {
+            $authorDomElem.prepend("<span>&nbsp</span>").append("<span>&nbsp</span>");
+        } else {
+            var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($authorDomElem);
+            return $toInsert;
         }
     }
 }
@@ -180,8 +189,9 @@ function highlightComments() {
 },{}],3:[function(require,module,exports){
 // Constants
 
-var server = 'http://localhost:3000';
+var server = 'http://hn-select.herokuapp.com';
 var username = 'glennonymous';
+var hnUrl = "https://news.ycombinator.com";
 
 //==========================================================
 // Sidebar container and slider functionality
@@ -226,9 +236,9 @@ var SidebarBox = React.createClass({
                             React.createElement("div", {id: "horiz-rule"}), 
                             React.createElement(NavBar, null)
                         ), 
-                        React.createElement("div", {id: "content-holder"}, 
-                        React.createElement(ContentList, {data: this.props.data})
-                            )
+                        React.createElement("div", {id: "feed-holder"}, 
+                            React.createElement(ContentList, {data: this.props.data})
+                        )
                     )
                 )
             );
@@ -558,7 +568,7 @@ var ContentList = React.createClass({displayName: "ContentList",
                 )
             ) 
         } else {
-            return React.createElement("h6", {className: "content-maintitle"}, "Could not retrieve data from server");
+            return React.createElement("h6", {className: "feed-title"}, "Could not retrieve data from server");
         } 
     }
 });
@@ -568,38 +578,33 @@ var ContentItem = React.createClass({displayName: "ContentItem",
     render: function(){
         if (this.props.data.type === "story") {
             return (
-                React.createElement("div", {className: "content-box"}, 
-                    React.createElement("div", {className: "content-title"}, 
-                        React.createElement("h3", {className: "content-maintitle"}, this.props.data.title), 
-                        React.createElement("h4", {className: "content-secondarytitle"}, this.props.data.url, ")")
+                React.createElement("div", {className: "feed-box"}, 
+                    React.createElement("div", {className: "feed-titlebox"}, 
+                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)), 
+                        React.createElement("p", {className: "feed-context"}, React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " | ", React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments"))
                     ), 
-                    React.createElement("div", {className: "content-content"}, 
-                        React.createElement("p", {className: "content-text"}, this.props.data.text)
-                    ), 
-                    React.createElement("div", {className: "content-footer"}, 
-                        React.createElement("p", {className: "content-footertext"}, "by ", this.props.data.by, " ", timeToNow(this.props.data.timestamp), " | ", this.props.data.no_of_comments, " comments")
+                    React.createElement("div", {className: "feed-content"}, 
+                        React.createElement("p", {className: "feed-text"}, "ARTICLE CONTENT")
                     )
                 )
-            );
-        } else {
+            )
+        } else if (this.props.data.type === "comment") {
             return (
-                React.createElement("div", {className: "content-box"}, 
-                    React.createElement("div", {className: "content-title"}, 
-                        React.createElement("h4", {className: "content-secondarytitle"}, "Comment on "), 
-                        React.createElement("h3", {className: "content-maintitle"}, this.props.data.commenton), 
-                        React.createElement("h4", {className: "content-secondarytitle"}, " by ", this.props.data.by)
+                React.createElement("div", {className: "feed-box"}, 
+                    React.createElement("div", {className: "feed-titlebox"}, 
+                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)), 
+                        React.createElement("p", {className: "feed-context"}, React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " | ", React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments"))
                     ), 
-                    React.createElement("div", {className: "content-content"}, 
-                        React.createElement("p", {className: "content-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
-                    ), 
-                    React.createElement("div", {className: "content-footer"}, 
-                        React.createElement("p", {className: "content-footertext"}, "original post by ", this.props.data.parent_poster, " ", timeToNow(this.props.data.timestamp), " | ", this.props.data.no_of_comments, " comments")
+                    React.createElement("div", {className: "feed-content"}, 
+                        React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), 
+                        React.createElement("p", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
                     )
                 )
-            );
+            )
         }
     }
 });
+
 
 
 

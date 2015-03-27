@@ -139,61 +139,64 @@ html, body, #sidebar-anchor {
 
 /* End nav */
 
-.content-top {
+.feed-top {
     padding: 18px;
 }
 
-.content-maintitle {
+.feed-title {
     display: inline;
     /*color: #fafafa;*/
     font-size: 0.9em;
 }
 
-.content-secondarytitle {
-    display: inline;
+.feed-context {
     font-size: 0.9em;
 }
 
-.content-content {
+.feed-content {
     max-lines: 3 !important;
 }
 
-.content-text {
+.feed-text {
     /*font-size: 0.8em;*/
     margin: 0px !important;
     /*color: #fafafa;*/
 }
 
-.content-footertext {
+.feed-footertext {
     font-size: 0.9em;
 }
 
-.content-box {
-    margin-bottom: 8px;
-    padding: 12px;
+.feed-box {
+    margin: 8px 12px;
+    padding: 6px;
     background: #ffffff;
-    border: solid 1px rgb(180,180,180);
+    border: solid 1px rgb(220,220,220);
     border-radius: 2px;
     /*color: #fafafa;*/
 }
 
-.content-box > h3, .content-box > h4 {
+.feed-box > h3, .feed-box > h4 {
     font-weight: bold;
 }
 
-#content-holder {
-    padding: 18px;
+#feed-holder {
+    
     overflow-y: scroll;
     height: 100%;
 }
 
-.content-content > p, .content-text > p {
+.feed-content > p, .feed-text > p {
     /*font-size: 0.8em;*/
     margin: 0px !important;
     font-size: 0.9em !important;
 }
 
-.content-title {
+.feed-titlebox {
     color: rgb(30,30,30) !important;
     font-weight: bold !important;
+}
+
+.feed-author {
+
 }
