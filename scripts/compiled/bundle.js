@@ -1,17 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
-var sidebar = require('./sidebar.jsx')
+require('./sidebar.jsx');
+require('./pageHighlighting.js');
 
-// NOTE TO VINCENT: Browserify allows us to modularize files the same way we do with
-// Node, by writing "require" lines like the one above. From here on out I will be
-// following that practice. Eventually this document will probably have no content
-// except require lines because everything will be in modules.
-// ALSO NOTE: You must run gulp while making changes to front-end files, and make sure
-// 'buildJS' runs by making and saving a change. Otherwise you might think your
-// changes have been made, but they will not.
-
-// -->ISSUE: After several seconds we get an uncaught typeError on line 93, "Cannot read property 'by' of null".
-// After we get this error, highlighting stops.
+// FILE TO BE CLEANED UP
 
 // Constants
 var hnOrange = '#ff6600',
@@ -22,202 +14,22 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnOrange,
     bgGrey = "#f7f7f1",
     following = [],
-// following = ['quicksilver03', 'apertoire', 'Vigier', 'peterkrieg', 'nkurz', 'gkoberger', 'txu',
-// 'technomancy', 'scott_s', 'AustinBGibbons', 'ynniv', 'kifler' ],
     getCommentersRoute = 'https://localhost:3000/getCommenters';
 // getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
 
 
 // Selecting highlighting method depending on view
-var tabUrl = window.location.href;
-var tabQuery = window.location.search;
-if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1) {
-    console.log(' > Highlighting comments');
-    highlightComments();
-} else {
-    console.log(' > Highlighting stories');
-    highlightNews();
-}
+// var tabUrl = window.location.href;
+// var tabQuery = window.location.search;
+// if (tabQuery.indexOf('?id=') > -1 || tabUrl.indexOf('newcomments') > -1) {
+//     console.log(' > Highlighting comments');
+//     // highlightComments();
+// } else {
+//     console.log(' > Highlighting stories');
+//     // highlightNews();
+// }
 
 var user, following;
-
-
-function highlightNews() {
-    var storiesOnPage = [],
-        storyIdsOnPage = [];
-    // user;
-    $('a[href^="user?id"]').each(function (index) {
-        if (index === 0) {
-            user = $(this).text();
-        } else {
-            var story = {};
-            // console.log('index', index);
-            var $author = $(this);
-            var author = $author.text();
-            var $storyTitle = $author.parents('tr:first').prev('tr').find('a[href^="http"]');
-            var storyId = $author.next('a[href^="item?id"]').attr('href').replace('item?id=', '');
-
-            // Put all stories on page into array for subsequent comment following analysis
-            // storiesOnPage.push({
-            //   storyId: storyId,
-            //   $storyTitle: $storyTitle,
-            //   $author: $author,
-            //   author: author,
-            //   commenters: []
-            // });
-            // storyIdsOnPage.push(storyId); // ONLY NEEDED FOR SERVER REQUEST
-            story = {
-                storyId: storyId,
-                $storyTitle: $storyTitle,
-                $author: $author,
-                author: author,
-                commenters: []
-            };
-/* 
-            // Fetch story and commenters
-            // storiesOnPage[storiesOnPage.length-1].commenters = fetchItems(storyId, [])
-            var counter = 1,
-                totalcount = 1;
-            fetchItems(storyId, []);
-
-
-// Old Ajax frontend fetching function
-
-            function fetchItems(itemId, commenters) {
-                var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
-                // console.log(commenters);
-
-
-                // console.log(counter);
-                $.get(itemUrl)
-                    .then(function (response) {
-                        counter--;
-                        // Iterating over the comments recursively
-                        if (typeof response === 'object') {
-                            // Add commenter
-                            var commenter = response.by;
-                            // console.log(commenter);
-                            if (commenters.indexOf(commenter) === -1 && following.indexOf(commenter) > -1) {
-                                commenters.push(commenter);
-                                // NEED TO INCLUDE CHECK WHETHER TO REMOVE STORY AUTHOR
-                            }
-                            if (response.kids) {
-                                // console.log(response.kids);
-                                var children = response.kids;
-                                counter += children.length;
-                                totalcount += children.length;
-                                children.forEach(function (childId, index) {
-                                    // console.log(childId, index);
-                                    // console.log();
-                                    fetchItems(childId, commenters);
-                                    // return commenters;
-                                });
-
-                            }
-                        }
-
-                        if (counter === 0) {
-
-                            // Remove author
-                            var authorIndex = commenters.indexOf(author)
-                            if (authorIndex > -1) {
-                                commenters.splice(authorIndex, 1);
-                                // console.log('*** AUTHOR REMOVED');
-                            }
-                            // console.log('DONE', totalcount, counter, commenters);
-                            // Adding commenters to story object
-                            story.commenters = commenters;
-                            // Highlight
-                            highlightFollowing(story);
-                        }
-                    })
-                // .then(function(response){
-                //   console.log('FINAL',commenters);
-                //   highlightFollowing(storiesOnPage);
-                // });
-            }
-*/
-        }
-    });
-
-
-    /*
-     // console.log(storiesOnPage);
-     var requestObject = {
-     user: user,
-     storyIdsOnPage: storyIdsOnPage
-     };
-     // $.post(getCommentersRoute, requestObject)
-     //   .then(function(response) {
-     // TESTING backend functionality
-     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-     var returnedObject = {};
-     for (var s = 0; s < storiesOnPage.length; s++) {
-     var storyId = storiesOnPage[s].storyId;
-     returnedObject[storyId] = ['jseliger','annbabe','mathouc'];
-     }
-     var response = {};
-     response.data = returnedObject;
-     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-     var commentersFollowing = response.data // needs to be an object with key:value pairs storyId:[following by]
-     for (var i = 0; i < storiesOnPage.length; i++) {
-     // Check whether commentersFollowing includes storyId, i.e. whether people I am following commented
-     if (commentersFollowing[storiesOnPage[i].storyId]) {
-     var storyCommenters = commentersFollowing[storiesOnPage[i].storyId]
-     // Select commenters I am following
-
-     for (var c = 0; c < storyCommenters.length; c++) {
-     if (storyCommenters[c].indexOf(following) > -1) {
-     storiesOnPage[i].commenters.push(storyCommenters[c]);
-     }
-     }
-     // Add commenters
-     storiesOnPage[i].commenters = storyCommenters;
-     }
-     }
-     // Manipulate DOM with highlights
-     highlightFollowing(storiesOnPage);
-     // });
-     */
-    function highlightFollowing(story) {
-        // for (var s = 0; s < storiesOnPage.length; s++) {
-        //   var story = storiesOnPage[s];
-        // Highlight authors
-        if (following.indexOf(story.author) > -1) {
-            story.$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
-            story.$author.css({color: authorColor, 'font-weight': 'bold'});
-        }
-        // Add commenters
-        if (story.commenters) {
-            var commenters = story.commenters;
-            for (var c = 0; c < commenters.length; c++) {
-                var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
-                var $commentersElement = $(commentersElement).css({
-                    color: commentersTextColor,
-                    'font-weight': 'bold',
-                    'background-color': commentersBgColor
-                })
-                var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($commentersElement);
-                story.$author.nextAll().eq(1).after($toInsert);
-            }
-        }
-    }
-
-    // }
-
-}
-
-
-function highlightComments() {
-    $('a[href^="user?id"]').each(function (index) {
-        var author = $(this).text();
-        if (following.indexOf(author) > -1) {
-            $(this).parents('td:first').css({'background-color': commentsBgColor});
-            $(this).css({'color': commentersTextColor, 'font-weight': 'bold'});
-            $(this).nextAll().css({'color': commentersTextColor});
-        }
-    });
-}
 
 //remove duplication of getting user
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
@@ -248,20 +60,125 @@ chrome.runtime.onMessage.addListener(
     });
 
 
-// chrome.runtime.sendMessage({type: "getFollowing", user: user}, function(response) {
-//   console.log(response);
-//   following = response;
-
-// });
 
 
 
 
+},{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
+console.log('pageHighlighting');
+var server = 'http://localhost:3000';
+var hnOrange = '#ff6600',
+    commentsBgColor = hnOrange,
+    commentsTitleColor = hnOrange,
+    authorColor = hnOrange,
+    commentersTextColor = "#ffffff",
+    commentersBgColor = hnOrange,
+    bgGrey = "#f7f7f1";
 
-},{"./sidebar.jsx":2}],2:[function(require,module,exports){
+
+parseHnPage();
+
+function parseHnPage() {
+    var storiesOnPage = {},
+        storyIdsOnPage = [],
+        highlightData;
+    // REFACTOR to get the user
+    $('a[href^="user?id"]').each(function (index) {
+        if (index === 0) {
+            user = $(this).text();
+        } else {
+            var story = {};
+            // console.log('index', index);
+            var $author = $(this);
+            var author = $author.text();
+            var $storyTitle = $author.parents('tr:first').prev('tr').find('a[href^="http"]');
+            var storyId = $author.next('a[href^="item?id"]').attr('href').replace('item?id=', '');
+
+            // Put all stories on page into array for subsequent comment following analysis
+            storiesOnPage[storyId] = {
+              storyId: storyId,
+              $storyTitle: $storyTitle,
+              $author: $author,
+              author: author
+            };
+            storyIdsOnPage.push(Number(storyId));
+        }
+    });
+    // var storyIdsReqObject = {storyIds: storyIdsOnPage};
+    fetchHighlight(user, storiesOnPage, storyIdsOnPage);
+} 
+
+function fetchHighlight(username, storiesOnPage, storyIdsOnPage) {
+   // Get highlight data from server
+    console.log(storyIdsOnPage);
+    chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'ajax',
+            url: server + '/user/' + username + '/highlight',
+            data: storyIdsOnPage
+    }, function (response) {
+            console.log(typeof response, response);
+            if (response && response !== 'Not Found') {
+                highlightData = JSON.parse(response);   
+                highlightStories(storiesOnPage, highlightData);
+            } else {
+                console.log('Did not retrieve highlight data');
+            }
+    })
+}
+
+function highlightStories(stories, highlightData) {
+    console.log(highlightData);
+    // s stands for storyId
+    for (var s in highlightData) {
+        if (highlightData.hasOwnProperty(s)) {
+            console.log(s);
+            if (highlightData[s].author.length) {
+                stories[s].$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
+                stories[s].$author.css({color: authorColor, 'font-weight': 'bold'});
+            }
+            if (highlightData[s].commenters.length) {
+                var commenters = highlightData[s].commenters;
+                for (var c = 0; c < commenters.length; c++) {
+                    var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
+                    console.log(commentersElement);
+                    var $commentersElement = $(commentersElement).css({
+                        color: commentersTextColor,
+                        'font-weight': 'bold',
+                        'background-color': commentersBgColor
+                    })
+                    var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($commentersElement);
+                    console.log(stories);
+                    stories[s].$author.nextAll().eq(1).after($toInsert);
+                }
+            }   
+        }
+    }
+}
+
+
+// NOT YET FUNCTIONAL
+function highlightComments() {
+    $('a[href^="user?id"]').each(function (index) {
+        var author = $(this).text();
+        if (following.indexOf(author) > -1) {
+            $(this).parents('td:first').css({'background-color': commentsBgColor});
+            $(this).css({'color': commentersTextColor, 'font-weight': 'bold'});
+            $(this).nextAll().css({'color': commentersTextColor});
+        }
+    });
+}
+
+
+
+
+
+
+
+},{}],3:[function(require,module,exports){
 // Constants
 
-var server = 'http://hn-select.herokuapp.com';
+var server = 'http://localhost:3000';
 var username = 'glennonymous';
 
 //==========================================================
@@ -518,8 +435,8 @@ var ContentList = React.createClass({displayName: "ContentList",
         var self = this;
         chrome.runtime.sendMessage({
                 method: 'GET',
-                action: 'xhttp',
-                url: server + '/' + username + '/newsfeed',
+                action: 'ajax',
+                url: server + '/user/' + username + '/newsfeed',
                 data: ''
             }, function(response) {
                 if (response && response !== 'Not Found') {
