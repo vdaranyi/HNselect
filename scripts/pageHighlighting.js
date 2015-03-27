@@ -1,11 +1,12 @@
 console.log('pageHighlighting');
-var server = 'http://localhost:3000';
+var server = 'http://hn-select.herokuapp.com';
 var hnOrange = '#ff6600',
+    hnGrey = '#828282',
     commentsBgColor = hnOrange,
     commentsTitleColor = hnOrange,
     authorColor = hnOrange,
     commentersTextColor = "#ffffff",
-    commentersBgColor = hnOrange,
+    commentersBgColor = hnGrey,
     bgGrey = "#f7f7f1";
 
 
@@ -68,23 +69,31 @@ function highlightStories(stories, highlightData) {
             console.log(s);
             if (highlightData[s].author.length) {
                 stories[s].$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
-                stories[s].$author.css({color: authorColor, 'font-weight': 'bold'});
-            }
+                commenterStyling(stories[s].$author, 'story');
+            }   
             if (highlightData[s].commenters.length) {
                 var commenters = highlightData[s].commenters;
                 for (var c = 0; c < commenters.length; c++) {
                     var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
-                    console.log(commentersElement);
-                    var $commentersElement = $(commentersElement).css({
-                        color: commentersTextColor,
-                        'font-weight': 'bold',
-                        'background-color': commentersBgColor
-                    })
-                    var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($commentersElement);
-                    console.log(stories);
-                    stories[s].$author.nextAll().eq(1).after($toInsert);
+                    console.log(commentersElement, 'comment');
+                    var $commentersElement = commenterStyling($(commentersElement));
+                    stories[s].$author.nextAll().eq(1).after($commentersElement);
                 }
             }   
+        }
+    }
+
+    function commenterStyling($authorDomElem, type) {
+        $authorDomElem.css({
+            color: commentersTextColor,
+            'font-weight': 'bold',
+            'background-color': commentersBgColor
+        });
+        if (type === 'story') {
+            $authorDomElem.prepend("<span>&nbsp</span>").append("<span>&nbsp</span>");
+        } else {
+            var $toInsert = $("<span>&nbsp</span>").css("background-color", bgGrey).append($authorDomElem);
+            return $toInsert;
         }
     }
 }
