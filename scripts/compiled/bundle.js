@@ -1,6 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 var sidebar = require('./sidebar.jsx')
+//var autoupdate = require('./autoupdate.jsx')
 
 // NOTE TO VINCENT: Browserify allows us to modularize files the same way we do with
 // Node, by writing "require" lines like the one above. From here on out I will be
@@ -499,12 +500,64 @@ var NavBar = React.createClass({displayName: "NavBar",
 
 var timeToNow = function (timestamp) {
     var now = Date()
-    console.log(now)
+    //console.log(now)
     var since = now - timestamp
     if (since < 3600000) return Math.floor(since / 60000) + " minutes ago";
     else return Math.floor(since / 360000) + "hours ago";
 }
 
+var newsfeed,
+    initialLoadHasTakenPlace = false,
+    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem'),
+    fakeNewsFeed = {
+        by: "whybroke",
+        id: 9272626,
+        kids: [
+            9272895
+        ],
+        parent: 9272193,
+        text: "&gt;Edit: On why skepticism is important, its because propaganda is everywhere. kooks.",
+            time: 1427399926,
+    type: "comment"
+}
+
+var followingList = ["peterhunt","espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
+
+function iterateOverItems(start, end, following) {
+    console.log("iterating:", start, end, following)
+    var newsArray = [];
+    for (var i=end; i>start; i--) {
+        for (var j in following) {
+            //console.log("doing something")
+            newsArray.push(fetchItems(i, following[j]));
+        }
+    }
+    //if (newsArray.length !== 0 && followingList.indexOf(newsArray[0].by) !== -1) followingList.push(newsArray[0].by);
+    //console.log("newsArray:" newsArray);
+    return newsArray;
+}
+
+//var counter = 0;
+
+function fetchItems(itemId) {
+    var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
+    var filteredArticles = [];
+    //console.log(commenters);
+
+    $.get(itemUrl)
+        .then(function (response) {
+            return response;
+
+            console.log("This is the response: ", response)
+        //    if (typeof response === 'object') {
+        //        //var commenter = response.by;
+        //        //
+        //        //if (commenters.indexOf(commenter) !== -1) {
+        //        //}
+        //    }
+        })
+
+}
 
 var ContentList = React.createClass({displayName: "ContentList",
 
@@ -514,21 +567,66 @@ var ContentList = React.createClass({displayName: "ContentList",
         }
     },
 
-    componentDidMount: function() {
+    initialArticleLoad: function() {
         var self = this;
-        chrome.runtime.sendMessage({
+
+        if (!initialLoadHasTakenPlace) {
+            chrome.runtime.sendMessage({
                 method: 'GET',
                 action: 'xhttp',
                 url: server + '/' + username + '/newsfeed',
                 data: ''
-            }, function(response) {
+            }, function (response) {
                 if (response && response !== 'Not Found') {
-                    var newsfeed = JSON.parse(response);
-                    self.setState({data: newsfeed});   
+                    newsfeed = JSON.parse(response);
+                    //console.log(newsfeed)
+                    self.setState({data: newsfeed});
                 } else {
-                    self.setState({ data: null });
+                    self.setState({data: null});
                 }
-        })  
+            })
+            initialLoadHasTakenPlace = true;
+        }
+    },
+
+    articleUpdate: function() {
+        var self = this;
+        maxItemFb.on('value', function(snapshot) {
+            setTimeout(function() {
+
+
+                var newNewsfeed = [];
+                var snap = snapshot.val();
+                var maxItem = snap;
+                var lastItemFetched = snap - 5;
+                var currentItemNo = lastItemFetched + 1;
+                console.log('max item: ', snap);
+                //lastItemFetched = maxItem;
+                //newNewsfeed = iterateOverItems(currentItemNo,maxItem,followingList);
+                var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + snap + '.json?print=pretty';
+                $.get(itemUrl)
+                    .then(function (response) {
+                        console.log("This is the response: ", response)
+                        newNewsfeed.push(response);
+                        newsfeed = newNewsfeed.concat(newsfeed)
+                        self.setState({data: newsfeed});
+                        //    if (typeof response === 'object') {
+                        //        //var commenter = response.by;
+                        //        //
+                        //        //if (commenters.indexOf(commenter) !== -1) {
+                        //        //}
+                        //    }
+                    })
+                //console.log(maxItem);
+
+                //console.log("news", newsfeed);
+            }, 10000);
+        })
+    },
+
+    componentDidMount: function() {
+        this.initialArticleLoad();
+        this.articleUpdate();
     },
 
     render: function () {

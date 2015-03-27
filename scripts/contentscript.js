@@ -1,5 +1,6 @@
 'use strict';
 var sidebar = require('./sidebar.jsx')
+//var autoupdate = require('./autoupdate.jsx')
 
 // NOTE TO VINCENT: Browserify allows us to modularize files the same way we do with
 // Node, by writing "require" lines like the one above. From here on out I will be

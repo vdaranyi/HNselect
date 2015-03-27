@@ -35,6 +35,7 @@
         "bower_components/react/react.js",
         "bower_components/jquery/dist/jquery.min.js",
         "bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "bower_components/firebase/firebase.js",
         "scripts/compiled/bundle.js"
       ],
       "run_at": "document_end",
