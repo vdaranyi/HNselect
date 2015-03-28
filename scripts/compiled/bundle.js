@@ -220,17 +220,25 @@ var SidebarBox = React.createClass({
 
     },
 
-    getInitialState: function(){
-        return {content: 'ContentItem'};
+    getInitialState: function () {
+        return {target: 'Newsfeed'}
     },
 
-    changePage: function(component){
-        return this.setState({content: component})
-    },
+
 
     // HTML content to be rendered
 
     render: function () {
+
+        var self=this;
+
+        var changeState = function (targetName) {
+            self.forceUpdate(function(){
+                self.setState({target: targetName})
+                console.log("Target received by Parent: ", targetName);
+            })
+        }
+
         return (
             React.createElement("div", {className: "sidebarbox"}, 
                 React.createElement("div", {className: "sidebarbutton"}, 
@@ -242,11 +250,9 @@ var SidebarBox = React.createClass({
                             React.createElement(OwnerInfo, null)
                         ), 
                         React.createElement("div", {id: "horiz-rule"}), 
-                        React.createElement(NavBar, null)
+                        React.createElement(NavBar, {changeState: changeState})
                     ), 
-                    React.createElement("div", {id: "content-holder"}, 
-                    React.createElement(ContentList, {data: this.props.data})
-                        )
+                    React.createElement(ContentHolder, {target: self.state.target})
                 )
             )
         );
@@ -254,19 +260,24 @@ var SidebarBox = React.createClass({
 
 });
 
-//<ContentHolder content={this.props.content} />
+// This function needs to be refactored, obviously
+var ContentHolder = React.createClass({displayName: "ContentHolder",
 
-
-
-//var ContentHolder = React.createClass ({
-//
-//    render: function(){
-//        <div id="content-holder">
-//            React.createComponent({this.props.content});
-//        </div>
-//    }
-//})
-
+    render: function () {
+        if (this.props.target = "Newsfeed") {
+            return React.createElement(Newsfeed, null);
+        }
+        else if (this.props.target = "Notifications") {
+            return React.createElement(Notifications, null);
+        }
+        else if (this.props.target = "Connections") {
+            return React.createElement(Connections, null);
+        }
+        else if (this.props.target = "Bookmarks") {
+            return React.createElement(Bookmarks, null);
+        }
+    }
+})
 
 
 var drawerIsClosed = false;
@@ -307,7 +318,7 @@ var CloseButton = React.createClass({displayName: "CloseButton",
     render: function () {
         return React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png", id: "sidebutton", width: "30px", onClick: this.closeBox});
     }
-})
+});
 
 //End basic Sidebar functionality
 //==========================================================
@@ -350,87 +361,54 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
     }
 });
 
-// Suggestions (suggestionarea)
-
-var SuggestionArea = React.createClass({displayName: "SuggestionArea",
-    render: function () {
-        return React.createElement("div", {id: "suggest-box", className: "col-md-6 col-sm-6 col-xs-6"}, 
-            React.createElement("div", {id: "suggest-title"}
-            /*<h2 className="nav-title">Who to follow</h2>*/
-            ), 
-            React.createElement("div", {id: "suggest-tags"}
-            /*<ul>
-             <li>joefred</li>
-             &nbsp;
-             <li>fredbob</li>
-             &nbsp;
-             <li>aprilmay</li>
-             &nbsp;
-             <li>june1972</li>
-             &nbsp;
-             <li>aLincoln</li>
-             &nbsp;
-             <li>aynRandy</li>
-             &nbsp;
-             </ul>*/
-            ), 
-            React.createElement(SearchForm, null)
-        );
-    }
-});
-
-// Search form
-// - input
-// - submit
-
-var SearchForm = React.createClass({displayName: "SearchForm",
-    render: function () {
-        return React.createElement("div", {id: "search-box"}
-        /*<div className="input-group">
-         <input type="text" className="form-control" placeholder="Search" />
-         <span className="input-group-btn">
-         <button className="btn btn-default" type="button">Submit</button>
-         </span>
-         </div>*/
-        );
-    }
-});
-
-// Navbar
-// - Feed
-// - Updates
-// - Connections
-// - Favorites
-// - Settings
-
-// Make tabs fixed-width divs with inactive tab background.
-// Make Newsfeed tab active when sidebar loads.
+//var SearchForm = React.createClass({
+//    render: function () {
+//        return <div id="search-box">
+//        {/*<div className="input-group">
+//         <input type="text" className="form-control" placeholder="Search" />
+//         <span className="input-group-btn">
+//         <button className="btn btn-default" type="button">Submit</button>
+//         </span>
+//         </div>*/}
+//        </div>;
+//    }
+//});
 
 var NavBar = React.createClass({displayName: "NavBar",
+    setTarget: function (target) {
+        this.props.changeState(target);
+        console.log("Target received by navbar: ", target);
+    },
     render: function () {
-        return React.createElement("div", {id: "navbar-bar"}, 
-            React.createElement("div", {id: "navbar-buttons", className: "row"}, 
-                React.createElement("ul", null, 
-                    React.createElement("li", null, 
-                        React.createElement(NavButton, {buttonName: "newsfeed", buttonTarget: "ContentItem", active: "true"})
-                    ), 
-                    React.createElement("li", null, 
-                        React.createElement(NavButton, {buttonName: "notifications", buttonTarget: "Notifications"})
-                    ), 
-                    React.createElement("li", null, 
-                        React.createElement(NavButton, {buttonName: "connections", buttonTarget: "Connections"})
-                    ), 
-                    React.createElement("li", null, 
-                        React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button"})
-                    ), 
-                    React.createElement("li", null, 
-                        React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "favorites"}, 
-                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/star_64_gray.png", width: "13px"})
-                        )
-                    ), 
-                    React.createElement("li", null, 
-                        React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "settings"}, 
-                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png", width: "13px"})
+        var self=this;
+        var changeParentState = function(target){
+            self.props.changeState(target)
+        };
+        return (
+            React.createElement("div", {id: "navbar-bar"}, 
+                React.createElement("div", {id: "navbar-buttons", className: "row"}, 
+                    React.createElement("ul", null, 
+                        React.createElement("li", null, 
+                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "newsfeed", buttonTarget: "ContentItem", active: "true"})
+                        ), 
+                        React.createElement("li", null, 
+                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "notifications", buttonTarget: "Notifications"})
+                        ), 
+                        React.createElement("li", null, 
+                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "connections", buttonTarget: "Connections"})
+                        ), 
+                        React.createElement("li", null, 
+                            React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button"})
+                        ), 
+                        React.createElement("li", null, 
+                            React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "favorites"}, 
+                                React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/star_64_gray.png", width: "13px"})
+                            )
+                        ), 
+                        React.createElement("li", null, 
+                            React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "settings"}, 
+                                React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png", width: "13px"})
+                            )
                         )
                     )
                 )
@@ -439,19 +417,19 @@ var NavBar = React.createClass({displayName: "NavBar",
     }
 });
 
-var NavButton = React.createClass ({displayName: "NavButton",
+var NavButton = React.createClass({displayName: "NavButton",
 
-    switchContent: function () {
-        return this.props.changePage(this.props.buttonTarget);
+    handleClick: function(){
+        var self = this;
+        self.props.changeParentState(self.props.buttonTarget);
     },
 
-    render: function (){
+    render: function () {
         return (
-            React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: "{this.props.buttonName}", active: "true", onClick: this.switchContent}, this.props.buttonName)
+            React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: this.props.buttonName, onClick: this.handleClick}, this.props.buttonName)
         )
     }
 })
-
 
 // Item (contentarea)
 // - type
@@ -472,25 +450,14 @@ var timeToNow = function (timestamp) {
 
 var newsfeed,
     initialLoadHasTakenPlace = false,
-    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem'),
-    fakeNewsFeed = {
-        by: "whybroke",
-        id: 9272626,
-        kids: [
-            9272895
-        ],
-        parent: 9272193,
-        text: "&gt;Edit: On why skepticism is important, its because propaganda is everywhere. kooks.",
-            time: 1427399926,
-    type: "comment"
-}
+    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem');
 
-var followingList = ["peterhunt","espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
+var followingList = ["peterhunt", "espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
 
 function iterateOverItems(start, end, following) {
     console.log("iterating:", start, end, following)
     var newsArray = [];
-    for (var i=end; i>start; i--) {
+    for (var i = end; i > start; i--) {
         for (var j in following) {
             //console.log("doing something")
             newsArray.push(fetchItems(i, following[j]));
@@ -513,25 +480,25 @@ function fetchItems(itemId) {
             return response;
 
             console.log("This is the response: ", response)
-        //    if (typeof response === 'object') {
-        //        //var commenter = response.by;
-        //        //
-        //        //if (commenters.indexOf(commenter) !== -1) {
-        //        //}
-        //    }
+            //    if (typeof response === 'object') {
+            //        //var commenter = response.by;
+            //        //
+            //        //if (commenters.indexOf(commenter) !== -1) {
+            //        //}
+            //    }
         })
 
 }
 
-var ContentList = React.createClass({displayName: "ContentList",
+var Newsfeed = React.createClass({displayName: "Newsfeed",
 
-    getInitialState: function(){
+    getInitialState: function () {
         return {
             data: null
         }
     },
 
-    initialArticleLoad: function() {
+    initialArticleLoad: function () {
         var self = this;
 
         if (!initialLoadHasTakenPlace) {
@@ -554,10 +521,10 @@ var ContentList = React.createClass({displayName: "ContentList",
         }
     },
 
-    articleUpdate: function() {
+    articleUpdate: function () {
         var self = this;
-        maxItemFb.on('value', function(snapshot) {
-            setTimeout(function() {
+        maxItemFb.on('value', function (snapshot) {
+            setTimeout(function () {
 
 
                 var newNewsfeed = [];
@@ -589,7 +556,7 @@ var ContentList = React.createClass({displayName: "ContentList",
         })
     },
 
-    componentDidMount: function() {
+    componentDidMount: function () {
         this.initialArticleLoad();
         this.articleUpdate();
     },
@@ -602,22 +569,27 @@ var ContentList = React.createClass({displayName: "ContentList",
                         return React.createElement(ContentItem, {data: item})
                     })
                 )
-            ) 
+            )
         } else {
             return React.createElement("h6", {className: "feed-title"}, "Could not retrieve data from server");
-        } 
+        }
     }
 });
 
 var ContentItem = React.createClass({displayName: "ContentItem",
     // Determine whether data object is a comment or a news article and render accordingly
-    render: function(){
+    render: function () {
         if (this.props.data.type === "story") {
             return (
                 React.createElement("div", {className: "feed-box"}, 
                     React.createElement("div", {className: "feed-titlebox"}, 
-                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)), 
-                        React.createElement("p", {className: "feed-context"}, React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " | ", React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments"))
+                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
+                            React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)
+                        ), 
+                        React.createElement("p", {className: "feed-context"}, 
+                            React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
+                            React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments")
+                        )
                     ), 
                     React.createElement("div", {className: "feed-content"}, 
                         React.createElement("p", {className: "feed-text"}, "ARTICLE CONTENT")
@@ -628,8 +600,13 @@ var ContentItem = React.createClass({displayName: "ContentItem",
             return (
                 React.createElement("div", {className: "feed-box"}, 
                     React.createElement("div", {className: "feed-titlebox"}, 
-                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)), 
-                        React.createElement("p", {className: "feed-context"}, React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " | ", React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments"))
+                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
+                            React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)
+                        ), 
+                        React.createElement("p", {className: "feed-context"}, 
+                            React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
+                            React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments")
+                        )
                     ), 
                     React.createElement("div", {className: "feed-content"}, 
                         React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), 

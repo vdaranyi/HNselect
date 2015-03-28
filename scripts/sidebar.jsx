@@ -31,17 +31,25 @@ var SidebarBox = React.createClass({
 
     },
 
-    getInitialState: function(){
-        return {content: 'ContentItem'};
+    getInitialState: function () {
+        return {target: 'Newsfeed'}
     },
 
-    changePage: function(component){
-        return this.setState({content: component})
-    },
+
 
     // HTML content to be rendered
 
     render: function () {
+
+        var self=this;
+
+        var changeState = function (targetName) {
+            self.forceUpdate(function(){
+                self.setState({target: targetName})
+                console.log("Target received by Parent: ", targetName);
+            })
+        }
+
         return (
             <div className="sidebarbox">
                 <div className="sidebarbutton">
@@ -53,11 +61,9 @@ var SidebarBox = React.createClass({
                             <OwnerInfo />
                         </div>
                         <div id="horiz-rule"></div>
-                        <NavBar />
+                        <NavBar changeState={changeState} />
                     </div>
-                    <div id="content-holder">
-                    <ContentList data={this.props.data} />
-                        </div>
+                    <ContentHolder target={self.state.target} />
                 </div>
             </div>
         );
@@ -65,19 +71,24 @@ var SidebarBox = React.createClass({
 
 });
 
-//<ContentHolder content={this.props.content} />
+// This function needs to be refactored, obviously
+var ContentHolder = React.createClass({
 
-
-
-//var ContentHolder = React.createClass ({
-//
-//    render: function(){
-//        <div id="content-holder">
-//            React.createComponent({this.props.content});
-//        </div>
-//    }
-//})
-
+    render: function () {
+        if (this.props.target = "Newsfeed") {
+            return <Newsfeed />;
+        }
+        else if (this.props.target = "Notifications") {
+            return <Notifications />;
+        }
+        else if (this.props.target = "Connections") {
+            return <Connections />;
+        }
+        else if (this.props.target = "Bookmarks") {
+            return <Bookmarks />;
+        }
+    }
+})
 
 
 var drawerIsClosed = false;
@@ -118,7 +129,7 @@ var CloseButton = React.createClass({
     render: function () {
         return <img src="https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png" id="sidebutton" width="30px" onClick={this.closeBox} />;
     }
-})
+});
 
 //End basic Sidebar functionality
 //==========================================================
@@ -161,108 +172,75 @@ var OwnerInfo = React.createClass({
     }
 });
 
-// Suggestions (suggestionarea)
-
-var SuggestionArea = React.createClass({
-    render: function () {
-        return <div id="suggest-box" className="col-md-6 col-sm-6 col-xs-6">
-            <div id="suggest-title">
-            {/*<h2 className="nav-title">Who to follow</h2>*/}
-            </div>
-            <div id="suggest-tags">
-            {/*<ul>
-             <li>joefred</li>
-             &nbsp;
-             <li>fredbob</li>
-             &nbsp;
-             <li>aprilmay</li>
-             &nbsp;
-             <li>june1972</li>
-             &nbsp;
-             <li>aLincoln</li>
-             &nbsp;
-             <li>aynRandy</li>
-             &nbsp;
-             </ul>*/}
-            </div>
-            <SearchForm />
-        </div>;
-    }
-});
-
-// Search form
-// - input
-// - submit
-
-var SearchForm = React.createClass({
-    render: function () {
-        return <div id="search-box">
-        {/*<div className="input-group">
-         <input type="text" className="form-control" placeholder="Search" />
-         <span className="input-group-btn">
-         <button className="btn btn-default" type="button">Submit</button>
-         </span>
-         </div>*/}
-        </div>;
-    }
-});
-
-// Navbar
-// - Feed
-// - Updates
-// - Connections
-// - Favorites
-// - Settings
-
-// Make tabs fixed-width divs with inactive tab background.
-// Make Newsfeed tab active when sidebar loads.
+//var SearchForm = React.createClass({
+//    render: function () {
+//        return <div id="search-box">
+//        {/*<div className="input-group">
+//         <input type="text" className="form-control" placeholder="Search" />
+//         <span className="input-group-btn">
+//         <button className="btn btn-default" type="button">Submit</button>
+//         </span>
+//         </div>*/}
+//        </div>;
+//    }
+//});
 
 var NavBar = React.createClass({
+    setTarget: function (target) {
+        this.props.changeState(target);
+        console.log("Target received by navbar: ", target);
+    },
     render: function () {
-        return <div id="navbar-bar">
-            <div id="navbar-buttons" className="row">
-                <ul>
-                    <li>
-                        <NavButton buttonName="newsfeed" buttonTarget="ContentItem" active="true" />
-                    </li>
-                    <li>
-                        <NavButton buttonName="notifications" buttonTarget="Notifications" />
-                    </li>
-                    <li>
-                        <NavButton buttonName="connections" buttonTarget="Connections" />
-                    </li>
-                    <li>
-                        <div className="col-md-1 col-sm-1 col-xs-1 navbar-button" />
-                    </li>
-                    <li>
-                        <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="favorites">
-                            <img src="https://s3.amazonaws.com/gdcreative-general/star_64_gray.png" width="13px" />
-                        </div>
-                    </li>
-                    <li>
-                        <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="settings">
-                            <img src="https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png" width="13px" />
-                        </div>
-                    </li>
-                </ul>
+        var self=this;
+        var changeParentState = function(target){
+            self.props.changeState(target)
+        };
+        return (
+            <div id="navbar-bar">
+                <div id="navbar-buttons" className="row">
+                    <ul>
+                        <li>
+                            <NavButton changeParentState={changeParentState} buttonName="newsfeed" buttonTarget="ContentItem" active="true" />
+                        </li>
+                        <li>
+                            <NavButton changeParentState={changeParentState} buttonName="notifications" buttonTarget="Notifications" />
+                        </li>
+                        <li>
+                            <NavButton changeParentState={changeParentState} buttonName="connections" buttonTarget="Connections" />
+                        </li>
+                        <li>
+                            <div className="col-md-1 col-sm-1 col-xs-1 navbar-button" />
+                        </li>
+                        <li>
+                            <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="favorites">
+                                <img src="https://s3.amazonaws.com/gdcreative-general/star_64_gray.png" width="13px" />
+                            </div>
+                        </li>
+                        <li>
+                            <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="settings">
+                                <img src="https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png" width="13px" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>;
+        );
     }
 });
 
-var NavButton = React.createClass ({
+var NavButton = React.createClass({
 
-    switchContent: function () {
-        return this.props.changePage(this.props.buttonTarget);
+    handleClick: function(){
+        var self = this;
+        self.props.changeParentState(self.props.buttonTarget);
     },
 
-    render: function (){
+    render: function () {
         return (
-            <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id="{this.props.buttonName}" active="true" onClick={this.switchContent}>{this.props.buttonName}</div>
+            <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id={this.props.buttonName} onClick={this.handleClick}>{this.props.buttonName}</div>
         )
     }
 })
-
 
 // Item (contentarea)
 // - type
@@ -283,25 +261,14 @@ var timeToNow = function (timestamp) {
 
 var newsfeed,
     initialLoadHasTakenPlace = false,
-    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem'),
-    fakeNewsFeed = {
-        by: "whybroke",
-        id: 9272626,
-        kids: [
-            9272895
-        ],
-        parent: 9272193,
-        text: "&gt;Edit: On why skepticism is important, its because propaganda is everywhere. kooks.",
-            time: 1427399926,
-    type: "comment"
-}
+    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem');
 
-var followingList = ["peterhunt","espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
+var followingList = ["peterhunt", "espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
 
 function iterateOverItems(start, end, following) {
     console.log("iterating:", start, end, following)
     var newsArray = [];
-    for (var i=end; i>start; i--) {
+    for (var i = end; i > start; i--) {
         for (var j in following) {
             //console.log("doing something")
             newsArray.push(fetchItems(i, following[j]));
@@ -324,25 +291,25 @@ function fetchItems(itemId) {
             return response;
 
             console.log("This is the response: ", response)
-        //    if (typeof response === 'object') {
-        //        //var commenter = response.by;
-        //        //
-        //        //if (commenters.indexOf(commenter) !== -1) {
-        //        //}
-        //    }
+            //    if (typeof response === 'object') {
+            //        //var commenter = response.by;
+            //        //
+            //        //if (commenters.indexOf(commenter) !== -1) {
+            //        //}
+            //    }
         })
 
 }
 
-var ContentList = React.createClass({
+var Newsfeed = React.createClass({
 
-    getInitialState: function(){
+    getInitialState: function () {
         return {
             data: null
         }
     },
 
-    initialArticleLoad: function() {
+    initialArticleLoad: function () {
         var self = this;
 
         if (!initialLoadHasTakenPlace) {
@@ -365,10 +332,10 @@ var ContentList = React.createClass({
         }
     },
 
-    articleUpdate: function() {
+    articleUpdate: function () {
         var self = this;
-        maxItemFb.on('value', function(snapshot) {
-            setTimeout(function() {
+        maxItemFb.on('value', function (snapshot) {
+            setTimeout(function () {
 
 
                 var newNewsfeed = [];
@@ -400,7 +367,7 @@ var ContentList = React.createClass({
         })
     },
 
-    componentDidMount: function() {
+    componentDidMount: function () {
         this.initialArticleLoad();
         this.articleUpdate();
     },
@@ -413,22 +380,27 @@ var ContentList = React.createClass({
                         return <ContentItem data={item} />
                     })}
                 </div>
-            ) 
+            )
         } else {
             return <h6 className="feed-title">Could not retrieve data from server</h6>;
-        } 
+        }
     }
 });
 
 var ContentItem = React.createClass({
     // Determine whether data object is a comment or a news article and render accordingly
-    render: function(){
+    render: function () {
         if (this.props.data.type === "story") {
             return (
                 <div className="feed-box">
                     <div className="feed-titlebox">
-                        <a href={this.props.data.storyurl} target="_blank"><h4 className="feed-title">{this.props.data.storytitle}</h4></a>
-                        <p className="feed-context"><a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} | <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a></p>
+                        <a href={this.props.data.storyurl} target="_blank">
+                            <h4 className="feed-title">{this.props.data.storytitle}</h4>
+                        </a>
+                        <p className="feed-context">
+                            <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} |
+                            <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a>
+                        </p>
                     </div>
                     <div className="feed-content">
                         <p className="feed-text">ARTICLE CONTENT</p>
@@ -439,11 +411,16 @@ var ContentItem = React.createClass({
             return (
                 <div className="feed-box">
                     <div className="feed-titlebox">
-                        <a href={this.props.data.storyurl} target="_blank"><h4 className="feed-title">{this.props.data.storytitle}</h4></a>
-                        <p className="feed-context"><a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} | <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a></p>
+                        <a href={this.props.data.storyurl} target="_blank">
+                            <h4 className="feed-title">{this.props.data.storytitle}</h4>
+                        </a>
+                        <p className="feed-context">
+                            <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} |
+                            <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a>
+                        </p>
                     </div>
                     <div className="feed-content">
-                        <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> 
+                        <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a>
                         <p className="feed-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
                     </div>
                 </div>

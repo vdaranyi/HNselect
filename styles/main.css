@@ -180,9 +180,12 @@ html, body, #sidebar-anchor {
     font-weight: bold;
 }
 
+#content-holder {
+    overflow-y: scroll;
+}
+
 #feed-holder {
     
-    overflow-y: scroll;
     height: 100%;
 }
 
