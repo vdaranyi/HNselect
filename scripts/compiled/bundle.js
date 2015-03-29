@@ -67,7 +67,7 @@ chrome.runtime.onMessage.addListener(
 
 
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
-console.log('pageHighlighting');
+//console.log('pageHighlighting');
 var server = 'http://hn-select.herokuapp.com';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',
@@ -113,14 +113,14 @@ function parseHnPage() {
 
 function fetchHighlight(username, storiesOnPage, storyIdsOnPage) {
    // Get highlight data from server
-    console.log(storyIdsOnPage);
+   // console.log(storyIdsOnPage);
     chrome.runtime.sendMessage({
             method: 'POST',
             action: 'ajax',
             url: server + '/user/' + username + '/highlight',
             data: storyIdsOnPage
     }, function (response) {
-            console.log(typeof response, response);
+            //console.log(typeof response, response);
             if (response && response !== 'Not Found') {
                 highlightData = JSON.parse(response);   
                 highlightStories(storiesOnPage, highlightData);
@@ -131,11 +131,11 @@ function fetchHighlight(username, storiesOnPage, storyIdsOnPage) {
 }
 
 function highlightStories(stories, highlightData) {
-    console.log(highlightData);
+    //console.log(highlightData);
     // s stands for storyId
     for (var s in highlightData) {
         if (highlightData.hasOwnProperty(s)) {
-            console.log(s);
+            //console.log(s);
             if (highlightData[s].author.length) {
                 stories[s].$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
                 commenterStyling(stories[s].$author, 'story');
@@ -144,7 +144,7 @@ function highlightStories(stories, highlightData) {
                 var commenters = highlightData[s].commenters;
                 for (var c = 0; c < commenters.length; c++) {
                     var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
-                    console.log(commentersElement, 'comment');
+                    //console.log(commentersElement, 'comment');
                     var $commentersElement = commenterStyling($(commentersElement));
                     stories[s].$author.nextAll().eq(1).after($commentersElement);
                 }
@@ -202,6 +202,7 @@ $(document).ready(function () {
     React.render(React.createElement(SidebarBox, null), $("#sidebar-anchor").get(0));
 });
 
+
 // Sidebar component
 var SidebarBox = React.createClass({
 
@@ -221,24 +222,18 @@ var SidebarBox = React.createClass({
     },
 
     getInitialState: function () {
-        return {target: 'Newsfeed'}
+        return {target: "Newsfeed"}
     },
 
-
+    changeState: function (targetName) {
+        this.setState({target: targetName})
+        console.log("Target received by Parent: ", targetName);
+    },
 
     // HTML content to be rendered
 
     render: function () {
-
-        var self=this;
-
-        var changeState = function (targetName) {
-            self.forceUpdate(function(){
-                self.setState({target: targetName})
-                console.log("Target received by Parent: ", targetName);
-            })
-        }
-
+        var self = this;
         return (
             React.createElement("div", {className: "sidebarbox"}, 
                 React.createElement("div", {className: "sidebarbutton"}, 
@@ -250,9 +245,11 @@ var SidebarBox = React.createClass({
                             React.createElement(OwnerInfo, null)
                         ), 
                         React.createElement("div", {id: "horiz-rule"}), 
-                        React.createElement(NavBar, {changeState: changeState})
+                        React.createElement(NavBar, {changeState: this.changeState, initialState: this.getInitialState})
                     ), 
-                    React.createElement(ContentHolder, {target: self.state.target})
+                    React.createElement("div", {id: "feed-holder", className: this.state.target}, 
+                        React.createElement(ContentHolder, null)
+                    )
                 )
             )
         );
@@ -260,27 +257,27 @@ var SidebarBox = React.createClass({
 
 });
 
-// This function needs to be refactored, obviously
+var drawerIsClosed = false;
+
 var ContentHolder = React.createClass({displayName: "ContentHolder",
 
     render: function () {
-        if (this.props.target = "Newsfeed") {
-            return React.createElement(Newsfeed, null);
-        }
-        else if (this.props.target = "Notifications") {
-            return React.createElement(Notifications, null);
-        }
-        else if (this.props.target = "Connections") {
-            return React.createElement(Connections, null);
-        }
-        else if (this.props.target = "Bookmarks") {
-            return React.createElement(Bookmarks, null);
-        }
+        return (
+            React.createElement("div", {id: "visible"}, 
+                React.createElement("div", {className: "absposition", id: "news"}, 
+                React.createElement(Newsfeed, null)
+                    ), 
+                React.createElement("div", {className: "absposition", id: "noti"}, 
+                React.createElement(Notifications, null)
+                    ), 
+                React.createElement("div", {className: "absposition", id: "conn"}, 
+                React.createElement(Connections, null)
+                    )
+            )
+        )
     }
 })
 
-
-var drawerIsClosed = false;
 
 // Close button component
 // --> ISSUE: All these jQuery queries should be stored as variables, so we only need to access them once.
@@ -375,13 +372,18 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
 //});
 
 var NavBar = React.createClass({displayName: "NavBar",
+    componentDidMount: function () {
+        var self = this;
+        var newsfeed = "This right cheer is some newsfeed thingy";
+        self.props.initialState(newsfeed)
+    },
     setTarget: function (target) {
         this.props.changeState(target);
         console.log("Target received by navbar: ", target);
     },
     render: function () {
-        var self=this;
-        var changeParentState = function(target){
+        var self = this;
+        var changeParentState = function (target) {
             self.props.changeState(target)
         };
         return (
@@ -389,7 +391,7 @@ var NavBar = React.createClass({displayName: "NavBar",
                 React.createElement("div", {id: "navbar-buttons", className: "row"}, 
                     React.createElement("ul", null, 
                         React.createElement("li", null, 
-                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "newsfeed", buttonTarget: "ContentItem", active: "true"})
+                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "newsfeed", buttonTarget: "Newsfeed", active: "true"})
                         ), 
                         React.createElement("li", null, 
                             React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "notifications", buttonTarget: "Notifications"})
@@ -419,7 +421,7 @@ var NavBar = React.createClass({displayName: "NavBar",
 
 var NavButton = React.createClass({displayName: "NavButton",
 
-    handleClick: function(){
+    handleClick: function () {
         var self = this;
         self.props.changeParentState(self.props.buttonTarget);
     },
@@ -455,7 +457,7 @@ var newsfeed,
 var followingList = ["peterhunt", "espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
 
 function iterateOverItems(start, end, following) {
-    console.log("iterating:", start, end, following)
+    //console.log("iterating:", start, end, following)
     var newsArray = [];
     for (var i = end; i > start; i--) {
         for (var j in following) {
@@ -479,7 +481,7 @@ function fetchItems(itemId) {
         .then(function (response) {
             return response;
 
-            console.log("This is the response: ", response)
+            //console.log("This is the response: ", response)
             //    if (typeof response === 'object') {
             //        //var commenter = response.by;
             //        //
@@ -532,13 +534,13 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 var maxItem = snap;
                 var lastItemFetched = snap - 5;
                 var currentItemNo = lastItemFetched + 1;
-                console.log('max item: ', snap);
+                //console.log('max item: ', snap);
                 //lastItemFetched = maxItem;
                 //newNewsfeed = iterateOverItems(currentItemNo,maxItem,followingList);
                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + snap + '.json?print=pretty';
                 $.get(itemUrl)
                     .then(function (response) {
-                        console.log("This is the response: ", response)
+                        //console.log("This is the response: ", response)
                         newNewsfeed.push(response);
                         newsfeed = newNewsfeed.concat(newsfeed)
                         self.setState({data: newsfeed});

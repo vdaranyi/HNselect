@@ -180,12 +180,9 @@ html, body, #sidebar-anchor {
     font-weight: bold;
 }
 
-#content-holder {
-    overflow-y: scroll;
-}
 
 #feed-holder {
-    
+    overflow-y: scroll;
     height: 100%;
 }
 
@@ -203,3 +200,44 @@ html, body, #sidebar-anchor {
 .feed-author {
 
 }
+.absposition {
+    position: absolute;
+    top: 90px;
+}
+
+.Newsfeed>#visible>#noti {
+    visibility: hidden;
+}
+
+.Newsfeed>#visible>#conn {
+      visibility: hidden;
+  }
+
+.Notifications>#visible>#news {
+    visibility: hidden;
+}
+
+.Notifications>#visible>#conn {
+    visibility: hidden;
+}
+
+.Connections>#visible>#noti {
+    visibility: hidden;
+}
+
+.Connections>#visible>#news {
+    visibility: hidden;
+}
+
+.Newsfeed>#visible>#news {
+    visibility: visible;
+}
+
+.Notifications>#visible>#noti {
+    visibility: visible;
+}
+
+.Connections>#visible>#conn {
+    visibility: visible;
+}
+

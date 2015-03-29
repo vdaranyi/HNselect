@@ -13,6 +13,7 @@ $(document).ready(function () {
     React.render(<SidebarBox />, $("#sidebar-anchor").get(0));
 });
 
+
 // Sidebar component
 var SidebarBox = React.createClass({
 
@@ -32,24 +33,18 @@ var SidebarBox = React.createClass({
     },
 
     getInitialState: function () {
-        return {target: 'Newsfeed'}
+        return {target: "Newsfeed"}
     },
 
-
+    changeState: function (targetName) {
+        this.setState({target: targetName})
+        console.log("Target received by Parent: ", targetName);
+    },
 
     // HTML content to be rendered
 
     render: function () {
-
-        var self=this;
-
-        var changeState = function (targetName) {
-            self.forceUpdate(function(){
-                self.setState({target: targetName})
-                console.log("Target received by Parent: ", targetName);
-            })
-        }
-
+        var self = this;
         return (
             <div className="sidebarbox">
                 <div className="sidebarbutton">
@@ -61,9 +56,11 @@ var SidebarBox = React.createClass({
                             <OwnerInfo />
                         </div>
                         <div id="horiz-rule"></div>
-                        <NavBar changeState={changeState} />
+                        <NavBar changeState={this.changeState} initialState={this.getInitialState} />
                     </div>
-                    <ContentHolder target={self.state.target} />
+                    <div id="feed-holder" className={this.state.target}>
+                        <ContentHolder />
+                    </div>
                 </div>
             </div>
         );
@@ -71,27 +68,27 @@ var SidebarBox = React.createClass({
 
 });
 
-// This function needs to be refactored, obviously
+var drawerIsClosed = false;
+
 var ContentHolder = React.createClass({
 
     render: function () {
-        if (this.props.target = "Newsfeed") {
-            return <Newsfeed />;
-        }
-        else if (this.props.target = "Notifications") {
-            return <Notifications />;
-        }
-        else if (this.props.target = "Connections") {
-            return <Connections />;
-        }
-        else if (this.props.target = "Bookmarks") {
-            return <Bookmarks />;
-        }
+        return (
+            <div id="visible">
+                <div className="absposition" id="news">
+                <Newsfeed />
+                    </div>
+                <div className="absposition" id="noti">
+                <Notifications />
+                    </div>
+                <div className="absposition" id="conn">
+                <Connections />
+                    </div>
+            </div>
+        )
     }
 })
 
-
-var drawerIsClosed = false;
 
 // Close button component
 // --> ISSUE: All these jQuery queries should be stored as variables, so we only need to access them once.
@@ -186,13 +183,18 @@ var OwnerInfo = React.createClass({
 //});
 
 var NavBar = React.createClass({
+    componentDidMount: function () {
+        var self = this;
+        var newsfeed = "This right cheer is some newsfeed thingy";
+        self.props.initialState(newsfeed)
+    },
     setTarget: function (target) {
         this.props.changeState(target);
         console.log("Target received by navbar: ", target);
     },
     render: function () {
-        var self=this;
-        var changeParentState = function(target){
+        var self = this;
+        var changeParentState = function (target) {
             self.props.changeState(target)
         };
         return (
@@ -200,7 +202,7 @@ var NavBar = React.createClass({
                 <div id="navbar-buttons" className="row">
                     <ul>
                         <li>
-                            <NavButton changeParentState={changeParentState} buttonName="newsfeed" buttonTarget="ContentItem" active="true" />
+                            <NavButton changeParentState={changeParentState} buttonName="newsfeed" buttonTarget="Newsfeed" active="true" />
                         </li>
                         <li>
                             <NavButton changeParentState={changeParentState} buttonName="notifications" buttonTarget="Notifications" />
@@ -230,7 +232,7 @@ var NavBar = React.createClass({
 
 var NavButton = React.createClass({
 
-    handleClick: function(){
+    handleClick: function () {
         var self = this;
         self.props.changeParentState(self.props.buttonTarget);
     },
@@ -266,7 +268,7 @@ var newsfeed,
 var followingList = ["peterhunt", "espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
 
 function iterateOverItems(start, end, following) {
-    console.log("iterating:", start, end, following)
+    //console.log("iterating:", start, end, following)
     var newsArray = [];
     for (var i = end; i > start; i--) {
         for (var j in following) {
@@ -290,7 +292,7 @@ function fetchItems(itemId) {
         .then(function (response) {
             return response;
 
-            console.log("This is the response: ", response)
+            //console.log("This is the response: ", response)
             //    if (typeof response === 'object') {
             //        //var commenter = response.by;
             //        //
@@ -343,13 +345,13 @@ var Newsfeed = React.createClass({
                 var maxItem = snap;
                 var lastItemFetched = snap - 5;
                 var currentItemNo = lastItemFetched + 1;
-                console.log('max item: ', snap);
+                //console.log('max item: ', snap);
                 //lastItemFetched = maxItem;
                 //newNewsfeed = iterateOverItems(currentItemNo,maxItem,followingList);
                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + snap + '.json?print=pretty';
                 $.get(itemUrl)
                     .then(function (response) {
-                        console.log("This is the response: ", response)
+                        //console.log("This is the response: ", response)
                         newNewsfeed.push(response);
                         newsfeed = newNewsfeed.concat(newsfeed)
                         self.setState({data: newsfeed});
