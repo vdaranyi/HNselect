@@ -215,7 +215,7 @@ var SidebarBox = React.createClass({
                 right: 0
             });
             $("#sidebarcontentarea")
-        }, 500)
+        }, 1000)
 
     },
 
@@ -268,7 +268,8 @@ var CloseButton = React.createClass({displayName: "CloseButton",
                     "right": "-470"
                 });
                 // Icon changes depending if sidebar is open or closed; shadow goes away if closed
-                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectlogotab.png");
+                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectlogotab_orange.png")
+                $("#sidebutton").css("-webkit-filter", "none");
                 $("#sidebarcontentarea").css("box-shadow", "none");
             }, 0);
         }
@@ -281,7 +282,8 @@ var CloseButton = React.createClass({displayName: "CloseButton",
                     right: 0
                 });
                 // Icon changes depending if sidebar is open or closed; shadow goes away if closed
-                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png");
+                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectXtab_orange.png");
+                $("#sidebutton").css("-webkit-filter", "drop-shadow(-2px 0px 2px rgba(70,40,10,0.6))");
                 $("#sidebarcontentarea").css("box-shadow", "-2px 0px 3px #C0C0C0");
             }, 0);
         }
@@ -289,7 +291,7 @@ var CloseButton = React.createClass({displayName: "CloseButton",
 
     // Renders the actual button
     render: function () {
-        return React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png", id: "sidebutton", width: "30px", onClick: this.closeBox});
+        return React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/HNselectXtab_orange.png", id: "sidebutton", width: "30px", onClick: this.closeBox});
     }
 });
 
@@ -587,7 +589,37 @@ var Notifications = React.createClass({displayName: "Notifications",
 
 var Connections = React.createClass({displayName: "Connections",
     render: function () {
-        return React.createElement("div", null, "Connections")
+        return (
+            React.createElement("div", null, 
+                React.createElement("h3", {id: "connectionsubhead"}, "Find a user:"), 
+                React.createElement("div", {className: "row"}, 
+                    React.createElement("div", {className: "col-lg-12 col-md-12 col-sm-12 col-xs-12"}, 
+                        React.createElement("div", {className: "input-group input-group-sm"}, 
+                            React.createElement("input", {type: "text", className: "form-control", placeholder: "Search"}), 
+                                React.createElement("span", {className: "input-group-btn"}, 
+                                    React.createElement("button", {className: "btn btn-default", type: "button"}, "Follow")
+                                )
+                        )
+                    )
+                ), 
+                React.createElement("div", null, 
+                    React.createElement("h4", {className: "connectionhead"}, "Users you follow:"), 
+                    React.createElement("div", {className: "suggest-tags"}, 
+                        React.createElement("ul", null, 
+                            React.createElement("li", null, "userName")
+                        )
+                    )
+                ), 
+                React.createElement("div", null, 
+                    React.createElement("h4", {className: "connectionhead"}, "Users who follow you:"), 
+                    React.createElement("div", {className: "suggest-tags"}, 
+                        React.createElement("ul", null, 
+                            React.createElement("li", null, "userName")
+                        )
+                    )
+                )
+            )
+        )
     }
 })
 

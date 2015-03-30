@@ -26,7 +26,7 @@ var SidebarBox = React.createClass({
                 right: 0
             });
             $("#sidebarcontentarea")
-        }, 500)
+        }, 1000)
 
     },
 
@@ -79,7 +79,8 @@ var CloseButton = React.createClass({
                     "right": "-470"
                 });
                 // Icon changes depending if sidebar is open or closed; shadow goes away if closed
-                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectlogotab.png");
+                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectlogotab_orange.png")
+                $("#sidebutton").css("-webkit-filter", "none");
                 $("#sidebarcontentarea").css("box-shadow", "none");
             }, 0);
         }
@@ -92,7 +93,8 @@ var CloseButton = React.createClass({
                     right: 0
                 });
                 // Icon changes depending if sidebar is open or closed; shadow goes away if closed
-                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png");
+                $("#sidebutton").attr("src", "https://s3.amazonaws.com/gdcreative-general/HNselectXtab_orange.png");
+                $("#sidebutton").css("-webkit-filter", "drop-shadow(-2px 0px 2px rgba(70,40,10,0.6))");
                 $("#sidebarcontentarea").css("box-shadow", "-2px 0px 3px #C0C0C0");
             }, 0);
         }
@@ -100,7 +102,7 @@ var CloseButton = React.createClass({
 
     // Renders the actual button
     render: function () {
-        return <img src="https://s3.amazonaws.com/gdcreative-general/HNselectXtab.png" id="sidebutton" width="30px" onClick={this.closeBox} />;
+        return <img src="https://s3.amazonaws.com/gdcreative-general/HNselectXtab_orange.png" id="sidebutton" width="30px" onClick={this.closeBox} />;
     }
 });
 
@@ -398,7 +400,37 @@ var Notifications = React.createClass({
 
 var Connections = React.createClass({
     render: function () {
-        return <div>Connections</div>
+        return (
+            <div>
+                <h3 id="connectionsubhead">Find a user:</h3>
+                <div className="row">
+                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div className="input-group input-group-sm">
+                            <input type="text" className="form-control" placeholder="Search" />
+                                <span className="input-group-btn">
+                                    <button className="btn btn-default" type="button">Follow</button>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 className="connectionhead">Users you follow:</h4>
+                    <div className="suggest-tags">
+                        <ul>
+                            <li>userName</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h4 className="connectionhead">Users who follow you:</h4>
+                    <div className="suggest-tags">
+                        <ul>
+                            <li>userName</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        )
     }
 })
 
