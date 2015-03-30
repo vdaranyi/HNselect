@@ -29,16 +29,17 @@ html, body, #sidebar-anchor {
     display: inline;
     width: 470px !important;
     height: 100% !important;
-    background: rgb(254,253,248);
-    box-shadow: -4px 0px 4px rgba(70,40,10,0.6);
+    background: #f6f6ef;
+    box-shadow: -4px 0px 4px rgba(35,20,10,0.5);
     /* Get rid of the shadow when the sidebar is collapsed */
     transition: box-shadow 0.5s ease-out;
 }
 
-/*#sidebutton {*/
-    /*-webkit-filter: drop-shadow(-4px 0px 2px rgba(70,40,10,0.6));*/
-    /*filter: url(#drop-shadow);*/
-/*}*/
+#sidebutton {
+    -webkit-filter: drop-shadow(-3px 0px 2px rgba(35,20,10,0.5));
+    filter: url(#drop-shadow);
+    transition: -webkit-filter 0.5s ease-out;
+}
 
 #sidebutton:hover {
     cursor: pointer;
@@ -127,18 +128,18 @@ html, body, #sidebar-anchor {
     border-bottom: solid 1px rgba(0,0,0,0.2);
 }
 
-#suggest-tags>ul, #navbar-buttons>ul {
+.suggest-tags>ul, #navbar-buttons>ul {
     -webkit-margin-before: 0em;
     -webkit-padding-start: 0px;
 }
 
-#suggest-tags>ul>li {
+.suggest-tags>ul>li {
     list-style: none;
     display: inline-block;
     color: #ffffff;
     background: #F86900;
     padding: 0em 0.5em;
-    font-size: 0.75em;
+    font-size: 0.9em;
     line-height: 1.5em;
 }
 
@@ -173,7 +174,7 @@ html, body, #sidebar-anchor {
 }
 
 .feed-box {
-    margin: 8px 12px;
+    margin: 8px 0px;
     padding: 6px;
     background: #ffffff;
     border: solid 1px rgb(220,220,220);
@@ -187,7 +188,6 @@ html, body, #sidebar-anchor {
 
 
 #feed-holder {
-    overflow-y: scroll;
     height: 100%;
 }
 
@@ -208,6 +208,7 @@ html, body, #sidebar-anchor {
 .absposition {
     position: absolute;
     top: 90px;
+    padding: 0px 18px;
 }
 
 .Newsfeed>#visible>#noti {
@@ -244,5 +245,23 @@ html, body, #sidebar-anchor {
 
 .Connections>#visible>#conn {
     visibility: visible;
+}
+
+#news {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+#connectionsubhead {
+    font-size: 1em;
+}
+
+.connectionhead {
+    margin-top: 2em;
+    font-size: 1em;
+}
+
+.form-control {
+    font-family: sans-serif;
 }
 
