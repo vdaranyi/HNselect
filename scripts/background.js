@@ -4,7 +4,7 @@
 
 // Fetch data from HNSelect server
 chrome.runtime.onMessage.addListener(function(request, sender, callback) {
-    console.log(request);
+    //console.log(request);
     if (request.action == 'ajax') {
         if (request.method == 'GET') {
             $.getJSON(request.url, function(response){

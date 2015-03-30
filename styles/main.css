@@ -29,11 +29,16 @@ html, body, #sidebar-anchor {
     display: inline;
     width: 470px !important;
     height: 100% !important;
-    background: rgb(250,250,250);
-    box-shadow: -4px 0px 4px rgba(70,40,10,0.5);
+    background: rgb(254,253,248);
+    box-shadow: -4px 0px 4px rgba(70,40,10,0.6);
     /* Get rid of the shadow when the sidebar is collapsed */
     transition: box-shadow 0.5s ease-out;
 }
+
+/*#sidebutton {*/
+    /*-webkit-filter: drop-shadow(-4px 0px 2px rgba(70,40,10,0.6));*/
+    /*filter: url(#drop-shadow);*/
+/*}*/
 
 #sidebutton:hover {
     cursor: pointer;
@@ -180,8 +185,8 @@ html, body, #sidebar-anchor {
     font-weight: bold;
 }
 
+
 #feed-holder {
-    
     overflow-y: scroll;
     height: 100%;
 }
@@ -200,3 +205,44 @@ html, body, #sidebar-anchor {
 .feed-author {
 
 }
+.absposition {
+    position: absolute;
+    top: 90px;
+}
+
+.Newsfeed>#visible>#noti {
+    visibility: hidden;
+}
+
+.Newsfeed>#visible>#conn {
+      visibility: hidden;
+  }
+
+.Notifications>#visible>#news {
+    visibility: hidden;
+}
+
+.Notifications>#visible>#conn {
+    visibility: hidden;
+}
+
+.Connections>#visible>#noti {
+    visibility: hidden;
+}
+
+.Connections>#visible>#news {
+    visibility: hidden;
+}
+
+.Newsfeed>#visible>#news {
+    visibility: visible;
+}
+
+.Notifications>#visible>#noti {
+    visibility: visible;
+}
+
+.Connections>#visible>#conn {
+    visibility: visible;
+}
+

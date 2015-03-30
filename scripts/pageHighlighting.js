@@ -1,4 +1,4 @@
-console.log('pageHighlighting');
+//console.log('pageHighlighting');
 var server = 'http://hn-select.herokuapp.com';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',
@@ -44,14 +44,14 @@ function parseHnPage() {
 
 function fetchHighlight(username, storiesOnPage, storyIdsOnPage) {
    // Get highlight data from server
-    console.log(storyIdsOnPage);
+   // console.log(storyIdsOnPage);
     chrome.runtime.sendMessage({
             method: 'POST',
             action: 'ajax',
             url: server + '/user/' + username + '/highlight',
             data: storyIdsOnPage
     }, function (response) {
-            console.log(typeof response, response);
+            //console.log(typeof response, response);
             if (response && response !== 'Not Found') {
                 highlightData = JSON.parse(response);   
                 highlightStories(storiesOnPage, highlightData);
@@ -62,11 +62,11 @@ function fetchHighlight(username, storiesOnPage, storyIdsOnPage) {
 }
 
 function highlightStories(stories, highlightData) {
-    console.log(highlightData);
+    //console.log(highlightData);
     // s stands for storyId
     for (var s in highlightData) {
         if (highlightData.hasOwnProperty(s)) {
-            console.log(s);
+            //console.log(s);
             if (highlightData[s].author.length) {
                 stories[s].$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
                 commenterStyling(stories[s].$author, 'story');
@@ -75,7 +75,7 @@ function highlightStories(stories, highlightData) {
                 var commenters = highlightData[s].commenters;
                 for (var c = 0; c < commenters.length; c++) {
                     var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
-                    console.log(commentersElement, 'comment');
+                    //console.log(commentersElement, 'comment');
                     var $commentersElement = commenterStyling($(commentersElement));
                     stories[s].$author.nextAll().eq(1).after($commentersElement);
                 }
