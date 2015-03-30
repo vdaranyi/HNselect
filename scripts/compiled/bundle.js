@@ -196,7 +196,7 @@ var hnUrl = "https://news.ycombinator.com";
 //==========================================================
 // Sidebar container and slider functionality
 
-// Attaches an empty div to the DOM to which we can attach our React code
+// Attaches an empty div to the DOM and renders component
 $(document).ready(function () {
     $("body").append("<div id='sidebar-anchor'></div>");
     React.render(React.createElement(SidebarBox, null), $("#sidebar-anchor").get(0));
@@ -208,9 +208,7 @@ var SidebarBox = React.createClass({
 
     displayName: 'SidebarBox',
 
-    // Set the initial state to cause the div to slide in.
-    // Actual animation functionality is set in styles/main.css.
-    // --> ISSUE: We should look for an event to trigger the sidebar, rather than setTimeout -- document.onload perhaps
+    // Attaches sidebar to the DOM and causes it to slide in
     componentDidMount: function () {
         setTimeout(function () {
             $(".sidebarbox").css({
@@ -229,8 +227,6 @@ var SidebarBox = React.createClass({
         this.setState({target: targetName})
         console.log("Target received by Parent: ", targetName);
     },
-
-    // HTML content to be rendered
 
     render: function () {
         var self = this;
@@ -258,26 +254,6 @@ var SidebarBox = React.createClass({
 });
 
 var drawerIsClosed = false;
-
-var ContentHolder = React.createClass({displayName: "ContentHolder",
-
-    render: function () {
-        return (
-            React.createElement("div", {id: "visible"}, 
-                React.createElement("div", {className: "absposition", id: "news"}, 
-                React.createElement(Newsfeed, null)
-                    ), 
-                React.createElement("div", {className: "absposition", id: "noti"}, 
-                React.createElement(Notifications, null)
-                    ), 
-                React.createElement("div", {className: "absposition", id: "conn"}, 
-                React.createElement(Connections, null)
-                    )
-            )
-        )
-    }
-})
-
 
 // Close button component
 // --> ISSUE: All these jQuery queries should be stored as variables, so we only need to access them once.
@@ -320,15 +296,7 @@ var CloseButton = React.createClass({displayName: "CloseButton",
 //End basic Sidebar functionality
 //==========================================================
 
-//Sidebar content
-//components needed:
-
-// Owner (ownerinfo)
-// - username
-// - karma
-// - # of people following you
-// - # of people you follow
-
+//Header
 
 var OwnerInfo = React.createClass({displayName: "OwnerInfo",
     render: function () {
@@ -357,19 +325,6 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
         )
     }
 });
-
-//var SearchForm = React.createClass({
-//    render: function () {
-//        return <div id="search-box">
-//        {/*<div className="input-group">
-//         <input type="text" className="form-control" placeholder="Search" />
-//         <span className="input-group-btn">
-//         <button className="btn btn-default" type="button">Submit</button>
-//         </span>
-//         </div>*/}
-//        </div>;
-//    }
-//});
 
 var NavBar = React.createClass({displayName: "NavBar",
     componentDidMount: function () {
@@ -433,14 +388,29 @@ var NavButton = React.createClass({displayName: "NavButton",
     }
 })
 
-// Item (contentarea)
-// - type
-// - title
-// - url
-// - favorite_button
-// - score
-// - by
-// - text
+// End header
+//=====================================================================
+
+// Main content area
+
+var ContentHolder = React.createClass({displayName: "ContentHolder",
+
+    render: function () {
+        return (
+            React.createElement("div", {id: "visible"}, 
+                React.createElement("div", {className: "absposition", id: "news"}, 
+                    React.createElement(Newsfeed, null)
+                ), 
+                React.createElement("div", {className: "absposition", id: "noti"}, 
+                    React.createElement(Notifications, null)
+                ), 
+                React.createElement("div", {className: "absposition", id: "conn"}, 
+                    React.createElement(Connections, null)
+                )
+            )
+        )
+    }
+})
 
 var timeToNow = function (timestamp) {
     var now = Date()
@@ -465,12 +435,9 @@ function iterateOverItems(start, end, following) {
             newsArray.push(fetchItems(i, following[j]));
         }
     }
-    //if (newsArray.length !== 0 && followingList.indexOf(newsArray[0].by) !== -1) followingList.push(newsArray[0].by);
     //console.log("newsArray:" newsArray);
     return newsArray;
 }
-
-//var counter = 0;
 
 function fetchItems(itemId) {
     var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
@@ -480,14 +447,6 @@ function fetchItems(itemId) {
     $.get(itemUrl)
         .then(function (response) {
             return response;
-
-            //console.log("This is the response: ", response)
-            //    if (typeof response === 'object') {
-            //        //var commenter = response.by;
-            //        //
-            //        //if (commenters.indexOf(commenter) !== -1) {
-            //        //}
-            //    }
         })
 
 }
@@ -568,7 +527,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
             return (
                 React.createElement("div", null, 
                     this.state.data.map(function (item) {
-                        return React.createElement(ContentItem, {data: item})
+                        return React.createElement(NewsfeedItem, {data: item})
                     })
                 )
             )
@@ -578,7 +537,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
     }
 });
 
-var ContentItem = React.createClass({displayName: "ContentItem",
+var NewsfeedItem = React.createClass({displayName: "NewsfeedItem",
     // Determine whether data object is a comment or a news article and render accordingly
     render: function () {
         if (this.props.data.type === "story") {

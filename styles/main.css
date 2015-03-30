@@ -29,11 +29,16 @@ html, body, #sidebar-anchor {
     display: inline;
     width: 470px !important;
     height: 100% !important;
-    background: rgb(250,250,250);
-    box-shadow: -4px 0px 4px rgba(70,40,10,0.5);
+    background: rgb(254,253,248);
+    box-shadow: -4px 0px 4px rgba(70,40,10,0.6);
     /* Get rid of the shadow when the sidebar is collapsed */
     transition: box-shadow 0.5s ease-out;
 }
+
+/*#sidebutton {*/
+    /*-webkit-filter: drop-shadow(-4px 0px 2px rgba(70,40,10,0.6));*/
+    /*filter: url(#drop-shadow);*/
+/*}*/
 
 #sidebutton:hover {
     cursor: pointer;
