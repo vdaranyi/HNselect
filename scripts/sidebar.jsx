@@ -376,7 +376,7 @@ var NewsfeedItem = React.createClass({
                     </div>
                     <div className="feed-content">
                         <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a>
-                        <p className="feed-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
+                        <div className="feed-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
                     </div>
                 </div>
             )

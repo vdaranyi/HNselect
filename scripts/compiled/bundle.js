@@ -472,7 +472,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 data: ''
             }, function (response) {
                 if (response && response !== 'Not Found') {
-                    //console.log(response);
+                    console.log(response);
                     newsfeed = response;
                     //console.log(newsfeed)
                     self.setState({data: newsfeed});
@@ -488,8 +488,6 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
         var self = this;
         maxItemFb.on('value', function (snapshot) {
             setTimeout(function () {
-
-
                 var newNewsfeed = [];
                 var snap = snapshot.val();
                 var maxItem = snap;
@@ -501,16 +499,10 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + snap + '.json?print=pretty';
                 $.get(itemUrl)
                     .then(function (response) {
-                        //console.log("This is the response: ", response)
+                        console.log("This is the response: ", response)
                         newNewsfeed.push(response);
                         newsfeed = newNewsfeed.concat(newsfeed)
                         self.setState({data: newsfeed});
-                        //    if (typeof response === 'object') {
-                        //        //var commenter = response.by;
-                        //        //
-                        //        //if (commenters.indexOf(commenter) !== -1) {
-                        //        //}
-                        //    }
                     })
                 //console.log(maxItem);
 
@@ -573,7 +565,7 @@ var NewsfeedItem = React.createClass({displayName: "NewsfeedItem",
                     ), 
                     React.createElement("div", {className: "feed-content"}, 
                         React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), 
-                        React.createElement("p", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
+                        React.createElement("div", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
                     )
                 )
             )
