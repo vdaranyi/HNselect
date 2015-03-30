@@ -189,9 +189,9 @@ function highlightComments() {
 },{}],3:[function(require,module,exports){
 // Constants
 
-var server = 'http://hn-select.herokuapp.com';
-var username = 'glennonymous';
-var hnUrl = "https://news.ycombinator.com";
+var server = 'http://hn-select.herokuapp.com',
+    username = 'glennonymous',
+    hnUrl = "https://news.ycombinator.com";
 
 //==========================================================
 // Sidebar container and slider functionality
@@ -225,7 +225,7 @@ var SidebarBox = React.createClass({
 
     changeState: function (targetName) {
         this.setState({target: targetName})
-        console.log("Target received by Parent: ", targetName);
+        //console.log("Target received by Parent: ", targetName);
     },
 
     render: function () {
@@ -336,7 +336,7 @@ var NavBar = React.createClass({displayName: "NavBar",
     },
     setTarget: function (target) {
         this.props.changeState(target);
-        console.log("Target received by navbar: ", target);
+        //console.log("Target received by navbar: ", target);
     },
     render: function () {
         var self = this;
@@ -426,7 +426,7 @@ var newsfeed,
     initialLoadHasTakenPlace = false,
     maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem');
 
-var followingList = ["peterhunt", "espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
+//var followingList = ["peterhunt", "espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
 
 function iterateOverItems(start, end, following) {
     //console.log("iterating:", start, end, following)
@@ -472,7 +472,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 data: ''
             }, function (response) {
                 if (response && response !== 'Not Found') {
-                    console.log(response);
+                    //console.log(response);
                     newsfeed = response;
                     //console.log(newsfeed)
                     self.setState({data: newsfeed});
@@ -499,7 +499,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + snap + '.json?print=pretty';
                 $.get(itemUrl)
                     .then(function (response) {
-                        console.log("This is the response: ", response)
+                        //console.log("This is the response: ", response)
                         newNewsfeed.push(response);
                         newsfeed = newNewsfeed.concat(newsfeed)
                         self.setState({data: newsfeed});
@@ -579,7 +579,57 @@ var Notifications = React.createClass({displayName: "Notifications",
     }
 })
 
+var userData;
+
 var Connections = React.createClass({displayName: "Connections",
+
+    getInitialState: function () {
+        return {
+            data: null
+        }
+    },
+
+    getUserData: function (server, username) {
+        var self=this;
+        console.log("Getting called")
+        chrome.runtime.sendMessage({
+            method: 'GET',
+            action: 'ajax',
+            url: server + '/user/' + username +'/userdata',
+            data: ''
+        }, function (response) {
+            console.log("Here is yon user data", response)
+            if (response && response !== 'Not Found') {
+                userData = response;
+                self.setState({data: userData});
+            } else {
+                self.setState({data: null});
+            }
+        })
+    },
+    componentDidMount: function(){
+        this.getUserData(server, username);
+    },
+    searchFocus: function () {
+        $("#searchFollow").focus();
+    },
+    showUsers: function () {
+        console.log("Show users, ", this.state)
+        if (this.state.data === null) {
+            return (
+                React.createElement("span", null, "It looks like you're not following anyone. Would you care to ", React.createElement("a", {href: "#", onClick: this.searchFocus()}, "add a user to follow now?"))
+            );
+        } else {
+            console.log("There is indeed data: ", this.state.data.following)
+            return (
+                React.createElement("ul", null, 
+                this.state.data.following.map(function(user){
+                    return React.createElement("li", null, user);
+                 })
+                    )
+            )
+        }
+    },
     render: function () {
         return (
             React.createElement("div", null, 
@@ -587,7 +637,7 @@ var Connections = React.createClass({displayName: "Connections",
                 React.createElement("div", {className: "row"}, 
                     React.createElement("div", {className: "col-lg-12 col-md-12 col-sm-12 col-xs-12"}, 
                         React.createElement("div", {className: "input-group input-group-sm"}, 
-                            React.createElement("input", {type: "text", className: "form-control", placeholder: "Search"}), 
+                            React.createElement("input", {type: "text", className: "form-control", id: "searchFollow", placeholder: "Search"}), 
                                 React.createElement("span", {className: "input-group-btn"}, 
                                     React.createElement("button", {className: "btn btn-default", type: "button"}, "Follow")
                                 )
@@ -597,9 +647,7 @@ var Connections = React.createClass({displayName: "Connections",
                 React.createElement("div", null, 
                     React.createElement("h4", {className: "connectionhead"}, "Users you follow:"), 
                     React.createElement("div", {className: "suggest-tags"}, 
-                        React.createElement("ul", null, 
-                            React.createElement("li", null, "userName")
-                        )
+                        this.showUsers()
                     )
                 ), 
                 React.createElement("div", null, 
@@ -614,6 +662,7 @@ var Connections = React.createClass({displayName: "Connections",
         )
     }
 })
+
 
 
 
