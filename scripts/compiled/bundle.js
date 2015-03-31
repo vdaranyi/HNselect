@@ -78,6 +78,12 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnGrey,
     bgGrey = "#f7f7f1";
 
+// var top100 = [];
+// $('a[href^="user?id"]').each(function (index, elem) {
+//     top100.push($(this).text());
+// });
+// console.log(JSON.stringify(top100));
+
 
 parseHnPage();
 
@@ -189,16 +195,26 @@ function highlightComments() {
 },{}],3:[function(require,module,exports){
 // Constants
 
-var server = 'http://localhost:3000',
-    //server = 'http://hn-select.herokuapp.com',
-    username = 'glennonymous',
-    hnUrl = "https://news.ycombinator.com";
+var server = 'http://hn-select.herokuapp.com';
+var hnUrl = "https://news.ycombinator.com";
+
+
+// TO DO
+// Change server, change following indexOf check
+
+
+// Global variables
+
+var newsfeed, lastItemFromDB, lastItemFetched, following, user
+    initialLoadHasTakenPlace = false,
+    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem');
 
 //==========================================================
 // Sidebar container and slider functionality
 
 // Attaches an empty div to the DOM and renders component
 $(document).ready(function () {
+    username = $('a[href^="user?id="]').attr('href').replace('user?id=', '');
     $("body").append("<div id='sidebar-anchor'></div>");
     React.render(React.createElement(SidebarBox, null), $("#sidebar-anchor").get(0));
 });
@@ -307,7 +323,7 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
             React.createElement("div", null, 
                 React.createElement("div", {id: "owner-box", className: "col-md-6 col-sm-6 col-xs-6"}, 
                     React.createElement("div", {id: "owner-name"}, 
-                        React.createElement("h2", {className: "nav-title"}, "glennonymous")
+                        React.createElement("h2", {className: "nav-title"}, username)
                     )
                 ), 
                 React.createElement("div", {id: "owner-stats", className: "col-md-6 col-sm-6 col-xs-6"}, 
@@ -423,36 +439,6 @@ var timeToNow = function (timestamp) {
     else return Math.floor(since / 360000) + "hours ago";
 }
 
-var newsfeed,
-    initialLoadHasTakenPlace = false,
-    maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem');
-
-//var followingList = ["peterhunt", "espadrine", "mdewinter", "robin_reala", "atmosx", "awch"];
-
-function iterateOverItems(start, end, following) {
-    //console.log("iterating:", start, end, following)
-    var newsArray = [];
-    for (var i = end; i > start; i--) {
-        for (var j in following) {
-            //console.log("doing something")
-            newsArray.push(fetchItems(i, following[j]));
-        }
-    }
-    //console.log("newsArray:" newsArray);
-    return newsArray;
-}
-
-function fetchItems(itemId) {
-    var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + itemId + '.json?print=pretty';
-    var filteredArticles = [];
-    //console.log(commenters);
-
-    $.get(itemUrl)
-        .then(function (response) {
-            return response;
-        })
-
-}
 
 var Newsfeed = React.createClass({displayName: "Newsfeed",
 
@@ -473,9 +459,11 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 data: ''
             }, function (response) {
                 if (response && response !== 'Not Found') {
-                    //console.log(response);
-                    newsfeed = response;
-                    //console.log(newsfeed)
+                    console.log(response);
+                    newsfeed = response.newsfeed;
+                    lastItemFromDB = response.lastItem;
+                    following = response.following;
+                    console.log(lastItemFromDB);
                     self.setState({data: newsfeed});
                 } else {
                     self.setState({data: null});
@@ -489,29 +477,82 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
         var self = this;
         maxItemFb.on('value', function (snapshot) {
             setTimeout(function () {
-                var newNewsfeed = [];
-                var snap = snapshot.val();
-                var maxItem = snap;
-                var lastItemFetched = snap - 5;
-                var currentItemNo = lastItemFetched + 1;
-                //console.log('max item: ', snap);
-                //lastItemFetched = maxItem;
-                //newNewsfeed = iterateOverItems(currentItemNo,maxItem,followingList);
-                var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + snap + '.json?print=pretty';
-                $.get(itemUrl)
-                    .then(function (response) {
-                        //console.log("This is the response: ", response)
-                        newNewsfeed.push(response);
-                        newsfeed = newNewsfeed.concat(newsfeed)
-                        self.setState({data: newsfeed});
-                    })
-                //console.log(maxItem);
-
-                //console.log("news", newsfeed);
+                var maxItem = snapshot.val();
+                if (!lastItemFetched)
+                    lastItemFetched = lastItemFromDB;
+                console.log(lastItemFetched, maxItem);
+                var nextItem = lastItemFetched + 1;
+                if (maxItem > nextItem) {
+                    self.newItemsToFetch(nextItem, maxItem);
+                }
             }, 10000);
         })
     },
 
+    newItemsToFetch: function (start, end) {
+        var self = this,
+            newNewsfeedItems = [],
+            promiseArray = []
+        for (var i = start; i <= end; i++) {
+            var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
+            $.get(itemUrl)
+                .then(function (newNewsfeedItem) {
+                    if (true) { // following.indexOf(newNewsfeedItem.by) > -1
+                        if (newNewsfeedItem.type === "comment") {
+                            fetchParent(newNewsfeedItem.parent);
+                            function fetchParent(parentId) {
+                                var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
+                                $.get(itemUrl)
+                                    .then(function (response){
+                                        if (response.type === "story") {
+                                            newNewsfeedItem.storytitle = response.title;
+                                            newNewsfeedItem.storyurl = response.url;
+                                            newNewsfeedItem.storyby = response.by;
+                                            newNewsfeedItem.storyid = response.id;
+                                            newsfeed = [newNewsfeedItem].concat(newsfeed)
+                                            self.setState({data: newsfeed});
+                                        } else {
+                                            fetchParent(response.parent);
+                                        }
+                                    });
+                                }
+                        } else if (newNewsfeedItem.type === "story") {
+                            
+                            newsfeed = [newNewsfeedItem].concat(newsfeed)
+                            self.setState({data: newsfeed});
+                        }
+                    }
+                });
+        }
+    },
+/*
+    getItemAtUrl: function (url) {
+
+        return new bluebird(function (resolve, reject) {
+
+
+
+        });
+
+    },
+
+    newItemsToFetch2: function (start, end) {
+
+        var i = start;
+        var promises = [];
+
+        for (; i <= end; i++) {
+
+            var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
+
+
+
+        }
+
+
+
+    },
+*/
     componentDidMount: function () {
         this.initialArticleLoad();
         this.articleUpdate();
@@ -522,57 +563,69 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
             return (
                 React.createElement("div", null, 
                     this.state.data.map(function (item) {
-                        return React.createElement(NewsfeedItem, {data: item})
+                        if (item.type === "story") {
+                            return React.createElement(StoryItem, {data: item})
+                        } else if (item.type === "comment") {
+                            return React.createElement(CommentItem, {data: item})
+                        }
                     })
                 )
             )
         } else {
-            return React.createElement("h6", {className: "feed-title"}, "Could not retrieve data from server");
+            return React.createElement("h6", {className: "feed-title"}, "Could not retrieve data from server. Chrome extension might not have fully loaded yet. Please try reloading the page");
         }
     }
 });
 
-var NewsfeedItem = React.createClass({displayName: "NewsfeedItem",
-    // Determine whether data object is a comment or a news article and render accordingly
+var StoryItem = React.createClass({displayName: "StoryItem",
     render: function () {
-        if (this.props.data.type === "story") {
-            return (
-                React.createElement("div", {className: "feed-box"}, 
-                    React.createElement("div", {className: "feed-titlebox"}, 
+        return (
+            React.createElement("div", {className: "feed-box"}, 
+                React.createElement("div", {className: "feed-titlebox"}, 
+                    React.createElement("h4", {className: "feed-title"}, 
                         React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
-                            React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)
-                        ), 
-                        React.createElement("p", {className: "feed-context"}, 
-                            React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
-                            React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments")
+                            this.props.data.storytitle
                         )
                     ), 
-                    React.createElement("div", {className: "feed-content"}, 
-                        React.createElement("p", {className: "feed-text"}, "ARTICLE CONTENT")
+                    React.createElement("p", {className: "feed-context"}, 
+                        "by ", React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
+                        React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
+                ), 
+                React.createElement("div", {className: "feed-content"}, 
+                    React.createElement("p", {className: "feed-text"}, this.props.data.text)
                 )
             )
-        } else if (this.props.data.type === "comment") {
-            return (
-                React.createElement("div", {className: "feed-box"}, 
-                    React.createElement("div", {className: "feed-titlebox"}, 
-                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
-                            React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)
-                        ), 
-                        React.createElement("p", {className: "feed-context"}, 
-                            React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
-                            React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments")
-                        )
-                    ), 
-                    React.createElement("div", {className: "feed-content"}, 
-                        React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), 
-                        React.createElement("div", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
-                    )
-                )
-            )
-        }
+        )
     }
 });
+
+var CommentItem = React.createClass({displayName: "CommentItem",
+    render: function() {
+        return (
+            React.createElement("div", {className: "feed-box"}, 
+                React.createElement("div", {className: "feed-titlebox"}, 
+                    React.createElement("div", {className: "feed-title"}, 
+                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
+                        this.props.data.storytitle
+                        )
+                    ), 
+                    React.createElement("div", {className: "feed-context"}, 
+                        "by ", React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
+                        React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
+                    )
+                ), 
+                React.createElement("div", {className: "feed-content"}, 
+                    React.createElement("a", {className: "feed-author", href: hnUrl + '/item?id=' + this.props.data.id}, this.props.data.by + '\'s comment: '), 
+                    React.createElement("span", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
+                )
+            )
+        )
+    }
+});
+
+
+
 
 var Notifications = React.createClass({displayName: "Notifications",
     render: function () {
@@ -610,19 +663,22 @@ var Connections = React.createClass({displayName: "Connections",
             }
         })
     },
+    
     componentDidMount: function(){
         this.getUserData(server, username);
     },
+    
     searchFocus: function () {
         $("#searchFollow").focus();
     },
-    showUsers: function () {
-        //console.log("Show users, ", this.state)
 
+    showUsers: function () {
+        console.log("Show users, ", this.state)
+        // Are we allowed to build an if/else statement in here, i.e. returning different html components?
         if (this.state.data === null) {
             return (
                 React.createElement("span", null, "It looks like you're not following anyone. Would you care to ", React.createElement("a", {href: "#", onClick: this.searchFocus()}, "add a user to follow now?"))
-            );
+            )
         } else {
             //console.log("There is indeed data: ", this.state.data.following)
             return (
@@ -630,7 +686,7 @@ var Connections = React.createClass({displayName: "Connections",
                 this.state.data.following.map(function(user){
                     return React.createElement("li", null, user);
                  })
-                    )
+                )
             )
         }
     },
@@ -708,7 +764,7 @@ var Connections = React.createClass({displayName: "Connections",
             )
         )
     }
-})
+});
 
 
 

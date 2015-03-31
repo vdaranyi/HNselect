@@ -183,16 +183,11 @@ html, body, #sidebar-anchor {
     /*color: #fafafa;*/
 }
 
-.feed-box > h3, .feed-box > h4 {
-    font-weight: bold;
-}
-
-
 #feed-holder {
     height: 100%;
 }
 
-.feed-content > p, .feed-text > p {
+.feed-content > span, .feed-text > p {
     /*font-size: 0.8em;*/
     margin: 0px !important;
     font-size: 0.9em !important;
@@ -200,12 +195,16 @@ html, body, #sidebar-anchor {
 
 .feed-titlebox {
     color: rgb(30,30,30) !important;
-    font-weight: bold !important;
 }
 
-.feed-author {
+a.feed-author {
+    color: #ff6600 !important;
+}
+
+.feed-story-author {
 
 }
+
 .absposition {
     position: absolute;
     top: 90px;

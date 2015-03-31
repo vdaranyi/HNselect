@@ -9,6 +9,12 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnGrey,
     bgGrey = "#f7f7f1";
 
+// var top100 = [];
+// $('a[href^="user?id"]').each(function (index, elem) {
+//     top100.push($(this).text());
+// });
+// console.log(JSON.stringify(top100));
+
 
 parseHnPage();
 
