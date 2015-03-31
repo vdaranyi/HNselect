@@ -1,0 +1,267 @@
+html, body, #sidebar-anchor {
+  height: 100%;
+}
+
+.sidebarbox {
+  position: fixed;
+  top: 0px;
+  right: -476px;
+  width: 500px;
+  height: 100%;
+  /* This is the line that causes the primary sidebar animation */
+  transition: right 0.5s ease-out;
+}
+
+.sidebarbutton {
+  z-index: 2;
+  display: inline;
+  position: relative;
+  width: 30px;
+  top: 100px;
+}
+
+#sidebarcontentarea {
+  position: absolute;
+  padding: 0%;
+  top: 0px;
+  z-index: 1;
+  /*opacity: 0.8;*/
+  display: inline;
+  width: 470px !important;
+  height: 100% !important;
+  background: #f6f6ef;
+  box-shadow: -4px 0px 4px rgba(35,20,10,0.5);
+  /* Get rid of the shadow when the sidebar is collapsed */
+  transition: box-shadow 0.5s ease-out;
+}
+
+#sidebutton {
+  -webkit-filter: drop-shadow(-3px 0px 2px rgba(35,20,10,0.5));
+  filter: url(#drop-shadow);
+  transition: -webkit-filter 0.5s ease-out;
+}
+
+#sidebutton:hover {
+  cursor: pointer;
+}
+
+/* Nav */
+#nav-area {
+  padding: 6px 18px;
+  height: 90px;
+  /*color: #ffffff;*/
+}
+
+.nav-title {
+  margin-top: 0px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+#navbar-bar {
+
+  margin: 3px;
+}
+
+#navbar-buttons>ul>li {
+  list-style: none;;
+}
+
+.navbar-button {
+  font-size: 0.8em;
+  color: #bdbdbd;
+}
+
+.navbar-button-right {
+  padding-right: 4px;
+  text-align: right;
+}
+
+.navbar-button:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.navbar-button:active {
+  color: #ff6600;
+}
+
+#newsfeed {
+  position: relative;
+  left: -3px;
+  color: #ff6600;
+}
+
+#notifications {
+  position: relative;
+  left: -37px;
+}
+
+#connections {
+  position: relative;
+  left: -54px;
+}
+
+.owner-stat, #suggest-tags {
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+}
+
+.owner-stattitle, .owner-statscore {
+  text-align: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.owner-stattitle {
+  font-size: 0.8em;
+}
+
+.owner-statscore {
+  font-weight: bold;
+  color: #000000;
+}
+
+#horiz-rule {
+  margin-top: 6px;
+  border-bottom: solid 1px rgba(0,0,0,0.2);
+}
+
+.suggest-tags>ul, #navbar-buttons>ul {
+  -webkit-margin-before: 0em;
+  -webkit-padding-start: 0px;
+}
+
+.suggest-tags>ul>li {
+  list-style: none;
+  display: inline-block;
+  color: #ffffff;
+  background: #F86900;
+  padding: 0em 0.5em;
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
+
+/* End nav */
+
+.feed-top {
+  padding: 18px;
+}
+
+.feed-title {
+  display: inline;
+  /*color: #fafafa;*/
+  font-size: 0.9em;
+}
+
+.feed-context {
+  font-size: 0.9em;
+}
+
+.feed-content {
+  max-lines: 3 !important;
+}
+
+.feed-text {
+  /*font-size: 0.8em;*/
+  margin: 0px !important;
+  /*color: #fafafa;*/
+}
+
+.feed-footertext {
+  font-size: 0.9em;
+}
+
+.feed-box {
+  margin: 8px 0px;
+  padding: 6px;
+  background: #ffffff;
+  border: solid 1px rgb(220,220,220);
+  border-radius: 2px;
+  /*color: #fafafa;*/
+}
+
+.feed-box > h3, .feed-box > h4 {
+  font-weight: bold;
+}
+
+
+#feed-holder {
+  height: 100%;
+}
+
+.feed-content > p, .feed-text > p {
+  /*font-size: 0.8em;*/
+  margin: 0px !important;
+  font-size: 0.9em !important;
+}
+
+.feed-titlebox {
+  color: rgb(30,30,30) !important;
+  font-weight: bold !important;
+}
+
+.feed-author {
+
+}
+.absposition {
+  position: absolute;
+  top: 90px;
+  padding: 0px 18px;
+}
+
+.Newsfeed>#visible>#noti {
+  visibility: hidden;
+}
+
+.Newsfeed>#visible>#conn {
+  visibility: hidden;
+}
+
+.Notifications>#visible>#news {
+  visibility: hidden;
+}
+
+.Notifications>#visible>#conn {
+  visibility: hidden;
+}
+
+.Connections>#visible>#noti {
+  visibility: hidden;
+}
+
+.Connections>#visible>#news {
+  visibility: hidden;
+}
+
+.Newsfeed>#visible>#news {
+  visibility: visible;
+}
+
+.Notifications>#visible>#noti {
+  visibility: visible;
+}
+
+.Connections>#visible>#conn {
+  visibility: visible;
+}
+
+#news {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+#connectionsubhead {
+  font-size: 1em;
+}
+
+.connectionhead {
+  margin-top: 2em;
+  font-size: 1em;
+}
+
+.form-control {
+  font-family: sans-serif;
+}
+
