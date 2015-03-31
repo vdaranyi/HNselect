@@ -1,6 +1,7 @@
 // Constants
 
-var server = 'http://hn-select.herokuapp.com',
+var server = 'http://localhost:3000',
+    //server = 'http://hn-select.herokuapp.com',
     username = 'glennonymous',
     hnUrl = "https://news.ycombinator.com";
 
@@ -390,26 +391,28 @@ var Notifications = React.createClass({
     }
 })
 
-var userData;
+var userData,
+    followingArr = [];
 
 var Connections = React.createClass({
 
     getInitialState: function () {
         return {
-            data: null
+            data: null,
+            value: "",
+            errorMessage: ""
         }
     },
 
     getUserData: function (server, username) {
         var self=this;
-        console.log("Getting called")
+        //console.log("Getting called")
         chrome.runtime.sendMessage({
             method: 'GET',
             action: 'ajax',
             url: server + '/user/' + username +'/userdata',
             data: ''
         }, function (response) {
-            console.log("Here is yon user data", response)
             if (response && response !== 'Not Found') {
                 userData = response;
                 self.setState({data: userData});
@@ -425,13 +428,14 @@ var Connections = React.createClass({
         $("#searchFollow").focus();
     },
     showUsers: function () {
-        console.log("Show users, ", this.state)
+        //console.log("Show users, ", this.state)
+
         if (this.state.data === null) {
             return (
                 <span>It looks like you're not following anyone. Would you care to <a href="#" onClick={this.searchFocus()}>add a user to follow now?</a></span>
             );
         } else {
-            console.log("There is indeed data: ", this.state.data.following)
+            //console.log("There is indeed data: ", this.state.data.following)
             return (
                 <ul>
                 {this.state.data.following.map(function(user){
@@ -441,17 +445,60 @@ var Connections = React.createClass({
             )
         }
     },
+    handleChange: function (event) {
+        this.setState({value: event.target.value});
+    },
+    followInputUser: function () {
+        var self = this,
+            followUser = self.state.value;
+        //console.log(followUser)
+        //console.log("Getting called, ", this.state.data.following)
+        if (this.state.data.following.indexOf(followUser) !== -1) {
+            // Find out if the user already exists in their following; if so, give them a message
+            self.setState({errorMessage: "It appears you are already following this user. Would you like to try again?"})
+        } else {
+            chrome.runtime.sendMessage({
+                method: 'GET',
+                action: 'ajax',
+                url: 'https://hacker-news.firebaseio.com/v0' + '/user/' + followUser + '.json?print=pretty',
+                data: ''
+            }, function (response) {
+
+                if (response !== null) {
+                    chrome.runtime.sendMessage({
+                        method: 'POST',
+                        action: 'ajax',
+                        url: server + '/user/' + username + '/followuser/' + followUser,
+                    }, function (response) {
+                        console.log("Response: ", response);
+                        if (response == "User added") {
+                            self.state.data.following.push(followUser)
+                            self.setState({data: self.state.data});
+                        } else {
+                            self.setState({errorMessage: "There appears to be a server error. Would you like to try again?"});
+                        }
+                    });
+                } else {
+                    self.setState({errorMessage: "It appears this user either doesn't exist or has never posted on Hacker News. Would you like to try again?"});
+                }
+            })
+        }
+    },
     render: function () {
+        var value = this.state.value;
         return (
             <div>
                 <h3 id="connectionsubhead">Find a user:</h3>
                 <div className="row">
                     <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div className="input-group input-group-sm">
-                            <input type="text" className="form-control" id="searchFollow" placeholder="Search" />
+                            <input type="text" className="form-control" id="searchFollow" value={value} onChange={this.handleChange} placeholder="Search" />
                                 <span className="input-group-btn">
-                                    <button className="btn btn-default" type="button">Follow</button>
+                                    <button className="btn btn-default" type="button" onClick={this.followInputUser}>Follow</button>
                                 </span>
+                        </div>
+                        <div>
+                        {this.errorMessage}
                         </div>
                     </div>
                 </div>
