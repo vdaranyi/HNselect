@@ -1,7 +1,8 @@
 // Constants
 
-var server = 'http://localhost:3000';
+var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
+
 
 // TO DO
 // Change server, change following indexOf check
@@ -46,7 +47,7 @@ var SidebarBox = React.createClass({
 
     changeState: function (targetName) {
         this.setState({target: targetName})
-        console.log("Target received by Parent: ", targetName);
+        //console.log("Target received by Parent: ", targetName);
     },
 
     render: function () {
@@ -157,7 +158,7 @@ var NavBar = React.createClass({
     },
     setTarget: function (target) {
         this.props.changeState(target);
-        console.log("Target received by navbar: ", target);
+        //console.log("Target received by navbar: ", target);
     },
     render: function () {
         var self = this;
@@ -242,8 +243,6 @@ var timeToNow = function (timestamp) {
     if (since < 3600000) return Math.floor(since / 60000) + " minutes ago";
     else return Math.floor(since / 360000) + "hours ago";
 }
-
-
 
 
 var Newsfeed = React.createClass({
@@ -439,7 +438,61 @@ var Notifications = React.createClass({
     }
 })
 
+var userData;
+
 var Connections = React.createClass({
+
+    getInitialState: function () {
+        return {
+            data: null
+        }
+    },
+
+    getUserData: function (server, username) {
+        var self=this;
+        console.log("Getting called")
+        chrome.runtime.sendMessage({
+            method: 'GET',
+            action: 'ajax',
+            url: server + '/user/' + username +'/userdata',
+            data: ''
+        }, function (response) {
+            console.log("Here is yon user data", response)
+            if (response && response !== 'Not Found') {
+                userData = response;
+                self.setState({data: userData});
+            } else {
+                self.setState({data: null});
+            }
+        })
+    },
+    
+    componentDidMount: function(){
+        this.getUserData(server, username);
+    },
+    
+    searchFocus: function () {
+        $("#searchFollow").focus();
+    },
+
+    showUsers: function () {
+        console.log("Show users, ", this.state)
+        // Are we allowed to build an if/else statement in here, i.e. returning different html components?
+        if (this.state.data === null) {
+            return (
+                <span>It looks like you&#39;re not following anyone. Would you care to <a href="#" onClick={this.searchFocus()}>add a user to follow now?</a></span>
+            )
+        } else {
+            console.log("There is indeed data: ", this.state.data.following)
+            return (
+                <ul>
+                {this.state.data.following.map(function(user){
+                    return <li>{user}</li>;
+                 })}
+                </ul>
+            )
+        }
+    },
     render: function () {
         return (
             <div>
@@ -447,7 +500,7 @@ var Connections = React.createClass({
                 <div className="row">
                     <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div className="input-group input-group-sm">
-                            <input type="text" className="form-control" placeholder="Search" />
+                            <input type="text" className="form-control" id="searchFollow" placeholder="Search" />
                                 <span className="input-group-btn">
                                     <button className="btn btn-default" type="button">Follow</button>
                                 </span>
@@ -457,9 +510,7 @@ var Connections = React.createClass({
                 <div>
                     <h4 className="connectionhead">Users you follow:</h4>
                     <div className="suggest-tags">
-                        <ul>
-                            <li>userName</li>
-                        </ul>
+                        {this.showUsers()}
                     </div>
                 </div>
                 <div>
@@ -473,7 +524,8 @@ var Connections = React.createClass({
             </div>
         )
     }
-})
+});
+
 
 
 
