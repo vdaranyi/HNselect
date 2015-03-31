@@ -199,7 +199,7 @@ var server = 'http://localhost:3000';
 var hnUrl = "https://news.ycombinator.com";
 
 // TO DO
-// Change server, change following indexOf check, change returning two different feed-items
+// Change server, change following indexOf check
 
 
 // Global variables
@@ -498,7 +498,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
             var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
             $.get(itemUrl)
                 .then(function (newNewsfeedItem) {
-                    if (true) { // following.indexOf(response.by) > -1
+                    if (true) { // following.indexOf(newNewsfeedItem.by) > -1
                         if (newNewsfeedItem.type === "comment") {
                             fetchParent(newNewsfeedItem.parent);
                             function fetchParent(parentId) {
@@ -517,7 +517,8 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                                         }
                                     });
                                 }
-                        } else if (response.type === "story") {
+                        } else if (newNewsfeedItem.type === "story") {
+                            
                             newsfeed = [newNewsfeedItem].concat(newsfeed)
                             self.setState({data: newsfeed});
                         }
@@ -563,7 +564,11 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
             return (
                 React.createElement("div", null, 
                     this.state.data.map(function (item) {
-                        return React.createElement(NewsfeedItem, {data: item})
+                        if (item.type === "story") {
+                            return React.createElement(StoryItem, {data: item})
+                        } else if (item.type === "comment") {
+                            return React.createElement(CommentItem, {data: item})
+                        }
                     })
                 )
             )
@@ -573,50 +578,55 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
     }
 });
 
-var NewsfeedItem = React.createClass({displayName: "NewsfeedItem",
-    // Determine whether data object is a comment or a news article and render accordingly
+var StoryItem = React.createClass({displayName: "StoryItem",
     render: function () {
-        // you cannot render different items here!
-        if (this.props.data.type === "story") {
-            return (
-                React.createElement("div", {className: "feed-box"}, 
-                    React.createElement("div", {className: "feed-titlebox"}, 
+        return (
+            React.createElement("div", {className: "feed-box"}, 
+                React.createElement("div", {className: "feed-titlebox"}, 
+                    React.createElement("h4", {className: "feed-title"}, 
                         React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
-                            React.createElement("h4", {className: "feed-title"}, this.props.data.storytitle)
-                        ), 
-                        React.createElement("p", {className: "feed-context"}, 
-                            React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
-                            React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments")
-                        )
-                    ), 
-                    React.createElement("div", {className: "feed-content"}, 
-                        React.createElement("p", {className: "feed-text"}, "ARTICLE CONTENT")
-                    )
-                )
-            )
-        } else if (this.props.data.type === "comment") {
-            return (
-                React.createElement("div", {className: "feed-box"}, 
-                    React.createElement("div", {className: "feed-titlebox"}, 
-                        React.createElement("div", {className: "feed-title"}, 
-                            React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
                             this.props.data.storytitle
-                            )
-                        ), 
-                        React.createElement("div", {className: "feed-context"}, 
-                            React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
-                            React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.id}, "comments")
                         )
                     ), 
-                    React.createElement("div", {className: "feed-content"}, 
-                        React.createElement("a", {className: "feed-author", href: hnUrl + '/item?id=' + this.props.data.id}, this.props.data.by + '\'s comment: '), 
-                        React.createElement("span", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
+                    React.createElement("p", {className: "feed-context"}, 
+                        "by ", React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
+                        React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
+                ), 
+                React.createElement("div", {className: "feed-content"}, 
+                    React.createElement("p", {className: "feed-text"}, this.props.data.text)
                 )
             )
-        }
+        )
     }
 });
+
+var CommentItem = React.createClass({displayName: "CommentItem",
+    render: function() {
+        return (
+            React.createElement("div", {className: "feed-box"}, 
+                React.createElement("div", {className: "feed-titlebox"}, 
+                    React.createElement("div", {className: "feed-title"}, 
+                        React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
+                        this.props.data.storytitle
+                        )
+                    ), 
+                    React.createElement("div", {className: "feed-context"}, 
+                        "by ", React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
+                        React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
+                    )
+                ), 
+                React.createElement("div", {className: "feed-content"}, 
+                    React.createElement("a", {className: "feed-author", href: hnUrl + '/item?id=' + this.props.data.id}, this.props.data.by + '\'s comment: '), 
+                    React.createElement("span", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
+                )
+            )
+        )
+    }
+});
+
+
+
 
 var Notifications = React.createClass({displayName: "Notifications",
     render: function () {

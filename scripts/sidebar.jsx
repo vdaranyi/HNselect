@@ -4,7 +4,7 @@ var server = 'http://localhost:3000';
 var hnUrl = "https://news.ycombinator.com";
 
 // TO DO
-// Change server, change following indexOf check, change returning two different feed-items
+// Change server, change following indexOf check
 
 
 // Global variables
@@ -303,7 +303,7 @@ var Newsfeed = React.createClass({
             var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
             $.get(itemUrl)
                 .then(function (newNewsfeedItem) {
-                    if (true) { // following.indexOf(response.by) > -1
+                    if (true) { // following.indexOf(newNewsfeedItem.by) > -1
                         if (newNewsfeedItem.type === "comment") {
                             fetchParent(newNewsfeedItem.parent);
                             function fetchParent(parentId) {
@@ -322,7 +322,8 @@ var Newsfeed = React.createClass({
                                         }
                                     });
                                 }
-                        } else if (response.type === "story") {
+                        } else if (newNewsfeedItem.type === "story") {
+                            
                             newsfeed = [newNewsfeedItem].concat(newsfeed)
                             self.setState({data: newsfeed});
                         }
@@ -368,7 +369,11 @@ var Newsfeed = React.createClass({
             return (
                 <div>
                     {this.state.data.map(function (item) {
-                        return <NewsfeedItem data={item} />
+                        if (item.type === "story") {
+                            return <StoryItem data={item} />
+                        } else if (item.type === "comment") {
+                            return <CommentItem data={item} />
+                        }
                     })}
                 </div>
             )
@@ -378,50 +383,55 @@ var Newsfeed = React.createClass({
     }
 });
 
-var NewsfeedItem = React.createClass({
-    // Determine whether data object is a comment or a news article and render accordingly
+var StoryItem = React.createClass({
     render: function () {
-        // you cannot render different items here!
-        if (this.props.data.type === "story") {
-            return (
-                <div className="feed-box">
-                    <div className="feed-titlebox">
+        return (
+            <div className="feed-box">
+                <div className="feed-titlebox">
+                    <h4 className="feed-title">
                         <a href={this.props.data.storyurl} target="_blank">
-                            <h4 className="feed-title">{this.props.data.storytitle}</h4>
-                        </a>
-                        <p className="feed-context">
-                            <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} |
-                            <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a>
-                        </p>
-                    </div>
-                    <div className="feed-content">
-                        <p className="feed-text">ARTICLE CONTENT</p>
-                    </div>
-                </div>
-            )
-        } else if (this.props.data.type === "comment") {
-            return (
-                <div className="feed-box">
-                    <div className="feed-titlebox">
-                        <div className="feed-title">
-                            <a href={this.props.data.storyurl} target="_blank">
                             {this.props.data.storytitle}
-                            </a>
-                        </div>
-                        <div className="feed-context">
-                            <a href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} |
-                            <a href={hnUrl + '/item?id=' + this.props.data.id}>comments</a>
-                        </div>
-                    </div>
-                    <div className="feed-content">
-                        <a className="feed-author" href={hnUrl + '/item?id=' + this.props.data.id}>{this.props.data.by + '\'s comment: '}</a>
-                        <span className="feed-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
-                    </div>
+                        </a>
+                    </h4>      
+                    <p className="feed-context">
+                        by <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} |
+                        <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
+                    </p>
                 </div>
-            )
-        }
+                <div className="feed-content">
+                    <p className="feed-text">{this.props.data.text}</p>
+                </div>
+            </div>
+        )
     }
 });
+
+var CommentItem = React.createClass({
+    render: function() {
+        return (
+            <div className="feed-box">
+                <div className="feed-titlebox">
+                    <div className="feed-title">
+                        <a href={this.props.data.storyurl} target="_blank">
+                        {this.props.data.storytitle}
+                        </a>
+                    </div>
+                    <div className="feed-context">
+                        by <a href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} |
+                        <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
+                    </div>
+                </div>
+                <div className="feed-content">
+                    <a className="feed-author" href={hnUrl + '/item?id=' + this.props.data.id}>{this.props.data.by + '\'s comment: '}</a>
+                    <span className="feed-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
+                </div>
+            </div>
+        )
+    }
+});
+
+
+
 
 var Notifications = React.createClass({
     render: function () {
