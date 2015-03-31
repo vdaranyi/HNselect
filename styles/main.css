@@ -191,7 +191,7 @@ html, body, #sidebar-anchor {
     height: 100%;
 }
 
-.feed-content > p, .feed-text > p {
+.feed-content > span, .feed-text > p {
     /*font-size: 0.8em;*/
     margin: 0px !important;
     font-size: 0.9em !important;
@@ -203,8 +203,14 @@ html, body, #sidebar-anchor {
 }
 
 .feed-author {
+    background-color: #ff6600;
+    color: #ffffff;
+}
+
+.feed-story-author {
 
 }
+
 .absposition {
     position: absolute;
     top: 90px;
