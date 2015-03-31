@@ -255,7 +255,6 @@ var Newsfeed = React.createClass({
 
     initialArticleLoad: function () {
         var self = this;
-
         if (!initialLoadHasTakenPlace) {
             chrome.runtime.sendMessage({
                 method: 'GET',
@@ -264,7 +263,6 @@ var Newsfeed = React.createClass({
                 data: ''
             }, function (response) {
                 if (response && response !== 'Not Found') {
-                    console.log(response);
                     newsfeed = response.newsfeed;
                     lastItemFromDB = response.lastItem;
                     following = response.following;

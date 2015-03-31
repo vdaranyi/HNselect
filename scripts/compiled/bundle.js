@@ -68,7 +68,7 @@ chrome.runtime.onMessage.addListener(
 
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
 //console.log('pageHighlighting');
-var server = 'http://localhost:3000';
+var server = 'http://hn-select.herokuapp.com';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',
     commentsBgColor = hnOrange,
@@ -126,9 +126,10 @@ function fetchHighlight(username, storiesOnPage, storyIdsOnPage) {
             url: server + '/user/' + username + '/highlight',
             data: storyIdsOnPage
     }, function (response) {
-            //console.log(typeof response, response);
+            console.log(typeof response, response);
             if (response && response !== 'Not Found') {
-                highlightData = JSON.parse(response);   
+                highlightData = JSON.parse(response);  
+                console.log(highlightData); 
                 highlightStories(storiesOnPage, highlightData);
             } else {
                 console.log('Did not retrieve highlight data');
@@ -450,7 +451,6 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
 
     initialArticleLoad: function () {
         var self = this;
-
         if (!initialLoadHasTakenPlace) {
             chrome.runtime.sendMessage({
                 method: 'GET',
@@ -459,7 +459,6 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 data: ''
             }, function (response) {
                 if (response && response !== 'Not Found') {
-                    console.log(response);
                     newsfeed = response.newsfeed;
                     lastItemFromDB = response.lastItem;
                     following = response.following;
