@@ -762,8 +762,10 @@ var Connections = React.createClass({displayName: "Connections",
             })
         }
     },
+    
     render: function () {
         var value = this.state.value;
+        console.log('VALUE',value);
         return (
             React.createElement("div", null, 
                 React.createElement("h3", {id: "connectionsubhead"}, "Find a user:"), 
