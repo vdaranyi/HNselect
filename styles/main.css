@@ -265,3 +265,9 @@ a.feed-author {
     font-family: sans-serif;
 }
 
+.add-plus-button {
+    cursor: pointer;
+    font-weight: bold;
+    color: #ff6600;
+}
+
