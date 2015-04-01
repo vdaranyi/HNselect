@@ -371,7 +371,7 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
             React.createElement("div", null, 
                 React.createElement("div", {id: "owner-box", className: "col s6"}, 
                     React.createElement("div", {id: "owner-name"}, 
-                        React.createElement("h2", {id: "nav-title"}, username)
+                        React.createElement("h2", {id: "nav-title"}, React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/HNselectlogo_white.png", height: "12px", id: "rvs_logo"}), username)
                     )
                 ), 
                 React.createElement("div", {id: "owner-stats", className: "col s6"}, 

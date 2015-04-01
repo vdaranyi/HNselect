@@ -141,7 +141,7 @@ var OwnerInfo = React.createClass({
             <div>
                 <div id="owner-box" className="col s6">
                     <div id="owner-name">
-                        <h2 id="nav-title">{username}</h2>
+                        <h2 id="nav-title"><img src="https://s3.amazonaws.com/gdcreative-general/HNselectlogo_white.png" height="12px" id="rvs_logo" />{username}</h2>
                     </div>
                 </div>
                 <div id="owner-stats" className="col s6">

@@ -39,7 +39,8 @@ html, body, #sidebar-anchor {
   display: inline;
   width: 470px !important;
   height: 100% !important;
-  background: rgb(252, 251, 248);
+  background: rgb(246,246,239);
+//  background: #ff6600;
   box-shadow: -3px 0px 10px rgba(35,20,10,0.2);
   /* Get rid of the shadow when the sidebar is collapsed */
   transition: box-shadow 0.5s ease-out;
@@ -63,12 +64,16 @@ html, body, #sidebar-anchor {
 //}
 
   #navheight-top {
-    height: 54px;
+    padding-top: 4px;
+    height: 48px;
     line-height: 1em;
   }
   #navheight-bottom {
-    height: 27px;
-    line-height: 1em;
+    position: relative;
+    top: 0px;
+    height: 24px;
+    line-height: 24px;
+    background: #f15c35;
   }
 
 #topnav {
@@ -76,10 +81,15 @@ html, body, #sidebar-anchor {
   margin-bottom: 0px;
 }
 
+#rvs_logo {
+  margin-right: 12px;
+}
+
 #nav-title {
   line-height: 1em;
   margin-top: 0px;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-weight: 100;
 //  font-weight: bold;
 //  color: #ff6600;
   -webkit-margin-after: 0px;
@@ -88,7 +98,7 @@ html, body, #sidebar-anchor {
 
 #navbar-bar {
 
-  margin: 3px;
+  margin: 0px;
 }
 
 #navbar-buttons>ul>li {
@@ -97,7 +107,7 @@ html, body, #sidebar-anchor {
 
 .navbar-button {
   font-size: 0.8em;
-  color: #bdbdbd;
+  color: white;
 }
 
 .navbar-button-right {
@@ -130,8 +140,10 @@ html, body, #sidebar-anchor {
 }
 
 .owner-statscore {
-  font-weight: bold;
-  color: #000000;
+  margin-top: 4px;
+  font-weight: 100;
+  font-size: 1.3em;
+  color: white;
 }
 
 #horiz-rule {
@@ -189,8 +201,8 @@ html, body, #sidebar-anchor {
   margin: 8px 0px;
   padding: 6px;
   background: #ffffff;
-  border: solid 1px rgb(220,220,220);
-  border-radius: 2px;
+//  border: solid 1px rgb(220,220,220);
+//  border-radius: 2px;
   /*color: #fafafa;*/
 }
 
