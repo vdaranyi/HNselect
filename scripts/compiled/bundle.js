@@ -233,6 +233,19 @@ function highlightComments() {
 var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
 
+var addFonts = document.createElement('style');
+    addFonts.type = 'text/css';
+    addFonts.textContent = '@font-face { font-family: FontAwesome; src: url("'
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.eot')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.svg')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Bold.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Light.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Medium.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Regular.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Thin.ttf')
+        + '"); }';
+document.head.appendChild(addFonts);
 
 // TO DO
 // Change server, change following indexOf check
@@ -241,7 +254,7 @@ var hnUrl = "https://news.ycombinator.com";
 // Global variables
 
 var newsfeed, lastItemFromDB, lastItemFetched, following, user
-    initialLoadHasTakenPlace = false,
+initialLoadHasTakenPlace = false,
     maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem');
 
 //==========================================================
@@ -277,7 +290,6 @@ var SidebarBox = React.createClass({
 
     changeState: function (targetName) {
         this.setState({target: targetName})
-        //console.log("Target received by Parent: ", targetName);
     },
 
     render: function () {
@@ -287,22 +299,18 @@ var SidebarBox = React.createClass({
                 React.createElement("div", {className: "sidebarbutton"}, 
                     React.createElement(CloseButton, null)
                 ), 
-                React.createElement("div", {id: "sidebarcontentarea", className: "container-fluid"}, 
-                    React.createElement("div", {id: "nav-area"}, 
-                        React.createElement("div", {className: "row"}, 
-                            React.createElement(OwnerInfo, null)
+                React.createElement("div", {className: "sidebarcontentarea container container-fluid"}, 
+                            React.createElement("div", {className: "row top-nav nav-wrapper", id: "topnav"}, 
+                                React.createElement(OwnerInfo, null)
+                            ), 
+                            React.createElement(NavBar, {changeState: this.changeState, initialState: this.getInitialState})
                         ), 
-                        React.createElement("div", {id: "horiz-rule"}), 
-                        React.createElement(NavBar, {changeState: this.changeState, initialState: this.getInitialState})
-                    ), 
                     React.createElement("div", {id: "feed-holder", className: this.state.target}, 
                         React.createElement(ContentHolder, null)
                     )
                 )
-            )
         );
     }
-
 });
 
 var drawerIsClosed = false;
@@ -356,21 +364,21 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
     render: function () {
         return (
             React.createElement("div", null, 
-                React.createElement("div", {id: "owner-box", className: "col-md-6 col-sm-6 col-xs-6"}, 
+                React.createElement("div", {id: "owner-box", className: "col s6"}, 
                     React.createElement("div", {id: "owner-name"}, 
-                        React.createElement("h2", {className: "nav-title"}, username)
+                        React.createElement("h2", {id: "nav-title"}, username)
                     )
                 ), 
-                React.createElement("div", {id: "owner-stats", className: "col-md-6 col-sm-6 col-xs-6"}, 
-                    React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
+                React.createElement("div", {id: "owner-stats", className: "col s6"}, 
+                    React.createElement("div", {className: "col s4 owner-stat"}, 
                         React.createElement("div", {className: "owner-stattitle"}, "karma"), 
                         React.createElement("div", {className: "owner-statscore"}, "1")
                     ), 
-                    React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
+                    React.createElement("div", {className: "col s4 owner-stat"}, 
                         React.createElement("div", {className: "owner-stattitle"}, "following"), 
                         React.createElement("div", {className: "owner-statscore"}, "15")
                     ), 
-                    React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 owner-stat"}, 
+                    React.createElement("div", {className: "col s4 owner-stat"}, 
                         React.createElement("div", {className: "owner-stattitle"}, "followers"), 
                         React.createElement("div", {className: "owner-statscore"}, "1")
                     )
@@ -400,26 +408,13 @@ var NavBar = React.createClass({displayName: "NavBar",
                 React.createElement("div", {id: "navbar-buttons", className: "row"}, 
                     React.createElement("ul", null, 
                         React.createElement("li", null, 
-                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "newsfeed", buttonTarget: "Newsfeed", active: "true"})
-                        ), 
-                        React.createElement("li", null, 
-                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "notifications", buttonTarget: "Notifications"})
+                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "newsfeed", buttonTarget: "Newsfeed"})
                         ), 
                         React.createElement("li", null, 
                             React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "connections", buttonTarget: "Connections"})
                         ), 
                         React.createElement("li", null, 
-                            React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button"})
-                        ), 
-                        React.createElement("li", null, 
-                            React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "favorites"}, 
-                                React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/star_64_gray.png", width: "13px"})
-                            )
-                        ), 
-                        React.createElement("li", null, 
-                            React.createElement("div", {className: "col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right", id: "settings"}, 
-                                React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png", width: "13px"})
-                            )
+                            React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "bookmarks", buttonTarget: "Bookmarks"})
                         )
                     )
                 )
@@ -437,7 +432,7 @@ var NavButton = React.createClass({displayName: "NavButton",
 
     render: function () {
         return (
-            React.createElement("div", {className: "col-md-3 col-sm-3 col-xs-3 navbar-button", id: this.props.buttonName, onClick: this.handleClick}, this.props.buttonName)
+            React.createElement("div", {className: "col s3 navbar-button", id: this.props.buttonName, onClick: this.handleClick}, this.props.buttonName)
         )
     }
 })
@@ -536,7 +531,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                             function fetchParent(parentId) {
                                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
                                 $.get(itemUrl)
-                                    .then(function (response){
+                                    .then(function (response) {
                                         if (response.type === "story") {
                                             newNewsfeedItem.storytitle = response.title;
                                             newNewsfeedItem.storyurl = response.url;
@@ -548,9 +543,9 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                                             fetchParent(response.parent);
                                         }
                                     });
-                                }
+                            }
                         } else if (newNewsfeedItem.type === "story") {
-                            
+
                             newsfeed = [newNewsfeedItem].concat(newsfeed)
                             self.setState({data: newsfeed});
                         }
@@ -558,34 +553,34 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 });
         }
     },
-/*
-    getItemAtUrl: function (url) {
+    /*
+     getItemAtUrl: function (url) {
 
-        return new bluebird(function (resolve, reject) {
-
-
-
-        });
-
-    },
-
-    newItemsToFetch2: function (start, end) {
-
-        var i = start;
-        var promises = [];
-
-        for (; i <= end; i++) {
-
-            var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
+     return new bluebird(function (resolve, reject) {
 
 
 
-        }
+     });
+
+     },
+
+     newItemsToFetch2: function (start, end) {
+
+     var i = start;
+     var promises = [];
+
+     for (; i <= end; i++) {
+
+     var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
 
 
 
-    },
-*/
+     }
+
+
+
+     },
+     */
     componentDidMount: function () {
         this.initialArticleLoad();
         this.articleUpdate();
@@ -621,7 +616,8 @@ var StoryItem = React.createClass({displayName: "StoryItem",
                         )
                     ), 
                     React.createElement("p", {className: "feed-context"}, 
-                        "by ", React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
+                        "by", 
+                        React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
                         React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
                 ), 
@@ -634,7 +630,7 @@ var StoryItem = React.createClass({displayName: "StoryItem",
 });
 
 var CommentItem = React.createClass({displayName: "CommentItem",
-    render: function() {
+    render: function () {
         return (
             React.createElement("div", {className: "feed-box"}, 
                 React.createElement("div", {className: "feed-titlebox"}, 
@@ -644,7 +640,8 @@ var CommentItem = React.createClass({displayName: "CommentItem",
                         )
                     ), 
                     React.createElement("div", {className: "feed-context"}, 
-                        "by ", React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
+                        "by", 
+                        React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
                         React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
                 ), 
@@ -656,8 +653,6 @@ var CommentItem = React.createClass({displayName: "CommentItem",
         )
     }
 });
-
-
 
 
 var Notifications = React.createClass({displayName: "Notifications",
@@ -680,12 +675,12 @@ var Connections = React.createClass({displayName: "Connections",
     },
 
     getUserData: function (server, username) {
-        var self=this;
+        var self = this;
         //console.log("Getting called")
         chrome.runtime.sendMessage({
             method: 'GET',
             action: 'ajax',
-            url: server + '/user/' + username +'/userdata',
+            url: server + '/user/' + username + '/userdata',
             data: ''
         }, function (response) {
             if (response && response !== 'Not Found') {
@@ -696,11 +691,11 @@ var Connections = React.createClass({displayName: "Connections",
             }
         })
     },
-    
-    componentDidMount: function(){
+
+    componentDidMount: function () {
         this.getUserData(server, username);
     },
-    
+
     searchFocus: function () {
         $("#searchFollow").focus();
     },
@@ -710,15 +705,17 @@ var Connections = React.createClass({displayName: "Connections",
         // Are we allowed to build an if/else statement in here, i.e. returning different html components?
         if (this.state.data === null) {
             return (
-                React.createElement("span", null, "It looks like you're not following anyone. Would you care to ", React.createElement("a", {href: "#", onClick: this.searchFocus()}, "add a user to follow now?"))
+                React.createElement("span", null, "It looks like you're not following anyone. Would you care to", 
+                    React.createElement("a", {href: "#", onClick: this.searchFocus()}, "add a user to follow now?")
+                )
             )
         } else {
             //console.log("There is indeed data: ", this.state.data.following)
             return (
                 React.createElement("ul", null, 
-                this.state.data.following.map(function(user){
+                this.state.data.following.map(function (user) {
                     return React.createElement("li", null, user);
-                 })
+                })
                 )
             )
         }
@@ -762,10 +759,10 @@ var Connections = React.createClass({displayName: "Connections",
             })
         }
     },
-    
+
     render: function () {
         var value = this.state.value;
-        console.log('VALUE',value);
+        console.log('VALUE', value);
         return (
             React.createElement("div", null, 
                 React.createElement("h3", {id: "connectionsubhead"}, "Find a user:"), 
@@ -773,9 +770,9 @@ var Connections = React.createClass({displayName: "Connections",
                     React.createElement("div", {className: "col-lg-12 col-md-12 col-sm-12 col-xs-12"}, 
                         React.createElement("div", {className: "input-group input-group-sm"}, 
                             React.createElement("input", {type: "text", className: "form-control", id: "searchFollow", value: value, onChange: this.handleChange, placeholder: "Search"}), 
-                                React.createElement("span", {className: "input-group-btn"}, 
-                                    React.createElement("button", {className: "btn btn-default", type: "button", onClick: this.followInputUser}, "Follow")
-                                )
+                            React.createElement("span", {className: "input-group-btn"}, 
+                                React.createElement("button", {className: "btn btn-default", type: "button", onClick: this.followInputUser}, "Follow")
+                            )
                         ), 
                         React.createElement("div", null, 
                         this.errorMessage

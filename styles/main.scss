@@ -1,5 +1,10 @@
+
+  @import '../bower_components/materialize/sass/materialize.scss';
+
 html, body, #sidebar-anchor {
   height: 100%;
+  font-family: Roboto, sans-serif;
+  font-weight: normal;
 }
 
 .sidebarbox {
@@ -12,31 +17,36 @@ html, body, #sidebar-anchor {
   transition: right 0.5s ease-out;
 }
 
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
 .sidebarbutton {
-  z-index: 2;
+  z-index: 1;
   display: inline;
   position: relative;
   width: 30px;
   top: 100px;
 }
 
-#sidebarcontentarea {
+.sidebarcontentarea {
   position: absolute;
-  padding: 0%;
+//  padding: 0%;
   top: 0px;
-  z-index: 1;
+  z-index: 2;
   /*opacity: 0.8;*/
   display: inline;
   width: 470px !important;
   height: 100% !important;
-  background: #f6f6ef;
-  box-shadow: -4px 0px 4px rgba(35,20,10,0.5);
+  background: rgb(252, 251, 248);
+  box-shadow: -3px 0px 10px rgba(35,20,10,0.2);
   /* Get rid of the shadow when the sidebar is collapsed */
   transition: box-shadow 0.5s ease-out;
 }
 
 #sidebutton {
-  -webkit-filter: drop-shadow(-3px 0px 2px rgba(35,20,10,0.5));
+  -webkit-filter: drop-shadow(-2px 2px 4px rgba(35,20,10,0.3));
   filter: url(#drop-shadow);
   transition: -webkit-filter 0.5s ease-out;
 }
@@ -46,17 +56,25 @@ html, body, #sidebar-anchor {
 }
 
 /* Nav */
-#nav-area {
-  padding: 6px 18px;
-  height: 90px;
-  /*color: #ffffff;*/
+//#nav-area {
+//  padding: 6px 18px;
+//  height: 90px;
+//  /*color: #ffffff;*/
+//}
+
+#topnav {
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
-.nav-title {
+#nav-title {
+  line-height: 1em;
   margin-top: 0px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ff6600;
+  font-size: 1.2em;
+//  font-weight: bold;
+//  color: #ff6600;
+  -webkit-margin-after: 0px;
+  -webkit-margin-before: 0px;
 }
 
 #navbar-bar {
@@ -85,22 +103,6 @@ html, body, #sidebar-anchor {
 
 .navbar-button:active {
   color: #ff6600;
-}
-
-#newsfeed {
-  position: relative;
-  left: -3px;
-  color: #ff6600;
-}
-
-#notifications {
-  position: relative;
-  left: -37px;
-}
-
-#connections {
-  position: relative;
-  left: -54px;
 }
 
 .owner-stat, #suggest-tags {
@@ -140,7 +142,8 @@ html, body, #sidebar-anchor {
   background: #F86900;
   padding: 0em 0.5em;
   font-size: 0.9em;
-  line-height: 1.5em;
+  line-height: 2em;
+  margin: 0.5em;
 }
 
 /* End nav */
@@ -151,8 +154,8 @@ html, body, #sidebar-anchor {
 
 .feed-title {
   display: inline;
-  /*color: #fafafa;*/
-  font-size: 0.9em;
+//  /*color: #fafafa;*/
+  font-size: 0.9em !important;
 }
 
 .feed-context {
@@ -182,16 +185,11 @@ html, body, #sidebar-anchor {
   /*color: #fafafa;*/
 }
 
-.feed-box > h3, .feed-box > h4 {
-  font-weight: bold;
-}
-
-
 #feed-holder {
   height: 100%;
 }
 
-.feed-content > p, .feed-text > p {
+.feed-content > span, .feed-text > p {
   /*font-size: 0.8em;*/
   margin: 0px !important;
   font-size: 0.9em !important;
@@ -199,12 +197,16 @@ html, body, #sidebar-anchor {
 
 .feed-titlebox {
   color: rgb(30,30,30) !important;
-  font-weight: bold !important;
 }
 
-.feed-author {
+a.feed-author {
+  color: #ff6600 !important;
+}
+
+.feed-story-author {
 
 }
+
 .absposition {
   position: absolute;
   top: 90px;
@@ -265,3 +267,8 @@ html, body, #sidebar-anchor {
   font-family: sans-serif;
 }
 
+.add-plus-button {
+  cursor: pointer;
+  font-weight: bold;
+  color: #ff6600;
+}
