@@ -70,15 +70,20 @@ var SidebarBox = React.createClass({
                     <CloseButton />
                 </div>
                 <div className="sidebarcontentarea container container-fluid">
+                    <nav id="navheight-top">
                             <div className="row top-nav nav-wrapper" id="topnav">
                                 <OwnerInfo />
                             </div>
+                        </nav>
+                    <nav id="navheight-bottom">
                             <NavBar changeState={this.changeState} initialState={this.getInitialState} />
-                        </div>
+                        </nav>
                     <div id="feed-holder" className={this.state.target}>
                         <ContentHolder />
                     </div>
                 </div>
+            </div>
+
         );
     }
 });
