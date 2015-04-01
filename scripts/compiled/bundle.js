@@ -69,12 +69,13 @@ chrome.runtime.onMessage.addListener(
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
 //console.log('pageHighlighting');
 var server = 'http://hn-select.herokuapp.com';
+// var server = 'http://localhost:3000';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',
     commentsBgColor = hnOrange,
     commentsTitleColor = hnOrange,
     authorColor = hnOrange,
-    commentersTextColor = "#ffffff",
+    commentersTextColor = 'black',
     commentersBgColor = hnGrey,
     bgGrey = "#f7f7f1";
 
@@ -111,6 +112,8 @@ function parseHnPage() {
               author: author
             };
             storyIdsOnPage.push(Number(storyId));
+            addBookmarkButton($storyTitle, storyId, user);
+            addPlusButton($author, author, user);
         }
     });
     // var storyIdsReqObject = {storyIds: storyIdsOnPage};
@@ -143,8 +146,8 @@ function highlightStories(stories, highlightData) {
     for (var s in highlightData) {
         if (highlightData.hasOwnProperty(s)) {
             //console.log(s);
+            stories[s].$storyTitle.css({color: commentsTitleColor});
             if (highlightData[s].author.length) {
-                stories[s].$storyTitle.css({color: commentsTitleColor, 'font-weight': 'bold'});
                 commenterStyling(stories[s].$author, 'story');
             }   
             if (highlightData[s].commenters.length) {
@@ -153,7 +156,7 @@ function highlightStories(stories, highlightData) {
                     var commentersElement = "<a href='https://news.ycombinator.com/user?id=" + commenters[c] + "'> " + commenters[c] + " </a>";
                     //console.log(commentersElement, 'comment');
                     var $commentersElement = commenterStyling($(commentersElement));
-                    stories[s].$author.nextAll().eq(1).after($commentersElement);
+                    stories[s].$author.nextAll().eq(2).after($commentersElement);
                 }
             }   
         }
@@ -163,7 +166,6 @@ function highlightStories(stories, highlightData) {
         $authorDomElem.css({
             color: commentersTextColor,
             'font-weight': 'bold',
-            'background-color': commentersBgColor
         });
         if (type === 'story') {
             $authorDomElem.prepend("<span>&nbsp</span>").append("<span>&nbsp</span>");
@@ -174,8 +176,39 @@ function highlightStories(stories, highlightData) {
     }
 }
 
+function addPlusButton($author, author, user) {
+    // Replace + with Glyphicon
+    $plusButtonHtml = $("<span class='add-plus-button'> +</span>")
+    $plusButtonHtml.insertAfter($author).click(function(){
+        chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'ajax',
+            url: server + '/user/' + user + '/followuser/' + author,
+            }, function (response) {
+                console.log('DONE',reponse);
+            }
+        );
+    });
+}
+
+function addBookmarkButton($storyTitle, storyId, user) {
+    // Replace + with Glyphicon
+    $plusButtonHtml = $("<span class='add-plus-button'> +</span>")
+    $plusButtonHtml.insertAfter($storyTitle).click(function(){
+        chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'ajax',
+            url: server + '/user/' + user + '/bookmark/' + storyId,
+            }, function (response) {
+                console.log('DONE',reponse);
+            }
+        );
+    });
+}
+
 
 // NOT YET FUNCTIONAL
+/*
 function highlightComments() {
     $('a[href^="user?id"]').each(function (index) {
         var author = $(this).text();
@@ -186,6 +219,7 @@ function highlightComments() {
         }
     });
 }
+*/
 
 
 
