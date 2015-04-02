@@ -515,7 +515,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                 var maxItem = snapshot.val();
                 if (!lastItemFetched)
                     lastItemFetched = lastItemFromDB;
-                //console.log(lastItemFetched, maxItem);
+                console.log(lastItemFetched, maxItem);
                 var nextItem = lastItemFetched + 1;
                 if (maxItem > nextItem) {
                     self.newItemsToFetch(nextItem, maxItem);
@@ -528,11 +528,12 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
         var self = this,
             newNewsfeedItems = [],
             promiseArray = []
-        for (var i = start; i <= end; i++) {
+        for (var i = start; i <= end; i++) { // 9311348
             var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
-            $.get(itemUrl)
+            promiseArray.push(
+                $.get(itemUrl)
                 .then(function (newNewsfeedItem) {
-                    if (true && newNewsfeedItem !== null) { // following.indexOf(newNewsfeedItem.by) > -1
+                    if (newNewsfeedItem) { // following.indexOf(newNewsfeedItem.by) > -1
                         if (newNewsfeedItem.type === "comment") {
                             fetchParent(newNewsfeedItem.parent);
                             function fetchParent(parentId) {
@@ -549,21 +550,28 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                                         } else {
                                             fetchParent(response.parent);
                                         }
+                                    }, function(err){
+                                        console.log("here is the error: ", err);
+                                        return;
                                     });
                             }
                         } else if (newNewsfeedItem.type === "story") {
 
                             newsfeed = [newNewsfeedItem].concat(newsfeed)
                             self.setState({tempNewsfeed: newsfeed});
-                        } else {
-                            console.log("Received this response, ", newNewsfeedItem);
-                            return;
-                        };
-                        self.setState({hideOrShow: "show"});
-
+                        }
                     }
-                });
+                }, function(err){
+                    console.log("here is another error: ", err);
+                    return;
+                })
+            );
         }
+        $.when.apply($, promiseArray)
+        .done(function(){
+                    console.log(i,' all updated > refresh');
+                    self.setState({hideOrShow: "show"});
+        });
     },
 
     updateNewsfeed: function () {
