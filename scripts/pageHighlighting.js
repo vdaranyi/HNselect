@@ -60,10 +60,10 @@ function fetchHighlight(username, storiesOnPage, storyIdsOnPage) {
             url: server + '/user/' + username + '/highlight',
             data: storyIdsOnPage
     }, function (response) {
-            console.log(typeof response, response);
+            //console.log(typeof response, response);
             if (response && response !== 'Not Found') {
                 highlightData = JSON.parse(response);  
-                console.log(highlightData); 
+                //console.log(highlightData);
                 highlightStories(storiesOnPage, highlightData);
             } else {
                 console.log('Did not retrieve highlight data');

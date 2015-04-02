@@ -268,7 +268,7 @@ var Newsfeed = React.createClass({
                     newsfeed = response.newsfeed;
                     lastItemFromDB = response.lastItem;
                     following = response.following;
-                    console.log(lastItemFromDB);
+                    //console.log(lastItemFromDB);
                     self.setState({data: newsfeed});
                 } else {
                     self.setState({data: null});
@@ -285,7 +285,7 @@ var Newsfeed = React.createClass({
                 var maxItem = snapshot.val();
                 if (!lastItemFetched)
                     lastItemFetched = lastItemFromDB;
-                console.log(lastItemFetched, maxItem);
+                //console.log(lastItemFetched, maxItem);
                 var nextItem = lastItemFetched + 1;
                 if (maxItem > nextItem) {
                     self.newItemsToFetch(nextItem, maxItem);
@@ -302,7 +302,7 @@ var Newsfeed = React.createClass({
             var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
             $.get(itemUrl)
                 .then(function (newNewsfeedItem) {
-                    if (true) { // following.indexOf(newNewsfeedItem.by) > -1
+                    if (true && newNewsfeedItem !== null) { // following.indexOf(newNewsfeedItem.by) > -1
                         if (newNewsfeedItem.type === "comment") {
                             fetchParent(newNewsfeedItem.parent);
                             function fetchParent(parentId) {
@@ -325,6 +325,9 @@ var Newsfeed = React.createClass({
 
                             newsfeed = [newNewsfeedItem].concat(newsfeed)
                             self.setState({tempNewsfeed: newsfeed});
+                        } else {
+                            console.log("Received this response, ", newNewsfeedItem);
+                            return;
                         };
                         self.setState({hideOrShow: "show"});
 
@@ -334,7 +337,6 @@ var Newsfeed = React.createClass({
     },
 
     updateNewsfeed: function () {
-        console.log("loggy doggy, ", this.state.tempNewsfeed)
         var self=this
         self.setState({
             data: this.state.tempNewsfeed,
@@ -465,7 +467,7 @@ var Connections = React.createClass({
     },
 
     showUsers: function () {
-        console.log("Show users, ", this.state)
+        //console.log("Show users, ", this.state)
         // Are we allowed to build an if/else statement in here, i.e. returning different html components?
         if (this.state.data === null) {
             return (
@@ -526,7 +528,7 @@ var Connections = React.createClass({
 
     render: function () {
         var value = this.state.value;
-        console.log('VALUE', value);
+        //console.log('VALUE', value);
         return (
             <div>
                 <h3 id="connectionsubhead">Find a user:</h3>
