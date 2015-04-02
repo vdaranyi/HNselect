@@ -6348,7 +6348,7 @@ html, body, #sidebar-anchor {
 
 .navbar-button {
   font-size: 0.8em;
-  color: white; }
+  color: rgba(255, 255, 255, 0.7); }
 
 .navbar-button-right {
   padding-right: 4px;
@@ -6407,7 +6407,8 @@ html, body, #sidebar-anchor {
   display: inline; }
 
 .feed-title > a {
-  width: inherit;
+  width: 95%;
+  height: 1.4em;
   overflow: hidden !important;
   text-overflow: ellipsis !important; }
 
@@ -6477,10 +6478,10 @@ a.feed-author {
 .Newsfeed > #visible > #conn {
   visibility: hidden; }
 
-.Notifications > #visible > #news {
+.Bookmarks > #visible > #news {
   visibility: hidden; }
 
-.Notifications > #visible > #conn {
+.Bookmarks > #visible > #conn {
   visibility: hidden; }
 
 .Connections > #visible > #noti {
@@ -6492,7 +6493,7 @@ a.feed-author {
 .Newsfeed > #visible > #news {
   visibility: visible; }
 
-.Notifications > #visible > #noti {
+.Bookmarks > #visible > #noti {
   visibility: visible; }
 
 .Connections > #visible > #conn {
@@ -6516,3 +6517,21 @@ a.feed-author {
   cursor: pointer;
   font-weight: bold;
   color: #ff6600; }
+
+#NewsfeedActive > #nf {
+  color: white;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: solid 3px #000000 !important; }
+
+#ConnectionsActive > #co {
+  color: white;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: solid 3px #000000 !important; }
+
+#BookmarksActive > #bm {
+  color: white;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: solid 3px #000000 !important; }
