@@ -6402,40 +6402,41 @@ html, body, #sidebar-anchor {
   padding: 18px; }
 
 .feed-title {
-  line-height: 1em !important;
-  display: inline;
-  font-size: 0.9em !important; }
+  width: 376px;
+  font-weight: bold;
+  display: inline; }
+
+.feed-title > a {
+  width: inherit;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important; }
 
 .feed-context {
-  font-size: 0.9em; }
+  margin-bottom: 0.5em; }
 
 .feed-content {
-  max-lines: 3 !important; }
+  max-lines: 3 !important;
+  color: #1e1e1e; }
 
 .feed-text {
   /*font-size: 0.8em;*/
   margin: 0px !important;
   /*color: #fafafa;*/ }
 
-.feed-footertext {
-  font-size: 0.9em; }
-
 .feed-box {
+  width: 400px;
   margin: 8px 0px;
   padding: 12px;
   background: #ffffff;
+  line-height: 1.4em !important;
+  font-size: 0.9em !important;
   /*color: #fafafa;*/ }
+
+#feedlink {
+  color: #828282; }
 
 #feed-holder {
   height: 100%; }
-
-.feed-content > span, .feed-text > p {
-  /*font-size: 0.8em;*/
-  margin: 0px !important;
-  font-size: 0.9em !important; }
-
-.feed-titlebox {
-  color: #1e1e1e !important; }
 
 a.feed-author {
   color: #ff6600 !important; }

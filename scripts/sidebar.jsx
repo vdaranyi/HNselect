@@ -384,16 +384,16 @@ var StoryItem = React.createClass({
         return (
             <div className="feed-box">
                 <div className="feed-titlebox">
-                    <h4 className="feed-title">
+                    <div className="feed-title truncate">
                         <a href={this.props.data.storyurl} target="_blank">
                             {this.props.data.storytitle}
                         </a>
-                    </h4>
-                    <p className="feed-context">
-                        by
+                    </div>
+                    <div className="feed-context">
+                        by&nbsp;
                         <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} |
                         <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
-                    </p>
+                    </div>
                 </div>
                 <div className="feed-content">
                     <p className="feed-text">{this.props.data.text}</p>
@@ -408,14 +408,14 @@ var CommentItem = React.createClass({
         return (
             <div className="feed-box">
                 <div className="feed-titlebox">
-                    <div className="feed-title">
+                    <div className="feed-title truncate">
                         <a href={this.props.data.storyurl} target="_blank">
                         {this.props.data.storytitle}
                         </a>
                     </div>
                     <div className="feed-context">
-                        by
-                        <a href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} |
+                        by&nbsp;
+                        <a href={hnUrl + '/user?id=' + this.props.data.storyby} id="feedlink">{this.props.data.storyby} | </a> {this.props.data.time} |
                         <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
                     </div>
                 </div>

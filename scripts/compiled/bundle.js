@@ -614,13 +614,13 @@ var StoryItem = React.createClass({displayName: "StoryItem",
         return (
             React.createElement("div", {className: "feed-box"}, 
                 React.createElement("div", {className: "feed-titlebox"}, 
-                    React.createElement("h4", {className: "feed-title"}, 
+                    React.createElement("div", {className: "feed-title truncate"}, 
                         React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
                             this.props.data.storytitle
                         )
                     ), 
-                    React.createElement("p", {className: "feed-context"}, 
-                        "by", 
+                    React.createElement("div", {className: "feed-context"}, 
+                        "by ", 
                         React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
                         React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
@@ -638,14 +638,14 @@ var CommentItem = React.createClass({displayName: "CommentItem",
         return (
             React.createElement("div", {className: "feed-box"}, 
                 React.createElement("div", {className: "feed-titlebox"}, 
-                    React.createElement("div", {className: "feed-title"}, 
+                    React.createElement("div", {className: "feed-title truncate"}, 
                         React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
                         this.props.data.storytitle
                         )
                     ), 
                     React.createElement("div", {className: "feed-context"}, 
-                        "by", 
-                        React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
+                        "by ", 
+                        React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby, id: "feedlink"}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
                         React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
                 ), 

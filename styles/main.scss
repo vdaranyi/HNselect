@@ -174,18 +174,27 @@ html, body, #sidebar-anchor {
 }
 
 .feed-title {
-  line-height: 1em !important;
+  width: 376px;
+  font-weight: bold;
   display: inline;
 //  /*color: #fafafa;*/
-  font-size: 0.9em !important;
+//  font-size: 0.9em !important;
+}
+
+.feed-title>a {
+  width: inherit;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .feed-context {
-  font-size: 0.9em;
+//  font-size: 0.9em;
+  margin-bottom: 0.5em;
 }
 
 .feed-content {
   max-lines: 3 !important;
+    color: rgb(30,30,30);
 }
 
 .feed-text {
@@ -195,30 +204,37 @@ html, body, #sidebar-anchor {
 }
 
 .feed-footertext {
-  font-size: 0.9em;
+//  font-size: 0.9em;
 }
 
 .feed-box {
+  width: 400px;
   margin: 8px 0px;
   padding: 12px;
   background: #ffffff;
-//  border: solid 1px rgb(220,220,220);
+  line-height: 1.4em !important;
+  font-size: 0.9em !important;
+  //  border: solid 1px rgb(220,220,220);
 //  border-radius: 2px;
   /*color: #fafafa;*/
+}
+
+#feedlink {
+  color: #828282;
 }
 
 #feed-holder {
   height: 100%;
 }
 
-.feed-content > span, .feed-text > p {
-  /*font-size: 0.8em;*/
-  margin: 0px !important;
-  font-size: 0.9em !important;
-}
+//.feed-content > span, .feed-text > p {
+//  /*font-size: 0.8em;*/
+//  margin: 0px !important;
+////  font-size: 0.9em !important;
+//}
 
 .feed-titlebox {
-  color: rgb(30,30,30) !important;
+//  color: rgb(30,30,30) !important;
 }
 
 a.feed-author {
