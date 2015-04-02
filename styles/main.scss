@@ -107,7 +107,7 @@ html, body, #sidebar-anchor {
 
 .navbar-button {
   font-size: 0.8em;
-  color: white;
+  color: rgba(255,255,255,0.7);
 }
 
 .navbar-button-right {
@@ -174,18 +174,28 @@ html, body, #sidebar-anchor {
 }
 
 .feed-title {
-  line-height: 1em !important;
+  width: 376px;
+  font-weight: bold;
   display: inline;
 //  /*color: #fafafa;*/
-  font-size: 0.9em !important;
+//  font-size: 0.9em !important;
+}
+
+.feed-title>a {
+  width: 95%;
+  height: 1.4em;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .feed-context {
-  font-size: 0.9em;
+//  font-size: 0.9em;
+  margin-bottom: 0.5em;
 }
 
 .feed-content {
   max-lines: 3 !important;
+    color: rgb(30,30,30);
 }
 
 .feed-text {
@@ -195,30 +205,37 @@ html, body, #sidebar-anchor {
 }
 
 .feed-footertext {
-  font-size: 0.9em;
+//  font-size: 0.9em;
 }
 
 .feed-box {
+  width: 400px;
   margin: 8px 0px;
   padding: 12px;
   background: #ffffff;
-//  border: solid 1px rgb(220,220,220);
+  line-height: 1.4em !important;
+  font-size: 0.9em !important;
+  //  border: solid 1px rgb(220,220,220);
 //  border-radius: 2px;
   /*color: #fafafa;*/
+}
+
+#feedlink {
+  color: #828282;
 }
 
 #feed-holder {
   height: 100%;
 }
 
-.feed-content > span, .feed-text > p {
-  /*font-size: 0.8em;*/
-  margin: 0px !important;
-  font-size: 0.9em !important;
-}
+//.feed-content > span, .feed-text > p {
+//  /*font-size: 0.8em;*/
+//  margin: 0px !important;
+////  font-size: 0.9em !important;
+//}
 
 .feed-titlebox {
-  color: rgb(30,30,30) !important;
+//  color: rgb(30,30,30) !important;
 }
 
 a.feed-author {
@@ -267,11 +284,11 @@ a.feed-author {
   visibility: hidden;
 }
 
-.Notifications>#visible>#news {
+.Bookmarks>#visible>#news {
   visibility: hidden;
 }
 
-.Notifications>#visible>#conn {
+.Bookmarks>#visible>#conn {
   visibility: hidden;
 }
 
@@ -287,7 +304,7 @@ a.feed-author {
   visibility: visible;
 }
 
-.Notifications>#visible>#noti {
+.Bookmarks>#visible>#noti {
   visibility: visible;
 }
 
@@ -318,3 +335,24 @@ a.feed-author {
   font-weight: bold;
   color: #ff6600;
 }
+
+#NewsfeedActive>#nf {
+  color: rgba(255,255,255,1.0);
+  pointer-events: none;
+  background: rgba(0,0,0,0.15);
+  border-bottom: solid 3px #000000 !important;
+}
+
+  #ConnectionsActive>#co {
+    color: rgba(255,255,255,1.0);
+    pointer-events: none;
+    background: rgba(0,0,0,0.15);
+    border-bottom: solid 3px #000000 !important;
+  }
+
+  #BookmarksActive>#bm {
+    color: rgba(255,255,255,1.0);
+    pointer-events: none;
+    background: rgba(0,0,0,0.15);
+    border-bottom: solid 3px #000000 !important;
+  }

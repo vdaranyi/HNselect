@@ -394,9 +394,12 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
 });
 
 var NavBar = React.createClass({displayName: "NavBar",
+    getInitialState: function () {
+        return {active: "NewsfeedActive"}
+    },
     componentDidMount: function () {
         var self = this;
-        var newsfeed = "This right cheer is some newsfeed thingy";
+        //var newsfeed = "This right cheer is some newsfeed thingy";
         self.props.initialState(newsfeed)
     },
     setTarget: function (target) {
@@ -407,18 +410,19 @@ var NavBar = React.createClass({displayName: "NavBar",
         var self = this;
         var changeParentState = function (target) {
             self.props.changeState(target)
+            self.setState({active: target + "Active"})
         };
         return (
             React.createElement("div", {id: "navbar-bar"}, 
                 React.createElement("div", {id: "navbar-buttons", className: "row"}, 
-                    React.createElement("ul", null, 
-                        React.createElement("li", null, 
+                    React.createElement("ul", {id: this.state.active}, 
+                        React.createElement("li", {className: "col s2 navbar-button waves-effect waves-light", id: "nf"}, 
                             React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "newsfeed", buttonTarget: "Newsfeed"})
                         ), 
-                        React.createElement("li", null, 
+                        React.createElement("li", {className: "col s2 navbar-button waves-effect waves-light", id: "co"}, 
                             React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "connections", buttonTarget: "Connections"})
                         ), 
-                        React.createElement("li", null, 
+                        React.createElement("li", {className: "col s2 navbar-button waves-effect waves-light", id: "bm"}, 
                             React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "bookmarks", buttonTarget: "Bookmarks"})
                         )
                     )
@@ -437,7 +441,7 @@ var NavButton = React.createClass({displayName: "NavButton",
 
     render: function () {
         return (
-            React.createElement("div", {className: "col s3 navbar-button", id: this.props.buttonName, onClick: this.handleClick}, this.props.buttonName)
+            React.createElement("div", {id: this.props.buttonName, onClick: this.handleClick}, this.props.buttonName)
         )
     }
 })
@@ -455,12 +459,13 @@ var ContentHolder = React.createClass({displayName: "ContentHolder",
                 React.createElement("div", {className: "absposition", id: "news"}, 
                     React.createElement(Newsfeed, null)
                 ), 
-                React.createElement("div", {className: "absposition", id: "noti"}, 
-                    React.createElement(Notifications, null)
-                ), 
                 React.createElement("div", {className: "absposition", id: "conn"}, 
                     React.createElement(Connections, null)
+                ), 
+                React.createElement("div", {className: "absposition", id: "noti"}, 
+                    React.createElement(Bookmarks, null)
                 )
+
             )
         )
     }
@@ -614,13 +619,13 @@ var StoryItem = React.createClass({displayName: "StoryItem",
         return (
             React.createElement("div", {className: "feed-box"}, 
                 React.createElement("div", {className: "feed-titlebox"}, 
-                    React.createElement("h4", {className: "feed-title"}, 
+                    React.createElement("div", {className: "feed-title truncate"}, 
                         React.createElement("a", {href: this.props.data.storyurl, target: "_blank"}, 
                             this.props.data.storytitle
                         )
                     ), 
-                    React.createElement("p", {className: "feed-context"}, 
-                        "by", 
+                    React.createElement("div", {className: "feed-context"}, 
+                        "by ", 
                         React.createElement("a", {className: "feed-author", href: hnUrl + '/user?id=' + this.props.data.by}, this.props.data.by, " | "), " ", this.props.data.time, " |", 
                         React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
@@ -644,8 +649,8 @@ var CommentItem = React.createClass({displayName: "CommentItem",
                         )
                     ), 
                     React.createElement("div", {className: "feed-context"}, 
-                        "by", 
-                        React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
+                        "by ", 
+                        React.createElement("a", {href: hnUrl + '/user?id=' + this.props.data.storyby, id: "feedlink"}, this.props.data.storyby, " | "), " ", this.props.data.time, " |", 
                         React.createElement("a", {href: hnUrl + '/item?id=' + this.props.data.storyid}, " all comments")
                     )
                 ), 
@@ -659,9 +664,9 @@ var CommentItem = React.createClass({displayName: "CommentItem",
 });
 
 
-var Notifications = React.createClass({displayName: "Notifications",
+var Bookmarks = React.createClass({displayName: "Bookmarks",
     render: function () {
-        return React.createElement("div", null, "Notifications");
+        return React.createElement("div", null, "Bookmarks");
     }
 })
 

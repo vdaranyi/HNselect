@@ -164,9 +164,12 @@ var OwnerInfo = React.createClass({
 });
 
 var NavBar = React.createClass({
+    getInitialState: function () {
+        return {active: "NewsfeedActive"}
+    },
     componentDidMount: function () {
         var self = this;
-        var newsfeed = "This right cheer is some newsfeed thingy";
+        //var newsfeed = "This right cheer is some newsfeed thingy";
         self.props.initialState(newsfeed)
     },
     setTarget: function (target) {
@@ -177,18 +180,19 @@ var NavBar = React.createClass({
         var self = this;
         var changeParentState = function (target) {
             self.props.changeState(target)
+            self.setState({active: target + "Active"})
         };
         return (
             <div id="navbar-bar">
                 <div id="navbar-buttons" className="row">
-                    <ul>
-                        <li>
+                    <ul id={this.state.active}>
+                        <li className="col s2 navbar-button waves-effect waves-light" id="nf">
                             <NavButton changeParentState={changeParentState} buttonName="newsfeed" buttonTarget="Newsfeed" />
                         </li>
-                        <li>
+                        <li className="col s2 navbar-button waves-effect waves-light" id="co">
                             <NavButton changeParentState={changeParentState} buttonName="connections" buttonTarget="Connections" />
                         </li>
-                        <li>
+                        <li className="col s2 navbar-button waves-effect waves-light" id="bm">
                             <NavButton changeParentState={changeParentState} buttonName="bookmarks" buttonTarget="Bookmarks" />
                         </li>
                     </ul>
@@ -207,7 +211,7 @@ var NavButton = React.createClass({
 
     render: function () {
         return (
-            <div className="col s3 navbar-button" id={this.props.buttonName} onClick={this.handleClick}>{this.props.buttonName}</div>
+            <div id={this.props.buttonName} onClick={this.handleClick}>{this.props.buttonName}</div>
         )
     }
 })
@@ -225,12 +229,13 @@ var ContentHolder = React.createClass({
                 <div className="absposition" id="news">
                     <Newsfeed />
                 </div>
-                <div className="absposition" id="noti">
-                    <Notifications />
-                </div>
                 <div className="absposition" id="conn">
                     <Connections />
                 </div>
+                <div className="absposition" id="noti">
+                    <Bookmarks />
+                </div>
+
             </div>
         )
     }
@@ -384,16 +389,16 @@ var StoryItem = React.createClass({
         return (
             <div className="feed-box">
                 <div className="feed-titlebox">
-                    <h4 className="feed-title">
+                    <div className="feed-title truncate">
                         <a href={this.props.data.storyurl} target="_blank">
                             {this.props.data.storytitle}
                         </a>
-                    </h4>
-                    <p className="feed-context">
-                        by
+                    </div>
+                    <div className="feed-context">
+                        by&nbsp;
                         <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} |
                         <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
-                    </p>
+                    </div>
                 </div>
                 <div className="feed-content">
                     <p className="feed-text">{this.props.data.text}</p>
@@ -414,8 +419,8 @@ var CommentItem = React.createClass({
                         </a>
                     </div>
                     <div className="feed-context">
-                        by
-                        <a href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} |
+                        by&nbsp;
+                        <a href={hnUrl + '/user?id=' + this.props.data.storyby} id="feedlink">{this.props.data.storyby} | </a> {this.props.data.time} |
                         <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
                     </div>
                 </div>
@@ -429,9 +434,9 @@ var CommentItem = React.createClass({
 });
 
 
-var Notifications = React.createClass({
+var Bookmarks = React.createClass({
     render: function () {
-        return <div>Notifications</div>;
+        return <div>Bookmarks</div>;
     }
 })
 
