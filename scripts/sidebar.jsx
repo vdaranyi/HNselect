@@ -249,7 +249,9 @@ var Newsfeed = React.createClass({
 
     getInitialState: function () {
         return {
-            data: null
+            data: null,
+            tempNewsfeed: [],
+            hideOrShow: "hide"
         }
     },
 
@@ -312,8 +314,8 @@ var Newsfeed = React.createClass({
                                             newNewsfeedItem.storyurl = response.url;
                                             newNewsfeedItem.storyby = response.by;
                                             newNewsfeedItem.storyid = response.id;
-                                            newsfeed = [newNewsfeedItem].concat(newsfeed)
-                                            self.setState({data: newsfeed});
+                                            newsfeed = [newNewsfeedItem].concat(newsfeed);
+                                            self.setState({tempNewsfeed: newsfeed});
                                         } else {
                                             fetchParent(response.parent);
                                         }
@@ -322,40 +324,24 @@ var Newsfeed = React.createClass({
                         } else if (newNewsfeedItem.type === "story") {
 
                             newsfeed = [newNewsfeedItem].concat(newsfeed)
-                            self.setState({data: newsfeed});
-                        }
+                            self.setState({tempNewsfeed: newsfeed});
+                        };
+                        self.setState({hideOrShow: "show"});
+
                     }
                 });
         }
     },
-    /*
-     getItemAtUrl: function (url) {
 
-     return new bluebird(function (resolve, reject) {
+    updateNewsfeed: function () {
+        console.log("loggy doggy, ", this.state.tempNewsfeed)
+        var self=this
+        self.setState({
+            data: this.state.tempNewsfeed,
+            hideOrShow: "hide"
+        });
+    },
 
-
-
-     });
-
-     },
-
-     newItemsToFetch2: function (start, end) {
-
-     var i = start;
-     var promises = [];
-
-     for (; i <= end; i++) {
-
-     var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
-
-
-
-     }
-
-
-
-     },
-     */
     componentDidMount: function () {
         this.initialArticleLoad();
         this.articleUpdate();
@@ -365,6 +351,8 @@ var Newsfeed = React.createClass({
         if (this.state.data) {
             return (
                 <div>
+                    <div id="feedbuttondiv" className={this.state.hideOrShow} onClick={this.updateNewsfeed}><a className="waves-effect waves-ripple btn" id="feedbutton" href="#"><p id="feedbuttontext">&uarr;New Items</p></a></div>
+                    <div>
                     {this.state.data.map(function (item) {
                         if (item.type === "story") {
                             return <StoryItem data={item} />
@@ -372,6 +360,7 @@ var Newsfeed = React.createClass({
                             return <CommentItem data={item} />
                         }
                     })}
+                        </div>
                 </div>
             )
         } else {
