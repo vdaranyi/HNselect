@@ -3,6 +3,19 @@
 var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
 
+var addFonts = document.createElement('style');
+    addFonts.type = 'text/css';
+    addFonts.textContent = '@font-face { font-family: FontAwesome; src: url("'
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.eot')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.svg')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Bold.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Light.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Medium.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Regular.ttf')
+        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Thin.ttf')
+        + '"); }';
+document.head.appendChild(addFonts);
 
 // TO DO
 // Change server, change following indexOf check
@@ -11,7 +24,7 @@ var hnUrl = "https://news.ycombinator.com";
 // Global variables
 
 var newsfeed, lastItemFromDB, lastItemFetched, following, user
-    initialLoadHasTakenPlace = false,
+initialLoadHasTakenPlace = false,
     maxItemFb = new Firebase('https://hacker-news.firebaseio.com/v0/maxitem');
 
 //==========================================================
@@ -47,7 +60,6 @@ var SidebarBox = React.createClass({
 
     changeState: function (targetName) {
         this.setState({target: targetName})
-        //console.log("Target received by Parent: ", targetName);
     },
 
     render: function () {
@@ -57,22 +69,23 @@ var SidebarBox = React.createClass({
                 <div className="sidebarbutton">
                     <CloseButton />
                 </div>
-                <div id="sidebarcontentarea"  className="container-fluid">
-                    <div id="nav-area">
-                        <div className="row">
-                            <OwnerInfo />
-                        </div>
-                        <div id="horiz-rule"></div>
-                        <NavBar changeState={this.changeState} initialState={this.getInitialState} />
-                    </div>
+                <div className="sidebarcontentarea container container-fluid">
+                    <nav id="navheight-top">
+                            <div className="row top-nav nav-wrapper" id="topnav">
+                                <OwnerInfo />
+                            </div>
+                        </nav>
+                    <nav id="navheight-bottom">
+                            <NavBar changeState={this.changeState} initialState={this.getInitialState} />
+                        </nav>
                     <div id="feed-holder" className={this.state.target}>
                         <ContentHolder />
                     </div>
                 </div>
             </div>
+
         );
     }
-
 });
 
 var drawerIsClosed = false;
@@ -126,21 +139,21 @@ var OwnerInfo = React.createClass({
     render: function () {
         return (
             <div>
-                <div id="owner-box" className="col-md-6 col-sm-6 col-xs-6">
+                <div id="owner-box" className="col s6">
                     <div id="owner-name">
-                        <h2 className="nav-title">{username}</h2>
+                        <h2 id="nav-title"><img src="https://s3.amazonaws.com/gdcreative-general/HNselectlogo_white.png" height="12px" id="rvs_logo" />{username}</h2>
                     </div>
                 </div>
-                <div id="owner-stats" className="col-md-6 col-sm-6 col-xs-6">
-                    <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
+                <div id="owner-stats" className="col s6">
+                    <div className="col s4 owner-stat">
                         <div className="owner-stattitle">karma</div>
                         <div className="owner-statscore">1</div>
                     </div>
-                    <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
+                    <div className="col s4 owner-stat">
                         <div className="owner-stattitle">following</div>
                         <div className="owner-statscore">15</div>
                     </div>
-                    <div className="col-md-4 col-sm-4 col-xs-4 owner-stat">
+                    <div className="col s4 owner-stat">
                         <div className="owner-stattitle">followers</div>
                         <div className="owner-statscore">1</div>
                     </div>
@@ -170,26 +183,13 @@ var NavBar = React.createClass({
                 <div id="navbar-buttons" className="row">
                     <ul>
                         <li>
-                            <NavButton changeParentState={changeParentState} buttonName="newsfeed" buttonTarget="Newsfeed" active="true" />
-                        </li>
-                        <li>
-                            <NavButton changeParentState={changeParentState} buttonName="notifications" buttonTarget="Notifications" />
+                            <NavButton changeParentState={changeParentState} buttonName="newsfeed" buttonTarget="Newsfeed" />
                         </li>
                         <li>
                             <NavButton changeParentState={changeParentState} buttonName="connections" buttonTarget="Connections" />
                         </li>
                         <li>
-                            <div className="col-md-1 col-sm-1 col-xs-1 navbar-button" />
-                        </li>
-                        <li>
-                            <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="favorites">
-                                <img src="https://s3.amazonaws.com/gdcreative-general/star_64_gray.png" width="13px" />
-                            </div>
-                        </li>
-                        <li>
-                            <div className="col-md-1 col-sm-1 col-xs-1 navbar-button navbar-button-right" id="settings">
-                                <img src="https://s3.amazonaws.com/gdcreative-general/gear_64_gray.png" width="13px" />
-                            </div>
+                            <NavButton changeParentState={changeParentState} buttonName="bookmarks" buttonTarget="Bookmarks" />
                         </li>
                     </ul>
                 </div>
@@ -207,7 +207,7 @@ var NavButton = React.createClass({
 
     render: function () {
         return (
-            <div className="col-md-3 col-sm-3 col-xs-3 navbar-button" id={this.props.buttonName} onClick={this.handleClick}>{this.props.buttonName}</div>
+            <div className="col s3 navbar-button" id={this.props.buttonName} onClick={this.handleClick}>{this.props.buttonName}</div>
         )
     }
 })
@@ -249,7 +249,9 @@ var Newsfeed = React.createClass({
 
     getInitialState: function () {
         return {
-            data: null
+            data: null,
+            tempNewsfeed: [],
+            hideOrShow: "hide"
         }
     },
 
@@ -266,7 +268,7 @@ var Newsfeed = React.createClass({
                     newsfeed = response.newsfeed;
                     lastItemFromDB = response.lastItem;
                     following = response.following;
-                    console.log(lastItemFromDB);
+                    //console.log(lastItemFromDB);
                     self.setState({data: newsfeed});
                 } else {
                     self.setState({data: null});
@@ -283,7 +285,7 @@ var Newsfeed = React.createClass({
                 var maxItem = snapshot.val();
                 if (!lastItemFetched)
                     lastItemFetched = lastItemFromDB;
-                console.log(lastItemFetched, maxItem);
+                //console.log(lastItemFetched, maxItem);
                 var nextItem = lastItemFetched + 1;
                 if (maxItem > nextItem) {
                     self.newItemsToFetch(nextItem, maxItem);
@@ -300,62 +302,48 @@ var Newsfeed = React.createClass({
             var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
             $.get(itemUrl)
                 .then(function (newNewsfeedItem) {
-                    if (true) { // following.indexOf(newNewsfeedItem.by) > -1
+                    if (true && newNewsfeedItem !== null) { // following.indexOf(newNewsfeedItem.by) > -1
                         if (newNewsfeedItem.type === "comment") {
                             fetchParent(newNewsfeedItem.parent);
                             function fetchParent(parentId) {
                                 var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
                                 $.get(itemUrl)
-                                    .then(function (response){
+                                    .then(function (response) {
                                         if (response.type === "story") {
                                             newNewsfeedItem.storytitle = response.title;
                                             newNewsfeedItem.storyurl = response.url;
                                             newNewsfeedItem.storyby = response.by;
                                             newNewsfeedItem.storyid = response.id;
-                                            newsfeed = [newNewsfeedItem].concat(newsfeed)
-                                            self.setState({data: newsfeed});
+                                            newsfeed = [newNewsfeedItem].concat(newsfeed);
+                                            self.setState({tempNewsfeed: newsfeed});
                                         } else {
                                             fetchParent(response.parent);
                                         }
                                     });
-                                }
+                            }
                         } else if (newNewsfeedItem.type === "story") {
-                            
+
                             newsfeed = [newNewsfeedItem].concat(newsfeed)
-                            self.setState({data: newsfeed});
-                        }
+                            self.setState({tempNewsfeed: newsfeed});
+                        } else {
+                            console.log("Received this response, ", newNewsfeedItem);
+                            return;
+                        };
+                        self.setState({hideOrShow: "show"});
+
                     }
                 });
         }
     },
-/*
-    getItemAtUrl: function (url) {
 
-        return new bluebird(function (resolve, reject) {
-
-
-
+    updateNewsfeed: function () {
+        var self=this
+        self.setState({
+            data: this.state.tempNewsfeed,
+            hideOrShow: "hide"
         });
-
     },
 
-    newItemsToFetch2: function (start, end) {
-
-        var i = start;
-        var promises = [];
-
-        for (; i <= end; i++) {
-
-            var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
-
-
-
-        }
-
-
-
-    },
-*/
     componentDidMount: function () {
         this.initialArticleLoad();
         this.articleUpdate();
@@ -365,6 +353,8 @@ var Newsfeed = React.createClass({
         if (this.state.data) {
             return (
                 <div>
+                    <div id="feedbuttondiv" className={this.state.hideOrShow} onClick={this.updateNewsfeed}><a className="waves-effect waves-ripple btn" id="feedbutton" href="#"><p id="feedbuttontext">&uarr;New Items</p></a></div>
+                    <div>
                     {this.state.data.map(function (item) {
                         if (item.type === "story") {
                             return <StoryItem data={item} />
@@ -372,6 +362,7 @@ var Newsfeed = React.createClass({
                             return <CommentItem data={item} />
                         }
                     })}
+                        </div>
                 </div>
             )
         } else {
@@ -389,9 +380,10 @@ var StoryItem = React.createClass({
                         <a href={this.props.data.storyurl} target="_blank">
                             {this.props.data.storytitle}
                         </a>
-                    </h4>      
+                    </h4>
                     <p className="feed-context">
-                        by <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} |
+                        by
+                        <a className="feed-author" href={hnUrl + '/user?id=' + this.props.data.by}>{this.props.data.by} | </a> {this.props.data.time} |
                         <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
                     </p>
                 </div>
@@ -404,7 +396,7 @@ var StoryItem = React.createClass({
 });
 
 var CommentItem = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <div className="feed-box">
                 <div className="feed-titlebox">
@@ -414,7 +406,8 @@ var CommentItem = React.createClass({
                         </a>
                     </div>
                     <div className="feed-context">
-                        by <a href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} |
+                        by
+                        <a href={hnUrl + '/user?id=' + this.props.data.storyby}>{this.props.data.storyby} | </a> {this.props.data.time} |
                         <a href={hnUrl + '/item?id=' + this.props.data.storyid}> all comments</a>
                     </div>
                 </div>
@@ -426,8 +419,6 @@ var CommentItem = React.createClass({
         )
     }
 });
-
-
 
 
 var Notifications = React.createClass({
@@ -450,12 +441,12 @@ var Connections = React.createClass({
     },
 
     getUserData: function (server, username) {
-        var self=this;
+        var self = this;
         //console.log("Getting called")
         chrome.runtime.sendMessage({
             method: 'GET',
             action: 'ajax',
-            url: server + '/user/' + username +'/userdata',
+            url: server + '/user/' + username + '/userdata',
             data: ''
         }, function (response) {
             if (response && response !== 'Not Found') {
@@ -466,29 +457,31 @@ var Connections = React.createClass({
             }
         })
     },
-    
-    componentDidMount: function(){
+
+    componentDidMount: function () {
         this.getUserData(server, username);
     },
-    
+
     searchFocus: function () {
         $("#searchFollow").focus();
     },
 
     showUsers: function () {
-        console.log("Show users, ", this.state)
+        //console.log("Show users, ", this.state)
         // Are we allowed to build an if/else statement in here, i.e. returning different html components?
         if (this.state.data === null) {
             return (
-                <span>It looks like you&#39;re not following anyone. Would you care to <a href="#" onClick={this.searchFocus()}>add a user to follow now?</a></span>
+                <span>It looks like you&#39;re not following anyone. Would you care to
+                    <a href="#" onClick={this.searchFocus()}>add a user to follow now?</a>
+                </span>
             )
         } else {
             //console.log("There is indeed data: ", this.state.data.following)
             return (
                 <ul>
-                {this.state.data.following.map(function(user){
+                {this.state.data.following.map(function (user) {
                     return <li>{user}</li>;
-                 })}
+                })}
                 </ul>
             )
         }
@@ -532,10 +525,10 @@ var Connections = React.createClass({
             })
         }
     },
-    
+
     render: function () {
         var value = this.state.value;
-        console.log('VALUE',value);
+        //console.log('VALUE', value);
         return (
             <div>
                 <h3 id="connectionsubhead">Find a user:</h3>
@@ -543,9 +536,9 @@ var Connections = React.createClass({
                     <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div className="input-group input-group-sm">
                             <input type="text" className="form-control" id="searchFollow" value={value} onChange={this.handleChange} placeholder="Search" />
-                                <span className="input-group-btn">
-                                    <button className="btn btn-default" type="button" onClick={this.followInputUser}>Follow</button>
-                                </span>
+                            <span className="input-group-btn">
+                                <button className="btn btn-default" type="button" onClick={this.followInputUser}>Follow</button>
+                            </span>
                         </div>
                         <div>
                         {this.errorMessage}
