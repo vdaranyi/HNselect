@@ -445,11 +445,22 @@ var userData,
 
 var Connections = React.createClass({
 
+    getDefaultProps: function () {
+        return {
+            usersToDelete: []
+        }
+    },
+
     getInitialState: function () {
         return {
             data: null,
             value: "",
-            errorMessage: ""
+            errorMessage: "",
+            remove: null,
+            editEnabled: false,
+            connHead: "Users you follow:",
+            editOrDelete: "Edit",
+            selectedToRemove: "unselected"
         }
     },
 
@@ -480,12 +491,13 @@ var Connections = React.createClass({
     },
 
     showUsers: function () {
+        var self=this;
         //console.log("Show users, ", this.state)
         // Are we allowed to build an if/else statement in here, i.e. returning different html components?
-        if (this.state.data === null) {
+        if (self.state.data === null) {
             return (
                 <span>It looks like you&#39;re not following anyone. Would you care to
-                    <a href="#" onClick={this.searchFocus()}>add a user to follow now?</a>
+                    <a href="#" onClick={self.searchFocus()}>add a user to follow now?</a>
                 </span>
             )
         } else {
@@ -493,11 +505,46 @@ var Connections = React.createClass({
             return (
                 <ul>
                 {this.state.data.following.map(function (user) {
-                    return <li>{user}</li>;
+                    return <li ref={user} id={user} onClick={self.userRemover(user)}>{user}</li>;
                 })}
                 </ul>
             )
         }
+    },
+    enableEdit: function () {
+        var self=this;
+        if (!self.state.editEnabled) {
+            self = this;
+            self.setState({
+                editOrDelete: "Unfollow",
+                connHead: "Select which users you want to stop following.",
+                editEnabled: true
+            });
+        }
+        else {
+            self.deleteUsers(this.props.usersToDelete);
+            self.setState({
+                editEnabled: false,
+                editOrDelete: "Edit"
+            });
+
+        }
+    },
+    userRemover: function (user) {
+        var self = this;
+        return function clickHandler () {
+            //console.log('!! Clicked the button');
+            if (self.state.editEnabled) {
+                var me = self.refs[user].props.children;
+                console.log(me);
+                $("#" + me).attr('id', 'toBeDeleted');
+                self.props.usersToDelete=self.props.usersToDelete.push(me);
+            }
+        }
+    },
+    deleteUsers: function () {
+        var self=this;
+
     },
     handleChange: function (event) {
         this.setState({value: event.target.value});
@@ -559,24 +606,27 @@ var Connections = React.createClass({
                     </div>
                 </div>
                 <div>
-                    <h4 className="connectionhead">Users you follow:</h4>
+                    <h3 id="connectionhead">{this.state.connHead}<a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a></h3>
                     <div className="suggest-tags">
                         {this.showUsers()}
                     </div>
                 </div>
-                <div>
+            {/*<div>
                     <h4 className="connectionhead">Users who follow you:</h4>
                     <div className="suggest-tags">
                         <ul>
                             <li>userName</li>
                         </ul>
                     </div>
-                </div>
+                </div>*/}
             </div>
         )
     }
 });
 
+// Approach: Add an onclick handler that calls a function editUser.
+// editUser appends a button after each User icon. The button has an onClick handler
+// that gets the User name from the innerHtml
 
 
 

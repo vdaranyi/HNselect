@@ -161,10 +161,15 @@ html, body, #sidebar-anchor {
   display: inline-block;
   color: #ffffff;
   background: #F86900;
-  padding: 0em 0.5em;
-  font-size: 0.9em;
+  padding: 0em 0.4em;
+  font-size: 0.8em;
   line-height: 2em;
   margin: 0.5em;
+  cursor: pointer;
+}
+
+#toBeDeleted {
+  background: red;
 }
 
 /* End nav */
@@ -321,9 +326,9 @@ a.feed-author {
   font-size: 1em;
 }
 
-.connectionhead {
+#connectionhead {
   margin-top: 2em;
-  font-size: 1em;
+  font-size: 1em !important;
 }
 
 .form-control {
@@ -355,4 +360,8 @@ a.feed-author {
     pointer-events: none;
     background: rgba(0,0,0,0.15);
     border-bottom: solid 3px #000000 !important;
+  }
+
+  #connedit {
+    float: right;
   }
