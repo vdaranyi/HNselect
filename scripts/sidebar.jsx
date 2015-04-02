@@ -298,47 +298,50 @@ var Newsfeed = React.createClass({
         var self = this,
             newNewsfeedItems = [],
             promiseArray = []
-        for (var i = 9311348; i <= end; i++) {
+        for (var i = start; i <= end; i++) { // 9311348
             var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
-            $.when($.get(itemUrl)
-                    .then(function (newNewsfeedItem) {
-                        if (newNewsfeedItem) { // following.indexOf(newNewsfeedItem.by) > -1
-                            if (newNewsfeedItem.type === "comment") {
-                                fetchParent(newNewsfeedItem.parent);
-                                function fetchParent(parentId) {
-                                    var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
-                                    $.get(itemUrl)
-                                        .then(function (response) {
-                                            if (response.type === "story") {
-                                                newNewsfeedItem.storytitle = response.title;
-                                                newNewsfeedItem.storyurl = response.url;
-                                                newNewsfeedItem.storyby = response.by;
-                                                newNewsfeedItem.storyid = response.id;
-                                                newsfeed = [newNewsfeedItem].concat(newsfeed);
-                                                self.setState({tempNewsfeed: newsfeed});
-                                            } else {
-                                                fetchParent(response.parent);
-                                            }
-                                        }, function(err){
-                                            console.log("here is the error: ", err);
-                                            return;
-                                        });
-                                }
-                            } else if (newNewsfeedItem.type === "story") {
-
-                                newsfeed = [newNewsfeedItem].concat(newsfeed)
-                                self.setState({tempNewsfeed: newsfeed});
+            promiseArray.push(
+                $.get(itemUrl)
+                .then(function (newNewsfeedItem) {
+                    if (newNewsfeedItem) { // following.indexOf(newNewsfeedItem.by) > -1
+                        if (newNewsfeedItem.type === "comment") {
+                            fetchParent(newNewsfeedItem.parent);
+                            function fetchParent(parentId) {
+                                var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
+                                $.get(itemUrl)
+                                    .then(function (response) {
+                                        if (response.type === "story") {
+                                            newNewsfeedItem.storytitle = response.title;
+                                            newNewsfeedItem.storyurl = response.url;
+                                            newNewsfeedItem.storyby = response.by;
+                                            newNewsfeedItem.storyid = response.id;
+                                            newsfeed = [newNewsfeedItem].concat(newsfeed);
+                                            self.setState({tempNewsfeed: newsfeed});
+                                        } else {
+                                            fetchParent(response.parent);
+                                        }
+                                    }, function(err){
+                                        console.log("here is the error: ", err);
+                                        return;
+                                    });
                             }
+                        } else if (newNewsfeedItem.type === "story") {
+
+                            newsfeed = [newNewsfeedItem].concat(newsfeed)
+                            self.setState({tempNewsfeed: newsfeed});
                         }
-                    }, function(err){
-                        console.log("here is another error: ", err);
-                        return;
-                    })
-            ).done(function(){
+                    }
+                }, function(err){
+                    console.log("here is another error: ", err);
+                    return;
+                })
+            );
+        }
+        $.when.apply($, promiseArray)
+        .done(function(){
                     console.log(i,' all updated > refresh');
                     self.setState({hideOrShow: "show"});
-                })
-        }
+        });
     },
 
     updateNewsfeed: function () {
