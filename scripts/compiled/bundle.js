@@ -16,7 +16,7 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnOrange,
     bgGrey = "#f7f7f1",
     following = [],
-    getCommentersRoute = 'https://localhost:3000/getCommenters';
+    getCommentersRoute = 'http://www.hnselect.com/getCommenters';
 //getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
 
 
@@ -231,8 +231,8 @@ function highlightComments() {
 },{}],3:[function(require,module,exports){
 // Constants
 
-var server = 'http://localhost:3000';
-//var server = 'http://hn-select.herokuapp.com';
+//var server = 'http://localhost:3000';
+var server = 'http://www.hnselect.com';
 var hnUrl = "https://news.ycombinator.com";
 //require("./react-materialize/src/input.js");
 
@@ -465,7 +465,9 @@ var NavButton = React.createClass({displayName: "NavButton",
 // Main content area
 
 var ContentHolder = React.createClass({displayName: "ContentHolder",
-
+    passBookmarkProps: function () {
+        return null;
+    },
     render: function () {
         return (
             React.createElement("div", {id: "visible"}, 
@@ -473,12 +475,11 @@ var ContentHolder = React.createClass({displayName: "ContentHolder",
                     React.createElement(Newsfeed, null)
                 ), 
                 React.createElement("div", {className: "absposition", id: "conn"}, 
-                    React.createElement(Connections, null)
+                    React.createElement(Connections, {passBookmarkProps: this.passBookmarkProps})
                 ), 
                 React.createElement("div", {className: "absposition", id: "noti"}, 
                     React.createElement(Bookmarks, null)
                 )
-
             )
         )
     }
@@ -801,8 +802,6 @@ var Connections = React.createClass({displayName: "Connections",
     followInputUser: function () {
         var self = this,
             followUser = self.state.value;
-        //console.log(followUser)
-        //console.log("Getting called, ", this.state.data.following)
         if (self.state.data.following.indexOf(followUser) !== -1) {
             // Find out if the user already exists in their following; if so, give them a message
             self.setState({errorMessage: "It appears you are already following this user. Would you like to try again?"})
@@ -833,6 +832,7 @@ var Connections = React.createClass({displayName: "Connections",
                 }
             })
         }
+        this.setState({value: ''});
     },
 
     render: function () {
@@ -841,7 +841,7 @@ var Connections = React.createClass({displayName: "Connections",
         return (
             React.createElement("div", null, 
                 React.createElement("div", {class: "row"}, 
-                    React.createElement("form", {class: "col s12"}, 
+                    React.createElement("form", {class: "col s12", id: "inputForm"}, 
                         React.createElement("div", {class: "row"}, 
                             React.createElement("div", {class: "input-field col s12"}, 
                                 React.createElement("label", {htmlFor: "searchFollow"}, "Follow a Hacker News user"), 

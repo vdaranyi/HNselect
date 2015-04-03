@@ -1,7 +1,7 @@
 // Constants
 
-var server = 'http://localhost:3000';
-//var server = 'http://hn-select.herokuapp.com';
+//var server = 'http://localhost:3000';
+var server = 'http://www.hnselect.com';
 var hnUrl = "https://news.ycombinator.com";
 //require("./react-materialize/src/input.js");
 
@@ -234,7 +234,9 @@ var NavButton = React.createClass({
 // Main content area
 
 var ContentHolder = React.createClass({
-
+    passBookmarkProps: function () {
+        return null;
+    },
     render: function () {
         return (
             <div id="visible">
@@ -242,12 +244,11 @@ var ContentHolder = React.createClass({
                     <Newsfeed />
                 </div>
                 <div className="absposition" id="conn">
-                    <Connections />
+                    <Connections passBookmarkProps={this.passBookmarkProps} />
                 </div>
                 <div className="absposition" id="noti">
                     <Bookmarks />
                 </div>
-
             </div>
         )
     }
@@ -570,8 +571,6 @@ var Connections = React.createClass({
     followInputUser: function () {
         var self = this,
             followUser = self.state.value;
-        //console.log(followUser)
-        //console.log("Getting called, ", this.state.data.following)
         if (self.state.data.following.indexOf(followUser) !== -1) {
             // Find out if the user already exists in their following; if so, give them a message
             self.setState({errorMessage: "It appears you are already following this user. Would you like to try again?"})
@@ -602,6 +601,7 @@ var Connections = React.createClass({
                 }
             })
         }
+        this.setState({value: ''});
     },
 
     render: function () {
@@ -610,7 +610,7 @@ var Connections = React.createClass({
         return (
             <div>
                 <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" id="inputForm">
                         <div class="row">
                             <div class="input-field col s12">
                                 <label htmlFor="searchFollow">Follow a Hacker News user</label>
