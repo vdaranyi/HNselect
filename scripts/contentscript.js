@@ -16,7 +16,7 @@ var hnOrange = '#ff6600',
     bgGrey = "#f7f7f1",
     following = [],
     getCommentersRoute = 'https://localhost:3000/getCommenters';
-// getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
+//getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
 
 
 // Selecting highlighting method depending on view

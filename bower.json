@@ -9,5 +9,6 @@
     "firebase": "~2.2.3",
     "materialize": "~0.95.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+  }
 }

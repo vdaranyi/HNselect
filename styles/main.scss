@@ -220,6 +220,7 @@ html, body, #sidebar-anchor {
   background: #ffffff;
   line-height: 1.4em !important;
   font-size: 0.9em !important;
+  box-shadow: 0px 1px 1px rgba(35,20,10,0.2);
   //  border: solid 1px rgb(220,220,220);
 //  border-radius: 2px;
   /*color: #fafafa;*/
@@ -365,3 +366,12 @@ a.feed-author {
   #connedit {
     float: right;
   }
+
+#twitter {
+  height: 100%;
+  padding-top: 4px;
+}
+
+#disablehover:hover {
+  background: transparent;
+}

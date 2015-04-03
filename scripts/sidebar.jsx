@@ -3,6 +3,7 @@
 var server = 'http://localhost:3000';
 //var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
+//require("./react-materialize/src/input.js");
 
 var addFonts = document.createElement('style');
 addFonts.type = 'text/css';
@@ -197,6 +198,15 @@ var NavBar = React.createClass({
                         <li className="col s2 navbar-button waves-effect waves-light" id="bm">
                             <NavButton changeParentState={changeParentState} buttonName="bookmarks" buttonTarget="Bookmarks" />
                         </li>
+                        <li className="col s2" id="disablehover">
+                            <div>&nbsp;</div>
+                        </li>
+                        <li className="col s2" id="disablehover">
+                            <div>&nbsp;</div>
+                        </li>
+                        <li className="col s2 navbar-button waves-effect waves-light">
+                            <div id="twitter"><a href={"http://www.hnselect.com/user/" + username + "/twitter/connect"}><img src="https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png" height="14px" /></a></div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -312,10 +322,10 @@ var Newsfeed = React.createClass({
                     .then(function (newNewsfeedItem) {
                         if (newNewsfeedItem) { // following.indexOf(newNewsfeedItem.by) > -1
                             if (newNewsfeedItem.type === "comment") {
-                                fetchParent(newNewsfeedItem.parent);
+                                return fetchParent(newNewsfeedItem.parent);
                                 function fetchParent(parentId) {
                                     var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
-                                    $.get(itemUrl)
+                                    return $.get(itemUrl)
                                         .then(function (response) {
                                             if (response.type === "story") {
                                                 newNewsfeedItem.storytitle = response.title;
@@ -325,7 +335,7 @@ var Newsfeed = React.createClass({
                                                 newsfeed = [newNewsfeedItem].concat(newsfeed);
                                                 self.setState({tempNewsfeed: newsfeed});
                                             } else {
-                                                fetchParent(response.parent);
+                                                return fetchParent(response.parent);
                                             }
                                         }, function (err) {
                                             console.log("here is the error: ", err);
@@ -378,6 +388,7 @@ var Newsfeed = React.createClass({
                         if (item.type === "story") {
                             return <StoryItem data={item} />
                         } else if (item.type === "comment") {
+                            //console.log(item.text)
                             return <CommentItem data={item} />
                         }
                     })}
@@ -432,19 +443,13 @@ var CommentItem = React.createClass({
                 </div>
                 <div className="feed-content">
                     <a className="feed-author" href={hnUrl + '/item?id=' + this.props.data.id}>{this.props.data.by + '\'s comment: '}</a>
+
                     <span className="feed-text" dangerouslySetInnerHTML={{__html: this.props.data.text}} />
                 </div>
             </div>
         )
     }
 });
-
-
-var Bookmarks = React.createClass({
-    render: function () {
-        return <div>Bookmarks</div>;
-    }
-})
 
 var userData,
     followingArr = [];
@@ -474,6 +479,7 @@ var Connections = React.createClass({
             url: server + '/user/' + username + '/userdata',
             data: ''
         }, function (response) {
+            console.log(response)
             if (response && response !== 'Not Found') {
                 userData = response;
                 self.setState({data: userData});
@@ -603,19 +609,16 @@ var Connections = React.createClass({
         //console.log('VALUE', value);
         return (
             <div>
-                <h3 id="connectionsubhead">Find a user:</h3>
-                <div className="row">
-                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div className="input-group input-group-sm">
-                            <input type="text" className="form-control" id="searchFollow" value={value} onChange={this.handleChange} placeholder="Search" />
-                            <span className="input-group-btn">
-                                <button className="btn btn-default" type="button" onClick={this.followInputUser}>Follow</button>
-                            </span>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label htmlFor="searchFollow">Follow a Hacker News user</label>
+                                <input id="searchFollow" value={value} onChange={this.handleChange} type="text" className="validate" />
+                                <button id="ourbutton" className="btn btn-default" type="button" onClick={this.followInputUser}>Follow</button>
+                            </div>
                         </div>
-                        <div>
-                        {this.errorMessage}
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div>
                     <h3 id="connectionhead">{this.state.connHead}
@@ -638,10 +641,13 @@ var Connections = React.createClass({
     }
 });
 
-// Approach: Add an onclick handler that calls a function editUser.
-// editUser appends a button after each User icon. The button has an onClick handler
-// that gets the User name from the innerHtml
+var Bookmarks = React.createClass({
 
-
-
-
+    render: function () {
+            return (
+                <div>
+                    Bookmarks
+                </div>
+            )
+    }
+})

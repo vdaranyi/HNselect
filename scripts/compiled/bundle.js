@@ -17,7 +17,7 @@ var hnOrange = '#ff6600',
     bgGrey = "#f7f7f1",
     following = [],
     getCommentersRoute = 'https://localhost:3000/getCommenters';
-// getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
+//getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
 
 
 // Selecting highlighting method depending on view
@@ -234,6 +234,7 @@ function highlightComments() {
 var server = 'http://localhost:3000';
 //var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
+//require("./react-materialize/src/input.js");
 
 var addFonts = document.createElement('style');
 addFonts.type = 'text/css';
@@ -427,6 +428,15 @@ var NavBar = React.createClass({displayName: "NavBar",
                         ), 
                         React.createElement("li", {className: "col s2 navbar-button waves-effect waves-light", id: "bm"}, 
                             React.createElement(NavButton, {changeParentState: changeParentState, buttonName: "bookmarks", buttonTarget: "Bookmarks"})
+                        ), 
+                        React.createElement("li", {className: "col s2", id: "disablehover"}, 
+                            React.createElement("div", null, " ")
+                        ), 
+                        React.createElement("li", {className: "col s2", id: "disablehover"}, 
+                            React.createElement("div", null, " ")
+                        ), 
+                        React.createElement("li", {className: "col s2 navbar-button waves-effect waves-light"}, 
+                            React.createElement("div", {id: "twitter"}, React.createElement("a", {href: "http://www.hnselect.com/user/" + username + "/twitter/connect"}, React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png", height: "14px"})))
                         )
                     )
                 )
@@ -543,10 +553,10 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                     .then(function (newNewsfeedItem) {
                         if (newNewsfeedItem) { // following.indexOf(newNewsfeedItem.by) > -1
                             if (newNewsfeedItem.type === "comment") {
-                                fetchParent(newNewsfeedItem.parent);
+                                return fetchParent(newNewsfeedItem.parent);
                                 function fetchParent(parentId) {
                                     var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
-                                    $.get(itemUrl)
+                                    return $.get(itemUrl)
                                         .then(function (response) {
                                             if (response.type === "story") {
                                                 newNewsfeedItem.storytitle = response.title;
@@ -556,7 +566,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                                                 newsfeed = [newNewsfeedItem].concat(newsfeed);
                                                 self.setState({tempNewsfeed: newsfeed});
                                             } else {
-                                                fetchParent(response.parent);
+                                                return fetchParent(response.parent);
                                             }
                                         }, function (err) {
                                             console.log("here is the error: ", err);
@@ -609,6 +619,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                         if (item.type === "story") {
                             return React.createElement(StoryItem, {data: item})
                         } else if (item.type === "comment") {
+                            //console.log(item.text)
                             return React.createElement(CommentItem, {data: item})
                         }
                     })
@@ -663,19 +674,13 @@ var CommentItem = React.createClass({displayName: "CommentItem",
                 ), 
                 React.createElement("div", {className: "feed-content"}, 
                     React.createElement("a", {className: "feed-author", href: hnUrl + '/item?id=' + this.props.data.id}, this.props.data.by + '\'s comment: '), 
+
                     React.createElement("span", {className: "feed-text", dangerouslySetInnerHTML: {__html: this.props.data.text}})
                 )
             )
         )
     }
 });
-
-
-var Bookmarks = React.createClass({displayName: "Bookmarks",
-    render: function () {
-        return React.createElement("div", null, "Bookmarks");
-    }
-})
 
 var userData,
     followingArr = [];
@@ -705,6 +710,7 @@ var Connections = React.createClass({displayName: "Connections",
             url: server + '/user/' + username + '/userdata',
             data: ''
         }, function (response) {
+            console.log(response)
             if (response && response !== 'Not Found') {
                 userData = response;
                 self.setState({data: userData});
@@ -834,17 +840,14 @@ var Connections = React.createClass({displayName: "Connections",
         //console.log('VALUE', value);
         return (
             React.createElement("div", null, 
-                React.createElement("h3", {id: "connectionsubhead"}, "Find a user:"), 
-                React.createElement("div", {className: "row"}, 
-                    React.createElement("div", {className: "col-lg-12 col-md-12 col-sm-12 col-xs-12"}, 
-                        React.createElement("div", {className: "input-group input-group-sm"}, 
-                            React.createElement("input", {type: "text", className: "form-control", id: "searchFollow", value: value, onChange: this.handleChange, placeholder: "Search"}), 
-                            React.createElement("span", {className: "input-group-btn"}, 
-                                React.createElement("button", {className: "btn btn-default", type: "button", onClick: this.followInputUser}, "Follow")
+                React.createElement("div", {class: "row"}, 
+                    React.createElement("form", {class: "col s12"}, 
+                        React.createElement("div", {class: "row"}, 
+                            React.createElement("div", {class: "input-field col s12"}, 
+                                React.createElement("label", {htmlFor: "searchFollow"}, "Follow a Hacker News user"), 
+                                React.createElement("input", {id: "searchFollow", value: value, onChange: this.handleChange, type: "text", className: "validate"}), 
+                                React.createElement("button", {id: "ourbutton", className: "btn btn-default", type: "button", onClick: this.followInputUser}, "Follow")
                             )
-                        ), 
-                        React.createElement("div", null, 
-                        this.errorMessage
                         )
                     )
                 ), 
@@ -869,13 +872,16 @@ var Connections = React.createClass({displayName: "Connections",
     }
 });
 
-// Approach: Add an onclick handler that calls a function editUser.
-// editUser appends a button after each User icon. The button has an onClick handler
-// that gets the User name from the innerHtml
+var Bookmarks = React.createClass({displayName: "Bookmarks",
 
-
-
-
+    render: function () {
+            return (
+                React.createElement("div", null, 
+                    "Bookmarks"
+                )
+            )
+    }
+})
 
 
 },{}]},{},[1]);
