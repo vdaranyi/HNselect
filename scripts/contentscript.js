@@ -15,7 +15,7 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnOrange,
     bgGrey = "#f7f7f1",
     following = [],
-    getCommentersRoute = 'https://localhost:3000/getCommenters';
+    getCommentersRoute = 'http://www.hnselect.com/getCommenters';
 //getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
 
 
