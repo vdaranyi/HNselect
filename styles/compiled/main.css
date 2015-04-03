@@ -6398,8 +6398,8 @@ html, body, #sidebar-anchor {
   margin: 0.5em;
   cursor: pointer; }
 
-#toBeDeleted {
-  background: red; }
+.toBeDeleted {
+  background: red !important; }
 
 /* End nav */
 .feed-top {

@@ -769,7 +769,7 @@ var Connections = React.createClass({displayName: "Connections",
             if (self.state.editEnabled) {
                 var me = self.refs[user].props.children;
                 console.log(me);
-                $("#" + me).attr('id', 'toBeDeleted');
+                $("#" + me).attr('class', 'toBeDeleted');
                 self.state.usersToDelete.push(me);
                 console.log(self.state.usersToDelete);
                 self.setState.usersToDelete = self.state.usersToDelete;
@@ -778,19 +778,16 @@ var Connections = React.createClass({displayName: "Connections",
     },
     deleteUsers: function (arr) {
         var self = this;
-        for (var h=0; h<arr.length; h++) {
-            $('#toBeDeleted').remove();
-        }
-        for (var i=0; i<arr.length; i++) {
-            chrome.runtime.sendMessage({
-                method: 'DELETE',
-                action: 'ajax',
-                url: server + '/user/' + username + '/unfollowuser/' + arr[i],
+        $('.toBeDeleted').remove();
+        chrome.runtime.sendMessage({
+            method: 'DELETE',
+            action: 'ajax',
+            url: server + '/user/' + username + '/unfollowuser',
+            data: arr
+        }, function (response) {
+            console.log("Response: ", response)
+        });
 
-            }, function (response) {
-                console.log("Response: ", response)
-            });
-        }
     },
     handleChange: function (event) {
         this.setState({value: event.target.value});
