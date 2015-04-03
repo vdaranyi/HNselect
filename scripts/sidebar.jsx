@@ -234,7 +234,9 @@ var NavButton = React.createClass({
 // Main content area
 
 var ContentHolder = React.createClass({
-
+    passBookmarkProps: function () {
+        return null;
+    },
     render: function () {
         return (
             <div id="visible">
@@ -242,12 +244,11 @@ var ContentHolder = React.createClass({
                     <Newsfeed />
                 </div>
                 <div className="absposition" id="conn">
-                    <Connections passBookmarkProps={passBookmarkProps} />
+                    <Connections passBookmarkProps={this.passBookmarkProps} />
                 </div>
                 <div className="absposition" id="noti">
                     <Bookmarks />
                 </div>
-
             </div>
         )
     }

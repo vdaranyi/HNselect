@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beb72949-9476-4a30-8b90-edea14d85c68" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/compiled/bundle.js" afterPath="$PROJECT_DIR$/scripts/compiled/bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/contentscript.js" afterPath="$PROJECT_DIR$/scripts/contentscript.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/sidebar.jsx" afterPath="$PROJECT_DIR$/scripts/sidebar.jsx" />
     </list>
     <ignored path="hn-select.iws" />
@@ -31,8 +29,8 @@
       <file leaf-file-name="sidebar.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/sidebar.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32017544" vertical-offset="6636" max-vertical-offset="9870">
-              <caret line="457" column="4" selection-start-line="457" selection-start-column="4" selection-end-line="457" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.21088435" vertical-offset="3400" max-vertical-offset="9345">
+              <caret line="237" column="21" selection-start-line="237" selection-start-column="21" selection-end-line="237" selection-end-column="21" />
               <folding>
                 <element signature="e#2660#3458#0" expanded="true" />
                 <element signature="e#2705#2795#0" expanded="true" />
@@ -58,37 +56,26 @@
                 <element signature="e#8152#8269#0" expanded="true" />
                 <element signature="e#8294#8411#0" expanded="true" />
                 <element signature="e#8436#8758#0" expanded="true" />
-                <element signature="e#9382#9798#0" expanded="true" />
-                <element signature="e#9417#9512#0" expanded="true" />
-                <element signature="e#9529#9665#0" expanded="true" />
-                <element signature="e#9682#9778#0" expanded="true" />
-                <element signature="e#14721#15534#0" expanded="true" />
-                <element signature="e#14747#15057#0" expanded="true" />
-                <element signature="e#14860#15030#0" expanded="true" />
-                <element signature="e#15078#15511#0" expanded="true" />
-                <element signature="e#15847#16713#0" expanded="true" />
-                <element signature="e#15890#16552#0" expanded="true" />
-                <element signature="e#15942#16168#0" expanded="true" />
-                <element signature="e#16004#16141#0" expanded="true" />
-                <element signature="e#16189#16529#0" expanded="true" />
-                <element signature="e#16569#16694#0" expanded="true" />
-                <element signature="e#16828#17856#0" expanded="true" />
-                <element signature="e#16871#17520#0" expanded="true" />
-                <element signature="e#16923#17136#0" expanded="true" />
-                <element signature="e#16976#17109#0" expanded="true" />
-                <element signature="e#17157#17497#0" expanded="true" />
-                <element signature="e#17537#17837#0" expanded="true" />
-                <element signature="e#19361#19546#0" expanded="true" />
-                <element signature="e#19694#19903#0" expanded="true" />
-                <element signature="e#23351#24675#0" expanded="true" />
-                <element signature="e#23373#24045#0" expanded="true" />
-                <element signature="e#23411#24022#0" expanded="true" />
-                <element signature="e#23473#23994#0" expanded="true" />
-                <element signature="e#23519#23963#0" expanded="true" />
-                <element signature="e#24062#24409#0" expanded="true" />
-                <element signature="e#24088#24265#0" expanded="true" />
-                <element signature="e#24286#24386#0" expanded="true" />
-                <element signature="e#24797#24855#0" expanded="true" />
+                <element signature="e#9447#9867#0" expanded="true" />
+                <element signature="e#9482#9577#0" expanded="true" />
+                <element signature="e#9594#9735#0" expanded="true" />
+                <element signature="e#9752#9848#0" expanded="true" />
+                <element signature="e#14790#15603#0" expanded="true" />
+                <element signature="e#14816#15126#0" expanded="true" />
+                <element signature="e#14929#15099#0" expanded="true" />
+                <element signature="e#15147#15580#0" expanded="true" />
+                <element signature="e#15916#16782#0" expanded="true" />
+                <element signature="e#15959#16621#0" expanded="true" />
+                <element signature="e#16011#16237#0" expanded="true" />
+                <element signature="e#16073#16210#0" expanded="true" />
+                <element signature="e#16258#16598#0" expanded="true" />
+                <element signature="e#16638#16763#0" expanded="true" />
+                <element signature="e#16897#17925#0" expanded="true" />
+                <element signature="e#16940#17589#0" expanded="true" />
+                <element signature="e#16992#17205#0" expanded="true" />
+                <element signature="e#17045#17178#0" expanded="true" />
+                <element signature="e#17226#17566#0" expanded="true" />
+                <element signature="e#17606#17906#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,7 +84,7 @@
       <file leaf-file-name="contentscript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.444445" vertical-offset="0" max-vertical-offset="1065">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1065">
               <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
               <folding />
             </state>
@@ -107,30 +94,9 @@
       <file leaf-file-name="bundle.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/compiled/bundle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="13440">
+            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="13380">
               <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <marker date="1428097190000" expanded="true" signature="31493:31529" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="31425:32703" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="31422:31601" placeholder="{&quot;method&quot;: 'GET'...}" />
-                <marker date="1428097190000" expanded="true" signature="32056:32909" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="32108:32838" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="32116:32291" placeholder="{&quot;method&quot;: 'POST'...}" />
-                <marker date="1428097190000" expanded="true" signature="32361:32715" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="32410:32547" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="32553:32686" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="32844:32888" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="32883:33617" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="33114:33252" placeholder="{&quot;method&quot;: 'GET'...}" />
-                <marker date="1428097190000" expanded="true" signature="33161:33323" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="33202:33264" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="33547:33748" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="34610:34620" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="34735:35133" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="34950:35107" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="34946:34982" placeholder="{...}" />
-                <marker date="1428097190000" expanded="true" signature="35017:35079" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,7 +104,7 @@
       <file leaf-file-name="main.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.75" vertical-offset="2760" max-vertical-offset="5745">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2760" max-vertical-offset="5745">
               <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
               <folding />
             </state>
@@ -148,7 +114,7 @@
       <file leaf-file-name="_form.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_form.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.375" vertical-offset="411" max-vertical-offset="10620">
+            <state vertical-scroll-proportion="0.0" vertical-offset="411" max-vertical-offset="10620">
               <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
               <folding />
             </state>
@@ -158,7 +124,7 @@
       <file leaf-file-name="_variables.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_variables.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="2220">
+            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2220">
               <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
               <folding />
             </state>
@@ -168,7 +134,7 @@
       <file leaf-file-name="_navbar.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_navbar.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.392157" vertical-offset="946" max-vertical-offset="2295">
+            <state vertical-scroll-proportion="0.0" vertical-offset="946" max-vertical-offset="2295">
               <caret line="78" column="13" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="13" />
               <folding />
             </state>
@@ -178,7 +144,7 @@
       <file leaf-file-name="_color.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_color.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.125" vertical-offset="3705" max-vertical-offset="6255">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3705" max-vertical-offset="6255">
               <caret line="284" column="23" selection-start-line="284" selection-start-column="23" selection-end-line="284" selection-end-column="23" />
               <folding />
             </state>
@@ -236,10 +202,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-194" />
-    <option name="y" value="-1022" />
-    <option name="width" value="1445" />
-    <option name="height" value="996" />
+    <option name="x" value="-261" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -329,7 +295,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -410,6 +375,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -439,10 +405,14 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -450,10 +420,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -493,16 +459,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-194" y="-1022" width="1445" height="996" extended-state="6" />
+    <frame x="-261" y="-1057" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16814159" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16787565" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2275281" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22748815" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -533,9 +499,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18577981" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18419334" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18419334" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -559,6 +525,38 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_form.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="411" max-vertical-offset="10620">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2220">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_navbar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="946" max-vertical-offset="2295">
+          <caret line="78" column="13" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_color.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3705" max-vertical-offset="6255">
+          <caret line="284" column="23" selection-start-line="284" selection-start-column="23" selection-end-line="284" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="885">
@@ -609,37 +607,26 @@
             <element signature="e#8152#8269#0" expanded="true" />
             <element signature="e#8294#8411#0" expanded="true" />
             <element signature="e#8436#8758#0" expanded="true" />
-            <element signature="e#9382#9798#0" expanded="true" />
-            <element signature="e#9417#9512#0" expanded="true" />
-            <element signature="e#9529#9665#0" expanded="true" />
-            <element signature="e#9682#9778#0" expanded="true" />
-            <element signature="e#14721#15534#0" expanded="true" />
-            <element signature="e#14747#15057#0" expanded="true" />
-            <element signature="e#14860#15030#0" expanded="true" />
-            <element signature="e#15078#15511#0" expanded="true" />
-            <element signature="e#15847#16713#0" expanded="true" />
-            <element signature="e#15890#16552#0" expanded="true" />
-            <element signature="e#15942#16168#0" expanded="true" />
-            <element signature="e#16004#16141#0" expanded="true" />
-            <element signature="e#16189#16529#0" expanded="true" />
-            <element signature="e#16569#16694#0" expanded="true" />
-            <element signature="e#16828#17856#0" expanded="true" />
-            <element signature="e#16871#17520#0" expanded="true" />
-            <element signature="e#16923#17136#0" expanded="true" />
-            <element signature="e#16976#17109#0" expanded="true" />
-            <element signature="e#17157#17497#0" expanded="true" />
-            <element signature="e#17537#17837#0" expanded="true" />
-            <element signature="e#19361#19546#0" expanded="true" />
-            <element signature="e#19694#19903#0" expanded="true" />
-            <element signature="e#23351#24675#0" expanded="true" />
-            <element signature="e#23373#24045#0" expanded="true" />
-            <element signature="e#23411#24022#0" expanded="true" />
-            <element signature="e#23473#23994#0" expanded="true" />
-            <element signature="e#23519#23963#0" expanded="true" />
-            <element signature="e#24062#24409#0" expanded="true" />
-            <element signature="e#24088#24265#0" expanded="true" />
-            <element signature="e#24286#24386#0" expanded="true" />
-            <element signature="e#24797#24855#0" expanded="true" />
+            <element signature="e#9447#9867#0" expanded="true" />
+            <element signature="e#9482#9577#0" expanded="true" />
+            <element signature="e#9594#9735#0" expanded="true" />
+            <element signature="e#9752#9848#0" expanded="true" />
+            <element signature="e#14790#15603#0" expanded="true" />
+            <element signature="e#14816#15126#0" expanded="true" />
+            <element signature="e#14929#15099#0" expanded="true" />
+            <element signature="e#15147#15580#0" expanded="true" />
+            <element signature="e#15916#16782#0" expanded="true" />
+            <element signature="e#15959#16621#0" expanded="true" />
+            <element signature="e#16011#16237#0" expanded="true" />
+            <element signature="e#16073#16210#0" expanded="true" />
+            <element signature="e#16258#16598#0" expanded="true" />
+            <element signature="e#16638#16763#0" expanded="true" />
+            <element signature="e#16897#17925#0" expanded="true" />
+            <element signature="e#16940#17589#0" expanded="true" />
+            <element signature="e#16992#17205#0" expanded="true" />
+            <element signature="e#17045#17178#0" expanded="true" />
+            <element signature="e#17226#17566#0" expanded="true" />
+            <element signature="e#17606#17906#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -765,7 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945">
           <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,7 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="727">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -827,7 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,7 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="678">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
@@ -846,7 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="708">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -864,7 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.708333" vertical-offset="292" max-vertical-offset="1050">
           <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -872,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
           <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,7 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="708">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,7 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="678">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
@@ -899,7 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="708">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,13 +884,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2631579" vertical-offset="0" max-vertical-offset="684">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_form.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.375" vertical-offset="411" max-vertical-offset="10620">
+        <state vertical-scroll-proportion="0.0" vertical-offset="411" max-vertical-offset="10620">
           <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
           <folding />
         </state>
@@ -921,7 +897,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_color.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.125" vertical-offset="3705" max-vertical-offset="6255">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3705" max-vertical-offset="6255">
           <caret line="284" column="23" selection-start-line="284" selection-start-column="23" selection-end-line="284" selection-end-column="23" />
           <folding />
         </state>
@@ -929,7 +905,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_variables.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="2220">
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2220">
           <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
           <folding />
         </state>
@@ -937,7 +913,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/materialize/sass/components/_navbar.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.392157" vertical-offset="946" max-vertical-offset="2295">
+        <state vertical-scroll-proportion="0.0" vertical-offset="946" max-vertical-offset="2295">
           <caret line="78" column="13" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="13" />
           <folding />
         </state>
@@ -945,7 +921,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.75" vertical-offset="2760" max-vertical-offset="5745">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2760" max-vertical-offset="5745">
           <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
           <folding />
         </state>
@@ -955,34 +931,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="13440">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <marker date="1428097190000" expanded="true" signature="31493:31529" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="31425:32703" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="31422:31601" placeholder="{&quot;method&quot;: 'GET'...}" />
-            <marker date="1428097190000" expanded="true" signature="32056:32909" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="32108:32838" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="32116:32291" placeholder="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1428097190000" expanded="true" signature="32361:32715" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="32410:32547" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="32553:32686" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="32844:32888" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="32883:33617" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="33114:33252" placeholder="{&quot;method&quot;: 'GET'...}" />
-            <marker date="1428097190000" expanded="true" signature="33161:33323" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="33202:33264" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="33547:33748" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="34610:34620" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="34735:35133" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="34950:35107" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="34946:34982" placeholder="{...}" />
-            <marker date="1428097190000" expanded="true" signature="35017:35079" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/contentscript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.444445" vertical-offset="0" max-vertical-offset="1065">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1065">
           <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
           <folding />
         </state>
@@ -990,8 +945,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/sidebar.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32017544" vertical-offset="6636" max-vertical-offset="9870">
-          <caret line="457" column="4" selection-start-line="457" selection-start-column="4" selection-end-line="457" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.21088435" vertical-offset="3400" max-vertical-offset="9345">
+          <caret line="237" column="21" selection-start-line="237" selection-start-column="21" selection-end-line="237" selection-end-column="21" />
           <folding>
             <element signature="e#2660#3458#0" expanded="true" />
             <element signature="e#2705#2795#0" expanded="true" />
@@ -1017,37 +972,26 @@
             <element signature="e#8152#8269#0" expanded="true" />
             <element signature="e#8294#8411#0" expanded="true" />
             <element signature="e#8436#8758#0" expanded="true" />
-            <element signature="e#9382#9798#0" expanded="true" />
-            <element signature="e#9417#9512#0" expanded="true" />
-            <element signature="e#9529#9665#0" expanded="true" />
-            <element signature="e#9682#9778#0" expanded="true" />
-            <element signature="e#14721#15534#0" expanded="true" />
-            <element signature="e#14747#15057#0" expanded="true" />
-            <element signature="e#14860#15030#0" expanded="true" />
-            <element signature="e#15078#15511#0" expanded="true" />
-            <element signature="e#15847#16713#0" expanded="true" />
-            <element signature="e#15890#16552#0" expanded="true" />
-            <element signature="e#15942#16168#0" expanded="true" />
-            <element signature="e#16004#16141#0" expanded="true" />
-            <element signature="e#16189#16529#0" expanded="true" />
-            <element signature="e#16569#16694#0" expanded="true" />
-            <element signature="e#16828#17856#0" expanded="true" />
-            <element signature="e#16871#17520#0" expanded="true" />
-            <element signature="e#16923#17136#0" expanded="true" />
-            <element signature="e#16976#17109#0" expanded="true" />
-            <element signature="e#17157#17497#0" expanded="true" />
-            <element signature="e#17537#17837#0" expanded="true" />
-            <element signature="e#19361#19546#0" expanded="true" />
-            <element signature="e#19694#19903#0" expanded="true" />
-            <element signature="e#23351#24675#0" expanded="true" />
-            <element signature="e#23373#24045#0" expanded="true" />
-            <element signature="e#23411#24022#0" expanded="true" />
-            <element signature="e#23473#23994#0" expanded="true" />
-            <element signature="e#23519#23963#0" expanded="true" />
-            <element signature="e#24062#24409#0" expanded="true" />
-            <element signature="e#24088#24265#0" expanded="true" />
-            <element signature="e#24286#24386#0" expanded="true" />
-            <element signature="e#24797#24855#0" expanded="true" />
+            <element signature="e#9447#9867#0" expanded="true" />
+            <element signature="e#9482#9577#0" expanded="true" />
+            <element signature="e#9594#9735#0" expanded="true" />
+            <element signature="e#9752#9848#0" expanded="true" />
+            <element signature="e#14790#15603#0" expanded="true" />
+            <element signature="e#14816#15126#0" expanded="true" />
+            <element signature="e#14929#15099#0" expanded="true" />
+            <element signature="e#15147#15580#0" expanded="true" />
+            <element signature="e#15916#16782#0" expanded="true" />
+            <element signature="e#15959#16621#0" expanded="true" />
+            <element signature="e#16011#16237#0" expanded="true" />
+            <element signature="e#16073#16210#0" expanded="true" />
+            <element signature="e#16258#16598#0" expanded="true" />
+            <element signature="e#16638#16763#0" expanded="true" />
+            <element signature="e#16897#17925#0" expanded="true" />
+            <element signature="e#16940#17589#0" expanded="true" />
+            <element signature="e#16992#17205#0" expanded="true" />
+            <element signature="e#17045#17178#0" expanded="true" />
+            <element signature="e#17226#17566#0" expanded="true" />
+            <element signature="e#17606#17906#0" expanded="true" />
           </folding>
         </state>
       </provider>

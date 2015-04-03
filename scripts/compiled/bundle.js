@@ -465,7 +465,9 @@ var NavButton = React.createClass({displayName: "NavButton",
 // Main content area
 
 var ContentHolder = React.createClass({displayName: "ContentHolder",
-
+    passBookmarkProps: function () {
+        return null;
+    },
     render: function () {
         return (
             React.createElement("div", {id: "visible"}, 
@@ -473,12 +475,11 @@ var ContentHolder = React.createClass({displayName: "ContentHolder",
                     React.createElement(Newsfeed, null)
                 ), 
                 React.createElement("div", {className: "absposition", id: "conn"}, 
-                    React.createElement(Connections, {passBookmarkProps: passBookmarkProps})
+                    React.createElement(Connections, {passBookmarkProps: this.passBookmarkProps})
                 ), 
                 React.createElement("div", {className: "absposition", id: "noti"}, 
                     React.createElement(Bookmarks, null)
                 )
-
             )
         )
     }
