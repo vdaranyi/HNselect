@@ -68,7 +68,8 @@ chrome.runtime.onMessage.addListener(
 
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
 //console.log('pageHighlighting');
-var server = 'http://hn-select.herokuapp.com';
+var server = 'http://localhost:3000';
+//var server = 'http://hn-select.herokuapp.com';
 // var server = 'http://localhost:3000';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',
@@ -230,21 +231,22 @@ function highlightComments() {
 },{}],3:[function(require,module,exports){
 // Constants
 
-var server = 'http://hn-select.herokuapp.com';
+var server = 'http://localhost:3000';
+//var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
 
 var addFonts = document.createElement('style');
-    addFonts.type = 'text/css';
-    addFonts.textContent = '@font-face { font-family: FontAwesome; src: url("'
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.eot')
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.svg')
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.ttf')
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Bold.ttf')
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Light.ttf')
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Medium.ttf')
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Regular.ttf')
-        + chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Thin.ttf')
-        + '"); }';
+addFonts.type = 'text/css';
+addFonts.textContent = '@font-face { font-family: FontAwesome; src: url("'
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.eot')
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.svg')
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/material-design-icons/Material-Design-Icons.ttf')
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Bold.ttf')
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Light.ttf')
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Medium.ttf')
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Regular.ttf')
++ chrome.extension.getURL('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/font/roboto/Roboto-Thin.ttf')
++ '"); }';
 document.head.appendChild(addFonts);
 
 // TO DO
@@ -301,13 +303,13 @@ var SidebarBox = React.createClass({
                 ), 
                 React.createElement("div", {className: "sidebarcontentarea container container-fluid"}, 
                     React.createElement("nav", {id: "navheight-top"}, 
-                            React.createElement("div", {className: "row top-nav nav-wrapper", id: "topnav"}, 
-                                React.createElement(OwnerInfo, null)
-                            )
-                        ), 
+                        React.createElement("div", {className: "row top-nav nav-wrapper", id: "topnav"}, 
+                            React.createElement(OwnerInfo, null)
+                        )
+                    ), 
                     React.createElement("nav", {id: "navheight-bottom"}, 
-                            React.createElement(NavBar, {changeState: this.changeState, initialState: this.getInitialState})
-                        ), 
+                        React.createElement(NavBar, {changeState: this.changeState, initialState: this.getInitialState})
+                    ), 
                     React.createElement("div", {id: "feed-holder", className: this.state.target}, 
                         React.createElement(ContentHolder, null)
                     )
@@ -371,7 +373,8 @@ var OwnerInfo = React.createClass({displayName: "OwnerInfo",
             React.createElement("div", null, 
                 React.createElement("div", {id: "owner-box", className: "col s6"}, 
                     React.createElement("div", {id: "owner-name"}, 
-                        React.createElement("h2", {id: "nav-title"}, React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/HNselectlogo_white.png", height: "12px", id: "rvs_logo"}), username)
+                        React.createElement("h2", {id: "nav-title"}, 
+                            React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/HNselectlogo_white.png", height: "12px", id: "rvs_logo"}), username)
                     )
                 ), 
                 React.createElement("div", {id: "owner-stats", className: "col s6"}, 
@@ -537,50 +540,50 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
             var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + i + '.json';
             promiseArray.push(
                 $.get(itemUrl)
-                .then(function (newNewsfeedItem) {
-                    if (newNewsfeedItem) { // following.indexOf(newNewsfeedItem.by) > -1
-                        if (newNewsfeedItem.type === "comment") {
-                            fetchParent(newNewsfeedItem.parent);
-                            function fetchParent(parentId) {
-                                var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
-                                $.get(itemUrl)
-                                    .then(function (response) {
-                                        if (response.type === "story") {
-                                            newNewsfeedItem.storytitle = response.title;
-                                            newNewsfeedItem.storyurl = response.url;
-                                            newNewsfeedItem.storyby = response.by;
-                                            newNewsfeedItem.storyid = response.id;
-                                            newsfeed = [newNewsfeedItem].concat(newsfeed);
-                                            self.setState({tempNewsfeed: newsfeed});
-                                        } else {
-                                            fetchParent(response.parent);
-                                        }
-                                    }, function(err){
-                                        console.log("here is the error: ", err);
-                                        return;
-                                    });
-                            }
-                        } else if (newNewsfeedItem.type === "story") {
+                    .then(function (newNewsfeedItem) {
+                        if (newNewsfeedItem) { // following.indexOf(newNewsfeedItem.by) > -1
+                            if (newNewsfeedItem.type === "comment") {
+                                fetchParent(newNewsfeedItem.parent);
+                                function fetchParent(parentId) {
+                                    var itemUrl = 'https://hacker-news.firebaseio.com/v0/item/' + parentId + '.json';
+                                    $.get(itemUrl)
+                                        .then(function (response) {
+                                            if (response.type === "story") {
+                                                newNewsfeedItem.storytitle = response.title;
+                                                newNewsfeedItem.storyurl = response.url;
+                                                newNewsfeedItem.storyby = response.by;
+                                                newNewsfeedItem.storyid = response.id;
+                                                newsfeed = [newNewsfeedItem].concat(newsfeed);
+                                                self.setState({tempNewsfeed: newsfeed});
+                                            } else {
+                                                fetchParent(response.parent);
+                                            }
+                                        }, function (err) {
+                                            console.log("here is the error: ", err);
+                                            return;
+                                        });
+                                }
+                            } else if (newNewsfeedItem.type === "story") {
 
-                            newsfeed = [newNewsfeedItem].concat(newsfeed)
-                            self.setState({tempNewsfeed: newsfeed});
+                                newsfeed = [newNewsfeedItem].concat(newsfeed)
+                                self.setState({tempNewsfeed: newsfeed});
+                            }
                         }
-                    }
-                }, function(err){
-                    console.log("here is another error: ", err);
-                    return;
-                })
+                    }, function (err) {
+                        console.log("here is another error: ", err);
+                        return;
+                    })
             );
         }
         $.when.apply($, promiseArray)
-        .done(function(){
-                    console.log(i,' all updated > refresh');
-                    self.setState({hideOrShow: "show"});
-        });
+            .done(function () {
+                console.log(i, ' all updated > refresh');
+                self.setState({hideOrShow: "show"});
+            });
     },
 
     updateNewsfeed: function () {
-        var self=this
+        var self = this
         self.setState({
             data: this.state.tempNewsfeed,
             hideOrShow: "hide"
@@ -596,7 +599,11 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
         if (this.state.data) {
             return (
                 React.createElement("div", null, 
-                    React.createElement("div", {id: "feedbuttondiv", className: this.state.hideOrShow, onClick: this.updateNewsfeed}, React.createElement("a", {className: "waves-effect waves-ripple btn", id: "feedbutton", href: "#"}, React.createElement("p", {id: "feedbuttontext"}, "↑New Items"))), 
+                    React.createElement("div", {id: "feedbuttondiv", className: this.state.hideOrShow, onClick: this.updateNewsfeed}, 
+                        React.createElement("a", {className: "waves-effect waves-ripple btn", id: "feedbutton", href: "#"}, 
+                            React.createElement("p", {id: "feedbuttontext"}, "↑New Items")
+                        )
+                    ), 
                     React.createElement("div", null, 
                     this.state.data.map(function (item) {
                         if (item.type === "story") {
@@ -605,7 +612,7 @@ var Newsfeed = React.createClass({displayName: "Newsfeed",
                             return React.createElement(CommentItem, {data: item})
                         }
                     })
-                        )
+                    )
                 )
             )
         } else {
@@ -679,7 +686,13 @@ var Connections = React.createClass({displayName: "Connections",
         return {
             data: null,
             value: "",
-            errorMessage: ""
+            errorMessage: "",
+            remove: null,
+            editEnabled: false,
+            connHead: "Users you follow:",
+            editOrDelete: "Edit",
+            selectedToRemove: "unselected",
+            usersToDelete: []
         }
     },
 
@@ -710,12 +723,13 @@ var Connections = React.createClass({displayName: "Connections",
     },
 
     showUsers: function () {
+        var self = this;
         //console.log("Show users, ", this.state)
         // Are we allowed to build an if/else statement in here, i.e. returning different html components?
-        if (this.state.data === null) {
+        if (self.state.data === null) {
             return (
                 React.createElement("span", null, "It looks like you're not following anyone. Would you care to", 
-                    React.createElement("a", {href: "#", onClick: this.searchFocus()}, "add a user to follow now?")
+                    React.createElement("a", {href: "#", onClick: self.searchFocus()}, "add a user to follow now?")
                 )
             )
         } else {
@@ -723,11 +737,57 @@ var Connections = React.createClass({displayName: "Connections",
             return (
                 React.createElement("ul", null, 
                 this.state.data.following.map(function (user) {
-                    return React.createElement("li", null, user);
+                    return React.createElement("li", {ref: user, id: user, onClick: self.userRemover(user)}, user);
                 })
                 )
             )
         }
+    },
+    enableEdit: function () {
+        var self = this;
+        if (!self.state.editEnabled) {
+            self = this;
+            self.setState({
+                editOrDelete: "Unfollow",
+                connHead: "Select which users you want to stop following.",
+                editEnabled: true
+            });
+        }
+        else {
+            self.deleteUsers(this.state.usersToDelete);
+            self.setState({
+                editEnabled: false,
+                editOrDelete: "Edit"
+            });
+
+        }
+    },
+    userRemover: function (user) {
+        var self = this;
+        return function clickHandler() {
+            //console.log('!! Clicked the button');
+            if (self.state.editEnabled) {
+                var me = self.refs[user].props.children;
+                console.log(me);
+                $("#" + me).attr('class', 'toBeDeleted');
+                self.state.usersToDelete.push(me);
+                console.log(self.state.usersToDelete);
+                self.setState.usersToDelete = self.state.usersToDelete;
+            }
+        }
+    },
+    deleteUsers: function (arr) {
+        var self = this;
+        $('.toBeDeleted').remove();
+        chrome.runtime.sendMessage({
+            method: 'DELETE',
+            action: 'ajax',
+            url: server + '/user/' + username + '/unfollowuser',
+            data: arr
+        }, function (response) {
+            console.log("Response: ", response)
+        });
+
     },
     handleChange: function (event) {
         this.setState({value: event.target.value});
@@ -737,7 +797,7 @@ var Connections = React.createClass({displayName: "Connections",
             followUser = self.state.value;
         //console.log(followUser)
         //console.log("Getting called, ", this.state.data.following)
-        if (this.state.data.following.indexOf(followUser) !== -1) {
+        if (self.state.data.following.indexOf(followUser) !== -1) {
             // Find out if the user already exists in their following; if so, give them a message
             self.setState({errorMessage: "It appears you are already following this user. Would you like to try again?"})
         } else {
@@ -789,24 +849,29 @@ var Connections = React.createClass({displayName: "Connections",
                     )
                 ), 
                 React.createElement("div", null, 
-                    React.createElement("h4", {className: "connectionhead"}, "Users you follow:"), 
+                    React.createElement("h3", {id: "connectionhead"}, this.state.connHead, 
+                        React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
+                    ), 
                     React.createElement("div", {className: "suggest-tags"}, 
                         this.showUsers()
                     )
-                ), 
-                React.createElement("div", null, 
-                    React.createElement("h4", {className: "connectionhead"}, "Users who follow you:"), 
-                    React.createElement("div", {className: "suggest-tags"}, 
-                        React.createElement("ul", null, 
-                            React.createElement("li", null, "userName")
-                        )
-                    )
                 )
+            /*<div>
+             <h4 className="connectionhead">Users who follow you:</h4>
+             <div className="suggest-tags">
+             <ul>
+             <li>userName</li>
+             </ul>
+             </div>
+             </div>*/
             )
         )
     }
 });
 
+// Approach: Add an onclick handler that calls a function editUser.
+// editUser appends a button after each User icon. The button has an onClick handler
+// that gets the User name from the innerHtml
 
 
 

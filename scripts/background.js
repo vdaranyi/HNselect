@@ -10,10 +10,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
             $.getJSON(request.url, function(response){
                 callback(response);
             })
-        } else if (request.method == 'POST') {
+        } else {
             $.ajax({
               url: request.url,
-              type: "POST",
+              type: request.method,
               dataType: "xml/html/script/json", // expected format for response
               contentType: "application/json", // send as JSON
               data: JSON.stringify(request.data)
