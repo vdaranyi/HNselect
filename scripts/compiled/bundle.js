@@ -68,7 +68,7 @@ chrome.runtime.onMessage.addListener(
 
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
 //console.log('pageHighlighting');
-var server = 'http://localhost:3000';
+var server = 'http://www.hnselect.com';
 //var server = 'http://hn-select.herokuapp.com';
 // var server = 'http://localhost:3000';
 var hnOrange = '#ff6600',
@@ -186,7 +186,7 @@ function addPlusButton($author, author, user) {
             action: 'ajax',
             url: server + '/user/' + user + '/followuser/' + author,
             }, function (response) {
-                console.log('DONE',reponse);
+                console.log('DONE',response);
             }
         );
     });
@@ -201,7 +201,7 @@ function addBookmarkButton($storyTitle, storyId, user) {
             action: 'ajax',
             url: server + '/user/' + user + '/bookmark/' + storyId,
             }, function (response) {
-                console.log('DONE',reponse);
+                console.log('DONE',response);
             }
         );
     });
@@ -715,6 +715,7 @@ var Connections = React.createClass({displayName: "Connections",
             if (response && response !== 'Not Found') {
                 userData = response;
                 self.setState({data: userData});
+                console.log(userData);
             } else {
                 self.setState({data: null});
             }

@@ -484,6 +484,7 @@ var Connections = React.createClass({
             if (response && response !== 'Not Found') {
                 userData = response;
                 self.setState({data: userData});
+                console.log(userData);
             } else {
                 self.setState({data: null});
             }
