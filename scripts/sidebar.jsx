@@ -1,7 +1,7 @@
 // Constants
 
-//var server = 'http://localhost:3000';
-var server = 'http://www.hnselect.com';
+var server = 'http://localhost:3000';
+//var server = 'http://www.hnselect.com';
 var hnUrl = "https://news.ycombinator.com";
 //require("./react-materialize/src/input.js");
 

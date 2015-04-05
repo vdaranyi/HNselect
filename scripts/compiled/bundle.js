@@ -16,8 +16,8 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnOrange,
     bgGrey = "#f7f7f1",
     following = [],
-    getCommentersRoute = 'http://www.hnselect.com/getCommenters';
-//getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
+    //getCommentersRoute = 'http://www.hnselect.com/getCommenters';
+    getCommentersRoute = 'localhost:3000/getCommenters';
 
 
 // Selecting highlighting method depending on view
@@ -68,9 +68,9 @@ chrome.runtime.onMessage.addListener(
 
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
 //console.log('pageHighlighting');
-var server = 'http://www.hnselect.com';
+//var server = 'http://www.hnselect.com';
 //var server = 'http://hn-select.herokuapp.com';
-// var server = 'http://localhost:3000';
+var server = 'http://localhost:3000';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',
     commentsBgColor = hnOrange,
@@ -231,8 +231,8 @@ function highlightComments() {
 },{}],3:[function(require,module,exports){
 // Constants
 
-//var server = 'http://localhost:3000';
-var server = 'http://www.hnselect.com';
+var server = 'http://localhost:3000';
+//var server = 'http://www.hnselect.com';
 var hnUrl = "https://news.ycombinator.com";
 //require("./react-materialize/src/input.js");
 
