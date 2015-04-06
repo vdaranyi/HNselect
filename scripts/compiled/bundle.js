@@ -276,31 +276,58 @@ var SidebarBox = React.createClass({
 
     displayName: 'SidebarBox',
 
+    closeDrawer: function(){
+        this.setState({drawerIsClosed: !this.state.drawerIsClosed});
+    },
+
+    isDrawerClosed: function(){
+        var self=this;
+        chrome.storage.local.get("sidebarClosed", function (result)  {
+            var answer = result.toString()
+            console.log("isdrawerclosed, ", answer)
+            if (!answer.length) chrome.storage.local.set({sidebarClosed: false})
+            else self.setState({drawerIsClosed: answer})
+        })
+    },
+
     // Attaches sidebar to the DOM and causes it to slide in
     componentDidMount: function () {
-        setTimeout(function () {
-            $(".sidebarbox").css({
-                right: 0
-            });
-            $("#sidebarcontentarea")
-        }, 1000)
+        this.isDrawerClosed();
+        if (!this.state.drawerIsClosed) {
+            setTimeout(function () {
+                $(".sidebarbox").css({
+                    right: 0
+                });
+                $("#sidebarcontentarea")
+            }, 500)
+        }
 
     },
 
     getInitialState: function () {
-        return {target: "Newsfeed"}
+        return {
+            target: "Newsfeed",
+            userData: null,
+            drawerIsClosed: false
+
+        }
     },
 
     changeState: function (targetName) {
         this.setState({target: targetName})
     },
 
+    passBookmarkProps: function (data) {
+        this.setState({userData: data})
+    },
+
+
     render: function () {
         var self = this;
         return (
             React.createElement("div", {className: "sidebarbox"}, 
                 React.createElement("div", {className: "sidebarbutton"}, 
-                    React.createElement(CloseButton, null)
+                    React.createElement(CloseButton, {closed: this.state.drawerIsClosed, toggleSidebar: this.closeDrawer})
                 ), 
                 React.createElement("div", {className: "sidebarcontentarea container container-fluid"}, 
                     React.createElement("nav", {id: "navheight-top"}, 
@@ -312,7 +339,7 @@ var SidebarBox = React.createClass({
                         React.createElement(NavBar, {changeState: this.changeState, initialState: this.getInitialState})
                     ), 
                     React.createElement("div", {id: "feed-holder", className: this.state.target}, 
-                        React.createElement(ContentHolder, null)
+                        React.createElement(ContentHolder, {passBookmarkProps: this.passBookmarkProps, userData: this.state.data})
                     )
                 )
             )
@@ -321,16 +348,20 @@ var SidebarBox = React.createClass({
     }
 });
 
-var drawerIsClosed = false;
+
 
 // Close button component
 // --> ISSUE: All these jQuery queries should be stored as variables, so we only need to access them once.
+// also: we should use React, not jQuery, for this
 var CloseButton = React.createClass({displayName: "CloseButton",
 
     // Functionality: Button causes sidebar to slide closed if it is open, open if it is closed.
     closeBox: function () {
-        if (!drawerIsClosed) {
-            drawerIsClosed = true;
+        var self=this;
+        console.log("closed?", self.props.closed)
+        if (!self.props.closed.sidebarClosed) {
+            self.props.toggleSidebar();
+            chrome.storage.local.set({sidebarClosed: false})
             setTimeout(function () {
                 $(".sidebarbox").css({
                     "right": "-470"
@@ -345,7 +376,8 @@ var CloseButton = React.createClass({displayName: "CloseButton",
 
         else {
             setTimeout(function () {
-                drawerIsClosed = false;
+                self.props.toggleSidebar();
+                chrome.storage.local.set({sidebarClosed: true})
                 $(".sidebarbox").css({
                     right: 0
                 });
@@ -436,7 +468,11 @@ var NavBar = React.createClass({displayName: "NavBar",
                             React.createElement("div", null, " ")
                         ), 
                         React.createElement("li", {className: "col s2 navbar-button waves-effect waves-light"}, 
-                            React.createElement("div", {id: "twitter"}, React.createElement("a", {href: "http://www.hnselect.com/user/" + username + "/twitter/connect"}, React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png", height: "14px"})))
+                            React.createElement("div", {id: "twitter"}, 
+                                React.createElement("a", {href: "http://www.hnselect.com/user/" + username + "/twitter/connect"}, 
+                                    React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png", height: "14px"})
+                                )
+                            )
                         )
                     )
                 )
@@ -478,7 +514,7 @@ var ContentHolder = React.createClass({displayName: "ContentHolder",
                     React.createElement(Connections, {passBookmarkProps: this.passBookmarkProps})
                 ), 
                 React.createElement("div", {className: "absposition", id: "noti"}, 
-                    React.createElement(Bookmarks, null)
+                    React.createElement(Bookmarks, {data: this.props.userData})
                 )
             )
         )
@@ -702,6 +738,10 @@ var Connections = React.createClass({displayName: "Connections",
         }
     },
 
+    passUserData: function (data) {
+        this.props.passBookmarkProps(data)
+    },
+
     getUserData: function (server, username) {
         var self = this;
         //console.log("Getting called")
@@ -711,11 +751,12 @@ var Connections = React.createClass({displayName: "Connections",
             url: server + '/user/' + username + '/userdata',
             data: ''
         }, function (response) {
-            console.log(response)
+            //console.log(response)
             if (response && response !== 'Not Found') {
                 userData = response;
                 self.setState({data: userData});
-                console.log(userData);
+                self.passUserData(self.state.data);
+                //console.log(userData);
             } else {
                 self.setState({data: null});
             }
@@ -870,10 +911,10 @@ var Connections = React.createClass({displayName: "Connections",
         //console.log('VALUE', value);
         return (
             React.createElement("div", null, 
-                React.createElement("div", {class: "row"}, 
-                    React.createElement("form", {class: "col s12", id: "inputForm"}, 
-                        React.createElement("div", {class: "row"}, 
-                            React.createElement("div", {class: "input-field col s12"}, 
+                React.createElement("div", {className: "row"}, 
+                    React.createElement("form", {className: "col s12", id: "inputForm"}, 
+                        React.createElement("div", {className: "row"}, 
+                            React.createElement("div", {className: "input-field col s12"}, 
                                 React.createElement("label", {htmlFor: "searchFollow"}, "Follow a Hacker News user"), 
                                 React.createElement("input", {id: "searchFollow", value: value, onChange: this.handleChange, type: "text", className: "validate"}), 
                                 React.createElement("button", {id: "ourbutton", className: "btn btn-default", type: "button", onClick: this.followInputUser}, "Follow")
@@ -920,14 +961,61 @@ var Connections = React.createClass({displayName: "Connections",
     }
 });
 
+// Get userdata.bookmarks
+
+var bookmarkData;
+
 var Bookmarks = React.createClass({displayName: "Bookmarks",
 
+    getInitialState: function () {
+        return {
+            data: null
+        }
+
+    },
+
+    getBookmarks: function (server, username) {
+        var self = this;
+        //console.log("Getting called")
+        chrome.runtime.sendMessage({
+            method: 'GET',
+            action: 'ajax',
+            url: server + '/user/' + username + '/bookmarks',
+            data: ''
+        }, function (response) {
+            //console.log(response)
+            if (response && response !== 'Not Found') {
+                console.log("Bookmarks response, ", response)
+                bookmarkData = response;
+                self.setState({data: bookmarkData});
+            } else {
+                self.setState({data: null});
+            }
+        })
+    },
+
+    componentDidMount: function(){
+        this.getBookmarks(server, username)
+    },
+
     render: function () {
+        var self=this;
+        //console.log("Bookmarks: ", this.state.data)
+        if (self.state.data) {
             return (
                 React.createElement("div", null, 
-                    "Bookmarks"
+                    self.state.data.map(function (item) {
+                        if (item.type === "story") {
+                            return React.createElement(StoryItem, {data: item})
+                        } else if (item.type === "comment") {
+                            //console.log(item.text)
+                            return React.createElement(CommentItem, {data: item})
+                        }
+                    })
                 )
             )
+        }
+                else return React.createElement("div", null, "You don't have any bookmarks!")
     }
 })
 
