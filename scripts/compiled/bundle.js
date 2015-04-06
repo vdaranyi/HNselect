@@ -830,8 +830,7 @@ var Connections = React.createClass({displayName: "Connections",
                 connHead: "Select which users you want to stop following.",
                 editEnabled: true
             });
-        }
-        else {
+        } else {
             self.deleteUsers(this.state.usersToDelete);
             self.setState({
                 editEnabled: false,
@@ -854,6 +853,7 @@ var Connections = React.createClass({displayName: "Connections",
             }
         }
     },
+
     deleteUsers: function (arr) {
         var self = this;
         $('.toBeDeleted').remove();
@@ -867,9 +867,11 @@ var Connections = React.createClass({displayName: "Connections",
         });
 
     },
+
     handleChange: function (event) {
         this.setState({value: event.target.value});
     },
+
     followInputUser: function () {
         var self = this,
             followUser = self.state.value;
@@ -923,7 +925,7 @@ var Connections = React.createClass({displayName: "Connections",
                     )
                 ), 
                 React.createElement("div", null, 
-                    React.createElement("h3", {className: "connectionhead"}, this.state.connHead, 
+                    React.createElement("h3", {id: "following-title"}, this.state.connHead, 
                         React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
                     ), 
                     React.createElement("div", {className: "suggest-tags"}, 
@@ -932,7 +934,7 @@ var Connections = React.createClass({displayName: "Connections",
 
                 ), 
                 React.createElement("div", null, 
-                    React.createElement("h3", {className: "connectionhead"}, "Suggested Followers including your Twitter connections", 
+                    React.createElement("h3", {id: "suggested-following-title"}, "Suggested Followers including your Twitter connections", 
                         React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
                     ), 
                     React.createElement("div", {className: "suggest-tags"}, 
@@ -941,7 +943,7 @@ var Connections = React.createClass({displayName: "Connections",
                     
                 ), 
                 React.createElement("div", null, 
-                    React.createElement("h3", {className: "connectionhead"}, "Users that follow you", 
+                    React.createElement("h3", {id: "followers-title"}, "Users that follow you", 
                         React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
                     ), 
                     React.createElement("div", {className: "suggest-tags"}, 
