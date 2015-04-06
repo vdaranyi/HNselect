@@ -283,7 +283,7 @@ var SidebarBox = React.createClass({
     isDrawerClosed: function(){
         var self=this;
         chrome.storage.local.get("sidebarClosed", function (result)  {
-            var answer = result.toString()
+            var answer = result.sidebarClosed
             console.log("isdrawerclosed, ", answer)
             if (!answer.length) chrome.storage.local.set({sidebarClosed: false})
             else self.setState({drawerIsClosed: answer})
@@ -359,7 +359,7 @@ var CloseButton = React.createClass({displayName: "CloseButton",
     closeBox: function () {
         var self=this;
         console.log("closed?", self.props.closed)
-        if (!self.props.closed.sidebarClosed) {
+        if (!self.props.closed) {
             self.props.toggleSidebar();
             chrome.storage.local.set({sidebarClosed: false})
             setTimeout(function () {
