@@ -327,7 +327,17 @@ a.feed-author {
   font-size: 1em;
 }
 
-.connectionhead {
+#following-title {
+  margin-top: 2em;
+  font-size: 1em !important;
+}
+
+#suggested-following-title {
+  margin-top: 2em;
+  font-size: 1em !important;
+}
+
+#followers-title { 
   margin-top: 2em;
   font-size: 1em !important;
 }

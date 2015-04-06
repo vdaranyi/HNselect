@@ -599,8 +599,7 @@ var Connections = React.createClass({
                 connHead: "Select which users you want to stop following.",
                 editEnabled: true
             });
-        }
-        else {
+        } else {
             self.deleteUsers(this.state.usersToDelete);
             self.setState({
                 editEnabled: false,
@@ -623,6 +622,7 @@ var Connections = React.createClass({
             }
         }
     },
+
     deleteUsers: function (arr) {
         var self = this;
         $('.toBeDeleted').remove();
@@ -636,9 +636,11 @@ var Connections = React.createClass({
         });
 
     },
+
     handleChange: function (event) {
         this.setState({value: event.target.value});
     },
+
     followInputUser: function () {
         var self = this,
             followUser = self.state.value;
@@ -692,7 +694,7 @@ var Connections = React.createClass({
                     </form>
                 </div>
                 <div>
-                    <h3 className="connectionhead">{this.state.connHead}
+                    <h3 id="following-title">{this.state.connHead}
                         <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
                     </h3>
                     <div className="suggest-tags">
@@ -701,7 +703,7 @@ var Connections = React.createClass({
 
                 </div>
                 <div>
-                    <h3 className="connectionhead">Suggested Followers including your Twitter connections
+                    <h3 id="suggested-following-title">Suggested Followers including your Twitter connections
                         <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
                     </h3>
                     <div className="suggest-tags">
@@ -710,7 +712,7 @@ var Connections = React.createClass({
                     
                 </div>
                 <div>
-                    <h3 className="connectionhead">Users that follow you
+                    <h3 id="followers-title">Users that follow you
                         <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
                     </h3> 
                     <div className="suggest-tags">
