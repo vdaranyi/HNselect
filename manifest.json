@@ -29,8 +29,8 @@
         "https://news.ycombinator.com/*"
       ],
       "css": [
-        "styles/compiled/main.css"
-//        "styles/bootstrap-mod.css"
+        "styles/compiled/main.css",
+        "styles/bootstrap-mod.css"
       ],
       "js": [
         "bower_components/react/react-with-addons.js",
@@ -47,7 +47,7 @@
   ],
   "web_accessible_resources": [
     "bower_components/jquery/dist/jquery.min.map",
-//    "bower_components/bootstrap/dist/css/bootstrap.css.map",
+    "bower_components/bootstrap/dist/css/bootstrap.css.map",
     "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
     "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
     "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",

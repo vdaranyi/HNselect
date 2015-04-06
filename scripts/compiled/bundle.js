@@ -792,6 +792,35 @@ var Connections = React.createClass({displayName: "Connections",
             )
         }
     },
+
+    showFollowers: function () {
+        var self = this;
+        if (self.state.data !== null && self.state.data.followers.length) {
+            //console.log("There is indeed data: ", this.state.data.following)
+            return (
+                React.createElement("ul", null, 
+                this.state.data.followers.map(function (user) {
+                    return React.createElement("li", {ref: user, id: user, onClick: self.userRemover(user)}, user);
+                })
+                )
+            )
+        }
+    },
+
+    showSuggestedFollowers: function () {
+        var self = this;
+        if (self.state.data !== null && self.state.data.suggestedFollowing.length) {
+            //console.log("There is indeed data: ", this.state.data.following)
+            return (
+                React.createElement("ul", null, 
+                this.state.data.suggestedFollowing.map(function (user) {
+                    return React.createElement("li", {ref: user, id: user, onClick: self.userRemover(user)}, user);
+                })
+                )
+            )
+        }
+    },
+
     enableEdit: function () {
         var self = this;
         if (!self.state.editEnabled) {
@@ -894,11 +923,29 @@ var Connections = React.createClass({displayName: "Connections",
                     )
                 ), 
                 React.createElement("div", null, 
-                    React.createElement("h3", {id: "connectionhead"}, this.state.connHead, 
+                    React.createElement("h3", {className: "connectionhead"}, this.state.connHead, 
                         React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
                     ), 
                     React.createElement("div", {className: "suggest-tags"}, 
                         this.showUsers()
+                    )
+
+                ), 
+                React.createElement("div", null, 
+                    React.createElement("h3", {className: "connectionhead"}, "Suggested Followers including your Twitter connections", 
+                        React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
+                    ), 
+                    React.createElement("div", {className: "suggest-tags"}, 
+                        this.showSuggestedFollowers()
+                    )
+                    
+                ), 
+                React.createElement("div", null, 
+                    React.createElement("h3", {className: "connectionhead"}, "Users that follow you", 
+                        React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
+                    ), 
+                    React.createElement("div", {className: "suggest-tags"}, 
+                        this.showFollowers()
                     )
                 )
             /*<div>
