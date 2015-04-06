@@ -45,31 +45,58 @@ var SidebarBox = React.createClass({
 
     displayName: 'SidebarBox',
 
+    closeDrawer: function(){
+        this.setState({drawerIsClosed: !this.state.drawerIsClosed});
+    },
+
+    isDrawerClosed: function(){
+        var self=this;
+        chrome.storage.local.get("sidebarClosed", function (result)  {
+            var answer = result.toString()
+            console.log("isdrawerclosed, ", answer)
+            if (!answer.length) chrome.storage.local.set({sidebarClosed: false})
+            else self.setState({drawerIsClosed: answer})
+        })
+    },
+
     // Attaches sidebar to the DOM and causes it to slide in
     componentDidMount: function () {
-        setTimeout(function () {
-            $(".sidebarbox").css({
-                right: 0
-            });
-            $("#sidebarcontentarea")
-        }, 1000)
+        this.isDrawerClosed();
+        if (!this.state.drawerIsClosed) {
+            setTimeout(function () {
+                $(".sidebarbox").css({
+                    right: 0
+                });
+                $("#sidebarcontentarea")
+            }, 500)
+        }
 
     },
 
     getInitialState: function () {
-        return {target: "Newsfeed"}
+        return {
+            target: "Newsfeed",
+            userData: null,
+            drawerIsClosed: false
+
+        }
     },
 
     changeState: function (targetName) {
         this.setState({target: targetName})
     },
 
+    passBookmarkProps: function (data) {
+        this.setState({userData: data})
+    },
+
+
     render: function () {
         var self = this;
         return (
             <div className="sidebarbox">
                 <div className="sidebarbutton">
-                    <CloseButton />
+                    <CloseButton closed={this.state.drawerIsClosed} toggleSidebar={this.closeDrawer} />
                 </div>
                 <div className="sidebarcontentarea container container-fluid">
                     <nav id="navheight-top">
@@ -81,7 +108,7 @@ var SidebarBox = React.createClass({
                         <NavBar changeState={this.changeState} initialState={this.getInitialState} />
                     </nav>
                     <div id="feed-holder" className={this.state.target}>
-                        <ContentHolder />
+                        <ContentHolder passBookmarkProps={this.passBookmarkProps} userData={this.state.data} />
                     </div>
                 </div>
             </div>
@@ -90,16 +117,20 @@ var SidebarBox = React.createClass({
     }
 });
 
-var drawerIsClosed = false;
+
 
 // Close button component
 // --> ISSUE: All these jQuery queries should be stored as variables, so we only need to access them once.
+// also: we should use React, not jQuery, for this
 var CloseButton = React.createClass({
 
     // Functionality: Button causes sidebar to slide closed if it is open, open if it is closed.
     closeBox: function () {
-        if (!drawerIsClosed) {
-            drawerIsClosed = true;
+        var self=this;
+        console.log("closed?", self.props.closed)
+        if (!self.props.closed.sidebarClosed) {
+            self.props.toggleSidebar();
+            chrome.storage.local.set({sidebarClosed: false})
             setTimeout(function () {
                 $(".sidebarbox").css({
                     "right": "-470"
@@ -114,7 +145,8 @@ var CloseButton = React.createClass({
 
         else {
             setTimeout(function () {
-                drawerIsClosed = false;
+                self.props.toggleSidebar();
+                chrome.storage.local.set({sidebarClosed: true})
                 $(".sidebarbox").css({
                     right: 0
                 });
@@ -205,7 +237,11 @@ var NavBar = React.createClass({
                             <div>&nbsp;</div>
                         </li>
                         <li className="col s2 navbar-button waves-effect waves-light">
-                            <div id="twitter"><a href={"http://www.hnselect.com/user/" + username + "/twitter/connect"}><img src="https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png" height="14px" /></a></div>
+                            <div id="twitter">
+                                <a href={"http://www.hnselect.com/user/" + username + "/twitter/connect"}>
+                                    <img src="https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png" height="14px" />
+                                </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -247,7 +283,7 @@ var ContentHolder = React.createClass({
                     <Connections passBookmarkProps={this.passBookmarkProps} />
                 </div>
                 <div className="absposition" id="noti">
-                    <Bookmarks />
+                    <Bookmarks data={this.props.userData} />
                 </div>
             </div>
         )
@@ -471,6 +507,10 @@ var Connections = React.createClass({
         }
     },
 
+    passUserData: function (data) {
+        this.props.passBookmarkProps(data)
+    },
+
     getUserData: function (server, username) {
         var self = this;
         //console.log("Getting called")
@@ -480,11 +520,12 @@ var Connections = React.createClass({
             url: server + '/user/' + username + '/userdata',
             data: ''
         }, function (response) {
-            console.log(response)
+            //console.log(response)
             if (response && response !== 'Not Found') {
                 userData = response;
                 self.setState({data: userData});
-                console.log(userData);
+                self.passUserData(self.state.data);
+                //console.log(userData);
             } else {
                 self.setState({data: null});
             }
@@ -610,10 +651,10 @@ var Connections = React.createClass({
         //console.log('VALUE', value);
         return (
             <div>
-                <div class="row">
-                    <form class="col s12" id="inputForm">
-                        <div class="row">
-                            <div class="input-field col s12">
+                <div className="row">
+                    <form className="col s12" id="inputForm">
+                        <div className="row">
+                            <div className="input-field col s12">
                                 <label htmlFor="searchFollow">Follow a Hacker News user</label>
                                 <input id="searchFollow" value={value} onChange={this.handleChange} type="text" className="validate" />
                                 <button id="ourbutton" className="btn btn-default" type="button" onClick={this.followInputUser}>Follow</button>
@@ -642,13 +683,60 @@ var Connections = React.createClass({
     }
 });
 
+// Get userdata.bookmarks
+
+var bookmarkData;
+
 var Bookmarks = React.createClass({
 
+    getInitialState: function () {
+        return {
+            data: null
+        }
+
+    },
+
+    getBookmarks: function (server, username) {
+        var self = this;
+        //console.log("Getting called")
+        chrome.runtime.sendMessage({
+            method: 'GET',
+            action: 'ajax',
+            url: server + '/user/' + username + '/bookmarks',
+            data: ''
+        }, function (response) {
+            //console.log(response)
+            if (response && response !== 'Not Found') {
+                console.log("Bookmarks response, ", response)
+                bookmarkData = response;
+                self.setState({data: bookmarkData});
+            } else {
+                self.setState({data: null});
+            }
+        })
+    },
+
+    componentDidMount: function(){
+        this.getBookmarks(server, username)
+    },
+
     render: function () {
+        var self=this;
+        //console.log("Bookmarks: ", this.state.data)
+        if (self.state.data) {
             return (
                 <div>
-                    Bookmarks
+                    {self.state.data.map(function (item) {
+                        if (item.type === "story") {
+                            return <StoryItem data={item} />
+                        } else if (item.type === "comment") {
+                            //console.log(item.text)
+                            return <CommentItem data={item} />
+                        }
+                    })}
                 </div>
             )
+        }
+                else return <div>You don't have any bookmarks!</div>
     }
 })
