@@ -59,6 +59,7 @@
     "tabs",
     "management",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "storage"
   ]
 }
