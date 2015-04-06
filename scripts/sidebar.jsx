@@ -520,6 +520,35 @@ var Connections = React.createClass({
             )
         }
     },
+
+    showFollowers: function () {
+        var self = this;
+        if (self.state.data !== null && self.state.data.followers.length) {
+            //console.log("There is indeed data: ", this.state.data.following)
+            return (
+                <ul>
+                {this.state.data.followers.map(function (user) {
+                    return <li ref={user} id={user} onClick={self.userRemover(user)}>{user}</li>;
+                })}
+                </ul>
+            )
+        }
+    },
+
+    showSuggestedFollowers: function () {
+        var self = this;
+        if (self.state.data !== null && self.state.data.suggestedFollowing.length) {
+            //console.log("There is indeed data: ", this.state.data.following)
+            return (
+                <ul>
+                {this.state.data.suggestedFollowing.map(function (user) {
+                    return <li ref={user} id={user} onClick={self.userRemover(user)}>{user}</li>;
+                })}
+                </ul>
+            )
+        }
+    },
+
     enableEdit: function () {
         var self = this;
         if (!self.state.editEnabled) {
@@ -622,12 +651,30 @@ var Connections = React.createClass({
                     </form>
                 </div>
                 <div>
-                    <h3 id="connectionhead">{this.state.connHead}
+                    <h3 className="connectionhead">{this.state.connHead}
                         <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
                     </h3>
                     <div className="suggest-tags">
                         {this.showUsers()}
                     </div>
+
+                </div>
+                <div>
+                    <h3 className="connectionhead">Suggested Followers including your Twitter connections
+                        <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
+                    </h3>
+                    <div className="suggest-tags">
+                        {this.showSuggestedFollowers()}
+                    </div>
+                    
+                </div>
+                <div>
+                    <h3 className="connectionhead">Users that follow you
+                        <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
+                    </h3> 
+                    <div className="suggest-tags">
+                        {this.showFollowers()}
+                    </div>                   
                 </div>
             {/*<div>
              <h4 className="connectionhead">Users who follow you:</h4>
