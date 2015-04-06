@@ -547,7 +547,7 @@ var Connections = React.createClass({
         if (self.state.data === null) {
             return (
                 <span>It looks like you&#39;re not following anyone. Would you care to
-                    <a href="#" onClick={self.searchFocus()}>add a user to follow now?</a>
+                    <a href="#" onClick={self.searchFocus()}> add a user to follow now?</a>
                 </span>
             )
         } else {

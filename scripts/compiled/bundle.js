@@ -778,7 +778,7 @@ var Connections = React.createClass({displayName: "Connections",
         if (self.state.data === null) {
             return (
                 React.createElement("span", null, "It looks like you're not following anyone. Would you care to", 
-                    React.createElement("a", {href: "#", onClick: self.searchFocus()}, "add a user to follow now?")
+                    React.createElement("a", {href: "#", onClick: self.searchFocus()}, " add a user to follow now?")
                 )
             )
         } else {
