@@ -36,7 +36,7 @@ gulp           # when making changes to the extension's scripts
 
 Download the Chrome Extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/hnselect/jbbidiepnmelekfimfibcihoijpbibpa)
 
-## Techonology
+## Technology
 Chrome Extension that injects itself into the Hacker News website when accessing the page.
 Upon load, the initial newsfeed is served by our backend ([Repo](https://github.com/crsmnd/HNselect-backend)). The newsfeed is then updated in realtime with the client listening for new items from the Hacker News Firebase API ([Repo](https://github.com/HackerNews/API)). 
 
