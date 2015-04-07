@@ -66,4 +66,4 @@ Upon load, the initial newsfeed is served by our backend ([Repo](https://github.
 
 ## License
 
-This projected is licensed under the terms of the [MIT license](/LICENSE)
+This projected is licensed under the terms of the [MIT license](http://opensource.org/licenses/MIT)
