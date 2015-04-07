@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-- [Demo](#demo)
+- [Screenshot](#screenshot)
 - [Motivation](#motivation)
 - [Features](#features)
 - [Installation](#installation)
@@ -14,8 +14,8 @@
 - [Contributors](#contributors)
 - [License](#license)
 
-## Demo
-### Screenshot
+## Screenshot
+[<img src="http://www.hnselect.com/HNselect_screenshot.png">]
 
 ## Motivation
 
