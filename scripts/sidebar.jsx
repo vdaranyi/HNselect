@@ -663,7 +663,7 @@ var Connections = React.createClass({
                         url: server + '/user/' + username + '/followuser/' + followUser,
                     }, function (response) {
                         console.log("Response: ", response);
-                        if (response == "User added") {
+                        if (response == "User added and followed user created") {
                             self.state.data.following.push(followUser)
                             self.setState({data: self.state.data});
                         } else {
@@ -679,7 +679,8 @@ var Connections = React.createClass({
     },
 
     render: function () {
-        var value = this.state.value;
+        var self=this;
+        var value = self.state.value;
         //console.log('VALUE', value);
         return (
             <div>
@@ -688,36 +689,36 @@ var Connections = React.createClass({
                         <div className="row">
                             <div className="input-field col s12">
                                 <label htmlFor="searchFollow">Follow a Hacker News user</label>
-                                <input id="searchFollow" value={value} onChange={this.handleChange} type="text" className="validate" />
-                                <button id="ourbutton" className="btn btn-default" type="button" onClick={this.followInputUser}>Follow</button>
+                                <input id="searchFollow" value={value} onChange={self.handleChange} type="text" className="validate" />
+                                <button id="ourbutton" className="btn btn-default" type="button" onClick={self.followInputUser}>Follow</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div>
-                    <h3 id="following-title">{this.state.connHead}
-                        <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
+                    <h3 id="following-title">{self.state.connHead}
+                        <a href="#" id="connedit" onClick={self.enableEdit}>{self.state.editOrDelete}</a>
                     </h3>
                     <div className="suggest-tags">
-                        {this.showUsers()}
+                        {self.showUsers()}
                     </div>
 
                 </div>
                 <div>
                     <h3 id="suggested-following-title">Suggested Followers including your Twitter connections
-                        <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
+                        <a href="#" id="connedit" onClick={self.enableEdit}>{self.state.editOrDelete}</a>
                     </h3>
                     <div className="suggest-tags">
-                        {this.showSuggestedFollowers()}
+                        {self.showSuggestedFollowers()}
                     </div>
                     
                 </div>
                 <div>
                     <h3 id="followers-title">Users that follow you
-                        <a href="#" id="connedit" onClick={this.enableEdit}>{this.state.editOrDelete}</a>
+                        <a href="#" id="connedit" onClick={self.enableEdit}>{self.state.editOrDelete}</a>
                     </h3> 
                     <div className="suggest-tags">
-                        {this.showFollowers()}
+                        {self.showFollowers()}
                     </div>                   
                 </div>
             {/*<div>

@@ -908,7 +908,7 @@ var Connections = React.createClass({displayName: "Connections",
                         url: server + '/user/' + username + '/followuser/' + followUser,
                     }, function (response) {
                         console.log("Response: ", response);
-                        if (response == "User added") {
+                        if (response == "User added and followed user created") {
                             self.state.data.following.push(followUser)
                             self.setState({data: self.state.data});
                         } else {
@@ -924,7 +924,8 @@ var Connections = React.createClass({displayName: "Connections",
     },
 
     render: function () {
-        var value = this.state.value;
+        var self=this;
+        var value = self.state.value;
         //console.log('VALUE', value);
         return (
             React.createElement("div", null, 
@@ -933,36 +934,36 @@ var Connections = React.createClass({displayName: "Connections",
                         React.createElement("div", {className: "row"}, 
                             React.createElement("div", {className: "input-field col s12"}, 
                                 React.createElement("label", {htmlFor: "searchFollow"}, "Follow a Hacker News user"), 
-                                React.createElement("input", {id: "searchFollow", value: value, onChange: this.handleChange, type: "text", className: "validate"}), 
-                                React.createElement("button", {id: "ourbutton", className: "btn btn-default", type: "button", onClick: this.followInputUser}, "Follow")
+                                React.createElement("input", {id: "searchFollow", value: value, onChange: self.handleChange, type: "text", className: "validate"}), 
+                                React.createElement("button", {id: "ourbutton", className: "btn btn-default", type: "button", onClick: self.followInputUser}, "Follow")
                             )
                         )
                     )
                 ), 
                 React.createElement("div", null, 
-                    React.createElement("h3", {id: "following-title"}, this.state.connHead, 
-                        React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
+                    React.createElement("h3", {id: "following-title"}, self.state.connHead, 
+                        React.createElement("a", {href: "#", id: "connedit", onClick: self.enableEdit}, self.state.editOrDelete)
                     ), 
                     React.createElement("div", {className: "suggest-tags"}, 
-                        this.showUsers()
+                        self.showUsers()
                     )
 
                 ), 
                 React.createElement("div", null, 
                     React.createElement("h3", {id: "suggested-following-title"}, "Suggested Followers including your Twitter connections", 
-                        React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
+                        React.createElement("a", {href: "#", id: "connedit", onClick: self.enableEdit}, self.state.editOrDelete)
                     ), 
                     React.createElement("div", {className: "suggest-tags"}, 
-                        this.showSuggestedFollowers()
+                        self.showSuggestedFollowers()
                     )
                     
                 ), 
                 React.createElement("div", null, 
                     React.createElement("h3", {id: "followers-title"}, "Users that follow you", 
-                        React.createElement("a", {href: "#", id: "connedit", onClick: this.enableEdit}, this.state.editOrDelete)
+                        React.createElement("a", {href: "#", id: "connedit", onClick: self.enableEdit}, self.state.editOrDelete)
                     ), 
                     React.createElement("div", {className: "suggest-tags"}, 
-                        this.showFollowers()
+                        self.showFollowers()
                     )
                 )
             /*<div>
