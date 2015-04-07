@@ -52,9 +52,10 @@ var SidebarBox = React.createClass({
     isDrawerClosed: function(){
         var self=this;
         chrome.storage.local.get("sidebarClosed", function (result)  {
+            console.log('sidebar:',result);
             var answer = result.sidebarClosed
             console.log("isdrawerclosed, ", answer)
-            if (!answer.length) chrome.storage.local.set({sidebarClosed: false})
+            if (!answer) chrome.storage.local.set({sidebarClosed: false})
             else self.setState({drawerIsClosed: answer})
         })
     },
