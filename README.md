@@ -26,7 +26,13 @@ HNselect will highlight stories and comments that are contribited by people you 
 
 
 ## Installation
-Download the Chrome Extension at [here](https://chrome.google.com/webstore/detail/hnselect/jbbidiepnmelekfimfibcihoijpbibpa)
+	```bash
+	npm install    # installs node packages
+	bower install  # installs bower dependencies
+	gulp           # when making changes to the extension's scripts
+	```
+
+Or download the Chrome Extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/hnselect/jbbidiepnmelekfimfibcihoijpbibpa)
 
 ## Techonology
 
