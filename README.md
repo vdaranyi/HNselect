@@ -26,7 +26,7 @@ HNselect will highlight stories and comments that are contribited by people you 
 
 
 ## Installation
-Go to 
+Download the Chrome Extension at [here](https://chrome.google.com/webstore/detail/hnselect/jbbidiepnmelekfimfibcihoijpbibpa)
 
 ## Techonology
 
