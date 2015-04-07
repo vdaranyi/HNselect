@@ -24,17 +24,17 @@ However, the site lacks the look and features you would expect from a modern web
 HNselect brings social feautures to HN through a Chrome Extension that contextualizes the site's content.
 
 ## Features
-HNselect will highlight stories and comments that are contribited by people you chose to follow. HN's DOM is manipulated to highlight relevant stories. A sidebar provides a functional UI providing a newsfeed of the stories reelvant to you.
+HNselect highlights stories and comments that are contribited by people you chose to follow. HN's DOM is manipulated to highlight relevant stories. A sidebar provides a functional UI providing a newsfeed of the stories relevant to you.
 The main HN site is also manipulated highlighting stories and comments by people you follow. Click the "+" symbol next to a story to bookmark it and its comments context. Click the "+" symbol next to a username to follow this user. 
 
 ## Installation
-	```bash
+	```
 	npm install    # installs node packages
 	bower install  # installs bower dependencies
 	gulp           # when making changes to the extension's scripts
 	```
 
-Or download the Chrome Extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/hnselect/jbbidiepnmelekfimfibcihoijpbibpa)
+Download the Chrome Extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/hnselect/jbbidiepnmelekfimfibcihoijpbibpa)
 
 ## Techonology
 Chrome Extension that injects itself into the Hacker News website when accessing the page.
