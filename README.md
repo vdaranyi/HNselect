@@ -28,10 +28,11 @@ HNselect highlights stories and comments that are contribited by people you chos
 The main HN site is also manipulated highlighting stories and comments by people you follow. Click the "+" symbol next to a story to bookmark it and its comments context. Click the "+" symbol next to a username to follow this user. 
 
 ## Installation
-	```npm install    # installs node packages
-	bower install  # installs bower dependencies
-	gulp           # when making changes to the extension's scripts
-	```
+```sh
+npm install    # installs node packages
+bower install  # installs bower dependencies
+gulp           # when making changes to the extension's scripts
+```
 
 Download the Chrome Extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/hnselect/jbbidiepnmelekfimfibcihoijpbibpa)
 
