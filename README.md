@@ -15,7 +15,7 @@
 - [License](#license)
 
 ## Screenshot
-[<img src="http://www.hnselect.com/HNselect_screenshot.png">]
+[<img src="https://raw.githubusercontent.com/crsmnd/HNselect-backend/master/public/HNselect_screenshot.png">]
 
 ## Motivation
 
