@@ -15,7 +15,7 @@
 - [License](#license)
 
 ## Screenshot
-[<img src="https://raw.githubusercontent.com/crsmnd/HNselect-backend/master/public/HNselect_screenshot.png">]
+<img src="https://raw.githubusercontent.com/crsmnd/HNselect-backend/master/public/HNselect_screenshot.png">
 
 ## Motivation
 
@@ -28,8 +28,7 @@ HNselect highlights stories and comments that are contribited by people you chos
 The main HN site is also manipulated highlighting stories and comments by people you follow. Click the "+" symbol next to a story to bookmark it and its comments context. Click the "+" symbol next to a username to follow this user. 
 
 ## Installation
-	```
-	npm install    # installs node packages
+	```npm install    # installs node packages
 	bower install  # installs bower dependencies
 	gulp           # when making changes to the extension's scripts
 	```
