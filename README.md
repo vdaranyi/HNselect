@@ -38,7 +38,7 @@ Or download the Chrome Extension from the [Chrome Web Store](https://chrome.goog
 
 ## Techonology
 Chrome Extension that injects itself into the Hacker News website when accessing the page.
-Upon load, the initial newsfeed is served by our backend ([Repo](https://github.com/crsmnd/HNselect-backend)). The newsfeed is then updated in realtime with the client listening for new items fromt the Hacker News Firebase API ([Repo](https://github.com/HackerNews/API)). 
+Upon load, the initial newsfeed is served by our backend ([Repo](https://github.com/crsmnd/HNselect-backend)). The newsfeed is then updated in realtime with the client listening for new items from the Hacker News Firebase API ([Repo](https://github.com/HackerNews/API)). 
 
 ### Roadmap
 
@@ -56,6 +56,7 @@ Upon load, the initial newsfeed is served by our backend ([Repo](https://github.
 - Connection tab needs to be restyled
 - Sidebar to stay open/closed upon site reload
 - Reload of page should not rerequest newsfeed load from server (move from contentscript to background.js)
+- Cleanup of codebase
 
 ## Contributors
 
