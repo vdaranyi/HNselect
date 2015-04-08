@@ -24,8 +24,7 @@ However, the site lacks the look and features you would expect from a modern web
 HNselect brings social feautures to HN through a Chrome Extension that contextualizes the site's content.
 
 ## Features
-HNselect highlights stories and comments that are contribited by people you chose to follow. HN's DOM is manipulated to highlight relevant stories. A sidebar provides a functional UI providing a newsfeed of the stories relevant to you.
-The main HN site is also manipulated highlighting stories and comments by people you follow. Click the "+" symbol next to a story to bookmark it and its comments context. Click the "+" symbol next to a username to follow this user. 
+HNselect highlights stories and comments that are relevant to you. The sidebar provides a functional UI with a newsfeed showing stories of the people you chose to follow. The main HN site is manipulated highlighting new stories and comments by people you follow. Click the "+" symbol next to a story to bookmark it and its comments context. Click the "+" symbol next to a username to follow this user. Login through Twitter to easily find your friends on HN. We parsed HN users' about pages to identify their Twitter handles and match them to their HN usernames.
 
 ## Installation
 ```sh
