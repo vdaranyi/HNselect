@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-- [UI Screenshot](#ui screenshot)
+- [UI Screenshot](#ui-screenshot)
 - [Motivation](#motivation)
 - [Features](#features)
 - [Installation](#installation)
