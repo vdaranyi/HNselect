@@ -60,7 +60,7 @@ Upon load, the initial newsfeed is served by our backend ([Repo](https://github.
 ## Contributors
 
 * __Vincent Daranyi__ [LinkedIn](https://www.linkedin.com/in/vdaranyi) | [GitHub](https://github.com/crsmnd)
-* __Glenn Davies__ [LinkedIn](https://www.linkedin.com/in/glennonymous) | [GitHub](https://github.com/glennonymous)
+* __Glenn Davis__ [LinkedIn](https://www.linkedin.com/in/glennonymous) | [GitHub](https://github.com/glennonymous)
 * __Michael Bae__ [LinkedIn](https://www.linkedin.com/in/michaelbae) | [GitHub](https://github.com/michaelbbae)
 
 ## License
