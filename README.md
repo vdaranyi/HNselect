@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-- [Screenshot](#screenshot)
+- [UI Screenshot](#ui screenshot)
 - [Motivation](#motivation)
 - [Features](#features)
 - [Installation](#installation)
@@ -14,7 +14,7 @@
 - [Contributors](#contributors)
 - [License](#license)
 
-## Screenshot
+## UI Screenshot
 <img src="https://raw.githubusercontent.com/crsmnd/HNselect-backend/master/public/HNselect_screenshot.png">
 
 ## Motivation
