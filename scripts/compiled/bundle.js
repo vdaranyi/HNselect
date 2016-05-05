@@ -30,8 +30,8 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnOrange,
     bgGrey = "#f7f7f1",
     following = [],
-    getCommentersRoute = 'http://www.hnselect.com/getCommenters';
-//getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
+    // getCommentersRoute = 'http://www.hnselect.com/getCommenters';
+getCommentersRoute = 'https://hn-select.herokuapp.com/getCommenters';
 
 
 // Selecting highlighting method depending on view
@@ -75,15 +75,10 @@ chrome.runtime.onMessage.addListener(
         }
     });
 
-
-
-
-
-
 },{"./pageHighlighting.js":2,"./sidebar.jsx":3}],2:[function(require,module,exports){
 //console.log('pageHighlighting');
-var server = 'http://www.hnselect.com';
-//var server = 'http://hn-select.herokuapp.com';
+// var server = 'http://www.hnselect.com';
+var server = 'http://hn-select.herokuapp.com';
 // var server = 'http://localhost:3000';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',
@@ -236,17 +231,12 @@ function highlightComments() {
 }
 */
 
-
-
-
-
-
-
 },{}],3:[function(require,module,exports){
 // Constants
 
 //var server = 'http://localhost:3000';
-var server = 'http://www.hnselect.com';
+// var server = 'http://www.hnselect.com';
+var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
 //require("./react-materialize/src/input.js");
 
@@ -484,7 +474,7 @@ var NavBar = React.createClass({displayName: "NavBar",
                         ), 
                         React.createElement("li", {className: "col s2 navbar-button waves-effect waves-light"}, 
                             React.createElement("div", {id: "twitter"}, 
-                                React.createElement("a", {href: "http://www.hnselect.com/user/" + username + "/twitter/connect"}, 
+                                    React.createElement("a", {href: "http://www.hn-select.herokuapp.com/user/" + username + "/twitter/connect"}, 
                                     React.createElement("img", {src: "https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png", height: "14px"})
                                 )
                             )
@@ -1035,6 +1025,5 @@ var Bookmarks = React.createClass({displayName: "Bookmarks",
                 else return React.createElement("div", null, "You don't have any bookmarks!")
     }
 })
-
 
 },{}]},{},[1]);

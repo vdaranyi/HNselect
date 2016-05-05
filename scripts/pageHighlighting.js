@@ -1,6 +1,6 @@
 //console.log('pageHighlighting');
-var server = 'http://www.hnselect.com';
-//var server = 'http://hn-select.herokuapp.com';
+// var server = 'http://www.hnselect.com';
+var server = 'http://hn-select.herokuapp.com';
 // var server = 'http://localhost:3000';
 var hnOrange = '#ff6600',
     hnGrey = '#828282',

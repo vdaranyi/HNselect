@@ -1,7 +1,8 @@
 // Constants
 
 //var server = 'http://localhost:3000';
-var server = 'http://www.hnselect.com';
+// var server = 'http://www.hnselect.com';
+var server = 'http://hn-select.herokuapp.com';
 var hnUrl = "https://news.ycombinator.com";
 //require("./react-materialize/src/input.js");
 
@@ -239,7 +240,7 @@ var NavBar = React.createClass({
                         </li>
                         <li className="col s2 navbar-button waves-effect waves-light">
                             <div id="twitter">
-                                <a href={"http://www.hnselect.com/user/" + username + "/twitter/connect"}>
+                                    <a href={"http://www.hn-select.herokuapp.com/user/" + username + "/twitter/connect"}> 
                                     <img src="https://s3.amazonaws.com/gdcreative-general/twitter_white_circle_48.png" height="14px" />
                                 </a>
                             </div>
