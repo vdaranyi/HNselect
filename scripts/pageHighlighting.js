@@ -11,12 +11,6 @@ var hnOrange = '#ff6600',
     commentersBgColor = hnGrey,
     bgGrey = "#f7f7f1";
 
-// var top100 = [];
-// $('a[href^="user?id"]').each(function (index, elem) {
-//     top100.push($(this).text());
-// });
-// console.log(JSON.stringify(top100));
-
 
 parseHnPage();
 
@@ -24,29 +18,46 @@ function parseHnPage() {
     var storiesOnPage = {},
         storyIdsOnPage = [],
         highlightData;
-    // REFACTOR to get the user
-    $('a[href^="user?id"]').each(function (index) {
-        if (index === 0) {
-            user = $(this).text();
-        } else {
-            var story = {};
-            // console.log('index', index);
-            var $author = $(this);
-            var author = $author.text();
-            var $storyTitle = $author.parents('tr:first').prev('tr').find('a[href^="http"]');
-            var storyId = $author.next('a[href^="item?id"]').attr('href').replace('item?id=', '');
 
-            // Put all stories on page into array for subsequent comment following analysis
-            storiesOnPage[storyId] = {
-              storyId: storyId,
-              $storyTitle: $storyTitle,
-              $author: $author,
-              author: author
-            };
-            storyIdsOnPage.push(Number(storyId));
-            addBookmarkButton($storyTitle, storyId, user);
-            addPlusButton($author, author, user);
+    
+    var user = $('span.pagetop').last().children('a[href]').attr('href');
+    if (user.indexOf('login') === 0) {
+        
+        // Replace alert with request in sidebar to login! 
+        alert('To use HNselect, please log into HN first');
+        
+        // Stop code execution of extension. Return not sufficient!
+        return;
+    } else {
+        user = user.replace('user?id=', '');
+    }
+
+    $('.subtext').each(function (index) {        
+        var story = {};
+        var $author = $(this).children('a[href^="user?id"]');
+        var author = $author.text();
+        var $storyTitle = $(this).parents('tr:first').prev('tr').find('a[href^="http"]');
+        
+        // Check if it is a story, otherwise skip (i.e. Jobs, e.g. https://news.ycombinator.com/item?id=11639942)
+        try {
+            var storyId = $author.parent().children('span').find('a[href^="item?id"]').attr('href').replace('item?id=', '');
         }
+        catch(err) {
+            return true; // go to next .each iteration
+        }
+
+        // console.log(user, index, $author, $storyTitle, storyId);
+
+        // Put all stories on page into array for subsequent comment following analysis
+        storiesOnPage[storyId] = {
+          storyId: storyId,
+          $storyTitle: $storyTitle,
+          $author: $author,
+          author: author
+        };
+        storyIdsOnPage.push(Number(storyId));
+        addBookmarkButton($storyTitle, storyId, user);
+        addPlusButton($author, author, user);
     });
     // var storyIdsReqObject = {storyIds: storyIdsOnPage};
     fetchHighlight(user, storiesOnPage, storyIdsOnPage);
